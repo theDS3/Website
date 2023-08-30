@@ -1,15 +1,34 @@
 ---
+import Particle from "../components/Particle.astro"
 ---
+<astro>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <meta name="viewport" content="width=device-width" />
+      <meta name="generator" content={Astro.generator} />
+      <style>
+        body {
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: black;
+          color: white;
+          font-family: Arial, sans-serif;
+        }
+        h1 {
+          text-align: center;
+        }
+      </style>
+      <title>Astro</title>
+    </head>
+    <body>
+      <h1>Astro</h1>
+      <Particle />
+    </body>
+  </html>
+</astro>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>

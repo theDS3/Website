@@ -10,6 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.10.13"
+    "astro": "^2.10.14",
+    "astro-particles": "^2.10.0",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^2.12.0"
   }
 }
