@@ -6,7 +6,7 @@ Relevant GitHub Issues:
 
 ## Type of change
 
-Select all options that are relevant.
+<!-- Select all options that are relevant. -->
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
@@ -16,7 +16,7 @@ Select all options that are relevant.
 
 ## How Has This Been Tested?
 
-Summary of tests conducted
+<!-- Summary of tests conducted -->
 
 - [ ] Test A
 - [ ] Test B
