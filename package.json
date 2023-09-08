@@ -14,7 +14,8 @@
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
   },
   "dependencies": {
-    "astro": "^2.10.13"
+    "astro": "^2.10.13",
+    "sass": "^1.66.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.6.0",
