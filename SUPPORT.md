@@ -58,14 +58,14 @@ For **Windows** Users only
 1. Ensure that all other versions of Node installs have been uninstalled
 
 2. Click this [link](https://github.com/coreybutler/nvm-windows/releases) and
-    download the latest `.exe` and run it to install [nvm-windows](https://github.com/coreybutler/nvm-windows)
+   download the latest `.exe` and run it to install [nvm-windows](https://github.com/coreybutler/nvm-windows)
 
 3. Exit your current terminal after the process has finished and run the following
-    command to verify the install
+   command to verify the install
 
-    ```bash
-    nvm help
-    ```
+   ```bash
+   nvm help
+   ```
 
 4. After, confirming `nvm` is installed, ensure it is setup to use Node LTS
 
@@ -79,7 +79,8 @@ For **Windows** Users only
 For our project we will be using [pnpm](https://pnpm.io/) or known as Performant
 NPM, it is a much quicker package manager compared to `npm`
 
-Follow the install instructions [here](https://pnpm.io/installation#using-a-standalone-script) to install `pnpm`
+Follow the install instructions
+[here](https://pnpm.io/installation#using-a-standalone-script) to install `pnpm`
 
 ## VS Code
 
