@@ -1,9 +1,9 @@
 # DS<sup>3</sup> Website
 
-| Site                               | Status                                                                                                                                                           |
-|------------------------------------| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Production](https://ds3utsc.com)     | [![Netlify Status](https://api.netlify.com/api/v1/badges/14115eba-7e02-4351-80ce-9da8a136ca6b/deploy-status)](https://app.netlify.com/sites/ds3-main/deploys) |
-| [Development](https://dev.ds3utsc.com)| [![Netlify Status](https://api.netlify.com/api/v1/badges/a69e3dee-1833-4ec8-a5ba-a62b66e9714c/deploy-status)](https://app.netlify.com/sites/ds3-dev/deploys)  |
+| Site                                   | Status                                                                                                                                                        |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Production](https://ds3utsc.com)      | [![Netlify Status](https://api.netlify.com/api/v1/badges/14115eba-7e02-4351-80ce-9da8a136ca6b/deploy-status)](https://app.netlify.com/sites/ds3-main/deploys) |
+| [Development](https://dev.ds3utsc.com) | [![Netlify Status](https://api.netlify.com/api/v1/badges/a69e3dee-1833-4ec8-a5ba-a62b66e9714c/deploy-status)](https://app.netlify.com/sites/ds3-dev/deploys)  |
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ Take a look at our [SUPPORT](./SUPPORT.md) file for more instructions.
 All commands are run from the root of the project, from a terminal:
 
 | Command                    | Action                                           |
-|----------------------------|------------------------------------------------- |
+| -------------------------- | ------------------------------------------------ |
 | `pnpm install`             | Installs dependencies                            |
 | `pnpm run dev`             | Starts local dev server at `localhost:3000`      |
 | `pnpm run build`           | Build your production site to `./dist/`          |

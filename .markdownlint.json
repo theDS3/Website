@@ -1,0 +1,8 @@
+{
+  "default": true,
+  "MD033": { "allowed_elements": ["sup", "ul", "li"] },
+  "MD013": {
+    "tables": false,
+    "code_block_line_length": 100
+  }
+}
