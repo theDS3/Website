@@ -1,7 +1,18 @@
 {
-  "eslint.validate": ["astro", "typescript"],
-  "prettier.documentSelectors": ["**/*.astro"],
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "conventionalCommits.promptScopes": false,
+  "conventionalCommits.emojiFormat": "emoji",
+  "conventionalCommits.autoCommit": false,
+  "conventionalCommits.promptCI": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.inlineSuggest.enabled": true,
+  "eslint.validate": ["astro", "typescript"],
+  "prettier.documentSelectors": ["**/*.astro"],
+  "prettier.configPath": ".prettierrc",
+  "prettier.ignorePath": ".prettierignore"
 }
