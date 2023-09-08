@@ -8,6 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "lint": "npm-run-all --parallel lint:astro lint:ts",
+    "lint:ts": "eslint \"src/**/*.{ts,astro}\" --ignore-path .eslintignore --cache",
+    "lint:astro": "astro check",
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
   },
   "dependencies": {
