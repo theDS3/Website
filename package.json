@@ -16,7 +16,10 @@
   },
   "dependencies": {
     "astro": "^2.10.13",
-    "sass": "^1.66.1"
+    "astro-particles": "^2.10.0",
+    "sass": "^1.66.1",
+    "tsparticles": "^2.12.0",
+    "tsparticles-engine": "^2.12.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.6.0",
