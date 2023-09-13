@@ -1,0 +1,167 @@
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding: 0 1em;
+  z-index: 99;
+
+  &:has(> nav.show) {
+    height: 100%;
+    padding-bottom: calc(100vh - 5em);
+    backdrop-filter: blur(5px);
+  }
+
+  img {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    z-index: 99;
+  }
+
+  nav {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: -100vh;
+    transition-duration: 1s;
+    visibility: hidden;
+
+    ul {
+      padding-left: 0;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      .item {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        display: none;
+
+        .submenu {
+          display: none;
+        }
+      }
+
+      a {
+        display: block;
+        color: #fff;
+        padding: 15px 5px;
+
+        &.has-submenu {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      &.active > .item {
+        display: block;
+
+        &.submenu-active {
+          border-radius: 5px;
+
+          .submenu {
+            display: block;
+            animation: growDown 300ms linear forwards;
+            transform-origin: top center;
+
+            .subitem > a {
+              font-size: 14px;
+              padding: 10px 15px;
+            }
+          }
+        }
+      }
+    }
+
+    &.show {
+      transform: translateY(calc(100vh + 5em));
+      height: 100%;
+      visibility: visible;
+    }
+  }
+
+  button {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    font-size: 1.8rem;
+    z-index: 99;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    &:has(> nav.show) {
+      height: unset;
+      padding-bottom: unset;
+      backdrop-filter: unset;
+    }
+
+    nav {
+      position: unset;
+      width: auto;
+      transition-duration: 0ms;
+      visibility: visible;
+
+      ul {
+        margin-bottom: 0;
+      }
+
+      .menu > .item {
+        position: relative;
+        display: block;
+        width: auto;
+
+        &.submenu-active {
+          .submenu {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 68px;
+            border-end-end-radius: 5px;
+            border-end-start-radius: 5px;
+            animation: growDown 300ms linear forwards;
+            transform-origin: top center;
+
+            .subitem > a {
+              font-size: 14px;
+              padding: 10px 15px;
+            }
+          }
+        }
+      }
+
+      &.show {
+        transform: unset;
+        height: unset;
+        visibility: visible;
+      }
+    }
+
+    button {
+      display: none;
+    }
+  }
+}

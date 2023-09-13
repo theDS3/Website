@@ -1,0 +1,106 @@
+---
+import '../styles/layout/Header.scss';
+
+import DS3_Logo from '/DS3_Logo.webp';
+---
+
+<header>
+  <a href="/">
+    <img
+      src={DS3_Logo}
+      alt="DS3 Logo"
+    />
+  </a>
+  <nav>
+    <ul class="menu">
+      <li class="item"><a href="/#about-us">About</a></li>
+      <li class="item"><a href="/#sponsors">Sponsors</a></li>
+      <li class="item"><a href="/#team">Team</a></li>
+      <li class="item"><a href="/#events">Events</a></li>
+      <li class="item"><a href="/#resources">Resources</a></li>
+      <!-- <li class="item has-submenu">
+        <a tabindex="0">
+          Services
+          <iconify-icon icon="fa:angle-down"></iconify-icon>
+        </a>
+        <ul class="submenu">
+          <li class="subitem"><a href="#">Design</a></li>
+          <li class="subitem"><a href="#">Development</a></li>
+          <li class="subitem"><a href="#">SEO</a></li>
+          <li class="subitem"><a href="#">Copywriting</a></li>
+        </ul>
+      </li> -->
+    </ul>
+  </nav>
+  <button class="toggle">
+    <iconify-icon icon="fa:bars"></iconify-icon>
+  </button>
+</header>
+
+<script is:inline>
+  const nav = document.querySelector('nav');
+  const menu = document.querySelector('.menu');
+  const items = document.querySelectorAll('.item');
+  const toggle = document.querySelector('.toggle');
+
+  /* Event Listeners */
+
+  // To open/close the navbar
+  toggle.addEventListener('click', toggleMenu);
+
+  // To open/close the submenu
+  for (const item of items) {
+    if (item.querySelector('.submenu')) {
+      item.addEventListener('click', toggleSubmenu);
+    }
+    item.addEventListener('keypress', toggleSubmenu);
+  }
+
+  // To close submenu when clicking outside
+  document.addEventListener('click', closeSubmenu, false);
+
+  /* Toggle Mobile Menuu */
+  function toggleMenu() {
+    if (menu.classList.contains('active')) {
+      menu.classList.remove('active');
+      nav.classList.remove('show');
+      toggle.querySelector('iconify-icon').icon = 'fa:bars';
+    } else {
+      menu.classList.add('active');
+      nav.classList.add('show');
+      toggle.querySelector('iconify-icon').icon = 'fa:times';
+    }
+  }
+
+  /* Toggle Subemenu */
+  function toggleSubmenu() {
+    const tag = menu.querySelector('.submenu-active');
+    if (this.classList.contains('submenu-active')) {
+      this.classList.remove('submenu-active');
+      this.querySelector('iconify-icon').icon = 'fa:angle-down';
+    } else if (tag) {
+      tag.querySelector('iconify-icon').icon = 'fa:angle-down';
+      tag.classList.remove('submenu-active');
+      this.classList.add('submenu-active');
+      this.querySelector('iconify-icon').icon = 'fa:angle-up';
+    } else {
+      this.classList.add('submenu-active');
+      this.querySelector('iconify-icon').icon = 'fa:angle-up';
+    }
+  }
+
+  /* Close Submenu From Anywhere */
+  function closeSubmenu(e) {
+    const tag = menu.querySelector('.submenu-active');
+    if (tag) {
+      let isClickInside = menu
+        .querySelector('.submenu-active')
+        .contains(e.target);
+
+      if (!isClickInside && tag) {
+        tag.querySelector('iconify-icon').icon = 'fa:angle-down';
+        tag.classList.remove('submenu-active');
+      }
+    }
+  }
+</script>

@@ -4,6 +4,8 @@ import '@fontsource-variable/josefin-sans/wght-italic.css';
 import Particles from 'astro-particles';
 import type { ISourceOptions } from 'tsparticles-engine';
 
+import Header from './Header.astro';
+
 import particleJSOptions from '../particlesjs.json';
 import '../styles/main.scss';
 ---
@@ -27,6 +29,7 @@ import '../styles/main.scss';
     <title>Astro</title>
   </head>
   <body>
+    <Header />
     <slot />
     <Particles
       id="tsparticles"
@@ -35,26 +38,25 @@ import '../styles/main.scss';
     />
   </body>
 
+  <script
+    src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"
+  ></script>
+
   <script>
-    import {
-      type Container,
-      type Engine,
-      tsParticles,
-    } from 'tsparticles-engine';
+    import type { Engine } from 'tsparticles-engine';
     import { loadFull } from 'tsparticles';
+
+    declare global {
+      interface Window {
+        particlesInit: (engine: Engine) => Promise<void>;
+      }
+    }
 
     // the function name is the parameter passed to the init attribute
     // required
     // add the function to window is mandatory, it will be searched there
     window.particlesInit = async function (engine: Engine) {
       await loadFull(engine);
-    };
-
-    // the function name is the parameter passed to the loaded attribute
-    // optional
-    // add the function to window is mandatory, it will be searched there
-    window.particlesLoaded = function (container: Container) {
-      console.log('particlesLoaded callback');
     };
   </script>
 </html>
