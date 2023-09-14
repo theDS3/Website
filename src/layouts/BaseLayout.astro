@@ -1,5 +1,5 @@
 ---
-import '@fontsource-variable/josefin-sans/wght-italic.css';
+import '@fontsource-variable/josefin-sans';
 
 import Particles from 'astro-particles';
 import type { ISourceOptions } from 'tsparticles-engine';
@@ -30,7 +30,9 @@ import '../styles/main.scss';
   </head>
   <body>
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Particles
       id="tsparticles"
       options={particleJSOptions as ISourceOptions}
