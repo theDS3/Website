@@ -1,0 +1,24 @@
+---
+import Button from './Button.astro';
+import about from '/Intro.jpg';
+import '../styles/components/Intro.scss';
+---
+
+<div class="container">
+  <div class="image">
+    <img src={about} />
+  </div>
+  <div class="text">
+    <h1>Data Science &amp; <br />Statistics Society</h1>
+    <h3>
+      We are a group of like-minded individuals at the <span class="green"
+        >University of <br />Toronto</span
+      >
+       driving impact in the fields of <span class="pink"
+        >data science, statistics,<br />
+         and machine learning</span
+      >
+    </h3>
+    <Button />
+  </div>
+</div>

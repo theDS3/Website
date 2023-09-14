@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 60px;
+}
+
+.text {
+  flex: 1;
+  text-align: right;
+  font-weight: bold;
+  font-size: 5xl;
+  color: white;
+}
+
+.text h3 {
+  font-size: xl;
+  color: white;
+  margin-top: 6px;
+}
+
+.text span.green {
+  color: #50d634;
+}
+
+.text span.pink {
+  color: #f4539f;
+}
+
+.image {
+  flex: 1;
+  text-align: left;
+}
+
+img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+}
