@@ -1,13 +1,13 @@
+/* CSS for desktop view */
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 60px;
+  margin: 200px;
 }
 
 .text {
   flex: 1;
-  text-align: right;
   font-weight: bold;
   font-size: 5xl;
   color: white;
@@ -29,11 +29,28 @@
 
 .image {
   flex: 1;
-  text-align: left;
 }
 
 img {
   width: 100%;
   max-width: 400px;
   border-radius: 15px;
+}
+
+/* CSS for mobile view */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements vertically */
+    text-align: center; /* Center align text */
+    margin: 50px;
+  }
+
+  .text {
+    order: 2; /* Change the order of text to appear below */
+    margin-top: 20px;
+  }
+
+  .image {
+    order: 1; /* Change the order of image to appear above */
+  }
 }

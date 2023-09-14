@@ -1,24 +1,25 @@
 ---
 import Button from './Button.astro';
-import about from '/Intro.jpg';
+import intro from '/Intro.jpg';
 import '../styles/components/Intro.scss';
 ---
 
 <div class="container">
   <div class="image">
-    <img src={about} />
+    <img src={intro} />
   </div>
   <div class="text">
     <h1>Data Science &amp; <br />Statistics Society</h1>
+    <br />
     <h3>
       We are a group of like-minded individuals at the <span class="green"
-        >University of <br />Toronto</span
+        >University of Toronto</span
       >
        driving impact in the fields of <span class="pink"
-        >data science, statistics,<br />
-         and machine learning</span
+        >data science, statistics, and machine learning</span
       >
     </h3>
+    <br />
     <Button />
   </div>
 </div>
