@@ -1,0 +1,20 @@
+#about-us {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+  text-align: center;
+
+  h2 {
+    color: #d9d9d9;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 0.12rem;
+  }
+
+  p {
+    color: #fff;
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 400;
+  }
+}
