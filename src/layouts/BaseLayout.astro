@@ -30,7 +30,9 @@ import '../styles/main.scss';
   </head>
   <body>
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Particles
       id="tsparticles"
       options={particleJSOptions as ISourceOptions}
