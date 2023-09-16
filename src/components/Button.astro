@@ -1,0 +1,11 @@
+---
+import '../styles/components/Button.scss';
+
+const { title, href } = Astro.props;
+---
+
+<a href={href}>
+  <button>
+    {title}
+  </button>
+</a>
