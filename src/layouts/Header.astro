@@ -72,6 +72,7 @@ const links: Link[] = [
   const openMenu = () => {
     menu.classList.add('active');
     nav.classList.add('show');
+    document.body.style.overflow = 'hidden';
     toggle.querySelector('iconify-icon').icon = 'fa:times';
   };
 
@@ -79,6 +80,7 @@ const links: Link[] = [
   const closeMenu = () => {
     menu.classList.remove('active');
     nav.classList.remove('show');
+    document.body.style.overflow = 'initial';
     toggle.querySelector('iconify-icon').icon = 'fa:bars';
   };
 
