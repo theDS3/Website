@@ -16,11 +16,15 @@ header {
   flex-wrap: nowrap;
   padding: 0 1em;
   z-index: 99;
+  backdrop-filter: blur(5px);
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0,
+    rgba(0, 0, 0, 0.12) 0 1px 18px 0;
 
   &:has(> nav.show) {
     height: 100%;
     padding-bottom: calc(100vh - 5em);
-    backdrop-filter: blur(5px);
   }
 
   img {
@@ -28,6 +32,13 @@ header {
     width: 65px;
     height: 65px;
     z-index: 99;
+  }
+
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
   }
 
   nav {
@@ -42,8 +53,10 @@ header {
       padding-left: 0;
     }
 
-    a {
-      font-size: 24px;
+    a,
+    p {
+      color: #fff;
+      padding: 15px 5px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -69,8 +82,6 @@ header {
 
       a {
         display: block;
-        color: #fff;
-        padding: 15px 5px;
 
         &.has-submenu {
           display: flex;
@@ -90,7 +101,8 @@ header {
             animation: growDown 300ms linear forwards;
             transform-origin: top center;
 
-            .subitem > a {
+            .subitem > a,
+            .subitem > p {
               font-size: 14px;
               padding: 10px 15px;
             }
@@ -106,7 +118,7 @@ header {
     }
   }
 
-  button {
+  .toggle {
     display: block;
     cursor: pointer;
     background: transparent;
@@ -123,7 +135,6 @@ header {
     &:has(> nav.show) {
       height: unset;
       padding-bottom: unset;
-      backdrop-filter: unset;
     }
 
     nav {
@@ -167,7 +178,7 @@ header {
       }
     }
 
-    button {
+    .toggle {
       display: none;
     }
   }
