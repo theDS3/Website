@@ -1,9 +1,12 @@
-.button-join-us {
+button {
   background-color: rgba(0, 0, 0, 0);
-  color: white;
   padding: 5px 40px;
   border: 2px solid white;
-  border-radius: 15px;
+  border-radius: 2.5rem;
+
   cursor: pointer;
-  font-family: 'Josefin Sans Variable', sans-serif;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
 }
