@@ -8,6 +8,8 @@ import Header from './Header.astro';
 
 import particleJSOptions from '../particlesjs.json';
 import '../styles/main.scss';
+
+const { title = 'DS3', includeHeader = true } = Astro.props;
 ---
 
 <html lang="en">
@@ -26,10 +28,10 @@ import '../styles/main.scss';
       name="generator"
       content={Astro.generator}
     />
-    <title>Astro</title>
+    <title>{title}</title>
   </head>
   <body>
-    <Header />
+    {includeHeader && <Header />}
     <main>
       <slot />
     </main>
