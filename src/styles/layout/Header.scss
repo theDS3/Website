@@ -30,6 +30,13 @@ header {
     z-index: 99;
   }
 
+  button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
   nav {
     position: fixed;
     width: 100%;
@@ -42,8 +49,10 @@ header {
       padding-left: 0;
     }
 
-    a {
-      font-size: 24px;
+    a,
+    p {
+      color: #fff;
+      padding: 15px 5px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -69,8 +78,6 @@ header {
 
       a {
         display: block;
-        color: #fff;
-        padding: 15px 5px;
 
         &.has-submenu {
           display: flex;
@@ -90,7 +97,8 @@ header {
             animation: growDown 300ms linear forwards;
             transform-origin: top center;
 
-            .subitem > a {
+            .subitem > a,
+            .subitem > p {
               font-size: 14px;
               padding: 10px 15px;
             }
@@ -106,7 +114,7 @@ header {
     }
   }
 
-  button {
+  .toggle {
     display: block;
     cursor: pointer;
     background: transparent;
@@ -167,7 +175,7 @@ header {
       }
     }
 
-    button {
+    .toggle {
       display: none;
     }
   }

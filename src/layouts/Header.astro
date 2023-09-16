@@ -2,6 +2,20 @@
 import '../styles/layout/Header.scss';
 
 import DS3_Logo from '/DS3_Logo.webp';
+
+interface Link {
+  title: string;
+  href: string;
+  sublinks?: Link[];
+}
+
+const links: Link[] = [
+  { title: 'About Us', href: '/#about-us' },
+  { title: 'Sponsors', href: '/#sponsors' },
+  { title: 'Team', href: '/#team' },
+  { title: 'Events', href: '/#events' },
+  { title: 'Resources', href: '/#resources' },
+];
 ---
 
 <header>
@@ -13,23 +27,33 @@ import DS3_Logo from '/DS3_Logo.webp';
   </a>
   <nav>
     <ul class="menu">
-      <li class="item"><a href="/#about-us">About</a></li>
-      <li class="item"><a href="/#sponsors">Sponsors</a></li>
-      <li class="item"><a href="/#team">Team</a></li>
-      <li class="item"><a href="/#events">Events</a></li>
-      <li class="item"><a href="/#resources">Resources</a></li>
-      <!-- <li class="item has-submenu">
-        <a tabindex="0">
-          Services
-          <iconify-icon icon="fa:angle-down"></iconify-icon>
-        </a>
-        <ul class="submenu">
-          <li class="subitem"><a href="#">Design</a></li>
-          <li class="subitem"><a href="#">Development</a></li>
-          <li class="subitem"><a href="#">SEO</a></li>
-          <li class="subitem"><a href="#">Copywriting</a></li>
-        </ul>
-      </li> -->
+      {
+        links.map((link) => {
+          if (link.sublinks === undefined)
+            return (
+              <li class="item">
+                <a href={link.href}>{link.title}</a>
+              </li>
+            );
+          return (
+            <li class="item has-submenu">
+              <p>
+                {link.title}
+                <iconify-icon icon="fa:angle-down" />
+              </p>
+              <ul class="submenu">
+                {link.sublinks?.map((sublink) => {
+                  return (
+                    <li class="subitem">
+                      <a href={sublink.href}>{sublink.title}</a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        })
+      }
     </ul>
   </nav>
   <button class="toggle">
