@@ -1,13 +1,11 @@
-@import '../../styles/abstracts/_mixins';
-
-$card-size: 300px;
+@import '../../styles/abstracts/mixins';
 
 .team-member {
   text-align: center;
 
   img {
-    height: $card-size;
-    width: $card-size;
+    height: 300px;
+    width: 300px;
     border-radius: 50%;
   }
 
@@ -64,5 +62,12 @@ $card-size: 300px;
         top: -14px;
       }
     }
+  }
+}
+
+@include geq(600px) {
+  .team-member > img {
+    height: 250px;
+    width: 250px;
   }
 }
