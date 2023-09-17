@@ -9,6 +9,11 @@ import Header from './Header.astro';
 import particleJSOptions from '../config/particlesjs.json';
 import '../styles/main.scss';
 
+interface Props {
+  title?: string;
+  includeHeader?: boolean;
+}
+
 const { title = 'DS3', includeHeader = true } = Astro.props;
 ---
 
