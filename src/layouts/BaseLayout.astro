@@ -4,6 +4,7 @@ import '@fontsource-variable/josefin-sans';
 import Particles from 'astro-particles';
 import type { ISourceOptions } from 'tsparticles-engine';
 
+import Footer from './Footer.astro';
 import Header from './Header.astro';
 
 import particleJSOptions from '../config/particlesjs.json';
@@ -40,6 +41,7 @@ const { title = 'DS3', includeHeader = true } = Astro.props;
     <main>
       <slot />
     </main>
+    <Footer />
     <Particles
       id="tsparticles"
       options={particleJSOptions as ISourceOptions}
