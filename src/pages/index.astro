@@ -1,12 +1,15 @@
 ---
-import AboutUs from '../components/AboutUs.astro';
-import TeamGroup from '../components/TeamGroup.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import AboutUs from '../components/AboutUs.astro';
+import Intro from '../components/Intro.astro';
+import TeamGroup from '../components/TeamGroup.astro';
 
 import '../styles/pages/Home.scss';
 ---
 
 <BaseLayout>
+  <Intro />
   <AboutUs />
   <section id="team">
     <h2>Our Team</h2>

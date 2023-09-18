@@ -1,0 +1,154 @@
+@import '../abstracts/mixins';
+
+#intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h1 {
+      color: #d9d9d9;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.15rem;
+
+      > span {
+        font-weight: 300;
+      }
+    }
+
+    p {
+      color: #fff;
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      > .green {
+        color: #50d634;
+      }
+
+      > .pink {
+        color: #f4539f;
+      }
+    }
+
+    a {
+      text-align: center;
+    }
+  }
+}
+
+@include geq(400px) {
+  #intro > .content {
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@include geq(700px) {
+  #intro {
+    flex-direction: row;
+
+    img {
+      width: 60%;
+    }
+
+    .content {
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@include geq(800px) {
+  #intro > .content {
+    p {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+@include geq(900px) {
+  #intro > .content {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
+@include geq(1000px) {
+  #intro > .content {
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include geq(1100px) {
+  #intro > .content {
+    h1 {
+      font-size: 3.75rem;
+    }
+
+    p {
+      font-size: 2.25rem;
+    }
+  }
+}
+
+@include geq(1300px) {
+  #intro {
+    img {
+      width: 55%;
+    }
+
+    .content {
+      h1 {
+        font-size: 4rem;
+      }
+
+      p {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@include geq(1400px) {
+  #intro {
+    img {
+      width: 40%;
+    }
+
+    .content {
+      h1 {
+        font-size: 5rem;
+      }
+
+      p {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
