@@ -1,0 +1,73 @@
+@import '../../styles/abstracts/mixins';
+
+.team-member {
+  text-align: center;
+
+  img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+  }
+
+  > .container {
+    padding: 20px 0;
+
+    h3 {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #fe7777;
+      text-transform: capitalize;
+      margin: 0 0 20px;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 50px;
+        height: 1px;
+        background: #6e6e77;
+        position: absolute;
+        bottom: -10px;
+        right: 50%;
+        margin-right: 9px;
+        transition-duration: 0.25s;
+      }
+
+      &:after {
+        content: '';
+        width: 50px;
+        height: 1px;
+        background: #6e6e77;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        margin-left: 9px;
+        transition-duration: 0.25s;
+      }
+    }
+
+    p {
+      display: inline-block;
+      font-size: 1em;
+      text-transform: capitalize;
+
+      &:before {
+        content: '';
+        display: block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #6e6e77;
+        margin: 0 auto;
+        position: relative;
+        top: -14px;
+      }
+    }
+  }
+}
+
+@include geq(600px) {
+  .team-member > img {
+    height: 250px;
+    width: 250px;
+  }
+}
