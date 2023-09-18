@@ -1,5 +1,16 @@
 ---
 import '../styles/components/Button.scss';
+
+interface Props {
+  title: string;
+  href: string;
+}
+
+const { title, href } = Astro.props;
 ---
 
-<button class="button-join-us">Join Us</button>
+<a href={href}>
+  <button>
+    {title}
+  </button>
+</a>

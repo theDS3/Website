@@ -1,0 +1,17 @@
+@import '../../styles/abstracts/mixins';
+
+.team-group {
+  padding-bottom: 2rem;
+
+  > .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1em;
+  }
+}
+
+@include geq(600px) {
+  .team-group > .container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}

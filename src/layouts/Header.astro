@@ -2,6 +2,20 @@
 import '../styles/layout/Header.scss';
 
 import DS3_Logo from '/DS3_Logo.webp';
+
+interface Link {
+  title: string;
+  href: string;
+  sublinks?: Link[];
+}
+
+const links: Link[] = [
+  { title: 'About Us', href: '/#about-us' },
+  { title: 'Sponsors', href: '/#sponsors' },
+  { title: 'Team', href: '/#team' },
+  { title: 'Events', href: '/#events' },
+  { title: 'Resources', href: '/#resources' },
+];
 ---
 
 <header>
@@ -13,23 +27,33 @@ import DS3_Logo from '/DS3_Logo.webp';
   </a>
   <nav>
     <ul class="menu">
-      <li class="item"><a href="/#about-us">About</a></li>
-      <li class="item"><a href="/#sponsors">Sponsors</a></li>
-      <li class="item"><a href="/#team">Team</a></li>
-      <li class="item"><a href="/#events">Events</a></li>
-      <li class="item"><a href="/#resources">Resources</a></li>
-      <!-- <li class="item has-submenu">
-        <a tabindex="0">
-          Services
-          <iconify-icon icon="fa:angle-down"></iconify-icon>
-        </a>
-        <ul class="submenu">
-          <li class="subitem"><a href="#">Design</a></li>
-          <li class="subitem"><a href="#">Development</a></li>
-          <li class="subitem"><a href="#">SEO</a></li>
-          <li class="subitem"><a href="#">Copywriting</a></li>
-        </ul>
-      </li> -->
+      {
+        links.map((link) => {
+          if (link.sublinks === undefined)
+            return (
+              <li class="item">
+                <a href={link.href}>{link.title}</a>
+              </li>
+            );
+          return (
+            <li class="item has-submenu">
+              <p>
+                {link.title}
+                <iconify-icon icon="fa:angle-down" />
+              </p>
+              <ul class="submenu">
+                {link.sublinks?.map((sublink) => {
+                  return (
+                    <li class="subitem">
+                      <a href={sublink.href}>{sublink.title}</a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        })
+      }
     </ul>
   </nav>
   <button class="toggle">
@@ -38,41 +62,63 @@ import DS3_Logo from '/DS3_Logo.webp';
 </header>
 
 <script is:inline>
+  // Get DOM Elements
   const nav = document.querySelector('nav');
   const menu = document.querySelector('.menu');
   const items = document.querySelectorAll('.item');
   const toggle = document.querySelector('.toggle');
 
+  // Open the Menu
+  const openMenu = () => {
+    menu.classList.add('active');
+    nav.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    toggle.querySelector('iconify-icon').icon = 'fa:times';
+  };
+
+  // Close the Menu
+  const closeMenu = () => {
+    menu.classList.remove('active');
+    nav.classList.remove('show');
+    document.body.style.overflow = 'initial';
+    toggle.querySelector('iconify-icon').icon = 'fa:bars';
+  };
+
   /* Event Listeners */
 
-  // To open/close the navbar
-  toggle.addEventListener('click', toggleMenu);
+  // Close Mobile Menu on Escape Keypress
+  document.addEventListener('keydown', function ({ key }) {
+    if (
+      (key === 'Escape' || key === 'Esc') &&
+      menu.classList.contains('active')
+    )
+      closeMenu();
+  });
 
-  // To open/close the submenu
+  // Close Mobile Menu on Clicking Outside
+  document.addEventListener('click', (e) => {
+    if (
+      !menu.contains(e.target) &&
+      menu.classList.contains('active') &&
+      !toggle.contains(e.target) &&
+      !e.target.classList.contains('toggle') &&
+      !e.target.classList.contains('item')
+    )
+      closeMenu();
+  });
+
+  // Toggle Mobile Menu
+  toggle.addEventListener('click', () => {
+    menu.classList.contains('active') ? closeMenu() : openMenu();
+  });
+
   for (const item of items) {
-    if (item.querySelector('.submenu')) {
-      item.addEventListener('click', toggleSubmenu);
-    }
-    item.addEventListener('keypress', toggleSubmenu);
+    item.querySelector('.submenu')
+      ? item.addEventListener('click', toggleSubmenu) // Toggle SubMenu
+      : item.addEventListener('click', closeMenu); // Close Mobile Menu on Item Click
   }
 
-  // To close submenu when clicking outside
-  document.addEventListener('click', closeSubmenu, false);
-
-  /* Toggle Mobile Menuu */
-  function toggleMenu() {
-    if (menu.classList.contains('active')) {
-      menu.classList.remove('active');
-      nav.classList.remove('show');
-      toggle.querySelector('iconify-icon').icon = 'fa:bars';
-    } else {
-      menu.classList.add('active');
-      nav.classList.add('show');
-      toggle.querySelector('iconify-icon').icon = 'fa:times';
-    }
-  }
-
-  /* Toggle Subemenu */
+  // Toggle SubMenu
   function toggleSubmenu() {
     const tag = menu.querySelector('.submenu-active');
     if (this.classList.contains('submenu-active')) {
@@ -89,8 +135,8 @@ import DS3_Logo from '/DS3_Logo.webp';
     }
   }
 
-  /* Close Submenu From Anywhere */
-  function closeSubmenu(e) {
+  // Close Mobile SubMenu on Clicking Outside
+  document.addEventListener('click', (e) => {
     const tag = menu.querySelector('.submenu-active');
     if (tag) {
       let isClickInside = menu
@@ -102,5 +148,5 @@ import DS3_Logo from '/DS3_Logo.webp';
         tag.classList.remove('submenu-active');
       }
     }
-  }
+  });
 </script>
