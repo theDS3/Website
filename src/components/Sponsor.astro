@@ -1,36 +1,35 @@
 ---
 import '../styles/components/Sponsor.scss';
-import './Button.astro';
+import Button from './Button.astro';
 import the_score from '/the_score.jpg';
 import geocomply from '/GeoComply.jpg';
 import uoft_datascience from '/uoft_datascience.jpg';
 ---
 
-<section id="sponsor">
+<section id="sponsors">
   <div class="mission">
-    <h1>Support Our Mission!</h1>
-    <h3>
+    <h2>Support Our Mission!</h2>
+    <p id="mission_description">
       Support our mission and make your organization visible to numerous capable
       University of Toronto students. From merchandise to customized events, we
       supports our industry partners by curating sponsorship packages that fit
       your needs.
-    </h3>
+    </p>
     <br />
-    <a href={'/'}>
-      <!-- Change to other links later -->
-      <button> Contact Us</button>
-    </a>
+    <Button
+      title="contact-us"
+      href="/">
+      Contact US
+    </Button>
     <div class="card-container">
       <div class="card">
         <img
           src={the_score}
           alt="The Score company logo"
-          class="the_score"
         />
         <br />
-        <h3 id="score">The Score</h3>
         <br />
-        <br />
+
         <p>lorem ipsum</p>
       </div>
       <div class="card">
@@ -39,6 +38,9 @@ import uoft_datascience from '/uoft_datascience.jpg';
           alt="GeoComply company logo"
         />
         <br />
+        <br />
+        <br />
+
         <p>lorem ipsum</p>
       </div>
       <div class="card">
@@ -46,6 +48,8 @@ import uoft_datascience from '/uoft_datascience.jpg';
           src={uoft_datascience}
           alt="UofT & Data Science Institute logo"
         />
+        <br />
+        <br />
         <br />
         <br />
         <p>lorem ipsum</p>
