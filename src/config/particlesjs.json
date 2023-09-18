@@ -34,9 +34,9 @@
     "move": {
       "direction": "none",
       "enable": true,
-      "outMode": "bounce",
+      "outMode": "out",
       "random": false,
-      "speed": 6,
+      "speed": 1.5,
       "straight": false
     },
     "number": {
@@ -53,10 +53,7 @@
     },
     "size": {
       "random": true,
-      "value": {
-        "min": 1,
-        "max": 5
-      }
+      "value": 5
     }
   },
   "pauseOnOutsideViewport": true,
