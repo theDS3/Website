@@ -1,28 +1,31 @@
 ---
 import Button from './Button.astro';
-import intro from '/Intro.jpg';
+
 import '../styles/components/Intro.scss';
+import team from '/team.jpg';
 ---
 
-<div class="container">
-  <div class="image">
-    <img
-      src={intro}
-      alt="Team"
+<section id="intro">
+  <img
+    src={team}
+    alt="Data Science & Statistics Society"
+  />
+  <div class="content">
+    <h1>
+      Data Science
+      <span>&amp;</span>
+       Statistics
+      <span>Society</span>
+    </h1>
+    <p>
+      We are a group of like-minded individuals at the
+      <span class="green">University of Toronto</span>
+       driving impact in the fields of
+      <span class="pink"> data science, statistics, and machine learning</span>
+    </p>
+    <Button
+      title="Join Us"
+      href="/"
     />
   </div>
-  <div class="text">
-    <h1>Data Science &amp; <br />Statistics Society</h1>
-    <br />
-    <h3>
-      We are a group of like-minded individuals at the <span class="green"
-        >University of Toronto</span
-      >
-       driving impact in the fields of <span class="pink"
-        >data science, statistics, and machine learning</span
-      >
-    </h3>
-    <br />
-    <Button />
-  </div>
-</div>
+</section>

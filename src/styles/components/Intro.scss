@@ -1,56 +1,154 @@
-/* CSS for desktop view */
-.container {
+@import '../abstracts/mixins';
+
+#intro {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 200px;
-}
+  flex-direction: column;
+  gap: 2rem;
 
-.text {
-  flex: 1;
-  font-weight: bold;
-  font-size: 5xl;
-  color: white;
-}
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 
-.text h3 {
-  font-size: xl;
-  color: white;
-  margin-top: 6px;
-}
+    h1 {
+      color: #d9d9d9;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.15rem;
 
-.text span.green {
-  color: #50d634;
-}
+      > span {
+        font-weight: 300;
+      }
+    }
 
-.text span.pink {
-  color: #f4539f;
-}
+    p {
+      color: #fff;
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
 
-.image {
-  flex: 1;
-}
+      > .green {
+        color: #50d634;
+      }
 
-img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 15px;
-}
+      > .pink {
+        color: #f4539f;
+      }
+    }
 
-/* CSS for mobile view */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stack elements vertically */
-    text-align: center; /* Center align text */
-    margin: 50px;
+    a {
+      text-align: center;
+    }
   }
+}
 
-  .text {
-    order: 2; /* Change the order of text to appear below */
-    margin-top: 20px;
+@include geq(400px) {
+  #intro > .content {
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
   }
+}
 
-  .image {
-    order: 1; /* Change the order of image to appear above */
+@include geq(700px) {
+  #intro {
+    flex-direction: row;
+
+    img {
+      width: 60%;
+    }
+
+    .content {
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@include geq(800px) {
+  #intro > .content {
+    p {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+@include geq(900px) {
+  #intro > .content {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
+@include geq(1000px) {
+  #intro > .content {
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include geq(1100px) {
+  #intro > .content {
+    h1 {
+      font-size: 3.75rem;
+    }
+
+    p {
+      font-size: 2.25rem;
+    }
+  }
+}
+
+@include geq(1300px) {
+  #intro {
+    img {
+      width: 55%;
+    }
+
+    .content {
+      h1 {
+        font-size: 4rem;
+      }
+
+      p {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@include geq(1400px) {
+  #intro {
+    img {
+      width: 40%;
+    }
+
+    .content {
+      h1 {
+        font-size: 5rem;
+      }
+
+      p {
+        font-size: 2.5rem;
+      }
+    }
   }
 }
