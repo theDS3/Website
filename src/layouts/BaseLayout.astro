@@ -7,8 +7,13 @@ import type { ISourceOptions } from 'tsparticles-engine';
 import Footer from './Footer.astro';
 import Header from './Header.astro';
 
-import particleJSOptions from '../particlesjs.json';
+import particleJSOptions from '../config/particlesjs.json';
 import '../styles/main.scss';
+
+interface Props {
+  title?: string;
+  includeHeader?: boolean;
+}
 
 const { title = 'DS3', includeHeader = true } = Astro.props;
 ---
