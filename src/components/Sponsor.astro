@@ -1,9 +1,9 @@
 ---
 import '../styles/components/Sponsor.scss';
 import Button from './Button.astro';
-import the_score from '/the_score.jpg';
+import the_score from '/thescore.jpg';
 import geocomply from '/GeoComply.jpg';
-import uoft_datascience from '/uoft_datascience.jpg';
+import uoft_datascience from '/uoft_datascience.png';
 ---
 
 <section id="sponsors">
@@ -26,7 +26,10 @@ import uoft_datascience from '/uoft_datascience.jpg';
         <img
           src={the_score}
           alt="The Score company logo"
+          class="thescore"
         />
+        <br />
+        <br />
         <br />
         <br />
 
@@ -39,7 +42,6 @@ import uoft_datascience from '/uoft_datascience.jpg';
         />
         <br />
         <br />
-        <br />
 
         <p>lorem ipsum</p>
       </div>
@@ -47,6 +49,7 @@ import uoft_datascience from '/uoft_datascience.jpg';
         <img
           src={uoft_datascience}
           alt="UofT & Data Science Institute logo"
+          class="datascience"
         />
         <br />
         <br />
