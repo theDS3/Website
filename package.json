@@ -10,17 +10,19 @@
     "preview": "astro preview",
     "purge": "rimraf node_modules dist",
     "lint": "npm-run-all --parallel lint:astro lint:ts",
-    "lint:ts": "eslint \"src/**/*.{ts,astro}\" --ignore-path .eslintignore --cache",
+    "lint:ts": "eslint \"src/**/*.{ts,tsx,astro}\" --ignore-path .eslintignore --cache",
     "lint:astro": "astro check",
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
   },
   "dependencies": {
+    "@astrojs/check": "^0.2.0",
     "@fontsource-variable/josefin-sans": "^5.0.13",
     "astro": "^3.1.1",
     "astro-particles": "^2.10.0",
     "sass": "^1.67.0",
     "tsparticles": "^2.12.0",
-    "tsparticles-engine": "^2.12.0"
+    "tsparticles-engine": "^2.12.0",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.2",
