@@ -1,10 +1,20 @@
 ---
-import AboutUs from '../components/AboutUs.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import AboutUs from '../components/AboutUs.astro';
+import Intro from '../components/Intro.astro';
 import Sponsor from '../components/Sponsor.astro';
+import TeamGroup from '../components/TeamGroup.astro';
+
+import '../styles/pages/Home.scss';
 ---
 
 <BaseLayout>
+  <Intro />
   <AboutUs />
   <Sponsor />
+  <section id="team">
+    <h2>Our Team</h2>
+    <TeamGroup includeGroupHeading={false} />
+  </section>
 </BaseLayout>

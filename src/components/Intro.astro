@@ -1,0 +1,31 @@
+---
+import Button from './Button.astro';
+
+import '../styles/components/Intro.scss';
+import team from '/team.jpg';
+---
+
+<section id="intro">
+  <img
+    src={team}
+    alt="Data Science & Statistics Society"
+  />
+  <h1>
+    Data Science
+    <span>&amp;</span>
+     Statistics
+    <span>Society</span>
+  </h1>
+  <div class="content">
+    <p>
+      We are a group of like-minded individuals at the
+      <span class="green">University of Toronto</span>
+       driving impact in the fields of
+      <span class="pink"> data science, statistics, and machine learning</span>
+    </p>
+    <Button
+      title="Join Us"
+      href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
+    />
+  </div>
+</section>
