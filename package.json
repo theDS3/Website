@@ -21,6 +21,7 @@
     "astro-icon": "^0.8.1",
     "astro-particles": "^2.10.0",
     "sass": "^1.67.0",
+    "sharp": "^0.32.6",
     "tsparticles": "^2.12.0",
     "tsparticles-engine": "^2.12.0",
     "typescript": "^5.2.2"
