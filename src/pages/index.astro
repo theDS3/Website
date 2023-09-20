@@ -1,15 +1,20 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import AboutUs from '../components/AboutUs.astro';
+import Events from '../components/Events.astro';
+import Intro from '../components/Intro.astro';
+import TeamGroup from '../components/TeamGroup.astro';
+
+import '../styles/pages/Home.scss';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <Intro />
+  <AboutUs />
+  <section id="team">
+    <h2>Our Team</h2>
+    <TeamGroup includeGroupHeading={false} />
+  </section>
+  <Events />
+</BaseLayout>

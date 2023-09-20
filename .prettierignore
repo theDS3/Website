@@ -1,0 +1,24 @@
+# See https://prettier.io/docs/en/ignore.html for more about ignoring files.
+
+# dependencies
+node_modules/
+pnpm-lock.yaml
+
+# astro
+dist/
+.astro/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+src/env.d.ts

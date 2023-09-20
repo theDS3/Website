@@ -1,0 +1,19 @@
+---
+import '../styles/components/Button.scss';
+
+interface Props {
+  title: string;
+  href: string;
+}
+
+const { title, href } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer">
+  <button>
+    {title}
+  </button>
+</a>

@@ -1,0 +1,13 @@
+#about-us {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+  text-align: center;
+
+  p {
+    color: #fff;
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 400;
+  }
+}
