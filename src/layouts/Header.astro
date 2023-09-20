@@ -1,7 +1,7 @@
 ---
-import '../styles/layout/Header.scss';
+import { Icon } from 'astro-icon';
 
-import DS3_Logo from '/DS3_Logo.webp';
+import '../styles/layout/Header.scss';
 
 interface Link {
   title: string;
@@ -20,10 +20,7 @@ const links: Link[] = [
 
 <header>
   <a href="/#intro">
-    <img
-      src={DS3_Logo}
-      alt="DS3 Logo"
-    />
+    <Icon name="logo" />
   </a>
   <nav>
     <ul class="menu">
