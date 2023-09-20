@@ -1,14 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+
 import Button from './Button.astro';
 
+import team from '../assets/team.jpg';
 import '../styles/components/Intro.scss';
-import team from '/team.jpg';
 ---
 
 <section id="intro">
-  <img
+  <Image
     src={team}
     alt="Data Science & Statistics Society"
+    format="avif"
   />
   <h1>
     Data Science
