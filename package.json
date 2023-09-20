@@ -18,7 +18,7 @@
     "@fontsource-variable/josefin-sans": "^5.0.13",
     "astro": "^2.10.13",
     "astro-particles": "^2.10.0",
-    "sass": "^1.66.1",
+    "sass": "^1.67.0",
     "tsparticles": "^2.12.0",
     "tsparticles-engine": "^2.12.0"
   },
