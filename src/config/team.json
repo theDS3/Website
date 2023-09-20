@@ -1,0 +1,49 @@
+{
+  "Executives": [
+    {
+      "name": "Aditya Kulkarni",
+      "position": "President",
+      "img": "/Team/Executives/Aditya Kulkarni.jpg"
+    },
+    {
+      "name": "Tianne Pane",
+      "position": "Vice President of Operations",
+      "img": "/Team/Executives/Tianne Pane.jpg"
+    },
+    {
+      "name": "Christine Van",
+      "position": "Vice President of Operations ",
+      "img": "/Team/Executives/Christine Van.png"
+    },
+    {
+      "name": "Anaqi Amir",
+      "position": "Vice President of Academics",
+      "img": "/Team/Executives/Anaqi Amir.jpg"
+    },
+    {
+      "name": "Malhar Pandya",
+      "position": "Vice President of Academics",
+      "img": "/Team/Executives/Malhar Pandya.jpg"
+    },
+    {
+      "name": "Hibah Mehvish",
+      "position": "Vice President of Communications",
+      "img": "/Team/Executives/Hibah Mehvish.jpg"
+    },
+    {
+      "name": "Thanaree Srirawewongsa (Jean)",
+      "position": "Vice President of Campus Life",
+      "img": "/Team/Executives/Thanaree Srirawewongsa (Jean).webp"
+    },
+    {
+      "name": "Khadeem Sankar",
+      "position": "Vice President of Outreach ",
+      "img": "/Team/Executives/Khadeem Sankar.jpg"
+    },
+    {
+      "name": "Yvette Gong",
+      "position": "Vice President of Outreach (Communications)",
+      "img": "/Team/Executives/Yvette Gong.jpeg"
+    }
+  ]
+}

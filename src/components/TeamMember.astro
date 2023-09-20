@@ -1,0 +1,22 @@
+---
+import '../styles/components/TeamMember.scss';
+
+interface Props {
+  name: string;
+  position: string;
+  img: string;
+}
+
+const { name, position, img } = Astro.props;
+---
+
+<div class="team-member">
+  <img
+    src={img}
+    alt=`${name}`
+  />
+  <div class="container">
+    <h3>{name}</h3>
+    <p>{position}</p>
+  </div>
+</div>
