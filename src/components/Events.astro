@@ -1,0 +1,26 @@
+---
+import Button from './Button.astro';
+
+import datathon from '/Events/datathon.png';
+
+import '../styles/components/Events.scss';
+---
+
+<section id="events">
+  <h2>Upcoming Events</h2>
+  <div class="event">
+    <img
+      src={datathon}
+      alt="Datathon"
+    />
+    <p>
+      The DS3 Datathon presents a unique opportunity for participants to delve
+      into the realm of data science and tackle real-world problems through the
+      application of advanced tools and techniques.
+    </p>
+  </div>
+  <Button
+    title="Coming Soon!"
+    href="/"
+  />
+</section>
