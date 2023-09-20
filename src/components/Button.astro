@@ -9,7 +9,10 @@ interface Props {
 const { title, href } = Astro.props;
 ---
 
-<a href={href}>
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer">
   <button>
     {title}
   </button>

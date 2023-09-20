@@ -1,27 +1,32 @@
 @import '../abstracts/mixins';
 
 #intro {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  img {
+    width: 100%;
+    border-radius: 1.25rem;
+  }
+
+  h1 {
+    color: #d9d9d9;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.15rem;
+
+    > span {
+      font-weight: 300;
+    }
+  }
 
   .content {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-
-    h1 {
-      color: #d9d9d9;
-      font-size: 2rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      letter-spacing: 0.15rem;
-
-      > span {
-        font-weight: 300;
-      }
-    }
 
     p {
       color: #fff;
@@ -57,98 +62,92 @@
   }
 }
 
-@include geq(700px) {
+@include geq(620px) {
   #intro {
-    flex-direction: row;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem 3rem;
 
     img {
-      width: 60%;
+      grid-area: 1 / 1 / 3 / 2;
+    }
+
+    h1 {
+      grid-area: 1 / 2 / 2 / 3;
+      font-size: 2.5rem;
     }
 
     .content {
-      h1 {
-        font-size: 2.25rem;
-      }
+      grid-area: 2 / 2 / 3 / 3;
 
-      p {
-        font-size: 1.5rem;
+      a {
+        text-align: left;
       }
+    }
+  }
+}
+
+@include geq(700px) {
+  #intro {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .content > p {
+      font-size: 1.5rem;
     }
   }
 }
 
 @include geq(800px) {
-  #intro > .content {
-    p {
+  #intro {
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    .content > p {
       font-size: 1.75rem;
     }
   }
 }
 
-@include geq(900px) {
-  #intro > .content {
-    h1 {
-      font-size: 3rem;
-    }
-  }
-}
-
 @include geq(1000px) {
-  #intro > .content {
+  #intro {
     h1 {
       font-size: 3.5rem;
     }
 
-    p {
+    .content > p {
       font-size: 2rem;
     }
   }
 }
 
 @include geq(1100px) {
-  #intro > .content {
+  #intro {
     h1 {
-      font-size: 3.75rem;
+      font-size: 5rem;
     }
 
-    p {
+    .content > p {
       font-size: 2.25rem;
     }
   }
 }
 
 @include geq(1300px) {
-  #intro {
-    img {
-      width: 55%;
-    }
-
-    .content {
-      h1 {
-        font-size: 4rem;
-      }
-
-      p {
-        font-size: 2.5rem;
-      }
-    }
+  #intro > .content > p {
+    font-size: 2.5rem;
   }
 }
 
 @include geq(1400px) {
-  #intro {
-    img {
-      width: 40%;
-    }
+  #intro > .content > p {
+    font-size: 2.5rem;
+  }
+}
 
-    .content {
-      h1 {
-        font-size: 5rem;
-      }
-
-      p {
-        font-size: 2.5rem;
-      }
-    }
+@include geq(1500px) {
+  #intro > .content > p {
+    font-size: 2.7rem;
   }
 }
