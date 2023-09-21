@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "purge": "rimraf node_modules dist",
-    "lint": "npm-run-all --parallel lint:astro lint:ts",
+    "lint": "rimraf dist && npm-run-all --parallel lint:astro lint:ts",
     "lint:ts": "eslint \"src/**/*.{ts,tsx,astro}\" --ignore-path .eslintignore --cache",
     "lint:astro": "astro check",
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
