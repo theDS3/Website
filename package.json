@@ -18,6 +18,8 @@
     "@astrojs/check": "^0.2.0",
     "@fontsource-variable/josefin-sans": "^5.0.13",
     "astro": "^3.1.1",
+    "astro-compress": "^2.0.15",
+    "astro-critters": "^2.0.11",
     "astro-particles": "^2.10.0",
     "sass": "^1.67.0",
     "sharp": "^0.32.6",
