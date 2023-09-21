@@ -1,6 +1,7 @@
 ---
-import { Icon } from 'astro-icon';
+import { Image } from 'astro:assets';
 
+import logo from '../assets/logo.png';
 import '../styles/layout/Header.scss';
 
 interface Link {
@@ -20,7 +21,13 @@ const links: Link[] = [
 
 <header>
   <a href="/#intro">
-    <Icon name="logo" />
+    <Image
+      src={logo}
+      loading="eager"
+      alt="logo"
+      fetchpriority="high"
+      format="avif"
+    />
   </a>
   <nav>
     <ul class="menu">
