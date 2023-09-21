@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ds3-dev.netlify.app/sitemap-index.xml

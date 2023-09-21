@@ -15,6 +15,7 @@
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.0.0",
     "@fontsource-variable/josefin-sans": "^5.0.13",
     "astro": "^2.10.13",
     "astro-particles": "^2.10.0",
