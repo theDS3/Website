@@ -4,7 +4,12 @@ import '../styles/components/TeamMember.scss';
 interface Props {
   name: string;
   position: string;
-  img: string;
+  img: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 }
 
 const { name, position, img } = Astro.props;
@@ -12,8 +17,12 @@ const { name, position, img } = Astro.props;
 
 <div class="team-member">
   <img
-    src={img}
-    alt=`${name}`
+    src={img.src}
+    alt={img.alt}
+    width={img.width}
+    height={img.height}
+    decoding="async"
+    loading="lazy"
   />
   <div class="container">
     <h3>{name}</h3>

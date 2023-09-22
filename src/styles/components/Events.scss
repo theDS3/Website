@@ -9,7 +9,7 @@
     padding-bottom: 2rem;
 
     img {
-      width: 100%;
+      @include astro-image;
       padding-bottom: 2rem;
     }
 
@@ -30,7 +30,6 @@
     align-items: center;
 
     img {
-      width: 80%;
       padding: 0;
     }
   }
