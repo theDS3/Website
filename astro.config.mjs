@@ -8,7 +8,7 @@ export default defineConfig({
   site:"https://ds3utsc.com/",
   integrations: [critters({
     pruneSource: true
-  }), compress({
+  }), sitemap(),compress({
     CSS: true,
     HTML: {
       removeAttributeQuotes: false
@@ -16,5 +16,5 @@ export default defineConfig({
     Image: false,
     JavaScript: true,
     Logger: 1
-  }), sitemap()]
+  })]
 });
