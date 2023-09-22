@@ -6,6 +6,7 @@ import type { ISourceOptions } from 'tsparticles-engine';
 
 import Footer from './Footer.astro';
 import Header from './Header.astro';
+import Meta from './Meta.astro';
 
 import particleJSOptions from '../config/particlesjs.json';
 import '../styles/main.scss';
@@ -19,15 +20,10 @@ const { title = 'DS3', includeHeader = true } = Astro.props;
 
 const description =
   'We are a group of like-minded individuals at the University of Toronto driving impact in the fields of data science, statistics, and machine learning';
-const ogImage = '/OG_DS3.png';
 ---
 
 <html lang="en">
   <head>
-    <link
-      rel="sitemap"
-      href="/sitemap-index.xml"
-    />
     <link
       rel="icon"
       type="image/x-icon"
@@ -48,57 +44,25 @@ const ogImage = '/OG_DS3.png';
     />
     <meta charset="utf-8" />
 
-    <!-- Facebook Meta Tags -->
-    <meta
-      property="og:url"
-      content="https://dev.ds3utsc.com/"
-    />
-    <meta
-      property="og:type"
-      content="website"
-    />
-    <meta
-      property="og:title"
-      content={title}
-    />
-    <meta
-      property="og:description"
-      content={description}
-    />
-    <meta
-      property="og:image"
-      content={ogImage}
-    />
-    <meta
-      property="og:site_name"
-      content="Data Science & Statistics Society"
-    />
+    <!-- Tells Search Crawlers not to Index the Dev Site -->
+    {
+      process.env.NODE_ENV === 'development' && (
+        <meta
+          name="robots"
+          content="noindex, nofollow"
+        />
+      )
+    }
 
-    <!-- Twitter Meta Tags -->
-    <meta
-      name="twitter:card"
-      content={ogImage}
-    />
-    <meta
-      property="twitter:domain"
-      content="ds3utsc.com"
-    />
-    <meta
-      property="twitter:url"
-      content="https://ds3utsc.com/"
-    />
-    <meta
-      name="twitter:title"
-      content={title}
-    />
-    <meta
-      name="twitter:description"
-      content={description}
-    />
-    <meta
-      name="twitter:image"
-      content={ogImage}
-    />
+    <!-- Open Graph Metadata only on Production -->
+    {
+      process.env.NODE_ENV === 'production' && (
+        <Meta
+          ogTitle={title}
+          ogDescription={description}
+        />
+      )
+    }
 
     <title>{title}</title>
   </head>
@@ -120,6 +84,7 @@ const ogImage = '/OG_DS3.png';
   ></script>
 
   <script>
+    console.log(process.env.NODE_ENV);
     import type { Engine } from 'tsparticles-engine';
     import { loadFull } from 'tsparticles';
 
