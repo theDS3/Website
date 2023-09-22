@@ -1,22 +1,22 @@
-import compress from "astro-compress";
+import compress from 'astro-compress';
 import { defineConfig } from 'astro/config';
 
-import critters from "astro-critters";
+import critters from 'astro-critters';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     critters({
-      pruneSource: true
+      pruneSource: true,
     }),
     compress({
       CSS: true,
       HTML: {
-        removeAttributeQuotes: false
+        removeAttributeQuotes: false,
       },
       Image: false,
       JavaScript: true,
-      Logger: 1
-    })
-  ]
+      Logger: 1,
+    }),
+  ],
 });
