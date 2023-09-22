@@ -1,0 +1,67 @@
+---
+interface Props {
+  ogTitle: string;
+  ogDescription: string;
+  ogImage?: string;
+}
+
+const { ogTitle, ogDescription, ogImage = '/OG_DS3.png' } = Astro.props;
+---
+
+<!-- Sitemap -->
+<link
+  rel="sitemap"
+  href="/sitemap-index.xml"
+/>
+
+<!-- Facebook Meta Tags -->
+<meta
+  property="og:url"
+  content="https://dev.ds3utsc.com/"
+/>
+<meta
+  property="og:type"
+  content="website"
+/>
+<meta
+  property="og:title"
+  content={ogTitle}
+/>
+<meta
+  property="og:description"
+  content={ogDescription}
+/>
+<meta
+  property="og:image"
+  content={ogImage}
+/>
+<meta
+  property="og:site_name"
+  content="Data Science & Statistics Society"
+/>
+
+<!-- Twitter Meta Tags -->
+<meta
+  name="twitter:card"
+  content={ogImage}
+/>
+<meta
+  property="twitter:domain"
+  content="ds3utsc.com"
+/>
+<meta
+  property="twitter:url"
+  content="https://ds3utsc.com/"
+/>
+<meta
+  name="twitter:title"
+  content={ogTitle}
+/>
+<meta
+  name="twitter:description"
+  content={ogDescription}
+/>
+<meta
+  name="twitter:image"
+  content={ogImage}
+/>
