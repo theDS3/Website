@@ -1,0 +1,64 @@
+@import '../abstracts/mixins';
+
+#events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .event {
+    padding-bottom: 2rem;
+
+    img {
+      @include astro-image;
+      padding-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+  }
+}
+
+@include geq(600px) {
+  #events > .event {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+    justify-items: center;
+    align-items: center;
+
+    img {
+      padding: 0;
+    }
+  }
+}
+
+@include geq(700px) {
+  #events > .event > p {
+    font-size: 1.7rem;
+  }
+}
+
+@include geq(1000px) {
+  #events > .event {
+    grid-template-columns: 1fr 1fr;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include geq(1200px) {
+  #events > .event > p {
+    font-size: 2.5rem;
+  }
+}
+
+@include geq(1400px) {
+  #events > .event > p {
+    font-size: 3rem;
+  }
+}
