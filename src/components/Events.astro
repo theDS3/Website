@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+
 import Button from './Button.astro';
 
-import datathon from '/Events/datathon.png';
+import datathon from '../assets/Events/datathon.png';
 
 import '../styles/components/Events.scss';
 ---
@@ -9,9 +11,10 @@ import '../styles/components/Events.scss';
 <section id="events">
   <h2>Upcoming Events</h2>
   <div class="event">
-    <img
+    <Image
       src={datathon}
-      alt="Datathon"
+      alt="Data Science & Statistics Society"
+      format="avif"
     />
     <p>
       The DS3 Datathon presents a unique opportunity for participants to delve

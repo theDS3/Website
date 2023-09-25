@@ -1,7 +1,8 @@
 ---
-import '../styles/layout/Header.scss';
+import { Image } from 'astro:assets';
 
-import DS3_Logo from '/DS3_Logo.webp';
+import logo from '../assets/logo.png';
+import '../styles/layout/Header.scss';
 
 interface Link {
   title: string;
@@ -11,18 +12,21 @@ interface Link {
 
 const links: Link[] = [
   { title: 'About Us', href: '/#about-us' },
-  { title: 'Sponsors', href: '/#sponsors' },
+  // { title: 'Sponsors', href: '/#sponsors' },
   { title: 'Team', href: '/#team' },
   { title: 'Events', href: '/#events' },
-  { title: 'Resources', href: '/#resources' },
+  // { title: 'Resources', href: '/#resources' },
 ];
 ---
 
 <header>
   <a href="/#intro">
-    <img
-      src={DS3_Logo}
-      alt="DS3 Logo"
+    <Image
+      src={logo}
+      loading="eager"
+      alt="logo"
+      fetchpriority="high"
+      format="avif"
     />
   </a>
   <nav>
