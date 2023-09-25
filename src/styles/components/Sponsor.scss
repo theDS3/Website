@@ -25,6 +25,13 @@
     text-align: left;
     padding-left: 30px;
   }
+
+  #person {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
   .card-container {
     margin-top: 50px;
     display: flex;
