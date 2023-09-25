@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 import '../styles/components/Sponsor.scss';
 import Button from './Button.astro';
 import the_score from '../assets/thescore.jpg';
@@ -22,10 +24,11 @@ import uoft_datascience from '../assets/uoft_datascience.png';
     />
     <div class="card-container">
       <div class="card">
-        <img
+        <Image
           src={the_score}
           alt="The Score company logo"
           class="thescore"
+          format="avif"
         />
         <br />
         <br />
@@ -42,9 +45,10 @@ import uoft_datascience from '../assets/uoft_datascience.png';
         <p id="person">- Person</p>
       </div>
       <div class="card">
-        <img
+        <Image
           src={geocomply}
           alt="GeoComply company logo"
+          format="avif"
         />
         <br />
         <br />
@@ -59,10 +63,11 @@ import uoft_datascience from '../assets/uoft_datascience.png';
         <p id="person">- Person</p>
       </div>
       <div class="card">
-        <img
+        <Image
           src={uoft_datascience}
           alt="UofT & Data Science Institute logo"
           class="datascience"
+          format="avif"
         />
         <br />
         <br />
