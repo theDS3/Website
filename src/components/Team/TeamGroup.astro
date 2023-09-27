@@ -1,29 +1,23 @@
 ---
-import '../styles/components/TeamGroup.scss';
-
 import TeamMember from './TeamMember.astro';
 
-import team from '../config/team.json';
+import '../../styles/components/TeamGroup.scss';
 
-interface Props {
-  includeGroupHeading: boolean;
-}
-
-const { includeGroupHeading } = Astro.props;
+import { team } from './config.d.ts';
 ---
 
 {
   Object.entries(team).map(([group, members]) => {
     return (
       <div class="team-group">
-        {includeGroupHeading && <h2>{group}</h2>}
         <div class="container">
-          {members.map(({ name, position, img }) => {
+          {members.map(({ name, position, src, alt }) => {
             return (
               <TeamMember
                 name={name}
                 position={position}
-                img={img}
+                src={src}
+                alt={alt}
               />
             );
           })}
