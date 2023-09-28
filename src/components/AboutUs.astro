@@ -1,20 +1,12 @@
 ---
-import { Image } from 'astro:assets';
-
-import mission from '../assets/mission.png';
-import vision from '../assets/vision.png';
+import { Icon } from 'astro-icon';
 
 import '../styles/components/AboutUs.scss';
 ---
 
 <section id="about-us">
   <div class="vision">
-    <Image
-      src={vision}
-      alt="Eye with a lightbulb representing vision"
-      format="avif"
-    />
-
+    <Icon name="vision" />
     <h2>VISION</h2>
     <p>
       To be the most student-centric community to create an environment where
@@ -22,11 +14,7 @@ import '../styles/components/AboutUs.scss';
     </p>
   </div>
   <div class="mission">
-    <Image
-      src={mission}
-      alt="Arrow landing on a target representing mission"
-      format="avif"
-    />
+    <Icon name="mission" />
     <h2>MISSION</h2>
     <p>
       To make a contribution to our student community by creating opportunities
