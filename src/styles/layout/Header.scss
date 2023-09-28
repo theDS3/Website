@@ -121,6 +121,11 @@ header {
     outline: none;
     font-size: 1.8rem;
     z-index: 99;
+    width: 5vw;
+
+    .times {
+      display: none;
+    }
   }
 }
 
