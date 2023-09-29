@@ -5,7 +5,10 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ds3utsc.com/',
+  site:
+    process.env.NODE_ENV === 'production'
+      ? 'https://ds3utsc.com/'
+      : 'https://dev.ds3utsc.com/',
   integrations: [
     process.env.NODE_ENV === 'production' && sitemap(),
     compress({
