@@ -46,7 +46,7 @@ const description =
 
     <!-- Tells Search Crawlers not to Index the Dev Site -->
     {
-      process.env.NODE_ENV === 'development' && (
+      process.env.NODE_ENV !== 'production' && (
         <meta
           name="robots"
           content="noindex, nofollow"
