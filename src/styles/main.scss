@@ -38,8 +38,13 @@ a {
 
 p {
   color: #fff;
+  font-weight: 400;
 }
 
 section {
   padding: 15vh 5vw;
+}
+
+img {
+  @include astro-image;
 }
