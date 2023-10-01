@@ -5,7 +5,7 @@ import AboutUs from '../components/AboutUs.astro';
 import Events from '../components/Events.astro';
 import Intro from '../components/Intro.astro';
 import Sponsor from '../components/Sponsors/index.astro';
-import TeamGroup from '../components/Team/TeamGroup.astro';
+import Team from '../components/Team/index.astro';
 
 import '../styles/pages/Home.scss';
 ---
@@ -14,9 +14,6 @@ import '../styles/pages/Home.scss';
   <Intro />
   <AboutUs />
   <Sponsor />
-  <section id="team">
-    <h2>Our Team</h2>
-    <TeamGroup includeGroupHeading={false} />
-  </section>
+  <Team />
   <Events />
 </BaseLayout>
