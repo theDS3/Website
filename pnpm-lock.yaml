@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   '@fontsource-variable/josefin-sans':
-    specifier: ^5.0.13
-    version: 5.0.13
+    specifier: ^5.0.14
+    version: 5.0.14
   astro:
     specifier: ^3.2.2
     version: 3.2.2(sass@1.68.0)
@@ -896,8 +896,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource-variable/josefin-sans@5.0.13:
-    resolution: {integrity: sha512-+mUGyc3OLPqPVK0mv+S3iqTwHLKtjyqGbtB1XJuJUH4Nun18MBBfZxH4BBR+UgBbeUB+WMO2Y1q58doiqq2qSQ==}
+  /@fontsource-variable/josefin-sans@5.0.14:
+    resolution: {integrity: sha512-ZUa2DYEgb1kUqJYzY7rtwl8hiwci87catd0hw3pkcsc6gn15R45co/1nb9hrTZIT5iWvChQHmRtdjQLoPKVCMQ==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.11:
