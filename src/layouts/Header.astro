@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon';
 
 import logo from '../assets/logo.png';
 import '../styles/layout/Header.scss';
@@ -39,30 +40,37 @@ const links: Link[] = [
                 <a href={link.href}>{link.title}</a>
               </li>
             );
-          return (
-            <li class="item has-submenu">
-              <p>
-                {link.title}
-                <iconify-icon icon="fa:angle-down" />
-              </p>
-              <ul class="submenu">
-                {link.sublinks?.map((sublink) => {
-                  return (
-                    <li class="subitem">
-                      <a href={sublink.href}>{sublink.title}</a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
-          );
+          // return (
+          //   <li class="item has-submenu">
+          //     <p>
+          //       {link.title}
+          //       <iconify-icon icon="fa:angle-down" />
+          //     </p>
+          //     <ul class="submenu">
+          //       {link.sublinks?.map((sublink) => {
+          //         return (
+          //           <li class="subitem">
+          //             <a href={sublink.href}>{sublink.title}</a>
+          //           </li>
+          //         );
+          //       })}
+          //     </ul>
+          //   </li>
+          // );
         })
       }
     </ul>
   </nav>
-  <button class="toggle">
-    <iconify-icon icon="fa:bars"></iconify-icon>
-  </button>
+  <span class="toggle">
+    <Icon
+      class="times"
+      name="fa:times"
+    />
+    <Icon
+      class="bars"
+      name="fa:bars"
+    />
+  </span>
 </header>
 
 <script is:inline>
@@ -77,7 +85,8 @@ const links: Link[] = [
     menu.classList.add('active');
     nav.classList.add('show');
     document.body.style.overflow = 'hidden';
-    toggle.querySelector('iconify-icon').icon = 'fa:times';
+    toggle.querySelector('.bars').style.display = 'none';
+    toggle.querySelector('.times').style.display = 'unset';
   };
 
   // Close the Menu
@@ -85,7 +94,8 @@ const links: Link[] = [
     menu.classList.remove('active');
     nav.classList.remove('show');
     document.body.style.overflow = 'initial';
-    toggle.querySelector('iconify-icon').icon = 'fa:bars';
+    toggle.querySelector('.bars').style.display = 'unset';
+    toggle.querySelector('.times').style.display = 'none';
   };
 
   /* Event Listeners */
@@ -123,34 +133,34 @@ const links: Link[] = [
   }
 
   // Toggle SubMenu
-  function toggleSubmenu() {
-    const tag = menu.querySelector('.submenu-active');
-    if (this.classList.contains('submenu-active')) {
-      this.classList.remove('submenu-active');
-      this.querySelector('iconify-icon').icon = 'fa:angle-down';
-    } else if (tag) {
-      tag.querySelector('iconify-icon').icon = 'fa:angle-down';
-      tag.classList.remove('submenu-active');
-      this.classList.add('submenu-active');
-      this.querySelector('iconify-icon').icon = 'fa:angle-up';
-    } else {
-      this.classList.add('submenu-active');
-      this.querySelector('iconify-icon').icon = 'fa:angle-up';
-    }
-  }
+  // function toggleSubmenu() {
+  //   const tag = menu.querySelector('.submenu-active');
+  //   if (this.classList.contains('submenu-active')) {
+  //     this.classList.remove('submenu-active');
+  //     this.querySelector('iconify-icon').icon = 'fa:angle-down';
+  //   } else if (tag) {
+  //     tag.querySelector('iconify-icon').icon = 'fa:angle-down';
+  //     tag.classList.remove('submenu-active');
+  //     this.classList.add('submenu-active');
+  //     this.querySelector('iconify-icon').icon = 'fa:angle-up';
+  //   } else {
+  //     this.classList.add('submenu-active');
+  //     this.querySelector('iconify-icon').icon = 'fa:angle-up';
+  //   }
+  // }
 
   // Close Mobile SubMenu on Clicking Outside
-  document.addEventListener('click', (e) => {
-    const tag = menu.querySelector('.submenu-active');
-    if (tag) {
-      let isClickInside = menu
-        .querySelector('.submenu-active')
-        .contains(e.target);
+  // document.addEventListener('click', (e) => {
+  //   const tag = menu.querySelector('.submenu-active');
+  //   if (tag) {
+  //     let isClickInside = menu
+  //       .querySelector('.submenu-active')
+  //       .contains(e.target);
 
-      if (!isClickInside && tag) {
-        tag.querySelector('iconify-icon').icon = 'fa:angle-down';
-        tag.classList.remove('submenu-active');
-      }
-    }
-  });
+  //     if (!isClickInside && tag) {
+  //       tag.querySelector('iconify-icon').icon = 'fa:angle-down';
+  //       tag.classList.remove('submenu-active');
+  //     }
+  //   }
+  // });
 </script>

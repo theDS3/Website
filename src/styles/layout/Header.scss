@@ -35,14 +35,6 @@ header {
     z-index: 99;
   }
 
-  button {
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 0;
-  }
-
   nav {
     position: fixed;
     width: 100%;
@@ -129,6 +121,11 @@ header {
     outline: none;
     font-size: 1.8rem;
     z-index: 99;
+    width: 5vw;
+
+    .times {
+      display: none;
+    }
   }
 }
 
