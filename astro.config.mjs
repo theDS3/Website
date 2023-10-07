@@ -1,5 +1,6 @@
 import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
+import compressor from 'astro-compressor';
 
 import { defineConfig } from 'astro/config';
 
@@ -12,13 +13,18 @@ export default defineConfig({
   integrations: [
     process.env.NODE_ENV === 'production' && sitemap(),
     compress({
-      CSS: true,
+      CSS: {
+        comments: false,
+      },
       HTML: {
-        removeAttributeQuotes: false,
+        removeComments: true,
+        minifyURLs: true,
       },
       Image: false,
       JavaScript: true,
+      SVG: false,
       Logger: 1,
     }),
+    compressor(),
   ],
 });
