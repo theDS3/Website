@@ -1,3 +1,5 @@
+@import '../abstracts/mixins';
+
 @keyframes growDown {
   0% {
     transform: scaleY(0);
@@ -14,7 +16,7 @@ header {
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  padding: 0 1em;
+  padding: 0.35em 1em 0;
   z-index: 99;
   backdrop-filter: blur(5px);
   box-shadow:
@@ -28,18 +30,9 @@ header {
   }
 
   img {
-    position: relative;
     width: 65px;
     height: 65px;
     z-index: 99;
-  }
-
-  button {
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 0;
   }
 
   nav {
@@ -128,6 +121,23 @@ header {
     outline: none;
     font-size: 1.8rem;
     z-index: 99;
+    width: 10vw;
+
+    .times {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 450px) {
+  header > .toggle {
+    width: 6vw;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  header > .toggle {
+    width: 5vw;
   }
 }
 

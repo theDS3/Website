@@ -4,15 +4,18 @@ import '../styles/components/Button.scss';
 interface Props {
   title: string;
   href: string;
+  newTab?: boolean;
 }
 
-const { title, href } = Astro.props;
+const { title, href, newTab = false } = Astro.props;
 ---
 
 <a
+  class="btn"
+  role="button"
   href={href}
-  target="_blank"
-  rel="noopener noreferrer">
+  target={newTab ? '_blank' : ''}
+  rel={newTab ? 'noopener noreferrer' : ''}>
   <button>
     {title}
   </button>

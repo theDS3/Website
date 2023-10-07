@@ -1,0 +1,36 @@
+---
+import Button from '../Button.astro';
+import SponsorCard from './SponsorCard.astro';
+
+import '../../styles/components/Sponsors.scss';
+import { sponsors } from './config';
+---
+
+<section id="sponsors">
+  <h2>Support Our Mission!</h2>
+  <p class="description">
+    Support our mission and make your organization visible to numerous capable
+    University of Toronto students. From merchandise to customized events, we
+    supports our industry partners by curating sponsorship packages that fit
+    your needs.
+  </p>
+  <Button
+    title="Contact Us"
+    href="mailto:thedatascienecube@gmail.com"
+  />
+  <div class="sponsors">
+    {
+      sponsors.map(({ id, logo, text, author, position }) => {
+        return (
+          <SponsorCard
+            id={id}
+            logo={logo}
+            text={text}
+            position={position}
+            author={author}
+          />
+        );
+      })
+    }
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+import TeamMember from './TeamMember.astro';
+
+import '../../styles/components/TeamGroup.scss';
+
+import { team } from './config.ts';
+---
+
+{
+  Object.entries(team).map(([, members]) => {
+    return (
+      <div class="team-group">
+        <div class="container">
+          {members.map(({ name, position, src, alt }) => {
+            return (
+              <TeamMember
+                name={name}
+                position={position}
+                src={src}
+                alt={alt}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  })
+}

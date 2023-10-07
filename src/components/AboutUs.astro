@@ -1,16 +1,12 @@
 ---
-import vision from '/vision.png';
-import mission from '/mission.png';
+import { Icon } from 'astro-icon';
 
 import '../styles/components/AboutUs.scss';
 ---
 
 <section id="about-us">
   <div class="vision">
-    <img
-      src={vision}
-      alt="Eye with a lightbulb representing vision"
-    />
+    <Icon name="vision" />
     <h2>VISION</h2>
     <p>
       To be the most student-centric community to create an environment where
@@ -18,10 +14,7 @@ import '../styles/components/AboutUs.scss';
     </p>
   </div>
   <div class="mission">
-    <img
-      src={mission}
-      alt="Arrow landing on a target representing mission"
-    />
+    <Icon name="mission" />
     <h2>MISSION</h2>
     <p>
       To make a contribution to our student community by creating opportunities
