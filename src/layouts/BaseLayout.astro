@@ -8,7 +8,6 @@ import Footer from './Footer.astro';
 import Header from './Header.astro';
 import Meta from './Meta.astro';
 
-import particleJSOptions from '../config/particlesjs.json';
 import '../styles/main.scss';
 
 interface Props {
@@ -20,6 +19,68 @@ const { title = 'DS3', includeHeader = true } = Astro.props;
 
 const description =
   'We are a group of like-minded individuals at the University of Toronto driving impact in the fields of data science, statistics, and machine learning';
+
+const particleJS: ISourceOptions = {
+  background: {
+    color: '#151019',
+  },
+  fullScreen: {
+    zIndex: -1,
+  },
+  interactivity: {
+    events: {
+      onClick: {
+        enable: false,
+      },
+      onHover: {
+        enable: false,
+      },
+      resize: true,
+    },
+  },
+  particles: {
+    collisions: {
+      enable: true,
+    },
+    color: {
+      value: '#ffffff',
+    },
+    links: {
+      color: '#ffffff',
+      distance: 150,
+      enable: true,
+      opacity: 0.5,
+      width: 1,
+    },
+    move: {
+      direction: 'none',
+      enable: true,
+      outMode: 'out',
+      random: false,
+      speed: 1.5,
+      straight: false,
+    },
+    number: {
+      density: {
+        enable: true,
+      },
+      value: 80,
+    },
+    opacity: {
+      value: 0.5,
+    },
+    reduceDuplicates: true,
+    shape: {
+      type: 'circle',
+    },
+    size: {
+      random: true,
+      value: 5,
+    },
+  },
+  pauseOnOutsideViewport: true,
+  smooth: true,
+};
 ---
 
 <html lang="en">
@@ -78,7 +139,7 @@ const description =
     <Footer />
     <Particles
       id="tsparticles"
-      options={particleJSOptions as ISourceOptions}
+      options={particleJS}
       init="particlesInit"
     />
   </body>
