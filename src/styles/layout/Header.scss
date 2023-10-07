@@ -121,11 +121,23 @@ header {
     outline: none;
     font-size: 1.8rem;
     z-index: 99;
-    width: 5vw;
+    width: 10vw;
 
     .times {
       display: none;
     }
+  }
+}
+
+@media screen and (min-width: 450px) {
+  header > .toggle {
+    width: 6vw;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  header > .toggle {
+    width: 5vw;
   }
 }
 
