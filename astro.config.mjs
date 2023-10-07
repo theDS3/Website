@@ -7,11 +7,11 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   site:
-    process.env.NODE_ENV === 'production'
+    process.env.MODE === 'production'
       ? 'https://ds3utsc.com/'
       : 'https://dev.ds3utsc.com/',
   integrations: [
-    process.env.NODE_ENV === 'production' && sitemap(),
+    process.env.MODE === 'production' && sitemap(),
     compress({
       CSS: {
         comments: false,
