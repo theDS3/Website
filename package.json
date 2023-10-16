@@ -16,7 +16,7 @@
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.2.0",
+    "@astrojs/check": "^0.2.1",
     "@fontsource-variable/josefin-sans": "^5.0.14",
     "astro": "^3.2.4",
     "astro-icon": "^0.8.1",
