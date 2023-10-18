@@ -13,7 +13,7 @@ dependencies:
     version: 5.0.14
   astro:
     specifier: ^3.2.4
-    version: 3.2.4(sass@1.69.2)
+    version: 3.2.4(sass@1.69.4)
   astro-icon:
     specifier: ^0.8.1
     version: 0.8.1
@@ -74,8 +74,8 @@ devDependencies:
     specifier: ^5.0.5
     version: 5.0.5
   sass:
-    specifier: ^1.69.2
-    version: 1.69.2
+    specifier: ^1.69.4
+    version: 1.69.4
   sharp:
     specifier: ^0.32.6
     version: 0.32.6
@@ -168,7 +168,7 @@ packages:
       astro: ^3.2.3
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.2.4(sass@1.69.2)
+      astro: 3.2.4(sass@1.69.4)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -1586,7 +1586,7 @@ packages:
       tsparticles-engine: 2.12.0
     dev: false
 
-  /astro@3.2.4(sass@1.69.2):
+  /astro@3.2.4(sass@1.69.4):
     resolution: {integrity: sha512-e95Yz6tYG6Q2SEOCzujqCHq9/HOB2z085KP1K36kGuGtu0qaa3mmnz3R9FpKM/W5SbmrNgUv4QaP207EUkMp5Q==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -1641,7 +1641,7 @@ packages:
       tsconfig-resolver: 3.0.1
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.4.9(sass@1.69.2)
+      vite: 4.4.9(sass@1.69.4)
       vitefu: 0.2.4(vite@4.4.9)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -4891,8 +4891,8 @@ packages:
     dependencies:
       suf-log: 2.5.3
 
-  /sass@1.69.2:
-    resolution: {integrity: sha512-48lDtG/9OuSQZ9oNmJMUXI2QdCakAWrAGjpX/Fy6j4Og8dEAyE598x5GqCqnHkwV7+I5w8DJpqjm581q5HNh3w==}
+  /sass@1.69.4:
+    resolution: {integrity: sha512-+qEreVhqAy8o++aQfCJwp0sklr2xyEzkm9Pp/Igu9wNPoe7EZEQ8X/MBvvXggI2ql607cxKg/RKOwDj6pp2XDA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -5939,7 +5939,7 @@ packages:
       vfile-message: 3.1.4
     dev: false
 
-  /vite@4.4.9(sass@1.69.2):
+  /vite@4.4.9(sass@1.69.4):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -5970,7 +5970,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.28
       rollup: 3.28.1
-      sass: 1.69.2
+      sass: 1.69.4
     optionalDependencies:
       fsevents: 2.3.3
     dev: false
@@ -5983,7 +5983,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.9(sass@1.69.2)
+      vite: 4.4.9(sass@1.69.4)
     dev: false
 
   /volar-service-css@0.0.14(@volar/language-service@1.10.4):
