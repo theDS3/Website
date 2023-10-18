@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.0.1",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "astro-compress": "^2.0.15",
     "astro-compressor": "^0.4.1",
