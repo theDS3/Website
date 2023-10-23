@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout HEAD Commit
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v4.1.1
         with:
           ref: ${{ github.head_ref }}
 
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout HEAD Commit
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v4.1.1
         with:
           ref: ${{ github.head_ref }}
 
