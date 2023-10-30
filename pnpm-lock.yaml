@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.2.1
     version: 0.2.1(prettier-plugin-astro@0.12.0)(prettier@3.0.3)(typescript@5.2.2)
   '@fontsource-variable/josefin-sans':
-    specifier: ^5.0.14
-    version: 5.0.14
+    specifier: ^5.0.18
+    version: 5.0.18
   astro:
     specifier: ^3.3.3
     version: 3.3.3(sass@1.69.2)(typescript@5.2.2)
@@ -876,8 +876,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource-variable/josefin-sans@5.0.14:
-    resolution: {integrity: sha512-ZUa2DYEgb1kUqJYzY7rtwl8hiwci87catd0hw3pkcsc6gn15R45co/1nb9hrTZIT5iWvChQHmRtdjQLoPKVCMQ==}
+  /@fontsource-variable/josefin-sans@5.0.18:
+    resolution: {integrity: sha512-dXBhfj9kbc9/+V1JzR/aSU0ZFLcqXjSWd6ylKaue+8crM+BbXkMWX2nKhnbOwb+2t7Yuzy8/vAw3CmE2Q8h2iQ==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:
