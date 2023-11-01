@@ -145,12 +145,13 @@ const particleJS: ISourceOptions = {
   </body>
 
   <script>
-    console.log(process.env.NODE_ENV);
-    import type { Engine } from 'tsparticles-engine';
     import { loadFull } from 'tsparticles';
+    import type { Engine } from 'tsparticles-engine';
 
     declare global {
+      // eslint-disable-next-line no-unused-vars
       interface Window {
+        // eslint-disable-next-line no-unused-vars
         particlesInit: (engine: Engine) => Promise<void>;
       }
     }
