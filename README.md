@@ -18,11 +18,10 @@ Then you can run it by:
 ```sh
 cd Website
 pnpm install
-pnpm run dev
+pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the
-Website.
+Open [http://localhost:4321](http://localhost:4321) with your browser.
 
 Take a look at our [SUPPORT](./SUPPORT.md) file for more instructions.
 
@@ -30,14 +29,19 @@ Take a look at our [SUPPORT](./SUPPORT.md) file for more instructions.
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                    | Action                                           |
-| -------------------------- | ------------------------------------------------ |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm run dev`             | Starts local dev server at `localhost:3000`      |
-| `pnpm run build`           | Build your production site to `./dist/`          |
-| `pnpm run preview`         | Preview your build locally, before deploying     |
-| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm run astro -- --help` | Get help using the Astro CLI                     |
+| Command                | Action                                           |
+| ---------------------- | ------------------------------------------------ |
+| `pnpm install`         | Installs dependencies                            |
+| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm start`           | Starts local dev server at `localhost:4321`      |
+| `pnpm build`           | Build your production site to `./dist/`          |
+| `pnpm preview`         | Preview your build locally, before deploying     |
+| `pnpm purge`           | Purges the cache and `node_modules` folder       |
+| `pnpm tunnel`          | Tunnels local dev server for testing on mobile   |
+| `pnpm lint`            | Lints code with ESLint and runs type checking    |
+| `pnpm format`          | Formats code with Prettier                       |
 
 ## License
 
