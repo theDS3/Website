@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { Icon } from 'astro-icon';
 
 import logo from '@/assets/logo.png';
@@ -24,12 +24,12 @@ const links: Link[] = [
   <a
     href="/#intro"
     tabindex="0">
-    <Image
+    <Picture
       src={logo}
       loading="eager"
       alt="logo"
       fetchpriority="high"
-      format="avif"
+      formats={['avif', 'webp']}
     />
   </a>
   <nav>
