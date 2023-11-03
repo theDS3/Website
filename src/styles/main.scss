@@ -45,6 +45,7 @@ section {
   padding: 15vh 5vw;
 }
 
-img {
+img,
+picture {
   @include astro-image;
 }
