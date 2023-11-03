@@ -2,8 +2,8 @@
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon';
 
-import logo from '../assets/logo.png';
-import '../styles/layout/Header.scss';
+import logo from '@/assets/logo.png';
+import '@/styles/layout/Header.scss';
 
 interface Link {
   title: string;
@@ -103,7 +103,7 @@ const links: Link[] = [
   /* Event Listeners */
 
   // Close Mobile Menu on Escape Keypress
-  document.addEventListener('keydown', function ({ key }) {
+  document.addEventListener('keydown', ({ key }) => {
     if (
       (key === 'Escape' || key === 'Esc') &&
       menu.classList.contains('active')
@@ -128,11 +128,9 @@ const links: Link[] = [
     menu.classList.contains('active') ? closeMenu() : openMenu();
   });
 
-  for (const item of items) {
-    item.querySelector('.submenu')
-      ? item.addEventListener('click', toggleSubmenu) // Toggle SubMenu
-      : item.addEventListener('click', closeMenu); // Close Mobile Menu on Item Click
-  }
+  for (const item of items)
+    if (!item.querySelector('.submenu'))
+      item.addEventListener('click', closeMenu); // Close Mobile Menu on Item Click
 
   // Toggle SubMenu
   // function toggleSubmenu() {
