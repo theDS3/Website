@@ -144,7 +144,7 @@ request, also known as a PR.
 
 - Ensure that the merge is set between the correct branches:
   - **DO NOT SETUP PR BETWEEN `dev` AND `main`** - This is only done by the Directors.
-  - Most cases your PR will be an to the **`dev`** branch. This merges your
+  - Most cases your PR will be to the **`dev`** branch. This merges your
     changes to the development site once approved on GitHub.
 - Use the given PR template so that we can review your PR. This template helps
   reviewers understand your changes as well as the purpose of your pull request.
