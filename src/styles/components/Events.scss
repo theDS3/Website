@@ -8,7 +8,8 @@
   .event {
     padding-bottom: 2rem;
 
-    img {
+    img,
+    picture {
       padding-bottom: 2rem;
     }
 
@@ -28,7 +29,8 @@
     justify-items: center;
     align-items: center;
 
-    img {
+    img,
+    picture {
       padding: 0;
     }
   }

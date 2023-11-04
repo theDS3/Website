@@ -3,7 +3,8 @@
 .team-member {
   text-align: center;
 
-  img {
+  img,
+  picture {
     height: auto;
     width: 300px;
     border-radius: 50%;
@@ -66,7 +67,8 @@
 }
 
 @include geq(600px) {
-  .team-member > img {
+  .team-member > img,
+  .team-member > picture {
     height: auto;
     width: 250px;
   }

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 
 import Button from './Button.astro';
 
@@ -11,10 +11,10 @@ import '@/styles/components/Events.scss';
 <section id="events">
   <h2>Upcoming Events</h2>
   <div class="event">
-    <Image
+    <Picture
       src={datathon}
       alt="Data Science & Statistics Society"
-      format="avif"
+      formats={['avif', 'webp']}
     />
     <p>
       The DS3 Datathon presents a unique opportunity for participants to delve

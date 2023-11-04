@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 
 import Button from './Button.astro';
 
@@ -8,12 +8,12 @@ import '@/styles/components/Intro.scss';
 ---
 
 <section id="intro">
-  <Image
+  <Picture
     src={team}
     alt="Data Science & Statistics Society"
     loading="eager"
     fetchpriority="high"
-    format="avif"
+    formats={['avif', 'webp']}
   />
   <h1>
     Data Science

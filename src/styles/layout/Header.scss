@@ -39,7 +39,8 @@ header {
     padding-bottom: calc(100vh - 5em);
   }
 
-  img {
+  img,
+  picture {
     width: 65px;
     height: 65px;
     z-index: 99;
