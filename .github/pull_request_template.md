@@ -2,9 +2,7 @@
 
 <!-- Please include a summary of the change -->
 
-## GitHub Issues
-
-Fixes
+Relevant GitHub Issues that will be fixed are
 
 ## Type of change
 
@@ -27,13 +25,12 @@ Fixes
   - [ ] Brave
   - [ ] Google Chrome
   - [ ] Microsoft Edge
-  - [ ] Mozilla FireFox
+  - [ ]Mozilla FireFox
 - Mobile Browser
-  - [ ] Apple Safari
-  - [ ] Brave
   - [ ] Google Chrome
-  - [ ] Microsoft Edge
   - [ ] Mozilla FireFox
+  - [ ] Microsoft Edge
+  - [ ] Apple Safari
 - Other Tests:
 
 ## Checklist
