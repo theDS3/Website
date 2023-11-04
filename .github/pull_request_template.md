@@ -19,8 +19,20 @@ Relevant GitHub Issues:
 
 <!-- Summary of tests conducted -->
 
-- [ ] Test A
-- [ ] Test B
+- [ ] Responsiveness on various devices
+- Desktop Browser
+  - [ ] Apple Safari
+  - [ ] Brave
+  - [ ] Google Chrome
+  - [ ] Microsoft Edge
+  - [ ] Mozilla FireFox
+- Mobile Browser
+  - [ ] Apple Safari
+  - [ ] Brave
+  - [ ] Google Chrome
+  - [ ] Microsoft Edge
+  - [ ] Mozilla FireFox
+- Other Tests:
 
 ## Checklist
 
