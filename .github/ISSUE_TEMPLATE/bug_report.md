@@ -17,6 +17,12 @@ assignees: ''
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
+## Environment
+
+- Version used: v
+- Browser: [all | Chrome | Firefox | Edge | Safari | Brave]
+- Operating System: [all | Windows | macOS | Linux | Android | iOS]
+
 ## Steps to Reproduce
 
 <!--- Provide a link to a live example, or an unambiguous set of steps to -->
