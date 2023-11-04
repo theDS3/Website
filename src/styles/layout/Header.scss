@@ -37,6 +37,10 @@ header {
   &:has(> nav.show) {
     height: 100%;
     padding-bottom: calc(100vh - 5em);
+
+    @media screen and (orientation: portrait) {
+      height: auto;
+    }
   }
 
   img {
