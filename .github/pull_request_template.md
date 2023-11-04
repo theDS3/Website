@@ -2,7 +2,7 @@
 
 <!-- Please include a summary of the change -->
 
-Relevant GitHub Issues:
+Relevant GitHub Issues that will be fixed are
 
 ## Type of change
 
@@ -19,8 +19,19 @@ Relevant GitHub Issues:
 
 <!-- Summary of tests conducted -->
 
-- [ ] Test A
-- [ ] Test B
+- [ ] Responsiveness on various devices
+- Desktop Browser
+  - [ ] Apple Safari
+  - [ ] Brave
+  - [ ] Google Chrome
+  - [ ] Microsoft Edge
+  - [ ]Mozilla FireFox
+- Mobile Browser
+  - [ ] Google Chrome
+  - [ ] Mozilla FireFox
+  - [ ] Microsoft Edge
+  - [ ] Apple Safari
+- Other Tests:
 
 ## Checklist
 
