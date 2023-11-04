@@ -2,7 +2,9 @@
 
 <!-- Please include a summary of the change -->
 
-Relevant GitHub Issues:
+## GitHub Issues
+
+Fixes
 
 ## Type of change
 
