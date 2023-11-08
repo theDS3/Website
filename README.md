@@ -13,6 +13,12 @@ Clone the project from GitHub
 git clone https://github.com/theDS3/Website.git
 ```
 
+Create an `.env` file and add the following:
+
+```bash
+DEPLOY_MODE='development'
+```
+
 Then you can run it by:
 
 ```sh

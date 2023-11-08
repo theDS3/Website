@@ -111,7 +111,7 @@ const particleJS: ISourceOptions = {
 
     <!-- Tells Search Crawlers not to Index the Dev Site -->
     {
-      process.env.MODE !== 'production' && (
+      import.meta.env.DEPLOY_MODE !== 'production' && (
         <meta
           name="robots"
           content="noindex, nofollow"
@@ -121,7 +121,7 @@ const particleJS: ISourceOptions = {
 
     <!-- Open Graph Metadata only on Production -->
     {
-      process.env.MODE === 'production' && (
+      import.meta.env.DEPLOY_MODE === 'production' && (
         <Meta
           ogTitle={title}
           ogDescription={description}
