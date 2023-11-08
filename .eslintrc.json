@@ -2,22 +2,11 @@
   "root": true,
   "env": {
     "browser": true,
-    "commonjs": true,
-    "es2021": true,
+    "es2022": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:astro/recommended",
-    "plugin:astro/jsx-a11y-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "plugins": ["@typescript-eslint"],
-  "parserOptions": {
-    "project": true,
-    "extraFileExtensions": [".astro"]
-  },
+  "extends": ["eslint:recommended", "plugin:astro/recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
   "rules": {
     // Best practices
     "curly": ["error", "multi"],
@@ -51,7 +40,6 @@
     "no-prototype-builtins": "off",
     "no-unused-expressions": "off"
   },
-
   "overrides": [
     {
       "files": ["*.astro"],
@@ -59,7 +47,27 @@
       "parserOptions": {
         "parser": "@typescript-eslint/parser",
         "extraFileExtensions": [".astro"]
+      },
+      "extends": ["plugin:astro/jsx-a11y-recommended"]
+    },
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_",
+            "destructuredArrayIgnorePattern": "^_"
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off"
       }
+    },
+    {
+      "files": ["**/*.astro/*.js", "*.astro/*.js"],
+      "parser": "@typescript-eslint/parser"
     }
   ]
 }

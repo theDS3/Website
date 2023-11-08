@@ -5,7 +5,8 @@
   grid-template-columns: 1fr;
   gap: 1rem;
 
-  img {
+  img,
+  picture {
     border-radius: 1.25rem;
   }
 
@@ -66,7 +67,8 @@
     grid-template-columns: 1fr 2fr;
     gap: 2rem 3rem;
 
-    img {
+    img,
+    picture {
       grid-area: 1 / 1 / 3 / 2;
     }
 

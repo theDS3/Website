@@ -8,7 +8,7 @@ import Footer from './Footer.astro';
 import Header from './Header.astro';
 import Meta from './Meta.astro';
 
-import '../styles/main.scss';
+import '@/styles/main.scss';
 
 interface Props {
   title?: string;
@@ -111,7 +111,7 @@ const particleJS: ISourceOptions = {
 
     <!-- Tells Search Crawlers not to Index the Dev Site -->
     {
-      process.env.MODE !== 'production' && (
+      import.meta.env.DEPLOY_MODE !== 'production' && (
         <meta
           name="robots"
           content="noindex, nofollow"
@@ -121,7 +121,7 @@ const particleJS: ISourceOptions = {
 
     <!-- Open Graph Metadata only on Production -->
     {
-      process.env.MODE === 'production' && (
+      import.meta.env.DEPLOY_MODE === 'production' && (
         <Meta
           ogTitle={title}
           ogDescription={description}
@@ -145,11 +145,13 @@ const particleJS: ISourceOptions = {
   </body>
 
   <script>
-    import type { Engine } from 'tsparticles-engine';
     import { loadFull } from 'tsparticles';
+    import type { Engine } from 'tsparticles-engine';
 
     declare global {
+      // eslint-disable-next-line no-unused-vars
       interface Window {
+        // eslint-disable-next-line no-unused-vars
         particlesInit: (engine: Engine) => Promise<void>;
       }
     }

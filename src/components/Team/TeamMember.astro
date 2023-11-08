@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 
 import type { TeamMember } from './config';
 
-import '../../styles/components/TeamMember.scss';
+import '@/styles/components/TeamMember.scss';
 
 interface Props extends TeamMember {}
 
@@ -14,7 +14,7 @@ const { name, position, src, alt } = Astro.props;
   <Image
     src={src}
     alt={alt}
-    format="avif"
+    format="webp"
     quality="low"
   />
   <div class="container">

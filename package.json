@@ -16,9 +16,9 @@
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.2.0",
+    "@astrojs/check": "^0.3.0",
     "@fontsource-variable/josefin-sans": "^5.0.14",
-    "astro": "^3.2.2",
+    "astro": "^3.4.3",
     "astro-icon": "^0.8.1",
     "astro-particles": "^2.10.0",
     "tsparticles": "^2.12.0",
@@ -26,21 +26,21 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.4",
-    "astro-compress": "^2.0.15",
+    "@astrojs/sitemap": "^3.0.3",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "astro-compress": "^2.1.5",
     "astro-compressor": "^0.4.1",
-    "eslint": "^8.50.0",
+    "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-astro": "^0.29.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "localtunnel": "^2.0.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-astro": "^0.12.1",
     "rimraf": "^5.0.5",
-    "sass": "^1.68.0",
+    "sass": "^1.69.2",
     "sharp": "^0.32.6"
   }
 }
