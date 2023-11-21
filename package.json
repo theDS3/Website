@@ -1,5 +1,5 @@
 {
-  "name": "new-site",
+  "name": "ds3-site",
   "version": "1.2.0",
   "private": true,
   "scripts": {
@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "tunnel": "lt --port 4321 --subdomain dev-ds3",
-    "format": "prettier --write ."
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore --cache --ignore-unknown --write "
   },
   "dependencies": {
     "next": "14.0.3",
