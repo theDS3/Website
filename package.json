@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "tunnel": "lt --port 3000 --subdomain dev-ds3",
-    "format": "prettier --config .prettierrc --ignore-path .prettierignore --cache --ignore-unknown --write "
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore --cache --ignore-unknown --write ."
   },
   "dependencies": {
     "next": "14.0.3",
