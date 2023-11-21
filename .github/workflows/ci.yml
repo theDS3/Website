@@ -40,7 +40,7 @@ jobs:
         run: pnpm install
 
       - name: Linting
-        run: pnpm run lint
+        run: pnpm lint
 
   format:
     name: Run Prettier
@@ -78,7 +78,7 @@ jobs:
         run: pnpm install
 
       - name: Formatting
-        run: pnpm run format
+        run: pnpm format
 
       - name: Commit Format Changes
         uses: stefanzweifel/git-auto-commit-action@v5
