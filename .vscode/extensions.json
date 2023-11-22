@@ -1,15 +1,16 @@
 {
   "recommendations": [
-    "streetsidesoftware.code-spell-checker",
     "adpyke.codesnap",
-    "vivaxy.vscode-conventional-commits",
+    "bierner.markdown-mermaid",
+    "bradlc.vscode-tailwindcss",
+    "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
-    "visualstudioexptteam.vscodeintellicode",
+    "esbenp.prettier-vscode",
     "ms-vsliveshare.vsliveshare",
-    "bierner.markdown-mermaid",
-    "davidanson.vscode-markdownlint",
-    "esbenp.prettier-vscode"
+    "streetsidesoftware.code-spell-checker",
+    "visualstudioexptteam.vscodeintellicode",
+    "vivaxy.vscode-conventional-commits"
   ],
   "unwantedRecommendations": []
 }
