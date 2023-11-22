@@ -1,46 +1,41 @@
 {
-  "name": "site",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "ds3-site",
+  "version": "1.2.0",
+  "private": true,
+  "browserslist": [
+    "> 0.3%",
+    "defaults",
+    "maintained node versions",
+    "not dead"
+  ],
   "scripts": {
-    "astro": "astro",
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "purge": "rimraf node_modules dist",
-    "tunnel": "lt --port 4321 --subdomain dev-ds3",
-    "lint": "rimraf dist && npm-run-all --parallel lint:astro lint:ts",
-    "lint:ts": "eslint \"src/**/*.{ts,tsx,astro}\" --ignore-path .eslintignore --cache",
-    "lint:astro": "astro check",
-    "format": "prettier --config .prettierrc --ignore-path .prettierignore --plugin=prettier-plugin-astro --cache --ignore-unknown --write ."
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "tunnel": "lt --port 3000 --subdomain dev-ds3",
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore --cache --ignore-unknown --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.3.0",
-    "@fontsource-variable/josefin-sans": "^5.0.14",
-    "astro": "^3.4.3",
-    "astro-icon": "^0.8.1",
-    "astro-particles": "^2.10.0",
-    "tsparticles": "^2.12.0",
-    "tsparticles-engine": "^2.12.0",
-    "typescript": "^5.2.2"
+    "next": "14.0.3",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.0.3",
-    "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^6.11.0",
-    "astro-compress": "^2.2.3",
-    "astro-compressor": "^0.4.1",
-    "eslint": "^8.53.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-astro": "^0.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "cssnano": "^6.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
     "localtunnel": "^2.0.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.2",
-    "rimraf": "^5.0.5",
-    "sass": "^1.69.2",
-    "sharp": "^0.32.6"
+    "postcss": "^8",
+    "postcss-import": "^15.1.0",
+    "postcss-mixins": "^9.0.4",
+    "postcss-preset-env": "^9.3.0",
+    "prettier": "^3.1.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }
