@@ -4,9 +4,8 @@
 node_modules/
 pnpm-lock.yaml
 
-# astro
-dist/
-.astro/
+# next.js
+.next/
 
 # misc
 .DS_Store
