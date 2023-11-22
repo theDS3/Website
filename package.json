@@ -2,6 +2,7 @@
   "name": "ds3-site",
   "version": "1.2.0",
   "private": true,
+  "browserslist": ["> 0.3%", "defaults", "maintained node versions", "not dead"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
