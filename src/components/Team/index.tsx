@@ -1,6 +1,7 @@
 import React from 'react';
 import TeamCard from './TeamCard';
 import teamData from '../../app/api/team.json';
+import './Team.css';
 
 const Team: React.FC = () => {
   return (

@@ -15,36 +15,3 @@ html {
   background-color: #151019;
 }
 
-/* TeamCard Usage */
-.before-after-line::before,
-.before-after-line::after {
-  content: '';
-  width: 50px;
-  height: 1px;
-  background: #6e6e77;
-  position: absolute;
-  bottom: -10px;
-  transition-duration: 0.25s;
-}
-
-.before-after-line::before {
-  right: 50%;
-  margin-right: 9px;
-}
-
-.before-after-line::after {
-  left: 50%;
-  margin-left: 9px;
-}
-
-.bullet::before {
-  content: '';
-  display: block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #6e6e77;
-  margin: 0 auto;
-  position: relative;
-  top: -14px;
-}
