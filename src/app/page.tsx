@@ -1,6 +1,6 @@
-import AboutUs from '@/components/AboutUs';
 import Upcoming from '@/components/Upcoming';
 import Team from '@/components/Team';
+import AboutUs from '@/components/AboutUs';
 
 export default function Home() {
   return (
