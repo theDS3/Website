@@ -1,4 +1,4 @@
-import AboutUs from '../components/AboutUs';
+import AboutUs from '../components/AboutUs/index';
 
 export default function Home() {
   return (
