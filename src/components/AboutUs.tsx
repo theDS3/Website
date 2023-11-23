@@ -35,7 +35,7 @@ export default function AboutUs() {
           />
         </div>
         <h2 className="text-2xl font-bold pb-4 pt-4">MISSION</h2>
-        <p className="text-lg px-4 lg:text-xl lg:text-4xl text-3xl">
+        <p className="text-lg px-4 lg:text-4xl text-3xl">
           To make a contribution to our student community by creating
           opportunities for engagement in Data Science and Statistics.
         </p>
