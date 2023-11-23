@@ -1,5 +1,5 @@
 import React from 'react';
-import TeamCard from './teamCard';
+import TeamCard from './TeamCard';
 import teamData from '../../app/api/team.json';
 
 const Team: React.FC = () => {
