@@ -6,15 +6,16 @@ export default function AboutUs() {
   return (
     <section
       id="about-us"
-      className="flex flex-col items-center justify-center">
+      className="flex flex-col items-center justify-center text-white">
+      {' '}
       <div className="text-center flex flex-col items-center">
         <div className="flex items-center justify-center">
           <Image
             priority
             src={Vision}
             alt="Vision Icon"
-            max-width={150}
-            height={150}
+            width={130}
+            height={130}
           />
         </div>
         <h2 className="text-2xl font-bold pb-4 pt-4">VISION</h2>
@@ -30,8 +31,8 @@ export default function AboutUs() {
             priority
             src={Mission}
             alt="Mission Icon"
-            max-width={150}
-            height={150}
+            width={130}
+            height={130}
           />
         </div>
         <h2 className="text-2xl font-bold pb-4 pt-4">MISSION</h2>
