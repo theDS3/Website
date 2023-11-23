@@ -3,7 +3,7 @@ import Team from '../../public/team.jpg';
 import Button from '../Button/index';
 import Link from 'next/link';
 
-const Hero = () => {
+export default function Hero() {
   return (
     <section className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-2 lg:gap-6">
       {/* Image */}
@@ -49,6 +49,4 @@ const Hero = () => {
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
