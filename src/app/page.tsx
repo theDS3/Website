@@ -1,5 +1,5 @@
-import AboutUs from '@/components/AboutUs';
 import Upcoming from '@/components/Upcoming';
+import AboutUs from '@/components/AboutUs';
 
 export default function Home() {
   return (
