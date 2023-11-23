@@ -1,13 +1,14 @@
-import Vision from '../../public/vision.svg';
-import Mission from '../../public/mission.svg';
+'use client';
+
+import Mission from '@/public/mission.svg';
+import Vision from '@/public/vision.svg';
 import Image from 'next/image';
 
 export default function AboutUs() {
   return (
     <section
       id="about-us"
-      className="flex flex-col items-center justify-center text-white">
-      {' '}
+      className="pt-[inherit] flex flex-col items-center justify-center text-white">
       <div className="text-center flex flex-col items-center">
         <div className="flex items-center justify-center">
           <Image
