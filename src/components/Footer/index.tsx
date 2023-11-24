@@ -13,8 +13,15 @@ export default function Footer () {
         { icon: <FaYoutube style={{ fontSize: '2rem' }} />, link: 'https://www.youtube.com/@ds3UTSC' },
     ];
 
+    const links = [
+        { href: '#about', text: 'About Us' },
+        { href: '#sponsors', text: 'Sponsors' },
+        { href: '#team', text: 'Our Team' },
+        { href: '#events', text: 'Events' },
+    ];
+
     return (
-        <footer className='flex justify-center max-w-full bg-[#181516]'>
+        <footer className='flex justify-center w-full z-5 backdrop-blur px-4 pt-2 bg-transparent shadow-2xl'>
             <div className='p-8'>
                 <div className='grid grid-cols-1 sm:grid-cols-2'>
                     <div className='justify-self-start'>
@@ -34,22 +41,11 @@ export default function Footer () {
                         <p className='text-white font-bold text-xl'>QUICK LINKS</p>
                         <div className='border-b-2 border-gray-400 w-25 mx-auto mb-4'></div>
                         <div className='flex flex-col space-y-2 items-center'>
-                            <Link
-                            href='#about'>
-                                <p className='text-gray-400 hover:text-white transition duration-300 cursor-pointer'>About Us</p>
-                            </Link>
-                            <Link
-                            href='#sponsors'>
-                                <p className='text-gray-400 hover:text-white transition duration-300 cursor-pointer'>Sponsors</p>
-                            </Link>
-                            <Link
-                            href='#team'>
-                                <p className='text-gray-400 hover:text-white transition duration-300 cursor-pointer'>Our Team</p>
-                            </Link>
-                            <Link
-                            href='#events'>
-                                <p className='text-gray-400 hover:text-white transition duration-300 cursor-pointer'>Events</p>
-                            </Link>
+                            {links.map((link, index) => (
+                                <Link key={index} href={link.href} className='text-gray-400 hover:text-white transition duration-300 cursor-pointer'>
+                                    {link.text}
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -65,7 +61,7 @@ export default function Footer () {
                     </Link>
                 </div>
                 <div className='text-gray-400 text-center pt-4'>
-                    <p className='text-sm'>Copyright © DS³ 2023. All Rights Reserved</p>
+                    <p className='text-sm'>Copyright © DS<sup>3</sup> 2023. All Rights Reserved</p>
                 </div>
             </div>
         </footer>
