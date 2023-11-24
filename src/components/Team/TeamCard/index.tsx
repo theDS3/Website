@@ -12,9 +12,8 @@ export default function TeamCard({ name, position, src, alt }: TeamMember) {
         <Image
           src={src}
           alt={alt}
-          width={300}
-          height={300}
-          className="rounded-full md:w-[150px] min-[1800px]:w-[240px]"
+          placeholder="blur"
+          className="rounded-full w-[300px] md:w-[150px] min-[1800px]:w-[240px]"
         />
       </div>
       <div className="py-5">
