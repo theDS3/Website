@@ -1,23 +1,63 @@
-import Link from 'next/link'
-import {FaGithub, FaLinkedin, FaYoutube, FaDiscord, FaEnvelope, FaMedium, FaInstagram} from 'react-icons/fa'
+import Link from 'next/link';
+import {
+  FaGithub,
+  FaLinkedin,
+  FaYoutube,
+  FaDiscord,
+  FaEnvelope,
+  FaMedium,
+  FaInstagram,
+} from 'react-icons/fa';
 
-export default function Footer () {
-
-    const icons = [
-        { icon: <FaDiscord style={{ fontSize: '2rem' }} />, link: 'https://discord.com/invite/xDpujjZ' },
-        { icon: <FaEnvelope style={{ fontSize: '2rem' }} />, link: 'https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform' },
-        { icon: <FaGithub style={{ fontSize: '2rem' }} />, link: 'https://github.com/theDS3' },
-        { icon: <FaInstagram style={{ fontSize: '2rem' }} />, link: 'https://www.instagram.com/ds3.utsc' },
-        { icon: <FaLinkedin style={{ fontSize: '2rem' }} />, link: 'https://www.linkedin.com/company/the-data-science-statistics-society/?fbclid=IwAR0pK1obf403GMp6qXzIQm_1F9zFZjKrTMx8FlBBD3D-j5BM4vi6gQGUF2U' },
-        { icon: <FaMedium style={{ fontSize: '2rem' }} />, link: 'https://medium.com/@thedatasciencecube' },
-        { icon: <FaYoutube style={{ fontSize: '2rem' }} />, link: 'https://www.youtube.com/@ds3UTSC' },
-    ];
+export default function Footer() {
+  const icons = [
+    {
+      icon: <FaDiscord style={{ fontSize: '2rem' }} />,
+      link: 'https://discord.com/invite/xDpujjZ',
+    },
+    {
+      icon: <FaEnvelope style={{ fontSize: '2rem' }} />,
+      link: 'https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform',
+    },
+    {
+      icon: <FaGithub style={{ fontSize: '2rem' }} />,
+      link: 'https://github.com/theDS3',
+    },
+    {
+      icon: <FaInstagram style={{ fontSize: '2rem' }} />,
+      link: 'https://www.instagram.com/ds3.utsc',
+    },
+    {
+      icon: <FaLinkedin style={{ fontSize: '2rem' }} />,
+      link: 'https://www.linkedin.com/company/the-data-science-statistics-society/?fbclid=IwAR0pK1obf403GMp6qXzIQm_1F9zFZjKrTMx8FlBBD3D-j5BM4vi6gQGUF2U',
+    },
+    {
+      icon: <FaMedium style={{ fontSize: '2rem' }} />,
+      link: 'https://medium.com/@thedatasciencecube',
+    },
+    {
+      icon: <FaYoutube style={{ fontSize: '2rem' }} />,
+      link: 'https://www.youtube.com/@ds3UTSC',
+    },
+  ];
 
     const links = [
-        { href: '#about', text: 'About Us' },
-        { href: '#sponsors', text: 'Sponsors' },
-        { href: '#team', text: 'Our Team' },
-        { href: '#events', text: 'Events' },
+        { 
+            href: '#about',
+            text: 'About Us'
+        },
+        { 
+            href: '#sponsors',
+            text: 'Sponsors' 
+        },
+        { 
+            href: '#team',
+            text: 'Our Team' 
+        },
+        { 
+            href: '#events', 
+            text: 'Events' 
+        },
     ];
 
     return (
@@ -64,6 +104,6 @@ export default function Footer () {
                     <p className='text-sm'>Copyright © DS<sup>3</sup> 2023. All Rights Reserved</p>
                 </div>
             </div>
-        </footer>
-    )
+    </footer>
+  );
 }
