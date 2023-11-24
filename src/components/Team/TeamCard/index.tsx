@@ -1,17 +1,16 @@
-import React from 'react';
 import Image from 'next/image';
-import { TeamMember } from './team-config';
 
-export default function TeamCard({ name, position, alt, src }: TeamMember) {
+import { type TeamMember } from '../team-config';
+import './TeamCard.css';
+
+export default function TeamCard({ name, position, src, alt }: TeamMember) {
   return (
-    <div className="text-center grid justify-center items-center">
+    <div className="text-center grid justify-center items-center ">
       <div className="flex justify-center items-center">
         <Image
           src={src}
           alt={alt}
-          width={250}
-          height={250}
-          className="rounded-full"
+          className="rounded-full w-[300px] md:w-[150px] min-[1800px]:w-[240px]"
         />
       </div>
       <div className="py-5">
