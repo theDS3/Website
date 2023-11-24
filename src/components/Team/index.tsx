@@ -1,3 +1,5 @@
+'use client';
+
 import TeamCard from './TeamCard';
 import { team, type TeamMember } from './team-config';
 
