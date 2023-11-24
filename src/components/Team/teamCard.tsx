@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { TeamMember } from './team-config';
 
-
 export default function TeamCard({ name, position, alt, src }: TeamMember) {
   return (
     <div className="text-center grid justify-center items-center">
@@ -27,4 +26,4 @@ export default function TeamCard({ name, position, alt, src }: TeamMember) {
       </div>
     </div>
   );
-};
+}
