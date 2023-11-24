@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 import { type TeamMember } from '../team-config';
@@ -10,7 +12,9 @@ export default function TeamCard({ name, position, src, alt }: TeamMember) {
         <Image
           src={src}
           alt={alt}
-          className="rounded-full w-[300px] md:w-[150px] min-[1800px]:w-[240px]"
+          width={300}
+          height={300}
+          className="rounded-full md:w-[150px] min-[1800px]:w-[240px]"
         />
       </div>
       <div className="py-5">
