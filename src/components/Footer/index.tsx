@@ -41,69 +41,86 @@ export default function Footer() {
     },
   ];
 
-    const links = [
-        { 
-            href: '#about',
-            text: 'About Us'
-        },
-        { 
-            href: '#sponsors',
-            text: 'Sponsors' 
-        },
-        { 
-            href: '#team',
-            text: 'Our Team' 
-        },
-        { 
-            href: '#events', 
-            text: 'Events' 
-        },
-    ];
+  const links = [
+    {
+      href: '#about',
+      text: 'About Us',
+    },
+    {
+      href: '#sponsors',
+      text: 'Sponsors',
+    },
+    {
+      href: '#team',
+      text: 'Our Team',
+    },
+    {
+      href: '#events',
+      text: 'Events',
+    },
+  ];
 
-    return (
-        <footer className='flex justify-center w-full z-5 backdrop-blur px-4 pt-2 bg-transparent shadow-2xl'>
-            <div className='p-8'>
-                <div className='grid grid-cols-1 sm:grid-cols-2'>
-                    <div className='justify-self-start'>
-                        <p className='text-white font-bold text-xl text-center sm:text-left'>STAY CONNECTED</p>
-                        <p className='text-gray-400 pt-2 text-center sm:text-left'>Join the ML, Data Science, and Statistics Club at the University of Toronto Scarborough.</p>
-                        <div className='flex space-x-2 pt-8 justify-center sm:justify-start pb-8'>
-                            {icons.map((item, index: number) => (
-                                <Link key={index} href={item.link} target='_blank'>
-                                    <div className='text-gray-400 hover:text-amber-100/80 transition duration-300 cursor-pointer'>
-                                        {item.icon}
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                    <div className='sm:justify-self-end justify-self-center pb-8'>
-                        <p className='text-white font-bold text-xl'>QUICK LINKS</p>
-                        <div className='border-b-2 border-gray-400 w-25 mx-auto mb-4'></div>
-                        <div className='flex flex-col space-y-2 items-center'>
-                            {links.map((link, index) => (
-                                <Link key={index} href={link.href} className='text-gray-400 hover:text-white transition duration-300 cursor-pointer'>
-                                    {link.text}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="text-gray-400 border-t border-b border-gray-500/50 p-2 flex flex-col items-center lg:flex-row lg:items-center lg:justify-center">
-                    <p className="lg:mr-2 text-center">
-                        University of Toronto Scarborough <span className='hidden lg:inline'>•</span><br className="lg:hidden" /> 1265 Military Trail, Toronto, ON M1C 1A4 <span className='hidden lg:inline'>•</span>
-                    </p>
-                    <Link
-                        href="https://www.google.com/maps/place/Joan+Foley+Hall,+1265+Military+Trail,+Scarborough,+ON+M1C+1A4/@43.7825084,-79.1853174,17z/data=!3m1!4b1!4m6!3m5!1s0x89d4da6f64d59895:0x5f56f6c0bd00e08!8m2!3d43.7825084!4d-79.1853174!16s%2Fg%2F1tfdff_t?entry=ttu"
-                        target='_blank'
-                    >
-                        <p className="underline hover:text-white transition duration-300 cursor-pointer">MAP</p>
-                    </Link>
-                </div>
-                <div className='text-gray-400 text-center pt-4'>
-                    <p className='text-sm'>Copyright © DS<sup>3</sup> 2023. All Rights Reserved</p>
-                </div>
+  return (
+    <footer className="flex justify-center w-full z-5 backdrop-blur px-4 pt-2 bg-transparent shadow-2xl">
+      <div className="p-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2">
+          <div className="justify-self-start">
+            <p className="text-white font-bold text-xl text-center sm:text-left">
+              STAY CONNECTED
+            </p>
+            <p className="text-gray-400 pt-2 text-center sm:text-left">
+              Join the ML, Data Science, and Statistics Club at the University
+              of Toronto Scarborough.
+            </p>
+            <div className="flex space-x-2 pt-8 justify-center sm:justify-start pb-8">
+              {icons.map((item, index: number) => (
+                <Link
+                  key={index}
+                  href={item.link}
+                  target="_blank">
+                  <div className="text-gray-400 hover:text-amber-100/80 transition duration-300 cursor-pointer">
+                    {item.icon}
+                  </div>
+                </Link>
+              ))}
             </div>
+          </div>
+          <div className="sm:justify-self-end justify-self-center pb-8">
+            <p className="text-white font-bold text-xl">QUICK LINKS</p>
+            <div className="border-b-2 border-gray-400 w-25 mx-auto mb-4"></div>
+            <div className="flex flex-col space-y-2 items-center">
+              {links.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="text-gray-400 hover:text-white transition duration-300 cursor-pointer">
+                  {link.text}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="text-gray-400 border-t border-b border-gray-500/50 p-2 flex flex-col items-center lg:flex-row lg:items-center lg:justify-center">
+          <p className="lg:mr-2 text-center">
+            University of Toronto Scarborough{' '}
+            <span className="hidden lg:inline">•</span>
+            <br className="lg:hidden" /> 1265 Military Trail, Toronto, ON M1C
+            1A4 <span className="hidden lg:inline">•</span>
+          </p>
+          <Link
+            href="https://www.google.com/maps/place/Joan+Foley+Hall,+1265+Military+Trail,+Scarborough,+ON+M1C+1A4/@43.7825084,-79.1853174,17z/data=!3m1!4b1!4m6!3m5!1s0x89d4da6f64d59895:0x5f56f6c0bd00e08!8m2!3d43.7825084!4d-79.1853174!16s%2Fg%2F1tfdff_t?entry=ttu"
+            target="_blank">
+            <p className="underline hover:text-white transition duration-300 cursor-pointer">
+              MAP
+            </p>
+          </Link>
+        </div>
+        <div className="text-gray-400 text-center pt-4">
+          <p className="text-sm">
+            Copyright © DS<sup>3</sup> 2023. All Rights Reserved
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }
