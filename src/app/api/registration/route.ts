@@ -57,10 +57,6 @@ let code = '';
 connectDB();
 
 export async function POST(request: NextRequest) {
-  // Authenticates Request
-  if (request.headers.get('ds3-secret') !== process.env.VALIDATION_SECRET)
-    return NextResponse.json({ error: 'Invalid request' }, { status: 404 });
-
   try {
     submission = await request.json();
     code = await crypto.randomUUID().toString();
