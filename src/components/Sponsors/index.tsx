@@ -1,10 +1,11 @@
-import React from 'react';
-import { sponsors } from './config';
-import SponsorCard from './Sponsorcard';
-import Button from '../Button';
 import Link from 'next/link';
 
-const Sponsor: React.FC = () => {
+import Button from '../Button';
+import SponsorCard from './SponsorCard';
+
+import { sponsors, type Sponsor } from './sponsor-config';
+
+export default function Sponsors() {
   return (
     <section
       id="sponsors"
@@ -22,15 +23,15 @@ const Sponsor: React.FC = () => {
         <Button className="mt-6">Contact Us</Button>
       </Link>
       <div className="sponsors flex flex-col md:flex-row justify-center items-center md:justify-between md:items-start md:flex-wrap gap-8 md:gap-16 lg:gap-20 pt-8 md:pt-12">
-        {sponsors.map((sponsor) => (
+        {sponsors.map(({ text, author, position }: Sponsor, id) => (
           <SponsorCard
-            key={sponsor.id}
-            sponsor={sponsor}
+            key={id}
+            text={text}
+            author={author}
+            position={position}
           />
         ))}
       </div>
     </section>
   );
-};
-
-export default Sponsor;
+}
