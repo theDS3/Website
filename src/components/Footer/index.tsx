@@ -43,19 +43,19 @@ export default function Footer() {
 
   const links = [
     {
-      href: '#about',
+      href: '/#about',
       text: 'About Us',
     },
     {
-      href: '#sponsors',
+      href: '/#sponsors',
       text: 'Sponsors',
     },
     {
-      href: '#team',
+      href: '/#team',
       text: 'Our Team',
     },
     {
-      href: '#events',
+      href: '/#events',
       text: 'Events',
     },
   ];
@@ -76,7 +76,7 @@ export default function Footer() {
               {icons.map((item, index: number) => (
                 <Link
                   key={index}
-                  href={item.link}
+                  href={encodeURI(item.link)}
                   target="_blank">
                   <div className="text-gray-400 hover:text-amber-100/80 transition duration-300 cursor-pointer">
                     {item.icon}
