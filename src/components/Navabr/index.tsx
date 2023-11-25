@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState } from 'react';
 
 import DS3_Logo from '@/public/logo.png';
@@ -16,7 +15,6 @@ const links = [
 
 export default function NavBar() {
   const [toggle, setToggle] = useState<boolean>(false);
-  const toggleMenu = () => setToggle(!toggle);
 
   return (
     <header
@@ -24,19 +22,17 @@ export default function NavBar() {
         toggle
           ? 'h-full pb-[calc(100vh-5em)] transition duration-1000 ease-in-out md:h-auto md:pb-0 md:transition-none portrait:h-auto'
           : ''
-      }`}
-      onClick={toggleMenu}>
-      <Link
+      }`}>
+      <a
         href="/#intro"
         tabIndex={0}>
         <Image
           priority
           src={DS3_Logo}
           alt="DS3 Logo"
-          height={65}
-          width={65}
+          className="w-[65px]"
         />
-      </Link>
+      </a>
       <nav
         className={`fixed w-full left-0 -top-[100vh] duration-1000 md:static md:w-auto md:duration-0 md:visible ${
           toggle
@@ -47,16 +43,17 @@ export default function NavBar() {
           className={`mb-0 md:pl-0 flex flex-wrap justify-between items-center ${
             toggle ? 'active' : ''
           }`}>
-          {links.map((link, id) => {
+          {links.map(({ href, title }, id) => {
             return (
               <li
                 className="item block order-3 w-full text-center p-[10px] md:relative md:w-auto"
                 key={id}>
-                <Link
+                <a
                   className="block text-2xl md:text-lg text-white px-[5px] py-[15px] font-bold"
-                  href={link.href}>
-                  {link.title}
-                </Link>
+                  href={encodeURI(href)}
+                  onClick={() => setToggle(false)}>
+                  {title}
+                </a>
               </li>
             );
           })}
@@ -65,8 +62,8 @@ export default function NavBar() {
       <div
         className={`toggle ${
           toggle ? 'open' : ''
-        } md:hidden w-[65px] h-[65px] relative mt-[10px] caret-transparent cursor-pointer rotate-0 transition ease-in-out duration-500 motion-reduce:transition-none`}
-        onClick={toggleMenu}>
+        } md:hidden md:pointer-events-none w-[65px] h-[65px] relative mt-[10px] caret-transparent cursor-pointer rotate-0 transition ease-in-out duration-500 motion-reduce:transition-none`}
+        onClick={() => setToggle(!toggle)}>
         {[...Array(6)].map((_, id) => {
           return (
             <span
