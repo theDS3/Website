@@ -24,8 +24,9 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     email: {
       type: String,
       required: true,
-      index: true,
       unique: true,
+      index: true,
+      trim: true,
     },
     dietaryRestrictions: [
       {
@@ -35,8 +36,10 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     ],
     code: {
       type: String,
-      unique: true,
       required: true,
+      unique: true,
+      index: true,
+      trim: true,
     },
     qrcode: {
       type: Buffer,
