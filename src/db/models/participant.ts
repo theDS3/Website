@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-interface IParticipant {
+export interface IParticipant {
   firstName: string;
   lastName: string;
   email: string;
   dietaryRestrictions: [string];
   code: string;
-  qrcode: Buffer;
+  qrcode: string;
 }
 
 const participantSchema = new mongoose.Schema<IParticipant>(
@@ -42,7 +42,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
       trim: true,
     },
     qrcode: {
-      type: Buffer,
+      type: String,
       required: true,
     },
   },
