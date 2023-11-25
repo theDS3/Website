@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       email: submission.email,
       dietaryRestrictions: submission.dietaryRestrictions,
       code,
-      qrcode: await new QRCodeCanvas(options).toDataUrl('png'),
+      qrcode: await new QRCodeCanvas(options).toDataUrl('jpeg'),
     });
 
     await participant.save();
