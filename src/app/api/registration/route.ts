@@ -19,10 +19,10 @@ let submission: FormSubmisson = {
 
 let code = '';
 
-connectDB();
-
 export async function POST(request: NextRequest) {
   try {
+    connectDB();
+
     submission = await request.json();
     code = await crypto.randomUUID().toString();
 
