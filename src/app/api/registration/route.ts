@@ -3,14 +3,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/db/config';
 import Participant from '@/db/models/participant';
 
-interface FormSubmisson {
+interface FormSubmission {
   firstName: string;
   lastName: string;
   email: string;
   dietaryRestrictions: string[];
 }
 
-let submission: FormSubmisson = {
+let submission: FormSubmission = {
   firstName: '',
   lastName: '',
   email: '',
