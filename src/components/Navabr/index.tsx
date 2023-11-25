@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 import DS3_Logo from '@/public/logo.png';
@@ -48,12 +49,12 @@ export default function NavBar() {
               <li
                 className="item block order-3 w-full text-center p-[10px] md:relative md:w-auto"
                 key={id}>
-                <a
+                <Link
                   className="block text-2xl md:text-lg text-white px-[5px] py-[15px] font-bold"
                   href={encodeURI(href)}
                   onClick={() => setToggle(false)}>
                   {title}
-                </a>
+                </Link>
               </li>
             );
           })}
