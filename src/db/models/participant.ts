@@ -6,7 +6,7 @@ export interface IParticipant {
   email: string;
   dietaryRestrictions: [string];
   code: string;
-  qrcode: string;
+  qrcode?: string;
 }
 
 const participantSchema = new mongoose.Schema<IParticipant>(
@@ -43,7 +43,6 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     },
     qrcode: {
       type: String,
-      required: true,
     },
   },
   {
