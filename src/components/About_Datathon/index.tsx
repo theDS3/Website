@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Team from '@/public/team.jpg';
+import Datathon_About from '@/public/About_Datathon.jpg';
 
 export default function About_Datathon() {
   return (
@@ -8,9 +8,9 @@ export default function About_Datathon() {
       className="grid grid-cols-[1fr] gap-3 min-[620px]:grid-cols-[1fr_2fr] min-[620px]:gap-10">
       <Image
         priority
-        src={Team}
+        src={Datathon_About}
         alt="Data Science & Statistics Society Team Picture"
-        className="mb-8 rounded-3xl"
+        className="mb-4 rounded-3xl"
       />
       <div className="flex justify-center flex-col gap-8 xl:gap-12 lg:ml-20">
         {/* remove the margin if needed */}
