@@ -1,8 +1,12 @@
-'use client';
+import Image, { type StaticImageData } from 'next/image';
 
-import Image from 'next/image';
+export interface TeamMember {
+  name: string;
+  position: string;
+  src: StaticImageData;
+  alt: string;
+}
 
-import { type TeamMember } from '../team-config';
 import './TeamCard.css';
 
 export default function TeamCard({ name, position, src, alt }: TeamMember) {

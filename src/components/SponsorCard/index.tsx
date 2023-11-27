@@ -1,6 +1,12 @@
-'use client';
-
-import { Sponsor } from '../sponsor-config';
+export interface Sponsor {
+  logo?: {
+    src: string;
+    alt: string;
+  };
+  text: string;
+  author: string;
+  position: string;
+}
 
 export default function SponsorCard({ text, author, position }: Sponsor) {
   return (

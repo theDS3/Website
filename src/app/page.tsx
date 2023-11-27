@@ -1,8 +1,9 @@
-import AboutUs from '@/components/AboutUs';
 import Hero from '@/components/Hero';
-import Team from '@/components/Team';
-import Upcoming from '@/components/Upcoming';
-import Sponsor from '@/components/Sponsors';
+
+import AboutUs from '@/components/Main/AboutUs';
+import Executives from '@/components/Main/Executives';
+import Sponsor from '@/components/Main/Sponsors';
+import Upcoming from '@/components/Main/Upcoming';
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <Hero />
       <AboutUs />
       <Sponsor />
-      <Team />
+      <Executives />
       <Upcoming />
     </main>
   );

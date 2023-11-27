@@ -1,9 +1,15 @@
 import Link from 'next/link';
 
-import Button from '../Button';
-import SponsorCard from './SponsorCard';
+import Button from '@/components/Button';
+import SponsorCard, { type Sponsor } from '@/components/SponsorCard';
 
-import { sponsors, type Sponsor } from './sponsor-config';
+const sponsors: Sponsor[] = [
+  {
+    text: '"... they are trendsetters trailblazers who strive to create an inclusive environment for students on campus and for students to engage with data sciences and statistics and more."',
+    author: 'Gwendolyn Wang',
+    position: 'Department Manager UTSC CMS',
+  },
+];
 
 export default function Sponsors() {
   return (
@@ -23,12 +29,10 @@ export default function Sponsors() {
         <Button className="mt-6">Contact Us</Button>
       </Link>
       <div className="sponsors flex flex-col md:flex-row justify-center items-center md:justify-between md:items-start md:flex-wrap gap-8 md:gap-16 lg:gap-20 pt-8 md:pt-12">
-        {sponsors.map(({ text, author, position }: Sponsor, id) => (
+        {sponsors.map((sponsor: Sponsor, id) => (
           <SponsorCard
             key={id}
-            text={text}
-            author={author}
-            position={position}
+            {...sponsor}
           />
         ))}
       </div>
