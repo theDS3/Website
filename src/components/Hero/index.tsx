@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Button from '@/components/Button';
-import Team from '@/public/team.jpg';
+import hero from '@/public/Main/hero.jpg';
 
 export default function Hero() {
   return (
@@ -11,7 +11,7 @@ export default function Hero() {
       className="grid grid-cols-[1fr] gap-1 min-[620px]:grid-cols-[1fr_2fr] min-[620px]:gap-10">
       <Image
         priority
-        src={Team}
+        src={hero}
         alt="Data Science & Statistics Society Team Picture"
         className="mb-8 rounded-3xl"
       />

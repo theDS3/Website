@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
 
-import Mission from '@/public/mission.svg';
-import Vision from '@/public/vision.svg';
+import Mission from '@/public/Main/mission.svg'
+import Vision from '@/public/Main/vision.svg';
 
 const content = [
   {

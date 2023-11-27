@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import DS3_Logo from '@/public/logo.png';
+import logo from '@/public/logo.png';
 import './Navbar.css';
 
 const links = [
@@ -28,7 +28,7 @@ export default function NavBar() {
         tabIndex={0}>
         <Image
           priority
-          src={DS3_Logo}
+          src={logo}
           alt="DS3 Logo"
           className="w-[65px]"
         />

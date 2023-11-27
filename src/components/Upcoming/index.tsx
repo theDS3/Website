@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import datathon from '@/public/Events/datathon.png';
+import upcoming from '@/public/Main/upcoming.png';
 
 export default function Events() {
   return (
@@ -12,7 +12,7 @@ export default function Events() {
       </h2>
       <div className="pb-8 flex flex-col items-center md:flex-row md:space-x-3 lg:space-x-4 xl:space-x-8">
         <Image
-          src={datathon}
+          src={upcoming}
           alt="Upcoming Event - DS3 Datathon"
           className="pb-8 sm:h-[300px] md:h-[300px] lg:h-[450px] transition-all duration-300"
         />
