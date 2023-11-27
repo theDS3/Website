@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import Button from '@/components/Button';
 import SponsorCard, { type Sponsor } from '@/components/SponsorCard';
 
@@ -25,9 +23,12 @@ export default function Sponsors() {
         events, we support our industry partners by curating sponsorship
         packages that fit your needs.
       </p>
-      <Link href="mailto:thedatascienecube@gmail.com">
+      {/** Do not replace the <a> tag below with <Link>
+       *   <Link> does not work after a single click
+       */}
+      <a href="mailto:thedatascienecube@gmail.com">
         <Button className="mt-6">Contact Us</Button>
-      </Link>
+      </a>
       <div className="sponsors flex flex-col md:flex-row justify-center items-center md:justify-between md:items-start md:flex-wrap gap-8 md:gap-16 lg:gap-20 pt-8 md:pt-12">
         {sponsors.map((sponsor: Sponsor, id) => (
           <SponsorCard
