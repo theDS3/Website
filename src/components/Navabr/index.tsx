@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import Badge from '@/components/Datathon/MLH';
+
 import logo from '@/public/logo.png';
 import './Navbar.css';
 
@@ -57,6 +59,7 @@ export default function NavBar({ links }: { links: Link[] }) {
           })}
         </ul>
       </nav>
+      <Badge />
       <div
         className={`toggle md:hidden md:pointer-events-none w-[65px] h-[65px] relative mt-[10px] caret-transparent cursor-pointer rotate-0 transition ease-in-out duration-500 motion-reduce:transition-none ${
           toggle && 'open'
