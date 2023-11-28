@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
-import Button from '@/components/Button';
+import { LinkButton } from '@/components/Button';
 import hero from '@/public/Main/hero.jpg';
 
 export default function Hero() {
@@ -30,15 +29,12 @@ export default function Hero() {
             data science, statistics, and machine learning
           </span>
         </p>
-        <Button className="mt-6 mr-auto">
-          <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="intro-button">
-            Join Us
-          </Link>
-        </Button>
+        <LinkButton
+          newTab
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
+          prefetch={false}
+          buttonProps={{ children: 'Join Us', className: 'mt-6 mr-auto' }}
+        />
       </div>
     </section>
   );

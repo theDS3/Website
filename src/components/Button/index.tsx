@@ -1,3 +1,5 @@
+import Link, { type LinkProps } from 'next/link';
+
 interface ButtonProps {
   children: React.ReactNode;
   backgroundColor?: string;
@@ -6,6 +8,12 @@ interface ButtonProps {
   paddingX?: string;
   paddingY?: string;
   border?: string;
+  className?: string;
+}
+
+interface LinkButtonProps extends LinkProps {
+  buttonProps: ButtonProps;
+  newTab?: boolean;
   className?: string;
 }
 
@@ -24,5 +32,24 @@ export const Button = ({
       className={`cursor-pointer text-center text-white rounded-[2.5rem] shadow-md ${backgroundColor} ${fontSize} ${fontWeight} ${paddingX} ${paddingY} ${border} ${className}`}>
       {children}
     </button>
+  );
+};
+
+export const LinkButton = ({
+  href,
+  newTab = false,
+  prefetch = true,
+  className,
+  buttonProps,
+}: LinkButtonProps) => {
+  return (
+    <Link
+      className={className}
+      href={href}
+      target={newTab ? '_blank' : '_self'}
+      rel={newTab ? 'noopener noreferrer' : ''}
+      prefetch={prefetch}>
+      <Button {...buttonProps}>{buttonProps.children}</Button>
+    </Link>
   );
 };
