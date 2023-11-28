@@ -1,38 +1,38 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
-import DS3_Logo from '@/public/logo.png';
+import Badge from '@/components/Datathon/MLH';
+
+import logo from '@/public/logo.png';
 import './Navbar.css';
 
-const links = [
-  { title: 'About Us', href: '/#about-us' },
-  { title: 'Sponsors', href: '/#sponsors' },
-  { title: 'Team', href: '/#team' },
-  { title: 'Events', href: '/#events' },
-];
+export interface Link {
+  title: string;
+  href: string;
+}
 
-export default function NavBar() {
+export default function NavBar({ links }: { links: Link[] }) {
   const [toggle, setToggle] = useState<boolean>(false);
 
   return (
     <header
       className={`fixed w-full flex justify-between z-5 backdrop-blur-sm px-4 pt-2 bg-transparent shadow-2xl ${
-        toggle
-          ? 'h-full pb-[calc(100vh-5em)] transition duration-1000 ease-in-out md:h-auto md:pb-0 md:transition-none portrait:h-auto'
-          : ''
+        toggle &&
+        'h-full pb-[calc(100vh-5em)] transition duration-1000 ease-in-out md:h-auto md:pb-0 md:transition-none portrait:h-auto'
       }`}>
-      <a
+      <Link
         href="/#intro"
         tabIndex={0}>
         <Image
           priority
-          src={DS3_Logo}
+          src={logo}
           alt="DS3 Logo"
           className="w-[65px]"
         />
-      </a>
+      </Link>
       <nav
         className={`fixed w-full left-0 -top-[100vh] duration-1000 md:static md:w-auto md:duration-0 md:visible ${
           toggle
@@ -41,28 +41,29 @@ export default function NavBar() {
         } `}>
         <ul
           className={`mb-0 md:pl-0 flex flex-wrap justify-between items-center ${
-            toggle ? 'active' : ''
+            toggle && 'active'
           }`}>
-          {links.map(({ href, title }, id) => {
+          {links.map(({ href, title }: Link, id) => {
             return (
               <li
                 className="item block order-3 w-full text-center p-[10px] md:relative md:w-auto"
                 key={id}>
-                <a
+                <Link
                   className="block text-2xl md:text-lg text-white px-[5px] py-[15px] font-bold"
                   href={encodeURI(href)}
                   onClick={() => setToggle(false)}>
                   {title}
-                </a>
+                </Link>
               </li>
             );
           })}
         </ul>
       </nav>
+      <Badge />
       <div
-        className={`toggle ${
-          toggle ? 'open' : ''
-        } md:hidden md:pointer-events-none w-[65px] h-[65px] relative mt-[10px] caret-transparent cursor-pointer rotate-0 transition ease-in-out duration-500 motion-reduce:transition-none`}
+        className={`toggle md:hidden md:pointer-events-none w-[65px] h-[65px] relative mt-[10px] caret-transparent cursor-pointer rotate-0 transition ease-in-out duration-500 motion-reduce:transition-none ${
+          toggle && 'open'
+        } `}
         onClick={() => setToggle(!toggle)}>
         {[...Array(6)].map((_, id) => {
           return (
