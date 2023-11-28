@@ -61,7 +61,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="flex justify-center w-full z-5 backdrop-blur px-4 pt-2 bg-transparent shadow-2xl">
+    <footer className="flex justify-center w-full z-5 px-4 pt-2 bg-transparent shadow-2xl">
       <div className="p-8">
         <div className="grid grid-cols-1 sm:grid-cols-2">
           <div className="justify-self-start">
