@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero';
+import MainHero from '@/components/Hero/content/main';
 import NavBar, { type Link } from '@/components/Navabr';
 
 import AboutUs from '@/components/Main/AboutUs';
@@ -18,7 +19,9 @@ export default function Home() {
     <>
       <NavBar links={links} />
       <main>
-        <Hero />
+        <Hero>
+          <MainHero />
+        </Hero>
         <AboutUs />
         <Sponsor />
         <Team />
