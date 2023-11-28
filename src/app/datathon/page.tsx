@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 
 import DatathonHero from '@/components/Datathon/Hero';
 import Hero from '@/components/Hero';
+import About from '@/components/Datathon/About';
 import NavBar, { type Link } from '@/components/Navabr';
 
 const links: Link[] = [
@@ -22,6 +23,7 @@ export default function Datathon() {
         <Hero className="max-sm:justify-items-center">
           <DatathonHero />
         </Hero>
+        <About />
       </main>
     </>
   );
