@@ -22,4 +22,3 @@ export default function SponsorsCard({ name, logo, link }: Sponsors ) {
         </motion.div>
     )
 }
-  

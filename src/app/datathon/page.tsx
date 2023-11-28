@@ -4,6 +4,7 @@ import DatathonHero from '@/components/Datathon/Hero';
 import Hero from '@/components/Hero';
 import NavBar, { type Link } from '@/components/Navabr';
 import Sponsors from '@/components/Datathon/Sponsors';
+import Categories from '@/components/Datathon/Categories';
 
 const links: Link[] = [
   { title: 'About Us', href: '/datathon#about-us' },
@@ -23,6 +24,7 @@ export default function Datathon() {
         <Hero className="max-sm:justify-items-center">
           <DatathonHero />
         </Hero>
+        <Categories />
         <Sponsors />
       </main>
     </>
