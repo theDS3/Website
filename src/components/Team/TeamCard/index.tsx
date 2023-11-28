@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-
 import { type TeamMember } from '../team-config';
 import './TeamCard.css';
 
@@ -17,7 +16,7 @@ export default function TeamCard({ name, position, src, alt }: TeamMember) {
         />
       </div>
       <div className="py-5">
-        <h3 className="text-xl font-bold text-red-400 capitalize mb-5">
+        <h3 className="text-xl font-bold text-red-400 capitalize relative mb-5">
           {name}
           <span className="before-after-line" />
         </h3>
