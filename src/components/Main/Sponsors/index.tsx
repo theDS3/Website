@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+import { Button } from '@/components/Button';
 import SponsorCard, { type Sponsor } from '@/components/SponsorCard';
 
 const sponsors: Sponsor[] = [
