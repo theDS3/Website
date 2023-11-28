@@ -1,5 +1,5 @@
 import Hero from '@/components/Hero';
-import MainHero from '@/components/Hero/content/main';
+import MainHero from '@/components/Main/Hero';
 import NavBar, { type Link } from '@/components/Navabr';
 
 import AboutUs from '@/components/Main/AboutUs';

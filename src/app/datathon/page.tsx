@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
+import DatathonHero from '@/components/Datathon/Hero';
 import Hero from '@/components/Hero';
-import DatathonHero from '@/components/Hero/content/datathon';
 import NavBar, { type Link } from '@/components/Navabr';
 
 const links: Link[] = [
