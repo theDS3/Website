@@ -3,7 +3,7 @@ import MainHero from '@/components/Main/Hero';
 import NavBar, { type Link } from '@/components/Navabr';
 
 import AboutUs from '@/components/Main/AboutUs';
-import Team from '@/components/Main/Executives';
+import Executives from '@/components/Main/Executives';
 import Sponsor from '@/components/Main/Sponsors';
 import Upcoming from '@/components/Main/Upcoming';
 
@@ -25,7 +25,7 @@ export default function Home() {
         </Hero>
         <AboutUs />
         <Sponsor />
-        <Team />
+        <Executives />
         <Upcoming />
       </main>
     </>
