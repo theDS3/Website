@@ -23,16 +23,15 @@ export default function NavBar({ links }: { links: Link[] }) {
         toggle &&
         'h-full pb-[calc(100vh-5em)] transition duration-1000 ease-in-out md:h-auto md:pb-0 md:transition-none portrait:h-auto'
       }`}>
-      <Link
+      <a
         href="/#intro"
         tabIndex={0}>
         <Image
           priority
           src={logo}
           alt="DS3 Logo"
-          className="w-[65px]"
         />
-      </Link>
+      </a>
       <nav
         className={`fixed w-full left-0 -top-[100vh] duration-1000 md:static md:w-auto md:duration-0 md:visible ${
           toggle
@@ -48,12 +47,21 @@ export default function NavBar({ links }: { links: Link[] }) {
               <li
                 className="item block order-3 w-full text-center p-[10px] md:relative md:w-auto"
                 key={id}>
-                <Link
-                  className="block text-2xl md:text-lg text-white px-[5px] py-[15px] font-bold"
-                  href={encodeURI(href)}
-                  onClick={() => setToggle(false)}>
-                  {title}
-                </Link>
+                {href.includes('#') ? (
+                  <a
+                    className="block text-2xl md:text-lg text-white px-[5px] py-[15px] font-bold"
+                    href={encodeURI(href)}
+                    onClick={() => setToggle(false)}>
+                    {title}
+                  </a>
+                ) : (
+                  <Link
+                    className="block text-2xl md:text-lg text-white px-[5px] py-[15px] font-bold"
+                    href={encodeURI(href)}
+                    onClick={() => setToggle(false)}>
+                    {title}
+                  </Link>
+                )}
               </li>
             );
           })}
