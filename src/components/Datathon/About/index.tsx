@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Datathon_About from '@/public/Datathon/about-us.jpg';
+import Image from 'next/image';
 
 export default function About_Datathon() {
   return (
@@ -9,6 +9,7 @@ export default function About_Datathon() {
       <Image
         src={Datathon_About}
         alt="Data Science & Statistics Society Team Picture"
+        placeholder="blur"
         className="rounded-3xl mb-4 sm:mb-0 sm:w-[500px] transition-all duration-300"
       />
 

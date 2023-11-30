@@ -9,6 +9,7 @@ export default function MainHero() {
       <Image
         src={hero}
         alt="Data Science & Statistics Society Team Picture"
+        placeholder="blur"
         className="mb-8 rounded-3xl"
       />
       <div className="flex flex-col gap-8 xl:gap-12">
