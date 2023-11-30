@@ -7,7 +7,6 @@ export default function About_Datathon() {
       id="about-us"
       className="grid grid-cols-[1fr] gap-3 min-[620px]:grid-cols-[1fr_2fr] min-[620px]:gap-10">
       <Image
-        priority
         src={Datathon_About}
         alt="Data Science & Statistics Society Team Picture"
         className="rounded-3xl mb-4 sm:mb-0 sm:w-[500px] transition-all duration-300"

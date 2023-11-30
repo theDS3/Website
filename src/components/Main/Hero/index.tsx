@@ -7,7 +7,6 @@ export default function MainHero() {
   return (
     <>
       <Image
-        priority
         src={hero}
         alt="Data Science & Statistics Society Team Picture"
         className="mb-8 rounded-3xl"
