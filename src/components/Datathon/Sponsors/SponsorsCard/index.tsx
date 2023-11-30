@@ -1,10 +1,16 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
-import { Sponsors } from '../sponsors-config';
+import { type StaticImageData } from 'next/image';
+
+export interface Sponsors {
+  name: string;
+  logo: StaticImageData;
+  link: string;
+}
 
 export default function SponsorsCard({ name, logo, link }: Sponsors) {
   return (
@@ -22,7 +28,6 @@ export default function SponsorsCard({ name, logo, link }: Sponsors) {
         <Image
           src={logo}
           alt={name}
-          className="rounded-lg"
         />
       </Link>
     </motion.div>

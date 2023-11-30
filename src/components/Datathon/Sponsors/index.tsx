@@ -1,5 +1,44 @@
-import SponsorsCard from './SponsorsCard';
-import { sponsors, type Sponsors } from './sponsors-config';
+import SponsorsCard, { type Sponsors } from './SponsorsCard';
+
+import FGF from '@/public/Datathon/Sponsors/FGF.svg';
+import KlickHealth from '@/public/Datathon/Sponsors/Klick Health.svg';
+import MLH from '@/public/Datathon/Sponsors/MLH.svg';
+import MSReactor from '@/public/Datathon/Sponsors/MSReactor.svg';
+import VectorInstitute from '@/public/Datathon/Sponsors/Vector Institute.svg';
+import theScore from '@/public/Datathon/Sponsors/theScore.svg';
+
+const sponsors: Sponsors[] = [
+  {
+    name: 'Vector Institute',
+    logo: VectorInstitute,
+    link: 'https://vectorinstitute.ai/',
+  },
+  {
+    name: 'FGF Brands',
+    logo: FGF,
+    link: 'https://www.fgfbrands.com/',
+  },
+  {
+    name: 'Microsoft Reactor',
+    logo: MSReactor,
+    link: 'https://developer.microsoft.com/en-us/reactor/',
+  },
+  {
+    name: 'TheScore',
+    logo: theScore,
+    link: 'https://www.thescore.com/',
+  },
+  {
+    name: 'MLH',
+    logo: MLH,
+    link: 'https://mlh.io/',
+  },
+  {
+    name: 'Klick Health',
+    logo: KlickHealth,
+    link: 'https://www.klick.com/',
+  },
+];
 
 export default function Sponsors() {
   return (
