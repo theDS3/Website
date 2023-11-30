@@ -9,7 +9,7 @@ export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
     VALIDATION_SECRET: z.string(),
-    DATABASE_NAME: z.enum(['prod', 'dev', 'test']).default('test'),
+    DATABASE_NAME: z.enum(['prod', 'dev', 'local']).default('local'),
   },
   /**
    * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
