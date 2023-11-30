@@ -1,5 +1,8 @@
 import { type StaticImageData } from "next/image";
 import Placeholder from '@/public/Datathon/Categories/placeholder.png'
+import Academia from '@/public/Datathon/Categories/Academia/Academics (coloured).svg'
+import Industry from '@/public/Datathon/Categories/Industry/Working 1 (coloured).svg'
+import Government from '@/public/Datathon/Categories/Government/Government 1 (coloured).svg'
 
 export interface Themes {
     name: string;
@@ -9,18 +12,18 @@ export interface Themes {
 
 export const themes: Themes[] = [
     {
-      name: 'Theme 1',
-      image: Placeholder,
-      description: 'Healthcare is the maintenance or improvement of health via the prevention, diagnosis, treatment, recovery, or cure of disease, illness, injury, and other physical and mental impairments in people.'
+      name: 'Academia',
+      image: Academia,
+      description: 'Experience life like a data scientist in the areas of ...'
     },
     {
-      name: 'Theme 2',
-      image: Placeholder,
-      description: 'Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, morals, beliefs, and habits.'
+      name: 'Industry',
+      image: Industry,
+      description: 'Experience life like a data scientist in the areas of ...'
     },
     {
-      name: 'Theme 3',
-      image: Placeholder,
-      description: 'Finance is a term for matters regarding the management, creation, and study of money and investments.'
+      name: 'Government',
+      image: Government,
+      description: 'Experience life like a data scientist in the areas of ...'
     },
 ]
