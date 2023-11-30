@@ -10,9 +10,15 @@ export interface Sponsors {
   name: string;
   logo: StaticImageData;
   link: string;
+  className?: string;
 }
 
-export default function SponsorsCard({ name, logo, link }: Sponsors) {
+export default function SponsorsCard({
+  name,
+  logo,
+  link,
+  className,
+}: Sponsors) {
   return (
     <motion.div
       style={{
@@ -20,7 +26,7 @@ export default function SponsorsCard({ name, logo, link }: Sponsors) {
         width: '185px',
         height: '110px',
       }}
-      className="rounded-lg bg-white flex justify-center items-center"
+      className={`rounded-lg bg-white flex justify-center items-center ${className}`}
       whileHover={{ scale: 1.1 }}>
       <Link
         href={link}
