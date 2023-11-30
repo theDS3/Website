@@ -29,7 +29,7 @@ export default function CategoryCard({ name, image, description }: Themes ) {
                 className='text-center'
             >
                 <h3 className='text-2xl text-amber-100 text-bold p-2 underline'>{name}</h3>
-                <p>{description}</p>
+                <p className='text-xl'>{description}</p>
             </motion.div>
         </div>
     )
