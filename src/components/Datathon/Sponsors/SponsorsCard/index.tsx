@@ -30,7 +30,8 @@ export default function SponsorsCard({
       whileHover={{ scale: 1.1 }}>
       <Link
         href={link}
-        target="_blank">
+        target="_blank"
+        rel="noopener noreferrer">
         <Image
           src={logo}
           alt={name}
