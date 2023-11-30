@@ -1,11 +1,11 @@
 import { type StaticImageData } from "next/image";
 
-import VectorInstitute from '@/public/Datathon/Sponsors/vector-institute.png'
-import FGF from '@/public/Datathon/Sponsors/fgf.jpg'
-import MSReactor from '@/public/Datathon/Sponsors/ms-reactor.jpeg'
-import TheScore from '@/public/Datathon/Sponsors/thescore.jpeg'
-import KlickHealth from '@/public/Datathon/Sponsors/klick-health.jpeg'
-import MLH from '@/public/Datathon/Sponsors/mlh.png'
+import VectorInstitute from '@/public/Datathon/Sponsors/Vector Institute.svg'
+import FGF from '@/public/Datathon/Sponsors/FGF Logo (2) (1) 1.svg'
+import MSReactor from '@/public/Datathon/Sponsors/Reactor-logo-Dark 1.svg'
+import TheScore from '@/public/Datathon/Sponsors/theScore signature logo (1) 1.svg'
+import KlickHealth from '@/public/Datathon/Sponsors/Klick Health.svg'
+import MLH from '@/public/Datathon/Sponsors/MLH.svg'
 
 export interface Sponsors {
     name: string;
