@@ -6,6 +6,8 @@ import NavBar, { type Link } from '@/components/Navabr';
 import Sponsors from '@/components/Datathon/Sponsors';
 import Categories from '@/components/Datathon/Categories';
 
+import About from '@/components/Datathon/About';
+
 const links: Link[] = [
   { title: 'About Us', href: '/datathon#about-us' },
   { title: 'Categories', href: '/datathon#categories' },
@@ -21,9 +23,10 @@ export default function Datathon() {
     <>
       <NavBar links={links} />
       <main>
-        <Hero className="max-sm:justify-items-center">
+        <Hero className="max-sm:justify-items-center min-[620px]:py-[30vh]">
           <DatathonHero />
         </Hero>
+        <About />
         <Categories />
         <Sponsors />
       </main>

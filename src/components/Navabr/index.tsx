@@ -19,7 +19,7 @@ export default function NavBar({ links }: { links: Link[] }) {
 
   return (
     <header
-      className={`fixed w-full flex justify-between z-5 backdrop-blur-sm px-4 pt-2 bg-transparent shadow-2xl ${
+      className={`fixed w-full flex justify-between z-10 backdrop-blur-sm px-4 pt-2 bg-transparent shadow-2xl ${
         toggle &&
         'h-full pb-[calc(100vh-5em)] transition duration-1000 ease-in-out md:h-auto md:pb-0 md:transition-none portrait:h-auto'
       }`}>
