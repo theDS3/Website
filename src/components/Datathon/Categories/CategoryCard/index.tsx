@@ -35,7 +35,9 @@ export default function CategoryCard({ name, image, description }: Themes) {
                 className='text-center relative'
             >
                 <div className='w-28 h-1 bg-amber-100 mx-auto mt-2 mb-2 rounded-full'></div>
-                <p className='text-xl pt-2'>{description}</p>
+                <div className='flex flex-col justify-center items-center pt-4 h-56'>
+                    <p className='text-lg pt-2'>{description}</p>
+                </div>
             </motion.div>
         </div>
     )

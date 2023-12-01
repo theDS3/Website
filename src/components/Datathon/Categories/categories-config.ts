@@ -24,6 +24,6 @@ export const themes: Themes[] = [
     {
       name: 'Government',
       image: Government,
-      description: 'Armed with analytics, data scientists inform policy decisions, enhance public services, and ensure data-driven strategies to empower nations and thrive in the digital age.'
+      description: 'Armed with analytics, data scientists enhance public services, and ensure data-driven strategies to empower nations and thrive in the digital age.'
     },
 ]

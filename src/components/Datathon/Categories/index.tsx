@@ -9,7 +9,7 @@ export default function Categories() {
       <h2 className="text-gray-300/60 text-5xl font-bold tracking-wide pb-8 text-center">
         Categories
       </h2>
-      <p className="text-bold text-2xl">
+      <p className="text-bold text-2xl text-center">
         Experience life like a data scientist in the areas of ...
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3">
