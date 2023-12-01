@@ -1,13 +1,3 @@
-@media (min-width: 768px) {
-  nav {
-    padding-right: clamp(60px, 15%, 100px);
-  }
-}
-
-.toggle {
-  margin-right: clamp(70px, 18%, 100px);
-}
-
 .toggle span {
   transition: 0.25s ease-in-out;
 
