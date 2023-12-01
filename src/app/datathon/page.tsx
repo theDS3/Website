@@ -5,7 +5,6 @@ import Hero from '@/components/Hero';
 import NavBar, { type Link } from '@/components/Navabr';
 import Sponsors from '@/components/Datathon/Sponsors';
 import Categories from '@/components/Datathon/Categories';
-
 import About from '@/components/Datathon/About';
 
 const links: Link[] = [

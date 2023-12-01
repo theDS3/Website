@@ -7,9 +7,9 @@ export default function DatathonHero() {
   return (
     <>
       <Image
-        priority
         src={hero}
         alt="Data Science & Statistics Society Team Picture"
+        placeholder="blur"
         className="rounded-3xl mb-8 sm:mb-0 sm:w-[500px] transition-all duration-300"
       />
       <div className="flex flex-col gap-8 xl:gap-12 max-sm:items-center">

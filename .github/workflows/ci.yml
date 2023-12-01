@@ -39,6 +39,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo SKIP_ENV_VALIDATION=true >> .env
+
       - name: Linting
         run: pnpm lint
 
