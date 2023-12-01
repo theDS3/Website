@@ -18,7 +18,7 @@ export default function CategoryCard({ name, image, description }: Themes) {
         className="grid items-center justify-center text-center"
         //onClick={handleCategoryClick}
         //whileHover={{ scale: 1.05 }}
-        >
+      >
         <Image
           src={image}
           alt={name}
