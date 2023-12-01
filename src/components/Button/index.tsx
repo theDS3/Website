@@ -44,6 +44,7 @@ export const LinkButton = ({
 }: LinkButtonProps) => {
   return (
     <Link
+      role="button"
       className={className}
       href={href}
       target={newTab ? '_blank' : '_self'}
