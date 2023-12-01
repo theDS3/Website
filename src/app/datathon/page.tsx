@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
 
+import About from '@/components/Datathon/About';
 import DatathonHero from '@/components/Datathon/Hero';
+import Sponsors from '@/components/Datathon/Sponsors';
+import Themes from '@/components/Datathon/Themes';
 import Hero from '@/components/Hero';
 import NavBar, { type Link } from '@/components/Navabr';
-import Sponsors from '@/components/Datathon/Sponsors';
-
-import About from '@/components/Datathon/About';
 
 const links: Link[] = [
   { title: 'About Us', href: '/datathon#about-us' },
-  { title: 'Categories', href: '/datathon#categories' },
+  { title: 'Themes', href: '/datathon#themes' },
   { title: 'Sponsors', href: '/datathon#sponsors' },
 ];
 
@@ -26,6 +26,7 @@ export default function Datathon() {
           <DatathonHero />
         </Hero>
         <About />
+        <Themes />
         <Sponsors />
       </main>
     </>
