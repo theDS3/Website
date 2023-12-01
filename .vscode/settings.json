@@ -1,7 +1,4 @@
 {
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "conventionalCommits.promptScopes": false,
   "conventionalCommits.emojiFormat": "emoji",
   "conventionalCommits.autoCommit": false,
@@ -11,8 +8,7 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.inlineSuggest.enabled": true,
-  "eslint.validate": ["astro", "typescript"],
-  "prettier.documentSelectors": ["**/*.astro"],
+  "eslint.validate": ["typescript"],
   "prettier.configPath": ".prettierrc",
   "prettier.ignorePath": ".prettierignore"
 }

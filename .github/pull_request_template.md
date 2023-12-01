@@ -22,15 +22,14 @@ Relevant GitHub Issues that will be fixed are
 - [ ] Responsiveness on various devices
 - Desktop Browser
   - [ ] Apple Safari
-  - [ ] Brave
   - [ ] Google Chrome
   - [ ] Microsoft Edge
-  - [ ]Mozilla FireFox
-- Mobile Browser
-  - [ ] Google Chrome
   - [ ] Mozilla FireFox
-  - [ ] Microsoft Edge
+- Mobile Browser
   - [ ] Apple Safari
+  - [ ] Google Chrome
+  - [ ] Microsoft Edge
+  - [ ] Mozilla FireFox
 - Other Tests:
 
 ## Checklist

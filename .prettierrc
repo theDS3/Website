@@ -1,15 +1,5 @@
 {
   "singleQuote": true,
   "bracketSameLine": true,
-  "singleAttributePerLine": true,
-  "astroAllowShorthand": false,
-  "plugins": ["prettier-plugin-astro"],
-  "overrides": [
-    {
-      "files": "*.astro",
-      "options": {
-        "parser": "astro"
-      }
-    }
-  ]
+  "singleAttributePerLine": true
 }
