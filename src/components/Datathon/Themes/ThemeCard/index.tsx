@@ -1,24 +1,27 @@
 'use client';
 
-import Image from 'next/image';
-import { Themes } from '../categories-config';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image, { type StaticImageData } from 'next/image';
+import { useState } from 'react';
 
-export default function CategoryCard({ name, image, description }: Themes) {
-  // const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+export interface Theme {
+  name: string;
+  image: StaticImageData;
+  description: string;
+}
+export default function ThemeCard({ name, image, description }: Theme) {
+  const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
 
-  /*const handleCategoryClick = () => {
-    setSelectedCategory(name === selectedCategory ? null : name);
-  };*/
+  const handleThemeClick = () => {
+    setSelectedTheme(name === selectedTheme ? null : name);
+  };
 
   return (
     <div className="w-48 mx-10 pt-4">
-      <div
+      <motion.div
         className="grid items-center justify-center text-center"
-        //onClick={handleCategoryClick}
-        //whileHover={{ scale: 1.05 }}
-      >
+        onClick={handleThemeClick}
+        whileHover={{ scale: 1.05 }}>
         <Image
           src={image}
           alt={name}
@@ -27,12 +30,12 @@ export default function CategoryCard({ name, image, description }: Themes) {
           className="rounded-lg"
         />
         <h3 className="text-2xl text-white font-bold">{name}</h3>
-      </div>
-      {/* <motion.div
+      </motion.div>
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{
-          opacity: selectedCategory === name ? 1 : 0,
-          y: selectedCategory === name ? 0 : 20,
+          opacity: selectedTheme === name ? 1 : 0,
+          y: selectedTheme === name ? 0 : 20,
         }}
         transition={{ duration: 0.3 }}
         className="text-center relative">
@@ -40,7 +43,7 @@ export default function CategoryCard({ name, image, description }: Themes) {
         <div className="flex flex-col justify-center items-center pt-4 h-56">
           <p className="text-lg pt-2">{description}</p>
         </div>
-      </motion.div> */}
+      </motion.div>
     </div>
   );
 }
