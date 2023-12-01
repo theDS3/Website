@@ -1,5 +1,5 @@
 import { Button } from '@/components/Button';
-import SponsorCard, { type Sponsor } from '@/components/SponsorCard';
+import SponsorCard, { type Sponsor } from './SponsorCard';
 
 const sponsors: Sponsor[] = [
   {
