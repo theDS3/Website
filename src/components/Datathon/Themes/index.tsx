@@ -8,20 +8,14 @@ const themes: Theme[] = [
   {
     name: 'Academia',
     image: Academia,
-    description:
-      'Capture the essence of curiosity. Academia unveils the beauty of data science through research, innovation, and the relentless pursuit of knowledge.',
   },
   {
     name: 'Industry',
     image: Industry,
-    description:
-      'The heartbeat of businesses. Data scientists transform raw data into actionable insights, shaping industries and fostering growth.',
   },
   {
     name: 'Government',
     image: Government,
-    description:
-      'Armed with analytics, data scientists enhance public services, and ensure data-driven strategies to empower nations and thrive in the digital age.',
   },
 ];
 
@@ -37,12 +31,11 @@ export default function Themes() {
         Experience life like a data scientist in the areas of ...
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3">
-        {themes.map(({ name, image, description }, id) => (
+        {themes.map(({ name, image }, id) => (
           <ThemeCard
             key={id}
             name={name}
             image={image}
-            description={description}
           />
         ))}
       </div>
