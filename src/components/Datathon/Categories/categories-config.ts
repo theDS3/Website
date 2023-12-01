@@ -14,16 +14,16 @@ export const themes: Themes[] = [
     {
       name: 'Academia',
       image: Academia,
-      description: 'Experience life like a data scientist in the areas of ...'
+      description: 'Capture the essence of curiosity. Academia unveils the beauty of data science through research, innovation, and the relentless pursuit of knowledge.'
     },
     {
       name: 'Industry',
       image: Industry,
-      description: 'Experience life like a data scientist in the areas of ...'
+      description: 'The heartbeat of businesses. Data scientists transform raw data into actionable insights, shaping industries and fostering growth.'
     },
     {
       name: 'Government',
       image: Government,
-      description: 'Experience life like a data scientist in the areas of ...'
+      description: 'Armed with analytics, data scientists inform policy decisions, enhance public services, and ensure data-driven strategies to empower nations and thrive in the digital age.'
     },
 ]

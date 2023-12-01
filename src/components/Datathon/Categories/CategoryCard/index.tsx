@@ -34,10 +34,7 @@ export default function CategoryCard({ name, image, description }: Themes) {
                 transition={{ duration: 0.3 }}
                 className='text-center relative'
             >
-                {selectedCategory === name && (
-                    <div className='w-28 h-1 bg-amber-100 mx-auto mt-2 mb-2 rounded-full'></div>
-                )}
-
+                <div className='w-28 h-1 bg-amber-100 mx-auto mt-2 mb-2 rounded-full'></div>
                 <p className='text-xl pt-2'>{description}</p>
             </motion.div>
         </div>
