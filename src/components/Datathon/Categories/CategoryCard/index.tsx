@@ -26,7 +26,7 @@ export default function CategoryCard({ name, image, description }: Themes) {
                     height={200}
                     className='rounded-lg cursor-pointer'
                 />
-                <h3 className='text-2xl text-amber-100 font-bold'>{name}</h3>
+                <h3 className='text-2xl text-white font-bold'>{name}</h3>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function CategoryCard({ name, image, description }: Themes) {
                 className='text-center relative'
             >
                 {selectedCategory === name && (
-                    <div className='w-28 h-2 bg-amber-100 mx-auto mt-2 mb-2 rounded-full'></div>
+                    <div className='w-28 h-1 bg-amber-100 mx-auto mt-2 mb-2 rounded-full'></div>
                 )}
 
                 <p className='text-xl pt-2'>{description}</p>
