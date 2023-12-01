@@ -23,7 +23,7 @@ export default function Themes() {
   return (
     <section
       id="themes"
-      className="flex flex-col items-center justify-center">
+      className="flex flex-col items-center justify-center min-[620px]:py-[30vh]">
       <h2 className="text-gray-300/60 text-5xl font-bold tracking-wide pb-8 text-center">
         Themes
       </h2>

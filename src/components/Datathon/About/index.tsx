@@ -5,7 +5,7 @@ export default function About_Datathon() {
   return (
     <section
       id="about-us"
-      className="grid grid-cols-[1fr] gap-3 min-[620px]:grid-cols-[1fr_2fr] min-[620px]:gap-10">
+      className="grid grid-cols-[1fr] gap-3 min-[620px]:grid-cols-[1fr_2fr] min-[620px]:gap-10 min-[620px]:py-[30vh]">
       <Image
         src={Datathon_About}
         alt="Data Science & Statistics Society Team Picture"
