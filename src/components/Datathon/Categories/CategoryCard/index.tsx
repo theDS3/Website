@@ -6,28 +6,29 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CategoryCard({ name, image, description }: Themes) {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  // const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const handleCategoryClick = () => {
+  /*const handleCategoryClick = () => {
     setSelectedCategory(name === selectedCategory ? null : name);
-  };
+  };*/
 
   return (
     <div className="w-48 mx-10 pt-4">
-      <motion.div
+      <div
         className="grid items-center justify-center text-center"
-        onClick={handleCategoryClick}
-        whileHover={{ scale: 1.05 }}>
+        //onClick={handleCategoryClick}
+        //whileHover={{ scale: 1.05 }}
+        >
         <Image
           src={image}
           alt={name}
           width={200}
           height={200}
-          className="rounded-lg cursor-pointer"
+          className="rounded-lg"
         />
         <h3 className="text-2xl text-white font-bold">{name}</h3>
-      </motion.div>
-      <motion.div
+      </div>
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{
           opacity: selectedCategory === name ? 1 : 0,
@@ -39,7 +40,7 @@ export default function CategoryCard({ name, image, description }: Themes) {
         <div className="flex flex-col justify-center items-center pt-4 h-56">
           <p className="text-lg pt-2">{description}</p>
         </div>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }
