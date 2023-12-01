@@ -4,7 +4,9 @@ export interface IParticipant {
   firstName: string;
   lastName: string;
   email: string;
-  dietaryRestrictions: [string];
+  school: string;
+  countryOfResidence: string;
+  dietaryRestrictions: string;
   code: string;
   qrcode?: string;
 }
@@ -28,12 +30,20 @@ const participantSchema = new mongoose.Schema<IParticipant>(
       index: true,
       trim: true,
     },
-    dietaryRestrictions: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
+    school: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    countryOfResidence: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    dietaryRestrictions: {
+      type: String,
+      trim: true,
+    },
     code: {
       type: String,
       required: true,

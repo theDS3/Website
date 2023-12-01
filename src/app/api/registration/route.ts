@@ -1,20 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
-import Participant from '@/db/models/participant';
+import Participant, { type IParticipant } from '@/db/models/participant';
 
-interface FormSubmission {
-  firstName: string;
-  lastName: string;
-  email: string;
-  dietaryRestrictions: string[];
-}
-
-let submission: FormSubmission = {
+let submission: Omit<IParticipant, 'code'> = {
   firstName: '',
   lastName: '',
   email: '',
-  dietaryRestrictions: [],
+  school: '',
+  countryOfResidence: '',
+  dietaryRestrictions: '',
 };
 
 let code = '';
@@ -38,7 +33,10 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     if (error instanceof SyntaxError) {
       // Invalid Submission
-      return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+      return NextResponse.json(
+        { type: 'UnauthorizedError', error: 'Invalid request' },
+        { status: 400 },
+      );
     } else if (error.code === 11000) {
       // Duplicate Error
       if (error.keyValue.email === submission.email) {

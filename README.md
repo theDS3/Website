@@ -13,10 +13,10 @@ Clone the project from GitHub
 git clone https://github.com/theDS3/Website.git
 ```
 
-Create an `.env` file and add the following:
+Create and update the `.env` file based on the example file `.env.example`
 
 ```bash
-DEPLOY_MODE='development'
+cp .env.example .env
 ```
 
 Then you can run it by:
@@ -27,7 +27,7 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:4321](http://localhost:4321) with your browser.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 Take a look at our [SUPPORT](./SUPPORT.md) file for more instructions.
 
@@ -35,19 +35,15 @@ Take a look at our [SUPPORT](./SUPPORT.md) file for more instructions.
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                           |
-| ---------------------- | ------------------------------------------------ |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm start`           | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm purge`           | Purges the cache and `node_modules` folder       |
-| `pnpm tunnel`          | Tunnels local dev server for testing on mobile   |
-| `pnpm lint`            | Lints code with ESLint and runs type checking    |
-| `pnpm format`          | Formats code with Prettier                       |
+| Command        | Action                                         |
+| -------------- | ---------------------------------------------- |
+| `pnpm install` | Installs dependencies                          |
+| `pnpm dev`     | Starts local dev server at `localhost:3000`    |
+| `pnpm start`   | Preview your build locally, before deploying   |
+| `pnpm build`   | Build your production site to `.next`          |
+| `pnpm tunnel`  | Tunnels local dev server for testing on mobile |
+| `pnpm lint`    | Lints code with ESLint and runs type checking  |
+| `pnpm format`  | Formats code with Prettier                     |
 
 ## License
 
