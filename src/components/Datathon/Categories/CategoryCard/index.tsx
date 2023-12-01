@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import { Themes } from '../categories-config'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import Image from 'next/image';
+import { Themes } from '../categories-config';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function CategoryCard({ name, image, description }: Themes) {
-    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-    const handleCategoryClick = () => {
-        setSelectedCategory(name === selectedCategory ? null : name);
-    }
+  const handleCategoryClick = () => {
+    setSelectedCategory(name === selectedCategory ? null : name);
+  };
 
     return (
         <div className='w-48 mx-10 pt-4'>
