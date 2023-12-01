@@ -11,19 +11,22 @@ export interface Themes {
 }
 
 export const themes: Themes[] = [
-    {
-      name: 'Academia',
-      image: Academia,
-      description: 'Capture the essence of curiosity. Academia unveils the beauty of data science through research, innovation, and the relentless pursuit of knowledge.'
-    },
-    {
-      name: 'Industry',
-      image: Industry,
-      description: 'The heartbeat of businesses. Data scientists transform raw data into actionable insights, shaping industries and fostering growth.'
-    },
-    {
-      name: 'Government',
-      image: Government,
-      description: 'Armed with analytics, data scientists enhance public services, and ensure data-driven strategies to empower nations and thrive in the digital age.'
-    },
-]
+  {
+    name: 'Academia',
+    image: Academia,
+    description:
+      'Capture the essence of curiosity. Academia unveils the beauty of data science through research, innovation, and the relentless pursuit of knowledge.',
+  },
+  {
+    name: 'Industry',
+    image: Industry,
+    description:
+      'The heartbeat of businesses. Data scientists transform raw data into actionable insights, shaping industries and fostering growth.',
+  },
+  {
+    name: 'Government',
+    image: Government,
+    description:
+      'Armed with analytics, data scientists enhance public services, and ensure data-driven strategies to empower nations and thrive in the digital age.',
+  },
+];
