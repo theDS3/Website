@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -20,14 +17,13 @@ export default function SponsorsCard({
   className,
 }: Sponsors) {
   return (
-    <motion.div
+    <div
       style={{
         boxShadow: '8px 8px 0px 0px #c190f0',
         width: '185px',
         height: '110px',
       }}
-      className={`rounded-lg bg-white flex justify-center items-center ${className}`}
-      whileHover={{ scale: 1.1 }}>
+      className="rounded-lg bg-white flex justify-center items-center">
       <Link
         href={link}
         target="_blank"
@@ -35,8 +31,9 @@ export default function SponsorsCard({
         <Image
           src={logo}
           alt={name}
+          quality={100}
         />
       </Link>
-    </motion.div>
+    </div>
   );
 }

@@ -30,6 +30,7 @@ export default function DatathonHero() {
             backgroundColor: 'bg-[#50D634]',
             paddingY: 'py-2',
             children: 'Register Now !',
+            fontWeight: 'font-normal',
           }}
         />
       </div>

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { LinkButton } from '@/components/Button';
 import upcoming from '@/public/Main/upcoming.png';
 
 export default function Events() {
@@ -15,7 +16,7 @@ export default function Events() {
           src={upcoming}
           alt="Upcoming Event - DS3 Datathon"
           placeholder="blur"
-          className="pb-8 sm:h-[300px] md:h-[300px] lg:h-[450px] transition-all duration-300"
+          className="pb-8 h-[400px] w-[400px] transition-all duration-300"
         />
         <p className="text-white text-center text-2xl transition-all md:text-1xl md:text-left lg:text-3xl xl:text-5xl">
           The DS3 Datathon presents a unique opportunity for participants to
@@ -23,6 +24,10 @@ export default function Events() {
           through the application of advanced tools and techniques.
         </p>
       </div>
+      <LinkButton
+        href="/datathon"
+        buttonProps={{ children: 'Register Now' }}
+      />
     </section>
   );
 }
