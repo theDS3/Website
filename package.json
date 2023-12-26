@@ -20,7 +20,7 @@
     "@loskir/styled-qr-code-node": "^1.5.1",
     "@t3-oss/env-nextjs": "^0.7.1",
     "framer-motion": "^10.16.16",
-    "mongoose": "^8.0.1",
+    "mongoose": "^8.0.3",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
