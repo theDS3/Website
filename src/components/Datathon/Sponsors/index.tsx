@@ -3,13 +3,14 @@ import SponsorsCard, { type Sponsors } from './SponsorsCard';
 import FGF from '@/public/Datathon/Sponsors/FGF.svg';
 import KlickHealth from '@/public/Datathon/Sponsors/Klick Health.svg';
 import theScore from '@/public/Datathon/Sponsors/theScore.svg';
+import VectorInstitute from '@/public/Datathon/Sponsors/Vector Institute.svg';
 
 const sponsors: Sponsors[] = [
-  // {
-  //   name: 'Vector Institute',
-  //   logo: VectorInstitute,
-  //   link: 'https://vectorinstitute.ai/',
-  // },
+  {
+    name: 'Vector Institute',
+    logo: VectorInstitute,
+    link: 'https://vectorinstitute.ai/',
+  },
   {
     name: 'FGF Brands',
     logo: FGF,
