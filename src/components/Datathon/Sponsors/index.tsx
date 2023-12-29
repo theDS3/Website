@@ -47,7 +47,7 @@ export default function Sponsors() {
       <h2 className="text-gray-300/60 text-5xl font-bold tracking-wide pb-8 text-center">
         Our Sponsors
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-20 pt-20">
         {sponsors.map((sponsor: Sponsors, id) => (
           <SponsorsCard
             key={id}
