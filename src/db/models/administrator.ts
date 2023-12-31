@@ -18,7 +18,7 @@ const administratorSchema = new Schema<IAdministrator>(
       type: String,
       required: true,
       trim: true,
-    }
+    },
   },
   {
     timestamps: true,
@@ -29,8 +29,9 @@ const administratorSchema = new Schema<IAdministrator>(
         return ret;
       },
     },
-  }
+  },
 );
 
-const Administrator = models.Administrator || mongoose.model('Administrator', administratorSchema);
+const Administrator =
+  models.Administrator || mongoose.model('Administrator', administratorSchema);
 export default Administrator;

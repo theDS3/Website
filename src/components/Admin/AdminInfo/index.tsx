@@ -1,4 +1,5 @@
 'use client';
+'use client';
 
 import React, { useEffect } from 'react';
 import { useSession, getSession, signOut } from 'next-auth/react';
