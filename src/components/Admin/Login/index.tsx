@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { FormEvent, useState } from 'react';
 import { signIn } from 'next-auth/react';
@@ -9,7 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const router  = useRouter();
+  const router = useRouter();
 
   const handleLoginButtonClick = () => {
     setShowLoginPopup(true);
@@ -30,24 +30,23 @@ export default function Login() {
       });
 
       if (res && res.error) {
-        setError("Invalid Login");
+        setError('Invalid Login');
         return;
       }
 
-      router.replace("/datathon")
-      router.push("/admin")
+      router.replace('/datathon');
+      router.push('/admin');
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
       <div>
         <button
           onClick={handleLoginButtonClick}
-          className="w-max mt-6 mr-auto bg-[#50D634] py-2 border-none font-normal"
-        >
+          className="w-max mt-6 mr-auto bg-[#50D634] py-2 border-none font-normal">
           Admin Login
         </button>
       </div>
@@ -58,11 +57,13 @@ export default function Login() {
             <h2 className="text-2xl font-bold mb-4">Login</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="email">
                   Email:
                 </label>
                 <input
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   id="email"
                   className="w-full border border-gray-300 p-2 rounded-md"
@@ -70,11 +71,13 @@ export default function Login() {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="password">
                   Password:
                 </label>
                 <input
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   id="password"
                   className="w-full border border-gray-300 p-2 rounded-md"
@@ -85,27 +88,24 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={closeLoginPopup}
-                  className="mr-2 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded"
-                >
+                  className="mr-2 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded">
                   Close
                 </button>
                 <button
                   type="submit"
-                  className="bg-[#50D634] hover:bg-[#3B9724] text-white py-2 px-4 rounded"
-                >
+                  className="bg-[#50D634] hover:bg-[#3B9724] text-white py-2 px-4 rounded">
                   Submit
                 </button>
               </div>
-            {error && (
-              <div className="text-center mt-3 mb-[-12px] text-red-600">
-                {error}
-              </div>
-            )}
-
+              {error && (
+                <div className="text-center mt-3 mb-[-12px] text-red-600">
+                  {error}
+                </div>
+              )}
             </form>
           </div>
         </div>
       )}
     </>
   );
-};
+}

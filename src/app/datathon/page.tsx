@@ -24,7 +24,6 @@ export default function Datathon() {
     <>
       <NavBar links={links} />
       <main>
-        
         <Hero className="max-sm:justify-items-center min-[620px]:py-[30vh]">
           <DatathonHero />
         </Hero>
