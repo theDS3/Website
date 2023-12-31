@@ -3,7 +3,6 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectDB } from '@/db/config';
 import Administrator from '@/db/models/administrator';
 import bcrypt from 'bcryptjs';
-import { RequestInternal } from 'next-auth';
 
 interface MyCredentials {
   email: string;
@@ -54,7 +53,7 @@ const authOptions = {
   },
   secret: process.env.VALIDATION_SECRET,
   pages: {
-    signIn: '/datathon',
+    signIn: '/login',
   },
 };
 
