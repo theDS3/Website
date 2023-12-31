@@ -9,6 +9,7 @@ export default function AdminInfo() {
   const router = useRouter();
 
   useEffect(() => {
+    // to check if admin is logged in or not
     const checkLoggedInStatus = async () => {
       // obtain session data
       const userSession = await getSession();

@@ -9,12 +9,12 @@ export default function AdminLogin() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
-  const { data: session } = useSession(); // useSession hook
-
-  // Check if the user is already authenticated
+  const { data: session } = useSession();
+  
+  // check if admin is already authenticated
   useEffect(() => {
     if (session) {
-      // Redirect to admin page if already logged in
+      // redirect to admin page if already logged in
       router.replace('/admin');
     }
   }, [session, router]);
