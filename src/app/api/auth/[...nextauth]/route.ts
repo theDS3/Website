@@ -1,8 +1,9 @@
-import NextAuth from "next-auth/next";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { connectDB } from "@/db/config";
-import Administrator from "@/db/models/administrator";
-import bcrypt from "bcryptjs";
+import NextAuth from 'next-auth/next';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { connectDB } from '@/db/config';
+import Administrator from '@/db/models/administrator';
+import bcrypt from 'bcryptjs';
+import { RequestInternal } from 'next-auth';
 
 interface MyCredentials {
   email: string;
@@ -14,8 +15,8 @@ const authOptions = {
     CredentialsProvider({
       name: 'credentials',
       credentials: {
-        email: { label: "Email", type: "text" },
-        password: {  label: "Password", type: "password" },
+        email: { label: 'Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
 
       async authorize(credentials?: MyCredentials) {
@@ -41,7 +42,7 @@ const authOptions = {
 
           return admin;
         } catch (error) {
-          console.log("Error: ", error);
+          console.log('Error: ', error);
           return null;
         }
       },
@@ -53,7 +54,7 @@ const authOptions = {
   },
   secret: process.env.VALIDATION_SECRET,
   pages: {
-    signIn: "/datathon",
+    signIn: '/datathon',
   },
 };
 
