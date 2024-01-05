@@ -6,6 +6,7 @@ import AboutUs from '@/components/Main/AboutUs';
 import Executives from '@/components/Main/Executives';
 import Sponsor from '@/components/Main/Sponsors';
 import Upcoming from '@/components/Main/Upcoming';
+import Calendar from '@/components/Main/Calendar';
 
 const links: Link[] = [
   { title: 'About Us', href: '/#about-us' },
@@ -27,6 +28,7 @@ export default function Home() {
         <Sponsor />
         <Executives />
         <Upcoming />
+        <Calendar />
       </main>
     </>
   );

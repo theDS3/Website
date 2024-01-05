@@ -17,13 +17,15 @@
     "format": "prettier --config .prettierrc --ignore-path .prettierignore --cache --ignore-unknown --write ."
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@ericz1803/react-google-calendar": "^4.3.1",
     "@loskir/styled-qr-code-node": "^1.5.1",
     "@t3-oss/env-nextjs": "^0.7.1",
     "framer-motion": "^10.16.16",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "zod": "^3.22.4"
   },
