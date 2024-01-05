@@ -3,13 +3,14 @@ import SponsorsCard, { type Sponsors } from './SponsorsCard';
 import FGF from '@/public/Datathon/Sponsors/FGF.svg';
 import KlickHealth from '@/public/Datathon/Sponsors/Klick Health.svg';
 import theScore from '@/public/Datathon/Sponsors/theScore.svg';
+import VectorInstitute from '@/public/Datathon/Sponsors/Vector Institute.svg';
 
 const sponsors: Sponsors[] = [
-  // {
-  //   name: 'Vector Institute',
-  //   logo: VectorInstitute,
-  //   link: 'https://vectorinstitute.ai/',
-  // },
+  {
+    name: 'Vector Institute',
+    logo: VectorInstitute,
+    link: 'https://vectorinstitute.ai/',
+  },
   {
     name: 'FGF Brands',
     logo: FGF,
@@ -46,7 +47,7 @@ export default function Sponsors() {
       <h2 className="text-gray-300/60 text-5xl font-bold tracking-wide pb-8 text-center">
         Our Sponsors
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-20 pt-20">
         {sponsors.map((sponsor: Sponsors, id) => (
           <SponsorsCard
             key={id}
