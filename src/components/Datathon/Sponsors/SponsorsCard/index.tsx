@@ -32,6 +32,7 @@ export default function SponsorsCard({
           src={logo}
           alt={name}
           quality={100}
+          style={{ borderRadius: '10px' }}
         />
       </Link>
     </div>
