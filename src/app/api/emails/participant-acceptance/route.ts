@@ -40,6 +40,11 @@ export async function POST(request: NextRequest) {
     const status: Record<string, string> = {};
 
     for (let email of emails) {
+      console.log(
+        `Processing ${email} with Remaining: ${
+          emails.length - 1 - Object.keys(status).length
+        }`,
+      );
       const participant = await Participant.findOne({ email });
 
       // Checks for Non-Existent Participants
