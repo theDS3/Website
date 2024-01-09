@@ -1,15 +1,13 @@
+import { allAvailableServices } from '@/utils';
 import mongoose from 'mongoose';
 
-export enum ParticipantStatus {
-  REVIEW = 'REVIEW', // By Default, when participant registers
-  EMAILED_ACCEPTANCE = 'EMAILED_ACCEPTANCE', // If participant has been accepted then Acceptance Email is send
-}
-
-export enum EmailStatus {
-  RECEIVED = 'RECEIVED',
-  NOT_RECEIVED = 'NOT_RECEIVED',
-  NOT_SENT = 'NOT_SENT',
-}
+export type Services = Record<
+  string,
+  {
+    hasUsed: boolean;
+    timestamp: number;
+  }
+>;
 
 export interface IParticipant {
   firstName: string;
@@ -20,8 +18,7 @@ export interface IParticipant {
   dietaryRestrictions: string;
   code: string;
   qrcode?: string;
-  status?: ParticipantStatus;
-  emailStatus?: Map<string, EmailStatus>;
+  services?: Map<string, Services>;
 }
 
 const participantSchema = new mongoose.Schema<IParticipant>(
@@ -55,6 +52,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     },
     dietaryRestrictions: {
       type: String,
+      required: true,
       trim: true,
     },
     code: {
@@ -67,18 +65,10 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     qrcode: {
       type: String,
     },
-    status: {
-      type: String,
-      enum: ParticipantStatus,
-      default: ParticipantStatus.REVIEW,
-    },
-    emailStatus: {
+    services: {
       type: Map,
       of: mongoose.Schema.Types.Mixed,
-      default: {
-        'participant-acceptance': EmailStatus.NOT_SENT,
-        'hacker-package': EmailStatus.NOT_SENT,
-      },
+      default: allAvailableServices,
     },
   },
   {
