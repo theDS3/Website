@@ -1,0 +1,107 @@
+'use client';
+
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { FormEvent, useEffect, useState } from 'react';
+
+import { Button } from '@/components/Button';
+
+export default function Login() {
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  // check if admin is already authenticated
+  useEffect(() => {
+    if (session) {
+      // redirect to admin page if already logged in
+      router.replace('/admin');
+    }
+  }, [session, router]);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const res = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (res && res.error) {
+        setError('Invalid Login');
+        return;
+      }
+
+      router.replace('/');
+      router.push('/admin');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen">
+      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            Admin Login
+          </h1>
+          <form
+            className="flex flex-col space-y-4 md:space-y-6"
+            action="#"
+            onSubmit={handleSubmit}>
+            <div>
+              <label
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Your email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="email@eaxample.com"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="on"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="password"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="••••••••"
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="on"
+              />
+            </div>
+            <Button
+              fontSize="text-xl"
+              className="w-fit ms-auto me-auto">
+              Login
+            </Button>
+            {error && (
+              <div className="text-center mt-3 mb-[-12px] text-red-600">
+                {error}
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
