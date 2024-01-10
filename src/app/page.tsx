@@ -28,7 +28,7 @@ export default function Login() {
         setError('Invalid Login');
         return;
       } else {
-        router.push('/admin');
+        router.push('/admin/scan');
       }
     } catch (error) {
       console.log(error);

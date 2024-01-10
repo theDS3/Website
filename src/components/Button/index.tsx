@@ -11,6 +11,7 @@ interface ButtonProps {
   paddingY?: string;
   border?: string;
   onClick?: () => void;
+  onDisabled?: () => boolean;
   className?: string;
 }
 
@@ -29,12 +30,16 @@ export const Button = ({
   paddingY = 'py-[5px]',
   border = 'border-2 border-solid border-[white]',
   onClick = () => {},
+  onDisabled = () => false,
   className,
 }: ButtonProps) => {
+  const cursor = onDisabled() ? 'cursor-not-allowed' : 'cursor-pointer';
+  const disabled = onDisabled() ? 'opacity-50' : 'opacity-100';
   return (
     <button
       onClick={onClick}
-      className={`cursor-pointer text-center text-white rounded-[2.5rem] shadow-md ${backgroundColor} ${fontSize} ${fontWeight} ${paddingX} ${paddingY} ${border} ${className}`}>
+      disabled={onDisabled()}
+      className={`text-center text-white rounded-[2.5rem] shadow-md ${disabled} ${cursor} ${backgroundColor} ${fontSize} ${fontWeight} ${paddingX} ${paddingY} ${border} ${className}`}>
       {children}
     </button>
   );

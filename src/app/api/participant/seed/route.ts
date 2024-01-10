@@ -1,9 +1,16 @@
 import { faker } from '@faker-js/faker';
+import { QRCodeCanvas } from '@loskir/styled-qr-code-node';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
 import Participant from '@/db/models/participant';
-import { verifyRequest } from '@/utils';
+import {
+  generateAvailableServices,
+  generateDateTimestamp,
+  generateQRCodeOptions,
+  verifyRequest,
+  type ServicesByDate,
+} from '@/utils';
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,12 +24,36 @@ export async function POST(request: NextRequest) {
       request.nextUrl.searchParams.get('participants') || '100',
     );
 
+    const startDate =
+      request.nextUrl.searchParams.get('startDate') || '2024-01-13';
+    const endDate = request.nextUrl.searchParams.get('endDate') || '2024-01-20';
+    const dateStep = parseInt(
+      request.nextUrl.searchParams.get('dateStep') || '1',
+    );
+
+    const mockServicesByDate: ServicesByDate = {};
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= new Date(endDate)) {
+      let mockServices: string[] = ['Check-In'];
+      const maxNumServices = Math.floor(Math.random() * 10);
+      for (let numServices = 0; numServices != maxNumServices; numServices++) {
+        mockServices.push(faker.commerce.productName());
+      }
+      mockServicesByDate[generateDateTimestamp(new Date(currentDate))] =
+        mockServices;
+      currentDate.setUTCDate(currentDate.getUTCDate() + dateStep);
+    }
+
+    const services = generateAvailableServices(mockServicesByDate);
+
     await Participant.deleteMany({});
 
     const participants = [];
     for (let i = 0; i < numOfParticipants; i++) {
       const firstName = faker.person.firstName();
       const lastName = faker.person.lastName();
+      const code = faker.string.uuid();
 
       participants.push({
         firstName,
@@ -44,7 +75,11 @@ export async function POST(request: NextRequest) {
           'None',
           'Other',
         ]),
-        code: faker.string.uuid(),
+        code,
+        qrcode: await new QRCodeCanvas(generateQRCodeOptions(code)).toDataUrl(
+          'jpeg',
+        ),
+        services,
       });
     }
 

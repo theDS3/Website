@@ -1,4 +1,4 @@
-import { allAvailableServices } from '@/utils';
+import { generateAvailableServices } from '@/utils';
 import mongoose from 'mongoose';
 
 export type Services = Record<
@@ -68,7 +68,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     services: {
       type: Map,
       of: mongoose.Schema.Types.Mixed,
-      default: allAvailableServices,
+      default: generateAvailableServices(),
     },
   },
   {

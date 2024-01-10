@@ -20,7 +20,7 @@ const Header = () => {
   const { data: session } = useSession();
 
   return (
-    <header className="fixed w-full flex justify-between px-4 py-4 bg-transparent shadow-2xl">
+    <header className="w-full flex justify-between px-4 py-4 bg-transparent shadow-2xl">
       <Image
         src={logo}
         alt="DS3 Logo"
