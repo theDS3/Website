@@ -1,3 +1,5 @@
+'use client';
+
 import Link, { type LinkProps } from 'next/link';
 
 interface ButtonProps {
@@ -8,6 +10,7 @@ interface ButtonProps {
   paddingX?: string;
   paddingY?: string;
   border?: string;
+  onClick?: () => void;
   className?: string;
 }
 
@@ -25,10 +28,12 @@ export const Button = ({
   paddingX = 'px-10',
   paddingY = 'py-[5px]',
   border = 'border-2 border-solid border-[white]',
+  onClick = () => {},
   className,
 }: ButtonProps) => {
   return (
     <button
+      onClick={onClick}
       className={`cursor-pointer text-center text-white rounded-[2.5rem] shadow-md ${backgroundColor} ${fontSize} ${fontWeight} ${paddingX} ${paddingY} ${border} ${className}`}>
       {children}
     </button>
