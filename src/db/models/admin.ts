@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 export interface IAdmin {
   email: string;
-  password: string;
+  hashedPassword: string;
 }
 
 const adminSchema = new mongoose.Schema<IAdmin>(
@@ -13,7 +13,7 @@ const adminSchema = new mongoose.Schema<IAdmin>(
       unique: true,
       trim: true,
     },
-    password: {
+    hashedPassword: {
       type: String,
       required: true,
       trim: true,

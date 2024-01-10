@@ -2,14 +2,11 @@ import { hash } from 'bcryptjs';
 import { NextResponse, type NextRequest } from 'next/server';
 
 import { connectDB } from '@/db/config';
-import Admin, { type IAdmin } from '@/db/models/admin';
+import Admin from '@/db/models/admin';
 import { verifyRequest } from '@/utils';
 
 export async function POST(request: NextRequest) {
-  let submission: IAdmin = {
-    email: '',
-    password: '',
-  };
+  let submission = { email: '', password: '' };
 
   try {
     // Authenticates request to see if it comes from DS3
@@ -23,15 +20,11 @@ export async function POST(request: NextRequest) {
     // Hashes the password before saving it
     const hashedPassword = await hash(submission.password, 10);
 
-    submission.password = hashedPassword;
-
-    // this creates and saves the admin user
-    await new Admin({ ...submission }).save();
+    // This creates and saves the admin user
+    await new Admin({ email: submission.email, hashedPassword }).save();
 
     return NextResponse.json(
-      {
-        message: `${submission.email} created successfully!`,
-      },
+      { message: `${submission.email} created successfully!` },
       { status: 201 },
     );
   } catch (error: any) {
