@@ -3,9 +3,14 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
 import Participant from '@/db/models/participant';
+import { verifyRequest } from '@/utils';
 
 export async function POST(request: NextRequest) {
   try {
+    // Authenticates Request to see if it comes from DS3
+    const { isRequestValid, requestError } = verifyRequest(request);
+    if (!isRequestValid) return requestError;
+
     connectDB();
 
     const numOfParticipants = parseInt(
@@ -42,8 +47,9 @@ export async function POST(request: NextRequest) {
         code: faker.string.uuid(),
       });
     }
+
     await Participant.insertMany(participants);
-    return NextResponse.json({ participants }, { status: 201 });
+    return NextResponse.json({ ...participants }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 400 });
   }

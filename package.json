@@ -19,8 +19,10 @@
   "dependencies": {
     "@loskir/styled-qr-code-node": "^1.5.1",
     "@t3-oss/env-nextjs": "^0.7.1",
+    "bcryptjs": "^2.4.3",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
+    "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
