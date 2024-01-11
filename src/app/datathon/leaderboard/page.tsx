@@ -5,7 +5,7 @@ import Leaderboard from '@/components/Datathon/Leaderboard';
 
 const links: Link[] = [
   { title: 'Home', href: '/datathon' },
-  { title: 'Datathon', href: '/datathon' }
+  { title: 'Datathon', href: '/datathon' },
 ];
 
 export const metadata: Metadata = {
