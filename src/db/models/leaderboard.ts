@@ -1,15 +1,13 @@
-import mongoose, { Document } from 'mongoose';
+import mongoose from 'mongoose';
 
-export interface ITeamData {
-  team: string;
-  score: number;
-  attemptsLeft: number;
-  delta: string;
-}
-
-export interface ILeaderboard extends Document {
+export interface ILeaderboard extends mongoose.Document {
   timestamp: Date;
-  data: ITeamData[];
+  data: {
+    team: string;
+    score: number;
+    attemptsLeft: number;
+    delta: string;
+  }[];
 }
 
 const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
