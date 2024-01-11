@@ -6,11 +6,13 @@ import Sponsors from '@/components/Datathon/Sponsors';
 import Themes from '@/components/Datathon/Themes';
 import Hero from '@/components/Hero';
 import NavBar, { type Link } from '@/components/Navabr';
+import Leaderboard from '@/components/Datathon/Leaderboard';
 
 const links: Link[] = [
   { title: 'About Us', href: '/datathon#about-us' },
   { title: 'Themes', href: '/datathon#themes' },
   { title: 'Sponsors', href: '/datathon#sponsors' },
+  { title: 'Leaderboard', href: '/datathon/leaderboard' },
 ];
 
 export const metadata: Metadata = {
