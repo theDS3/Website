@@ -32,7 +32,6 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
     },
   },
   {
-    timestamps: true,
     toJSON: {
       transform: (doc, ret) => {
         delete ret._id;
