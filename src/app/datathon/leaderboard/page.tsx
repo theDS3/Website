@@ -4,12 +4,12 @@ import NavBar, { type Link } from '@/components/Navabr';
 import Leaderboard from '@/components/Datathon/Leaderboard';
 
 const links: Link[] = [
-  { title: 'Home', href: '/' },
+  { title: 'Home', href: '/datathon' },
   { title: 'Datathon', href: '/datathon' }
 ];
 
 export const metadata: Metadata = {
-  title: 'DS3 | Datathon',
+  title: 'DS3 | Leaderboard',
 };
 
 export default function Datathon() {
