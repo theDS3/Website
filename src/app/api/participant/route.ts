@@ -3,12 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/db/config';
 import Participant from '@/db/models/participant';
 
-import {
-  getAvailableServicesByDate,
-  verifyCode,
-  verifyDate,
-  verifyRequest,
-} from '@/utils';
+import { getAvailableServicesByDate, verifyCode, verifyRequest } from '@/utils';
 
 export async function GET(request: NextRequest) {
   try {
@@ -24,9 +19,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: codeError }, { status: 400 });
 
     const date = request.nextUrl.searchParams.get('date') || '';
-    const { isDateValid, dateError } = verifyDate(date);
-    if (!isDateValid)
-      return NextResponse.json({ error: dateError }, { status: 400 });
+    // const { isDateValid, dateError } = verifyDate(date);
+    // if (!isDateValid)
+    //   return NextResponse.json({ error: dateError }, { status: 400 });
 
     const participant = await Participant.findOne({ code });
 

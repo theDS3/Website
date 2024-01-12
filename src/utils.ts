@@ -7,8 +7,8 @@ import { type Services } from './db/models/participant';
 export type ServicesByDate = Record<string, string[]>;
 
 const datathonServicesByDate: ServicesByDate = {
-  '2024-01-10': ['Check-In', 'Snacks'],
-  '2024-01-11': ['Check-In', 'Breakfast', 'Lunch', 'Dinner'],
+  '2024-01-13': ['Check-In', 'Snacks'],
+  '2024-01-20': ['Check-In', 'Breakfast', 'Lunch', 'Evening Snacks'],
 };
 
 export const generateQRCodeOptions = (code: string): Partial<Options> => {
