@@ -30,6 +30,7 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
     },
   },
   {
+    collection: 'leaderboard',
     toJSON: {
       transform: (doc, ret) => {
         delete ret._id;
@@ -42,6 +43,6 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
 
 const Leaderboard =
   mongoose.models.Leaderboard ||
-  mongoose.model<ILeaderboard>('Leaderboard', leaderboardSchema, 'leaderboard');
+  mongoose.model<ILeaderboard>('Leaderboard', leaderboardSchema);
 
 export default Leaderboard;
