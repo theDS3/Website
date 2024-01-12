@@ -14,8 +14,12 @@ export const metadata: Metadata = {
   description: `${new Date().getFullYear()} Datathon Leaderboard`,
 };
 
+export const revalidate = 10;
 export default async function DatathonLeaderboard() {
   const leaderboard: ILeaderboard = await getLeaderboardData();
+
+  const datathonStartDate = new Date('2024/01/14 07:00:00');
+  const currentDate = new Date();
 
   return (
     <>
@@ -29,7 +33,9 @@ export default async function DatathonLeaderboard() {
             <>
               {!leaderboard ? (
                 <p className="text-center text-xl">
-                  No data available in the leaderboard.
+                  {datathonStartDate < currentDate
+                    ? 'No data available in the leaderboard.'
+                    : `Datathon will start on ${datathonStartDate.toLocaleString()}`}
                 </p>
               ) : (
                 <>
@@ -46,11 +52,11 @@ export default async function DatathonLeaderboard() {
                           Delta
                         </th>
                         <th className="py-2 px-4 border-b text-center">Team</th>
+                        <th className="py-2 px-4 border-b text-center max-sm:hidden">
+                          Attempts
+                        </th>
                         <th className="py-2 px-4 border-b text-center">
                           Score
-                        </th>
-                        <th className="py-2 px-4 border-b text-center max-sm:hidden">
-                          Attempts Left
                         </th>
                       </tr>
                     </thead>
@@ -76,13 +82,13 @@ export default async function DatathonLeaderboard() {
                             )}
                           </td>
                           <td className="py-2 px-4 border-b border-gray-300 text-center">
-                            {team.team}
+                            {team.name}
+                          </td>
+                          <td className="py-2 px-4 border-b border-gray-300 text-center max-sm:hidden">
+                            {team.numAttempts}
                           </td>
                           <td className="py-2 px-4 border-b border-gray-300 text-center">
                             {team.score}
-                          </td>
-                          <td className="py-2 px-4 border-b border-gray-300 text-center max-sm:hidden">
-                            {team.attemptsLeft}
                           </td>
                         </tr>
                       ))}
