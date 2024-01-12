@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { connectDB } from '@/db/config';
+import connectDB from '@/db/config';
 import Participant, { type IParticipant } from '@/db/models/participant';
 
 let submission: Omit<IParticipant, 'code'> = {
