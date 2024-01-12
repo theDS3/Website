@@ -6,7 +6,7 @@ import { getLeaderboardData } from '@/db/utils';
 
 const links: Link[] = [
   { title: 'Home', href: '/datathon' },
-  { title: 'Datathon', href: '/datathon' }
+  { title: 'Datathon', href: '/datathon' },
 ];
 
 export const metadata: Metadata = {
