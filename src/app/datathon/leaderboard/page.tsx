@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: `${new Date().getFullYear()} Datathon Leaderboard`,
 };
 
-export default async function DatathonLeaderboardPage() {
+export default async function DatathonLeaderboard() {
   const leaderboard: ILeaderboard = await getLeaderboardData();
 
   return (

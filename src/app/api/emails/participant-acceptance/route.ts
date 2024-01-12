@@ -2,7 +2,7 @@ import { render } from '@react-email/render';
 import { NextRequest, NextResponse } from 'next/server';
 import { createTransport } from 'nodemailer';
 
-import { connectDB } from '@/db/config';
+import connectDB from '@/db/config';
 import Participant, {
   EmailStatus,
   ParticipantStatus,
