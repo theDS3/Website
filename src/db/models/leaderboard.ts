@@ -1,12 +1,16 @@
 import mongoose from 'mongoose';
 
+export type LeaderboardType = 'public' | 'private' | 'final';
+
 export interface ILeaderboard extends mongoose.Document {
   timestamp: Date;
+  type: LeaderboardType;
   data: {
-    team: string;
+    name: string;
     score: number;
-    attemptsLeft: number;
+    numAttempts: number;
     delta: string;
+    bonus?: number;
   }[];
 }
 
@@ -17,13 +21,18 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
       required: true,
       unique: true,
     },
+    type: {
+      type: String,
+      required: true,
+    },
     data: {
       type: [
         {
-          team: { type: String, required: true },
+          name: { type: String, required: true },
           score: { type: Number, required: true },
-          attemptsLeft: { type: Number, required: true },
+          numAttempts: { type: Number, required: true },
           delta: { type: String, required: true },
+          bonus: { type: Number },
         },
       ],
       required: true,
