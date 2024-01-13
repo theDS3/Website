@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 export enum ParticipantStatus {
   REVIEW = 'REVIEW', // By Default, when participant registers
   EMAILED_ACCEPTANCE = 'EMAILED_ACCEPTANCE', // If participant has been accepted then Acceptance Email is send
+  EMAILED_PACKAGE = 'EMAILED_PACKAGE', // If participant has RSVPed then Hacker Package Email is send
 }
 
 export enum EmailStatus {
@@ -11,7 +12,7 @@ export enum EmailStatus {
   NOT_SENT = 'NOT_SENT',
 }
 
-export interface IParticipant {
+export interface IParticipant extends mongoose.Document {
   firstName: string;
   lastName: string;
   email: string;
