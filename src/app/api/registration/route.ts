@@ -1,20 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import connectDB from '@/db/config';
-import Participant, { type IParticipant } from '@/db/models/participant';
-
-let submission: Omit<IParticipant, 'code'> = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  school: '',
-  countryOfResidence: '',
-  dietaryRestrictions: '',
-};
-
-let code = '';
+import Participant from '@/db/models/participant';
 
 export async function POST(request: NextRequest) {
+  let submission = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    school: '',
+    countryOfResidence: '',
+    dietaryRestrictions: '',
+  };
+
+  let code = '';
+
   try {
     connectDB();
 
