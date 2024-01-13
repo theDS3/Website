@@ -1,6 +1,7 @@
 import {
   Body,
   Container,
+  Font,
   Head,
   Heading,
   Hr,
@@ -12,168 +13,234 @@ import {
   Tailwind,
   Text,
 } from '@react-email/components';
-import * as React from 'react';
 
-type HeadingTypes =
-  | 'Time & Date:'
-  | 'Location:'
-  | 'Hacker Package:'
-  | 'Team Declaration:'
-  | 'Communication:'
-  | 'Important note:';
+import * as React from 'react';
 
 interface MailProps {
   fullName: string;
   imageSrc?: string;
 }
 
-const sections: Record<HeadingTypes, React.JSX.Element> = {
-  'Time & Date:': (
-    <Text className="text-black text-[14px] leading-[24px]">
-      The DS3 Datathon 2023 will be held on Tuesday 21<sup>st</sup> ‎ February
-      2023 - from 08:00 to 21:00.
-    </Text>
-  ),
-  'Location:': (
-    <Text className="text-black text-[14px] leading-[24px]">
-      Our event will be happening in the ‎
-      <Link
-        className="text-blue-600 no-underline"
-        href="https://www.google.com/maps/place/Instructional+Centre+(IC)/@43.7868131,-79.193142,17z/data=!3m1!5s0x89d4da71edafc075:0xd8c2ab42332259f5!4m5!3m4!1s0x89d4db8ed0b31a77:0x89d9d2bb51234c76!8m2!3d43.7867303!4d-79.1894516?shorturl=1">
-        Instructional Centre at the University of Toronto Scarborough
-      </Link>
-      . Check-in booths will be located in front of the lift area, please bring
-      a valid ID for check-in.
-    </Text>
-  ),
-  'Hacker Package:': (
-    <Text className="text-black text-[14px] leading-[24px]">
-      Your ‎
-      <Link
-        className="text-blue-600 no-underline"
-        href="https://drive.google.com/file/d/13e-l95gdolcdpSeKK-_g1N2cfnB0VlI_/view?usp=sharing">
-        Hacker Package
-      </Link>
-      ‎ contains essential information such as the schedule, hacking rules,
-      important links, and logistical details. Please go through it carefully!
-    </Text>
-  ),
-  'Team Declaration:': (
-    <Text className="text-black text-[14px] leading-[24px]">
-      Team declaration rules are mentioned in the Hacker Package. Please go
-      through them and after reading if you wish to declare a team, fill up ‎
-      <Link
-        className="text-blue-600 no-underline"
-        href="https://forms.gle/KcbCMuJXJpa4y5vT8">
-        this
-      </Link>
-      ‎ form before 23:59 on February 20th, 2023.
-    </Text>
-  ),
-  'Communication:': (
-    <Text className="text-black text-[14px] leading-[24px]">
-      You can reach us at ‎
-      <Link
-        className="text-blue-600 no-underline"
-        href="mailto:thedatasciencecube@gmail.com">
-        thedatasciencecube@gmail.com
-      </Link>
-      , but please expect a delay in response due to the high volume of emails
-      on our end. Contact us on our ‎
-      <Link
-        className="text-blue-600 no-underline"
-        href="https://linktr.ee/datasciencecube">
-        social media channels ‎
-      </Link>
-      or on our ‎
-      <Link
-        className="text-blue-600 no-underline"
-        href="https://discord.gg/xDpujjZ">
-        discord server ‎
-      </Link>
-      for quicker responses. Do not reach out to executives on discord through
-      DMs as we might be unable to read and respond to your messages in time.
-    </Text>
-  ),
+type HeadingTypes =
+  | 'DS3Id and your QR Code'
+  | 'Kick-off Day + Meet your team!'
+  | 'Datathon Starter Pack'
+  | 'Hacker Checklist';
 
-  'Important note:': (
-    <ul>
-      <li className="text-black text-[14px] leading-[24px]">
-        If you do not arrive before 09:30 on the 21<sup>st</sup> of February,
-        you will not be able to participate in the Datathon.
-      </li>
-      <li className="text-black text-[14px] leading-[24px]">
-        You will be provided meals only as per the restrictions you mentioned in
-        the registration form.
-      </li>
-      <li className="text-black text-[14px] leading-[24px]">
-        You are required to attend opening and closing ceremonies to participate
-        in the Datathon.
-      </li>
-    </ul>
+const createLinkTag = (content: string, href: string, className = '') => (
+  <Link
+    className={`text-blue-500 no-underline ${className}`}
+    href={href}>
+    {content}
+  </Link>
+);
+
+const sections: Record<HeadingTypes, React.JSX.Element> = {
+  'DS3Id and your QR Code': (
+    <Text className="text-md font-normal text-[#666666]">
+      Your unique DS3Id, represented by a QR code, is your golden ticket! Make
+      sure to have this handy for check-ins and to enjoy the perks (yes, we mean
+      food!). Save this email as a favourite for quick access. If images
+      aren&apos;t visible, trust the email{' '}
+      {createLinkTag(
+        'thedatasciencecube@gmail.com',
+        'mailto:thedatasciencecube@gmail.com',
+      )}{' '}
+      in your Outlook inbox settings or seek assistance from a DS3
+      Representative at the event.
+    </Text>
+  ),
+  'Kick-off Day + Meet your team!': (
+    <>
+      <Text className="text-[#666666] text-md leading-[24px]">
+        Get ready for an epic start on the Datathon Kick-off day! Dive into
+        crucial details that will shape your Datathon journey. Stick around for
+        a lively mix-and-mingle, facilitated by the DS3 Operations team (you
+        might recognize them from the CMS Scavenger Hunt 😉). It&apos;s
+        team-building time! Can&apos;t make it in person? No worries, catch the
+        live stream on the DS3 YouTube channel. The recorded live stream will
+        also be available on our YouTube channel after the event.
+      </Text>
+      <Text className="text-[#666666] text-md leading-[24px]">
+        {<strong className="font-bold">Date: </strong>} 13th January 2023
+      </Text>
+      <Text className="text-[#666666] text-md leading-[24px]">
+        {<strong className="font-bold">Venue: </strong>}{' '}
+        {createLinkTag('UTSC Instructional Center', 'https://g.co/kgs/LEAs6SM')}{' '}
+        or DS3 YouTube Kick-off Stream (check your Discord for the link!)
+      </Text>
+      <Text className="text-[#666666] text-md leading-[24px]">
+        {<strong className="font-bold">Time: </strong>} 14:00 to 17:00
+      </Text>
+    </>
+  ),
+  'Datathon Starter Pack': (
+    <Text className="text-[#666666] text-md leading-[24px]">
+      Unlock the full potential of your hacking skills with the Datathon Starter
+      Pack. Whether you&apos;re a seasoned pro or a newcomer, this starter pack
+      is a powerful weapon. The DS3 Academics team has compiled a treasure trove
+      of resources to help you craft that winning model. It also includes
+      important information such as the rulebook and the schedule. Be sure to
+      check it out!{' '}
+      {createLinkTag(
+        'Datathon Starter Pack',
+        'https://ds3utsc.notion.site/DS3-Datathon-Starter-Pack-e86148d29b884de8b626f107cdf0873c',
+      )}
+    </Text>
+  ),
+  'Hacker Checklist': (
+    <>
+      <Text className="text-[#666666] text-md leading-[24px]">
+        Feeling a bit overwhelmed? No worries, use our handy checklist to make
+        sure you&apos;re all set to hack like a pro!
+      </Text>
+      <Text className="text-[#666666] text-md leading-[24px]">
+        Answer the following questions: I know...
+      </Text>
+      <ul className="text-[#666666]">
+        <li key="hacker-checklist-1">
+          <Text className="text-[#666666] text-md leading-[24px]">
+            The DS3 Datathon Kick-off Day details (See above)
+          </Text>
+        </li>
+        <li key="hacker-checklist-2">
+          <Text className="text-[#666666] text-md leading-[24px]">
+            My DS3Id (See above)
+          </Text>
+        </li>
+        <li key="hacker-checklist-3">
+          <Text className="text-[#666666] text-md leading-[24px]">
+            My Team declaration has been submitted irrespective of whether I
+            have a team or I am going solo. (
+            {createLinkTag(
+              'Team Declaration Form',
+              'https://forms.gle/iDCZeCfcSMzaSxC3A',
+            )}
+            , Due Jan 13th at 23:59)
+          </Text>
+        </li>
+        <li key="hacker-checklist-4">
+          <Text className="text-[#666666] text-md leading-[24px]">
+            Everything about hacking, resources, and support (
+            {createLinkTag(
+              'Datathon Starter Pack',
+              'https://ds3utsc.notion.site/DS3-Datathon-Starter-Pack-e86148d29b884de8b626f107cdf0873c',
+            )}
+            )
+          </Text>
+          <ul className="text-[#666666]">
+            <li key="hacker-checklist-4-1">
+              <Text className="text-[#666666] text-md leading-[24px]">
+                Rules and evaluation metrics (
+                {createLinkTag(
+                  'Rule Book',
+                  'https://ds3utsc.notion.site/ds3utsc/DS3-Datathon-Starter-Pack-e86148d29b884de8b626f107cdf0873c#70808b537cbd4e32bc476dbe71e57529',
+                )}
+                )
+              </Text>
+            </li>
+            <li key="hacker-checklist-4-1">
+              <Text className="text-[#666666] text-md leading-[24px]">
+                Kick-off Day Schedule (
+                {createLinkTag(
+                  'Kick-off Day Schedule',
+                  'https://ds3utsc.notion.site/Kick-off-Day-Schedule-d4bdc7fa8351424d9d9fd97aeec428f1',
+                )}
+                )
+              </Text>
+            </li>
+            <li key="hacker-checklist-4-1">
+              <Text className="text-[#666666] text-md leading-[24px]">
+                Final Day Schedule (
+                {createLinkTag(
+                  'Final Day Schedule',
+                  'https://ds3utsc.notion.site/Final-Day-Schedule-48f1776517e644a88f1b789075f6a0aa',
+                )}
+                )
+              </Text>
+            </li>
+          </ul>
+        </li>
+        <li key="hacker-checklist-5">
+          <Text className="text-[#666666] text-md leading-[24px]">
+            I have joined the DS3 Discord and have the hacker role assigned
+            (Instructions in the Acceptance email)
+          </Text>
+        </li>
+        <li key="hacker-checklist-6">
+          <Text className="text-[#666666] text-md leading-[24px]">
+            How to reach out if I have questions (
+            {createLinkTag('DS3 Discord', 'https://discord.gg/dubRHdvCpP')})
+          </Text>
+        </li>
+      </ul>
+    </>
   ),
 };
 
-function createSections(
-  heading: string,
-  content: React.JSX.Element,
-  key: number,
-) {
-  return (
-    <Section key={key}>
-      <Heading
-        as="h2"
-        className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
-        {heading}
-      </Heading>
-      {content}
-    </Section>
-  );
-}
-
 export default function HackerPackage({
   fullName = 'Hacker',
-  imageSrc = '/static/email-banner.jpg',
+  imageSrc = '/static/datathon.png',
 }: MailProps) {
   return (
     <Html>
-      <Head />
-      <Preview>Welcome to the DS3 Datathon</Preview>
+      <Head>
+        <Font
+          fontFamily="Verdana"
+          fallbackFontFamily="Verdana"></Font>
+      </Head>
+      <Preview>Get Ready to Hack at DS3 Datathon 2024, {fullName}!</Preview>
       <Tailwind>
         <Body className="bg-white my-auto mx-auto font-sans">
-          <Container className="my-3 mx-auto p-10 w-[500px]">
+          <Container className="my-3 mx-auto">
             <Section className="mt-[32px]">
               <Img
                 src={imageSrc}
                 alt="DS3 Datathon Banner"
-                width="470"
                 className="my-0 mx-auto"
               />
             </Section>
             <Section>
-              <Text className="text-black text-[14px] leading-[24px]">
+              <Text className="text-[#666666] text-md leading-[24px]">
                 Hello {fullName}!
               </Text>
-              <Text className="text-black text-[14px] leading-[24px]">
-                Thank you for registering for the Data Science and Statistics
-                Society Datathon 2023! We&apos;ve been working tirelessly to put
-                together a fantastic event and we&apos;re so excited to welcome
-                you to it. But first, some things you need to know:
+              <Text className="text-[#666666] text-md leading-[24px]">
+                We hope the excitement is building up because DS3 Datathon 2024
+                is just around the corner! 🚀 This email is your go-to guide for
+                all the essential info and resources you&apos;ll need to make
+                the most of this data-driven adventure.
               </Text>
             </Section>
-            {Object.entries(sections).map(([heading, content], key) =>
-              createSections(heading, content, key),
-            )}
-            <Text className="text-black text-[14px] m-0">Best Regards,</Text>
-            <Text className="text-black text-[14px]  m-0">
+            {Object.entries(sections).map(([heading, content], key) => (
+              <Section key={key}>
+                <Heading
+                  key={key}
+                  as="h2"
+                  className="text-gray-500 text-2xl font-normal text-center p-0 my-[30px] mx-0">
+                  {heading}
+                </Heading>
+                {content}
+              </Section>
+            ))}
+            <Text className="text-[#666666] text-md">
+              We can&apos;t wait to witness your incredible feats at the
+              Datathon! Prepare for an enriching experience filled with learning
+              and unforgettable moments.
+            </Text>
+            <Text className="text-[#666666] text-md m-0">Best Regards,</Text>
+            <Text className="text-[#666666] text-md m-0">
               The Data Science and Statistics Society (DS3)
             </Text>
-            <Text className="text-black text-[14px]  m-0">
+            <Text className="text-[#666666] text-md m-0">
               The University of Toronto Scarborough
             </Text>
             <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
-            <Heading as="h5">About Us</Heading>
-            <Text className="text-[#666666] text-[12px] leading-[24px] italic">
+            <Heading
+              as="h3"
+              className="text-lg text-gray-400">
+              About Us
+            </Heading>
+            <Text className="text-[#666666] text-md leading-[24px] italic">
               Our Mission as The Data Science and Statistics Society (DS3) is to
               create a platform for peer mentorship, career exploration and
               professional skills development among UTSC students from all

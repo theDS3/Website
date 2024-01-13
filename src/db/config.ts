@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 import { env } from '@/env/server.mjs';
 
-export async function connectDB() {
+export default async function connectDB() {
   try {
     await mongoose.connect(env.DATABASE_URL, { dbName: env.DATABASE_NAME });
     const connection = mongoose.connection;

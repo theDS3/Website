@@ -123,7 +123,7 @@ const sections: Record<HeadingTypes, React.JSX.Element> = {
           'https://forms.gle/yrwj8cSrDi7jVbVm9',
         )}
         by {<strong className="font-bold">January 13th, 2023, 23:59</strong>}.{' '}
-        Remember, no changes are allowed after submission, so choose wisely!
+        Remember, no changes are allowed after submission, so choose wisely!{' '}
         {
           <strong className="font-bold">
             If you decide to participate solo, you still need to declare your

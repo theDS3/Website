@@ -11,6 +11,7 @@ const links: Link[] = [
   { title: 'About Us', href: '/datathon#about-us' },
   { title: 'Themes', href: '/datathon#themes' },
   { title: 'Sponsors', href: '/datathon#sponsors' },
+  { title: 'Leaderboard', href: '/datathon/leaderboard' },
 ];
 
 export const metadata: Metadata = {

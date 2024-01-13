@@ -2,7 +2,7 @@ import { render } from '@react-email/render';
 import { NextRequest, NextResponse } from 'next/server';
 import { createTransport } from 'nodemailer';
 
-import { connectDB } from '@/db/config';
+import connectDB from '@/db/config';
 import Participant, {
   EmailStatus,
   ParticipantStatus,
@@ -40,6 +40,11 @@ export async function POST(request: NextRequest) {
     const status: Record<string, string> = {};
 
     for (let email of emails) {
+      console.log(
+        `Processing ${email} with Remaining: ${
+          emails.length - 1 - Object.keys(status).length
+        }`,
+      );
       const participant = await Participant.findOne({ email });
 
       // Checks for Non-Existent Participants
@@ -74,21 +79,16 @@ export async function POST(request: NextRequest) {
         html: emailHTML,
       });
 
+      participant.status = ParticipantStatus.EMAILED_ACCEPTANCE;
+
       // Verifies if the email has been received or not
-      if (emailRequest.response.includes('250 2.0.0 OK')) {
-        participant.emailStatus.set(
-          'participant-acceptance',
-          EmailStatus.RECEIVED,
-        );
-        participant.status = ParticipantStatus.EMAILED_ACCEPTANCE;
-        status[email] = EmailStatus.RECEIVED;
-      } else {
-        participant.emailStatus.set(
-          'participant-acceptance',
-          EmailStatus.NOT_RECEIVED,
-        );
-        status[email] = EmailStatus.NOT_RECEIVED;
-      }
+      status[email] = emailRequest.response.includes('250 2.0.0 OK')
+        ? EmailStatus.RECEIVED
+        : EmailStatus.NOT_RECEIVED;
+      participant.emailStatus?.set(
+        'participant-acceptance',
+        status[email] as EmailStatus,
+      );
 
       // Update Participant Status and EmailStatus fields
       participant.save();
