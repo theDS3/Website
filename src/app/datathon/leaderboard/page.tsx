@@ -31,7 +31,7 @@ export default async function DatathonLeaderboard() {
               2024 Datathon Leaderboard
             </h2>
             <>
-              {!leaderboard ? (
+              {!leaderboard || leaderboard.data.length === 0 ? (
                 <p className="text-center text-xl">
                   {datathonStartDate < currentDate
                     ? 'No data available in the leaderboard.'
@@ -66,11 +66,14 @@ export default async function DatathonLeaderboard() {
                           <td className="py-2 px-4 border-b border-gray-300 text-center">
                             {index + 1}
                           </td>
+
                           <td
                             className={`py-2 px-4 border-b border-gray-300 text-center max-sm:hidden ${
-                              team.delta.includes('-')
-                                ? 'text-red-500'
-                                : 'text-green-500'
+                              team.delta.length === 1
+                                ? 'text-white'
+                                : team.delta.includes('-')
+                                  ? 'text-red-500'
+                                  : 'text-green-500'
                             }`}>
                             {team.delta.includes('-') &&
                             team.delta.length > 1 ? (
