@@ -31,7 +31,7 @@ export default async function DatathonLeaderboard() {
               2024 Datathon Leaderboard
             </h2>
             <>
-              {!leaderboard ? (
+              {!leaderboard || leaderboard.data.length === 0 ? (
                 <p className="text-center text-xl">
                   {datathonStartDate < currentDate
                     ? 'No data available in the leaderboard.'
