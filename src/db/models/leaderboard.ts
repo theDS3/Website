@@ -2,16 +2,18 @@ import mongoose from 'mongoose';
 
 export type LeaderboardType = 'public' | 'private' | 'final';
 
+export interface TeamInfo {
+  name: string;
+  score: number;
+  numAttempts: number;
+  delta: string;
+  bonus?: number;
+}
+
 export interface ILeaderboard extends mongoose.Document {
   timestamp: Date;
   type: LeaderboardType;
-  data: {
-    name: string;
-    score: number;
-    numAttempts: number;
-    delta: string;
-    bonus?: number;
-  }[];
+  data: TeamInfo[];
 }
 
 const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
