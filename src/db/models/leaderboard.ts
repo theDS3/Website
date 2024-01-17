@@ -8,6 +8,7 @@ export interface TeamInfo {
   numAttempts: number;
   delta: string;
   bonus?: number;
+  finalScore?: number;
 }
 
 export interface ILeaderboard extends mongoose.Document {
@@ -35,6 +36,7 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
           numAttempts: { type: Number, required: true },
           delta: { type: String, required: true },
           bonus: { type: Number },
+          finalScore: { type: Number },
         },
       ],
       required: true,
