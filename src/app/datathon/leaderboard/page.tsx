@@ -33,6 +33,7 @@ export default async function PublicDatathonLeaderboard() {
             <Leaderboard
               leaderboard={leaderboard}
               startDate={datathonStartDate}
+              description="Scores based on the public leaderboard on Kaggle."
             />
           </div>
         </section>
