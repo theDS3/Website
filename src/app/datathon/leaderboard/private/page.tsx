@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: `${new Date().getFullYear()} Private Datathon Leaderboard`,
 };
 
-export const revalidate = 60;
+export const revalidate = 0;
 export default async function FinalDatathonLeaderboard() {
   const leaderboard: ILeaderboard = await getLeaderboardData('private');
 
