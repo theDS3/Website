@@ -20,6 +20,9 @@ export default function Leaderboard({
       (team: TeamInfo) => 'bonus' in team && 'finalScore' in team,
     );
 
+  const tableHeaderStyles = 'py-2 px-4 border-b text-center';
+  const tableCellStyles = 'py-2 px-4 border-b border-gray-300 text-center';
+
   return (
     <>
       {!leaderboard || leaderboard.data.length === 0 ? (
@@ -33,46 +36,50 @@ export default function Leaderboard({
           <h2 className="text-center text-xl font-bold mb-4">
             Last Updated: {leaderboard.timestamp.toLocaleString()}
           </h2>
-          <p className="text-white text-xl w-5/12 text-center mx-auto mb-4">
+          <p className="text-white text-xl w-10/12 text-center mx-auto mb-4">
             {description}
           </p>
           <table className="min-w-full border border-white text-white">
             <thead>
               <tr>
-                <th className="py-2 px-4 border-b text-center">Position</th>
-                <th className="py-2 px-4 border-b text-center max-sm:hidden">
+                <th className={tableHeaderStyles}>Position</th>
+                <th
+                  className={`${tableHeaderStyles} ${
+                    showFinal ? 'max-lg:hidden' : 'max-sm:hidden'
+                  }`}>
                   Delta
                 </th>
-                <th className="py-2 px-4 border-b text-center">Team</th>
-                <th className="py-2 px-4 border-b text-center max-sm:hidden">
+                <th className={tableHeaderStyles}>Team</th>
+                <th
+                  className={`${tableHeaderStyles} ${
+                    showFinal ? 'max-md:hidden' : 'max-sm:hidden'
+                  }`}>
                   Attempts
                 </th>
                 <th
-                  className={`py-2 px-4 border-b text-center ${
+                  className={`${tableHeaderStyles} ${
                     showFinal && 'max-sm:hidden'
                   }`}>
                   Score
                 </th>
                 {showFinal && (
-                  <th className="py-2 px-4 border-b text-center max-sm:hidden">
+                  <th className={tableHeaderStyles + ' max-sm:hidden'}>
                     Bonus
                   </th>
                 )}
                 {showFinal && (
-                  <th className="py-2 px-4 border-b text-center">
-                    Final Score
-                  </th>
+                  <th className={tableHeaderStyles}>Final Score</th>
                 )}
               </tr>
             </thead>
             <tbody>
               {leaderboard.data.map((team, index) => (
                 <tr key={index}>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center">
-                    {index + 1}
-                  </td>
+                  <td className={tableCellStyles}>{index + 1}</td>
                   <td
-                    className={`py-2 px-4 border-b border-gray-300 text-center max-sm:hidden ${
+                    className={`${tableCellStyles} ${
+                      showFinal ? 'max-lg:hidden' : 'max-sm:hidden'
+                    } ${
                       team.delta.length === 1
                         ? 'text-white'
                         : team.delta.includes('-')
@@ -87,24 +94,26 @@ export default function Leaderboard({
                       <span>{team.delta}</span>
                     )}
                   </td>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center">
-                    {team.name}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center max-sm:hidden">
+                  <td className={tableCellStyles}>{team.name}</td>
+                  <td
+                    className={`${tableCellStyles} ${
+                      showFinal ? 'max-md:hidden' : 'max-sm:hidden'
+                    }`}>
                     {team.numAttempts}
                   </td>
-                  <td className="py-2 px-4 border-b border-gray-300 text-center">
+                  <td
+                    className={`${tableCellStyles} ${
+                      showFinal && 'max-sm:hidden'
+                    }`}>
                     {team.score}
                   </td>
                   {showFinal && (
-                    <td className="py-2 px-4 border-b border-gray-300 text-center max-sm:hidden">
+                    <td className={tableCellStyles + ' max-sm:hidden'}>
                       {team.bonus}
                     </td>
                   )}
                   {showFinal && (
-                    <td className="py-2 px-4 border-b border-gray-300 text-center max-sm:hidden">
-                      {team.finalScore}
-                    </td>
+                    <td className={tableCellStyles}>{team.finalScore}</td>
                   )}
                 </tr>
               ))}
