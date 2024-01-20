@@ -12,7 +12,7 @@ const links: Link[] = [
 
 export const metadata: Metadata = {
   title: 'DS3 | Final Leaderboard',
-  description: `${new Date().getFullYear()} Public Datathon Leaderboard`,
+  description: `${new Date().getFullYear()} Final Datathon Leaderboard`,
 };
 
 export const revalidate = 60;
