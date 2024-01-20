@@ -6,13 +6,13 @@ import { type ILeaderboard } from '@/db/models/leaderboard';
 import { getLeaderboardData } from '@/db/utils';
 
 const links: Link[] = [
-  { title: 'Home', href: '/datathon' },
+  { title: 'Home', href: '/' },
   { title: 'Datathon', href: '/datathon' },
 ];
 
 export const metadata: Metadata = {
   title: 'DS3 | Final Leaderboard',
-  description: `${new Date().getFullYear()} Public Datathon Leaderboard`,
+  description: `${new Date().getFullYear()} Final Datathon Leaderboard`,
 };
 
 export const revalidate = 60;
