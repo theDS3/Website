@@ -79,14 +79,6 @@ export const getAvailableServicesByDate = (
   return availableServices;
 };
 
-export const generateDateTimestamp = (date = new Date()) => {
-  const month = date.getUTCMonth() + 1;
-
-  return `${date.getFullYear()}-${
-    month.toString().length === 2 ? month : `0${month}`
-  }-${date.getUTCDate()}`;
-};
-
 export const verifyRequest = (request: NextRequest) => {
   if (!request.headers.has('ds3-secret')) {
     return {
