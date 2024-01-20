@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker';
 import { QRCodeCanvas } from '@loskir/styled-qr-code-node';
+import { format } from 'date-fns/format';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
 import Participant from '@/db/models/participant';
 import {
   generateAvailableServices,
-  generateDateTimestamp,
   generateQRCodeOptions,
   verifyRequest,
   type ServicesByDate,
@@ -40,8 +40,7 @@ export async function POST(request: NextRequest) {
       for (let numServices = 0; numServices != maxNumServices; numServices++) {
         mockServices.push(faker.commerce.productName());
       }
-      mockServicesByDate[generateDateTimestamp(new Date(currentDate))] =
-        mockServices;
+      mockServicesByDate[format(currentDate, 'yyyy-MM-dd')] = mockServices;
       currentDate.setUTCDate(currentDate.getUTCDate() + dateStep);
     }
 
