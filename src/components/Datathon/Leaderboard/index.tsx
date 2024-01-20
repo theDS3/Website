@@ -13,6 +13,7 @@ export default function Leaderboard({
 }: LeaderboardProps) {
   const currentDate = new Date();
 
+  const showPublic = leaderboard.type === 'public';
   const showFinal =
     leaderboard &&
     leaderboard.type === 'final' &&
@@ -43,12 +44,11 @@ export default function Leaderboard({
             <thead>
               <tr>
                 <th className={tableHeaderStyles}>Position</th>
-                <th
-                  className={`${tableHeaderStyles} ${
-                    showFinal ? 'max-lg:hidden' : 'max-sm:hidden'
-                  }`}>
-                  Delta
-                </th>
+                {showPublic && (
+                  <th className={tableHeaderStyles + ' max-sm:hidden'}>
+                    Delta
+                  </th>
+                )}
                 <th className={tableHeaderStyles}>Team</th>
                 <th
                   className={`${tableHeaderStyles} ${
@@ -76,24 +76,24 @@ export default function Leaderboard({
               {leaderboard.data.map((team, index) => (
                 <tr key={index}>
                   <td className={tableCellStyles}>{index + 1}</td>
-                  <td
-                    className={`${tableCellStyles} ${
-                      showFinal ? 'max-lg:hidden' : 'max-sm:hidden'
-                    } ${
-                      team.delta.length === 1
-                        ? 'text-white'
-                        : team.delta.includes('-')
-                          ? 'text-red-500'
-                          : 'text-green-500'
-                    }`}>
-                    {team.delta.includes('-') && team.delta.length > 1 ? (
-                      <span>&darr; {team.delta.replace('-', '')}</span>
-                    ) : team.delta.includes('+') ? (
-                      <span>&uarr; {team.delta.replace('+', '')}</span>
-                    ) : (
-                      <span>{team.delta}</span>
-                    )}
-                  </td>
+                  {showPublic && (
+                    <td
+                      className={`${tableCellStyles} max-sm:hidden ${
+                        team.delta.length === 1
+                          ? 'text-white'
+                          : team.delta.includes('-')
+                            ? 'text-red-500'
+                            : 'text-green-500'
+                      }`}>
+                      {team.delta.includes('-') && team.delta.length > 1 ? (
+                        <span>&darr; {team.delta.replace('-', '')}</span>
+                      ) : team.delta.includes('+') ? (
+                        <span>&uarr; {team.delta.replace('+', '')}</span>
+                      ) : (
+                        <span>{team.delta}</span>
+                      )}
+                    </td>
+                  )}
                   <td className={tableCellStyles}>{team.name}</td>
                   <td
                     className={`${tableCellStyles} ${
