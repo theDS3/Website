@@ -11,13 +11,13 @@ const links: Link[] = [
 ];
 
 export const metadata: Metadata = {
-  title: 'DS3 | Public Leaderboard',
+  title: 'DS3 | Final Leaderboard',
   description: `${new Date().getFullYear()} Public Datathon Leaderboard`,
 };
 
-export const revalidate = 60;
-export default async function PublicDatathonLeaderboard() {
-  const leaderboard: ILeaderboard = await getLeaderboardData();
+export const revalidate = 0;
+export default async function FinalDatathonLeaderboard() {
+  const leaderboard: ILeaderboard = await getLeaderboardData('final');
 
   const datathonStartDate = new Date('2024/01/14 07:00:00');
 
@@ -28,12 +28,12 @@ export default async function PublicDatathonLeaderboard() {
         <section className="flex flex-col items-center justify-center">
           <div className="container mx-auto my-8 text-white">
             <h1 className="text-4xl font-bold mb-4 text-center">
-              {new Date().getFullYear()} Datathon Public Leaderboard
+              {new Date().getFullYear()} Datathon Final Leaderboard
             </h1>
             <Leaderboard
               leaderboard={leaderboard}
               startDate={datathonStartDate}
-              description="Scores based on the public leaderboard on Kaggle."
+              description="Final scores are based on the private leaderboard on Kaggle and bonus points from in-person events."
             />
           </div>
         </section>

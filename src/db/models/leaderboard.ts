@@ -2,16 +2,19 @@ import mongoose from 'mongoose';
 
 export type LeaderboardType = 'public' | 'private' | 'final';
 
+export interface TeamInfo {
+  name: string;
+  score: number;
+  numAttempts: number;
+  delta: string;
+  bonus?: number;
+  finalScore?: number;
+}
+
 export interface ILeaderboard extends mongoose.Document {
   timestamp: Date;
   type: LeaderboardType;
-  data: {
-    name: string;
-    score: number;
-    numAttempts: number;
-    delta: string;
-    bonus?: number;
-  }[];
+  data: TeamInfo[];
 }
 
 const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
@@ -33,6 +36,7 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
           numAttempts: { type: Number, required: true },
           delta: { type: String, required: true },
           bonus: { type: Number },
+          finalScore: { type: Number },
         },
       ],
       required: true,
