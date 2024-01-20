@@ -10,13 +10,13 @@ const links: Link[] = [
   { title: 'Datathon', href: '/datathon' },
 ];
 
+export const revalidate = 60;
 export const metadata: Metadata = {
   title: 'DS3 | Private Leaderboard',
   description: `${new Date().getFullYear()} Private Datathon Leaderboard`,
 };
 
-export const revalidate = 0;
-export default async function FinalDatathonLeaderboard() {
+export default async function PrivateDatathonLeaderboard() {
   const leaderboard: ILeaderboard = await getLeaderboardData('private');
 
   const datathonStartDate = new Date('2024/01/14 07:00:00');
