@@ -6,7 +6,7 @@ export interface TeamInfo {
   name: string;
   score: number;
   numAttempts: number;
-  delta?: string;
+  delta: string;
   bonus?: number;
   finalScore?: number;
 }
@@ -34,7 +34,7 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
           name: { type: String, required: true },
           score: { type: Number, required: true },
           numAttempts: { type: Number, required: true },
-          delta: { type: String },
+          delta: { type: String, required: true },
           bonus: { type: Number },
           finalScore: { type: Number },
         },
