@@ -1,15 +1,52 @@
 import { generateAvailableServices } from '@/utils';
 import mongoose from 'mongoose';
 
-export type Services = Record<
+/**
+ * Enum for participant application status.
+ * @readonly
+ * @enum {string}
+ */
+export enum ParticipantStatus {
+  /** Applied when participant has submitted application. */
+  REVIEW = 'REVIEW',
+
+  /** Applied when participant has been sent Acceptance email */
+  EMAILED_ACCEPTANCE = 'EMAILED_ACCEPTANCE', //
+
+  /** Applied when participant has rsvped to event. */
+  RSVPED = 'RSVPED',
+
+  /** Applied when participant has been sent Hacker Package email. */
+  EMAILED_PACKAGE = 'EMAILED_PACKAGE',
+}
+
+/**
+ * Enum for service usage.
+ * @readonly
+ * @enum {string}
+ */
+export enum ServiceStatus {
+  /** Applied when the service is not used. */
+  UNUSED = 'UNUSED',
+
+  /** Applied when service has been successfully used. */
+  USED = 'USED',
+
+  /** Applied when the service encounters an error. */
+  ERROR = 'ERROR',
+}
+
+export type Service = Record<
   string,
   {
-    hasUsed: boolean;
-    timestamp: number;
+    status: ServiceStatus;
+    timestamp?: number;
   }
 >;
 
-export interface IParticipant {
+export type Services = Map<string, Service>;
+
+export interface IParticipant extends mongoose.Document {
   firstName: string;
   lastName: string;
   email: string;
@@ -18,7 +55,8 @@ export interface IParticipant {
   dietaryRestrictions: string;
   code: string;
   qrcode?: string;
-  services?: Map<string, Services>;
+  status?: ParticipantStatus;
+  services?: Services;
 }
 
 const participantSchema = new mongoose.Schema<IParticipant>(
@@ -65,6 +103,11 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     qrcode: {
       type: String,
     },
+    status: {
+      type: String,
+      enum: ParticipantStatus,
+      default: ParticipantStatus.REVIEW,
+    },
     services: {
       type: Map,
       of: mongoose.Schema.Types.Mixed,
@@ -76,7 +119,8 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     toJSON: {
       // This function returns a JSON without id, __v, id
       transform: (doc, ret) => {
-        delete ret.id;
+        ret.id = ret._id;
+        delete ret.qrcode;
         delete ret._id;
         delete ret.__v;
         return ret;
