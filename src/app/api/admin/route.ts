@@ -3,14 +3,14 @@ import { NextResponse, type NextRequest } from 'next/server';
 
 import { connectDB } from '@/db/config';
 import Admin from '@/db/models/admin';
-import { verifyRequest } from '@/utils';
+import { verifyRequest } from '@/verify';
 
 export async function POST(request: NextRequest) {
   let submission = { email: '', password: '' };
 
   try {
     // Authenticates request to see if it comes from DS3
-    const { isRequestValid, requestError } = verifyRequest(request);
+    const { isRequestValid, requestError } = verifyRequest(request.headers);
     if (!isRequestValid) return requestError;
 
     connectDB();

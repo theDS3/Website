@@ -3,12 +3,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/db/config';
 import Participant from '@/db/models/participant';
 
-import { getAvailableServicesByDate, verifyCode, verifyRequest } from '@/utils';
+import { getAvailableServicesByDate } from '@/utils';
+import { verifyCode, verifyRequest } from '@/verify';
 
 export async function GET(request: NextRequest) {
   try {
     // Authenticates Request to see if it comes from DS3
-    const { isRequestValid, requestError } = verifyRequest(request);
+    const { isRequestValid, requestError } = verifyRequest(request.headers);
     if (!isRequestValid) return requestError;
 
     connectDB();

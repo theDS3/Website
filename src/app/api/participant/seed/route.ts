@@ -8,14 +8,14 @@ import Participant from '@/db/models/participant';
 import {
   generateAvailableServices,
   generateQRCodeOptions,
-  verifyRequest,
   type ServicesByDate,
 } from '@/utils';
+import { verifyRequest } from '@/verify';
 
 export async function POST(request: NextRequest) {
   try {
     // Authenticates Request to see if it comes from DS3
-    const { isRequestValid, requestError } = verifyRequest(request);
+    const { isRequestValid, requestError } = verifyRequest(request.headers);
     if (!isRequestValid) return requestError;
 
     connectDB();
