@@ -1,5 +1,6 @@
-import { generateAvailableServices } from '@/utils';
 import mongoose from 'mongoose';
+
+import { generateServices } from '@/utils';
 
 /**
  * Enum for participant application status.
@@ -36,16 +37,16 @@ export enum ServiceStatus {
   ERROR = 'ERROR',
 }
 
-export type Service = Record<
-  string,
-  {
-    status: ServiceStatus;
-    timestamp?: number;
-  }
->;
-
+export type ServiceData = { status: ServiceStatus; timestamp?: number };
+export type Service = Record<string, ServiceData>;
 export type Services = Map<string, Service>;
+export type ServiceGroupsToServiceNames = Record<string, string[]>;
 
+const datathonServices: ServiceGroupsToServiceNames = {
+  Emails: ['Participant Acceptance', 'Hacker Package'],
+  '2024-01-13': ['Check-In', 'Snacks'],
+  '2024-01-20': ['Check-In', 'Breakfast', 'Lunch', 'Evening Snacks'],
+};
 export interface IParticipant extends mongoose.Document {
   firstName: string;
   lastName: string;
@@ -111,7 +112,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     services: {
       type: Map,
       of: mongoose.Schema.Types.Mixed,
-      default: generateAvailableServices(),
+      default: generateServices(datathonServices),
     },
   },
   {

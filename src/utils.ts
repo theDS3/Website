@@ -1,14 +1,19 @@
 import { type Options } from '@loskir/styled-qr-code-node';
 
-import { type Services } from './db/models/participant';
+import {
+  ServiceStatus,
+  type Service,
+  type ServiceGroupsToServiceNames,
+  type Services,
+} from '@/db/models/participant';
 
-export type ServicesByDate = Record<string, string[]>;
-
-const datathonServicesByDate: ServicesByDate = {
-  '2024-01-13': ['Check-In', 'Snacks'],
-  '2024-01-20': ['Check-In', 'Breakfast', 'Lunch', 'Evening Snacks'],
-};
-
+/**
+ * Generates configuration for QR Code Generator.
+ *
+ * @param {string} code - A unique UUID-4 representing a participant
+ *
+ * @returns {Partial<Options>} - Configuration for QR Code Generator
+ */
 export const generateQRCodeOptions = (code: string): Partial<Options> => {
   return {
     width: 400,
@@ -45,34 +50,57 @@ export const generateQRCodeOptions = (code: string): Partial<Options> => {
   };
 };
 
-export const generateAvailableServices = (
-  availableServicesByDate: ServicesByDate = datathonServicesByDate,
+/**
+ * Generates a mapping of services to common label groups.
+ *
+ * @param {ServiceGroupsToServiceNames} serviceGroupsToServiceNames - Contains groups of related services by label
+ *
+ * @returns {Map} - Mapping of Services
+ *
+ * @throws If service names are not unique
+ */
+export const generateServices = (
+  serviceGroupsToServiceNames: ServiceGroupsToServiceNames,
 ) => {
-  return Object.fromEntries(
-    Object.entries(availableServicesByDate).map(([date, availableServices]) => [
-      date,
-      Object.fromEntries(
-        availableServices.map((service) => [
-          service,
-          { hasUsed: false, timestamp: 0 },
-        ]),
-      ),
-    ]),
+  const services = new Map<string, Service>();
+
+  Object.entries(serviceGroupsToServiceNames).forEach(
+    ([serviceGroup, serviceNames]) => {
+      if (new Set(serviceNames).size !== serviceNames.length)
+        throw new Error('Service Names must be unique');
+
+      const serviceNameToServiceData: Service = {};
+
+      serviceNames.forEach((serviceName) => {
+        serviceNameToServiceData[serviceName] = {
+          status: ServiceStatus.UNUSED,
+          timestamp: undefined,
+        };
+      });
+
+      services.set(serviceGroup, serviceNameToServiceData);
+    },
   );
+
+  return services;
 };
 
-export const getAvailableServicesByDate = (
-  services: Map<string, Services>,
-  date: string,
+/**
+ * Returns all services that have not been used by a participant.
+ *
+ * @param {Map<string, Service>} services - Map of services
+ * @param {string} label - Label of the service group
+ *
+ * @returns {string[]} - Array of unused services
+ */
+export const getAvailableServicesByLabel = (
+  services: Services,
+  label: string,
 ) => {
-  let availableServices: string[] = [];
-
-  if (services.has(date)) {
-    const servicesByDate = services.get(date) as Services;
-    Object.keys(servicesByDate).forEach((service) => {
-      if (!servicesByDate[service].hasUsed) availableServices.push(service);
-    });
-  }
-
-  return availableServices;
+  const serviceByLabel = services.get(label);
+  return !serviceByLabel
+    ? []
+    : Object.keys(serviceByLabel).filter(
+        (service) => serviceByLabel[service].status === ServiceStatus.UNUSED,
+      );
 };
