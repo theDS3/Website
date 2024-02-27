@@ -1,7 +1,11 @@
-import { type ILeaderboard, type TeamInfo } from '@/db/models/leaderboard';
+import { LeaderboardType, type TeamInfo } from '@/db/models/leaderboard';
 
 interface LeaderboardProps {
-  leaderboard: ILeaderboard;
+  leaderboard: {
+    timestamp: Date;
+    type?: LeaderboardType;
+    data: TeamInfo[];
+  };
   startDate: Date;
   description: string;
 }
