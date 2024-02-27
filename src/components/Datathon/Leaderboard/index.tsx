@@ -29,7 +29,7 @@ export default function Leaderboard({
 
   return (
     <>
-      {!leaderboard || leaderboard.data.length === 0 ? (
+      {!leaderboard || leaderboard.data.length === 0 || startDate > currentDate ? (
         <h2 className="text-center text-xl">
           {startDate < currentDate
             ? 'No data available in the leaderboard.'
