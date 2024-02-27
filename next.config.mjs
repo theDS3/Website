@@ -11,9 +11,15 @@ const nextConfig = {
     formats: ['image/webp'],
   },
 
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals.push('skia-canvas');
+  webpack: (config) => {
+    // Removes files from production build
+    if (process.env.NODE_ENV === 'production') {
+
+      // Removes the Leaderboard Seed Endpoint
+      config.module.rules?.push({
+        test: /src\/app\/api\/leaderboard\/seed/,
+        loader: 'ignore-loader',
+      });
     }
 
     return config;

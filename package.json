@@ -36,6 +36,7 @@
     "cssnano-preset-advanced": "^6.0.2",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "ignore-loader": "^0.1.2",
     "localtunnel": "^2.0.2",
     "postcss": "^8",
     "postcss-import": "^16.0.0",

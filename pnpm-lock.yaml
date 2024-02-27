@@ -58,6 +58,9 @@ devDependencies:
   eslint-config-next:
     specifier: 14.0.4
     version: 14.0.4(eslint@8.57.0)(typescript@5.3.3)
+  ignore-loader:
+    specifier: ^0.1.2
+    version: 0.1.2
   localtunnel:
     specifier: ^2.0.2
     version: 2.0.2
@@ -2629,6 +2632,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+
+  /ignore-loader@0.1.2:
+    resolution: {integrity: sha512-yOJQEKrNwoYqrWLS4DcnzM7SEQhRKis5mB+LdKKh4cPmGYlLPR0ozRzHV5jmEk2IxptqJNQA5Cc0gw8Fj12bXA==}
+    dev: true
 
   /ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
