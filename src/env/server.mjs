@@ -8,7 +8,6 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: z.string().url(),
-    VALIDATION_SECRET: z.string(),
     DATABASE_NAME: z.enum(['prod', 'dev', 'local']).default('local'),
     GMAIL_USER: z.string().email().optional(),
     GMAIL_PASSWORD: z
@@ -23,7 +22,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
-    VALIDATION_SECRET: process.env.VALIDATION_SECRET,
     DATABASE_NAME: process.env.DATABASE_NAME,
     GMAIL_USER: process.env.GMAIL_USER,
     GMAIL_PASSWORD: process.env.GMAIL_PASSWORD,
