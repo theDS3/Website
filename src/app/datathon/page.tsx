@@ -4,7 +4,7 @@ import CountdownTimer from '@/components/Datathon/CountdownTimer';
 import NavBar, { type Link } from '@/components/Navabr';
 
 const links: Link[] = [
-  { title: '2024 Leaderboard', href: '/datathon/leaderboard' },
+  { title: '2024 Leaderboard', href: '/datathon/leaderboard/past' },
 ];
 
 const eventDate = new Date('Jan 17, 2025 9:00:00');
