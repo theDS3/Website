@@ -5,6 +5,8 @@ import NavBar, { type Link } from '@/components/Navabr';
 import { type ILeaderboard } from '@/db/models/leaderboard';
 import { getLeaderboardData } from '@/db/utils';
 
+import { datathonDate } from '@/app/datathon/data';
+
 const links: Link[] = [
   { title: 'Home', href: '/' },
   { title: 'Datathon', href: '/datathon' },
@@ -32,7 +34,7 @@ export default async function PrivateDatathonLeaderboard() {
             </h1>
             <Leaderboard
               leaderboard={leaderboard}
-              startDate={datathonStartDate}
+              startDate={datathonDate}
               description="Scores based on the private leaderboard on Kaggle."
             />
           </div>

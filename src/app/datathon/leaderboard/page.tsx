@@ -5,6 +5,8 @@ import NavBar, { type Link } from '@/components/Navabr';
 import { type ILeaderboard } from '@/db/models/leaderboard';
 import { getLeaderboardData } from '@/db/utils';
 
+import { datathonDate } from '@/app/datathon/data';
+
 const links: Link[] = [
   { title: 'Home', href: '/' },
   { title: 'Datathon', href: '/datathon' },
@@ -19,8 +21,6 @@ export const revalidate = 60;
 export default async function PublicDatathonLeaderboard() {
   const leaderboard: ILeaderboard = await getLeaderboardData();
 
-  const datathonStartDate = new Date('2024/01/14 07:00:00');
-
   return (
     <>
       <NavBar links={links} />
@@ -32,7 +32,7 @@ export default async function PublicDatathonLeaderboard() {
             </h1>
             <Leaderboard
               leaderboard={leaderboard}
-              startDate={datathonStartDate}
+              startDate={datathonDate}
               description="Scores based on the public leaderboard on Kaggle."
             />
           </div>

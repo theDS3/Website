@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
 
-import { pastFinalDatathonLeaderboard } from '@/app/datathon/data';
+import { datathonDate, pastFinalDatathonLeaderboard } from '@/app/datathon/data';
 
 const links: Link[] = [
   { title: 'Home', href: '/' },
@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default async function PastFinalDatathonLeaderboard() {
-  const datathonStartDate = new Date('2024/01/14 07:00:00');
   const year = '2024';
 
   return (
@@ -29,7 +28,7 @@ export default async function PastFinalDatathonLeaderboard() {
             </h1>
             <Leaderboard
               leaderboard={pastFinalDatathonLeaderboard[year]}
-              startDate={datathonStartDate}
+              startDate={datathonDate}
               description="Final scores are based on the private leaderboard on Kaggle and bonus points from in-person events."
             />
           </div>

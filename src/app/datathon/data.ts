@@ -1,5 +1,7 @@
 import { LeaderboardType, TeamInfo } from '@/db/models/leaderboard';
 
+export const datathonDate = new Date('Jan 17, 2025 9:00:00');
+
 export const pastFinalDatathonLeaderboard: Record<
   '2024',
   {
