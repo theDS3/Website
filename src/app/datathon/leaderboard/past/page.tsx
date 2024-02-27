@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
 
-import pastFinalDatathonLeaderboard from './data';
+import { pastFinalDatathonLeaderboard } from '@/app/datathon/data';
 
 const links: Link[] = [
   { title: 'Home', href: '/' },

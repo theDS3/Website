@@ -1,6 +1,6 @@
 import { LeaderboardType, TeamInfo } from '@/db/models/leaderboard';
 
-const pastFinalDatathonLeaderboard: Record<
+export const pastFinalDatathonLeaderboard: Record<
   '2024',
   {
     timestamp: Date;
@@ -255,5 +255,3 @@ const pastFinalDatathonLeaderboard: Record<
     ],
   },
 };
-
-export default pastFinalDatathonLeaderboard;
