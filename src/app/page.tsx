@@ -5,13 +5,12 @@ import NavBar, { type Link } from '@/components/Navabr';
 import AboutUs from '@/components/Main/AboutUs';
 import Executives from '@/components/Main/Executives';
 import Sponsor from '@/components/Main/Sponsors';
-import Upcoming from '@/components/Main/Upcoming';
 
 const links: Link[] = [
   { title: 'About Us', href: '/#about-us' },
   { title: 'Sponsors', href: '/#sponsors' },
   { title: 'Team', href: '/#team' },
-  { title: 'Events', href: '/#events' },
+  // { title: 'Events', href: '/#events' },
   { title: 'Datathon', href: '/datathon' },
 ];
 
@@ -26,7 +25,7 @@ export default function Home() {
         <AboutUs />
         <Sponsor />
         <Executives />
-        <Upcoming />
+        {/* <Upcoming /> */}
       </main>
     </>
   );
