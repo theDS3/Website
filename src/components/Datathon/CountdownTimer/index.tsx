@@ -51,7 +51,7 @@ export default function CountdownTimer({ date }: CountdownTimerProps) {
     }, 1000);
 
     return () => clearInterval(updateRemainingTime);
-  }, []);
+  }, [date]);
 
   return (
     <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
