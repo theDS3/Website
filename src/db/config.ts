@@ -4,7 +4,7 @@ import { env } from '@/env/server.mjs';
 
 export async function connectDB() {
   try {
-    await mongoose.connect(env.DATABASE_URL, { dbName: env.DATABASE_NAME });
+    await mongoose.connect(env.MONGO_URI, { dbName: env.MONGO_DB });
     const connection = mongoose.connection;
 
     connection.on('connected', () => {
