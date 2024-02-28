@@ -1,40 +1,39 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
-import Participant from '@/db/models/participant';
+import Participant, { IParticipant } from '@/db/models/participant';
 
-import { getAvailableServicesByDate } from '@/utils';
-import { verifyCode, verifyRequest } from '@/verify';
+import { VerificationError } from '@/error';
+import { getAvailableServicesByLabel } from '@/utils';
+import { isDate, isUUID4, verifyRequest } from '@/verify';
 
 export async function GET(request: NextRequest) {
   try {
-    // Authenticates Request to see if it comes from DS3
-    const { isRequestValid, requestError } = verifyRequest(request.headers);
-    if (!isRequestValid) return requestError;
+    verifyRequest(request.headers);
+
+    // Collects the code and date from the request
+    const code = isUUID4(request.nextUrl.searchParams.get('code') || '');
+    const date = isDate(request.nextUrl.searchParams.get('date') || '');
 
     connectDB();
 
-    const code = request.nextUrl.searchParams.get('code') || '';
-    const { isCodeValid, codeError } = verifyCode(code);
-    if (!isCodeValid)
-      return NextResponse.json({ error: codeError }, { status: 400 });
+    // Retrives a participant with a specific code and has services for a specific date
+    const participant: IParticipant | null = await Participant.findOne({
+      code,
+      [`services.${date}`]: { $exists: true },
+    });
 
-    const date = request.nextUrl.searchParams.get('date') || '';
-    // const { isDateValid, dateError } = verifyDate(date);
-    // if (!isDateValid)
-    //   return NextResponse.json({ error: dateError }, { status: 400 });
-
-    const participant = await Participant.findOne({ code });
-
-    if (!participant)
+    // If the participant does not exist or does not have services for the date, return a 400 error
+    if (!participant || !participant.services)
       return NextResponse.json(
         {
           type: 'ParticipantError',
-          error: `Participant with code: ${code} does not exist`,
+          error: `Participant with code ${code} does not exist and/or have services for ${date}`,
         },
         { status: 400 },
       );
 
+    // If the participant does exist and has services for the date, return with all available services for the date
     return NextResponse.json(
       {
         firstName: participant.firstName,
@@ -43,7 +42,7 @@ export async function GET(request: NextRequest) {
         email: participant.email,
         dietaryRestrictions: participant.dietaryRestrictions,
         code: participant.code,
-        availableServices: getAvailableServicesByDate(
+        availableServices: getAvailableServicesByLabel(
           participant.services,
           date,
         ),
@@ -51,6 +50,11 @@ export async function GET(request: NextRequest) {
       { status: 200 },
     );
   } catch (error: any) {
+    // Catches a VerificationError and returns a 400 error
+    if (error instanceof VerificationError)
+      return NextResponse.json({ ...error }, { status: 400 });
+
+    // Catches any other errors and returns a 400 error
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
 }
