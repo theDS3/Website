@@ -37,7 +37,7 @@ export enum ServiceStatus {
   ERROR = 'ERROR',
 }
 
-export type ServiceData = { status: ServiceStatus; timestamp?: number };
+export type ServiceData = { status: ServiceStatus; timestamp?: string };
 export type Service = Record<string, ServiceData>;
 export type Services = Map<string, Service>;
 export type ServiceGroupsToServiceNames = Record<string, string[]>;
