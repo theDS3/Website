@@ -21,3 +21,6 @@ class ErrorBase<T extends string> extends Error {
 
 type VerificationErrorType = 'UNAUTHORIZED_ERROR' | 'INVALID_PARAMS';
 export class VerificationError extends ErrorBase<VerificationErrorType> {}
+
+type QueryErrorType = 'PARTICIPANT_DNE';
+export class QueryError extends ErrorBase<QueryErrorType> {}
