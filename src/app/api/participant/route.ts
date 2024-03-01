@@ -56,3 +56,102 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
 }
+
+export async function POST(request: NextRequest) {
+  let submission: Pick<
+    IParticipant,
+    | 'firstName'
+    | 'lastName'
+    | 'email'
+    | 'phoneNum'
+    | 'school'
+    | 'countryOfResidence'
+    | 'dietaryRestrictions'
+  > = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNum: undefined,
+    school: '',
+    countryOfResidence: '',
+    dietaryRestrictions: '',
+  };
+
+  let code = '';
+
+  try {
+    verifyRequest(request.headers);
+
+    // Collect the registration from Google Sheets and generate unique code for participant
+    submission = await request.json();
+    code = await crypto.randomUUID().toString();
+
+    connectDB();
+
+    // Creates and Saves the User
+    await new Participant({ ...submission, code }).save();
+
+    return NextResponse.json(
+      {
+        type: 'SUCCESS',
+        message: `${submission.firstName} ${submission.lastName} with ${submission.email} created successfully!`,
+      },
+      { status: 201 },
+    );
+  } catch (error: any) {
+    // Invalid Body
+    if (error instanceof SyntaxError)
+      return NextResponse.json(
+        {
+          type: 'INVALID_BODY',
+          message: 'Request Body does not match JSON format',
+          cause: `${error.name}: ${error.message}`,
+        },
+        { status: 400 },
+      );
+
+    // Missing Body Parameters
+    if (error.name === 'ValidationError')
+      return NextResponse.json(
+        {
+          type: 'MISSING_BODY_PARAMS',
+          message: 'One or more required parameters are missing',
+          cause: `The following keys are required: ${Object.keys(
+            error.errors,
+          ).join(', ')}`,
+        },
+        { status: 400 },
+      );
+
+    // Duplicate Error
+    if (error.code === 11000) {
+      // Same Email Exists
+      if (error.keyValue.email === submission.email)
+        return NextResponse.json(
+          {
+            type: 'PARTICIPANT_EXISTS',
+            message: 'Participant with same email already exists',
+            cause: `Duplicate Entry: ${submission.email}`,
+          },
+          { status: 400 },
+        );
+
+      // Same Phone Number Exists
+      if (error.keyValue.phoneNum === submission.phoneNum)
+        return NextResponse.json(
+          {
+            type: 'PARTICIPANT_EXISTS',
+            message: 'Participant with same phone number already exists',
+            cause: `Duplicate Entry: ${submission.phoneNum}`,
+          },
+          { status: 400 },
+        );
+    }
+
+    // Missing Headers
+    if (error instanceof VerificationError)
+      return NextResponse.json({ ...error }, { status: 400 });
+
+    return NextResponse.json({ error: error.message }, { status: 400 });
+  }
+}
