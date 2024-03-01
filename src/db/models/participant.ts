@@ -47,10 +47,12 @@ const datathonServices: ServiceGroupsToServiceNames = {
   '2024-01-13': ['Check-In', 'Snacks'],
   '2024-01-20': ['Check-In', 'Breakfast', 'Lunch', 'Evening Snacks'],
 };
+
 export interface IParticipant extends mongoose.Document {
   firstName: string;
   lastName: string;
   email: string;
+  phoneNum?: string;
   school: string;
   countryOfResidence: string;
   dietaryRestrictions: string;
@@ -77,6 +79,11 @@ const participantSchema = new mongoose.Schema<IParticipant>(
       required: true,
       unique: true,
       index: true,
+      trim: true,
+    },
+    phoneNum: {
+      type: String,
+      unique: true,
       trim: true,
     },
     school: {
