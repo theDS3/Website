@@ -75,6 +75,11 @@ export async function POST(request: NextRequest) {
         firstName,
         lastName,
         email: faker.internet.email({ firstName, lastName }),
+        // Adds phone numbers to only some of the mock participants
+        phoneNum:
+          Math.random() < 0.5
+            ? Math.floor(Math.random() * 10 ** 10).toString()
+            : undefined,
         school: faker.helpers.arrayElement([
           'The University of Toronto St. George',
           'The University of Toronto Mississauga',
