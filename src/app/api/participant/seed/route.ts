@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
         qrcode: await new QRCodeCanvas(generateQRCodeOptions(code)).toDataUrl(
           'jpeg',
         ),
-        services,
+        services: Object.fromEntries(services),
       });
     }
 
