@@ -19,8 +19,12 @@ class ErrorBase<T extends string> extends Error {
   }
 }
 
-type VerificationErrorType = 'UNAUTHORIZED_ERROR' | 'INVALID_PARAMS';
+type VerificationErrorType =
+  | 'UNAUTHORIZED_ERROR'
+  | 'INVALID_QUERY_PARAMS'
+  | 'INVALID_BODY'
+  | 'MISSING_BODY_PARAMS';
 export class VerificationError extends ErrorBase<VerificationErrorType> {}
 
-type QueryErrorType = 'PARTICIPANT_DNE';
+type QueryErrorType = 'PARTICIPANT_DNE' | 'PARTICIPANT_EXISTS';
 export class QueryError extends ErrorBase<QueryErrorType> {}

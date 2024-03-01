@@ -39,14 +39,14 @@ export const isUUID4 = (code: string | null) => {
 
   if (!code || code.length === 0)
     throw new VerificationError({
-      name: 'INVALID_PARAMS',
+      name: 'INVALID_QUERY_PARAMS',
       message: 'No code provided',
       cause: 'Must include a UUID-4 code in request',
     });
 
   if (!code.match(UUID4Regex))
     throw new VerificationError({
-      name: 'INVALID_PARAMS',
+      name: 'INVALID_QUERY_PARAMS',
       message: 'Non-UUID code provided',
       cause: 'Must include a UUID-4 code in request',
     });
@@ -69,14 +69,14 @@ export const isDate = (date: string | null, varName = 'date') => {
 
   if (!date || date.length === 0)
     throw new VerificationError({
-      name: 'INVALID_PARAMS',
+      name: 'INVALID_QUERY_PARAMS',
       message: 'No date provided',
       cause: `${varName} must for the correct format (YYYY-MM-DD)`,
     });
 
   if (!date.match(dateFormatRegex))
     throw new VerificationError({
-      name: 'INVALID_PARAMS',
+      name: 'INVALID_QUERY_PARAMS',
       message: 'Date does not follow the format',
       cause: `${varName} must for the correct format (YYYY-MM-DD)`,
     });
@@ -106,14 +106,14 @@ export const isNumeric = (
 
   if (!num || num.length === 0)
     throw new VerificationError({
-      name: 'INVALID_PARAMS',
+      name: 'INVALID_QUERY_PARAMS',
       message: 'No numeric value provided',
       cause: `${varName} must be digit between ${min} and ${max}`,
     });
 
   if (!num.match(numRegex))
     throw new VerificationError({
-      name: 'INVALID_PARAMS',
+      name: 'INVALID_QUERY_PARAMS',
       message: 'No numeric value provided',
       cause: `${varName} must not contain any letters or special characters`,
     });
@@ -125,7 +125,7 @@ export const isNumeric = (
     (typeof max !== 'undefined' && number > max)
   )
     throw new VerificationError({
-      name: 'INVALID_PARAMS',
+      name: 'INVALID_QUERY_PARAMS',
       message: 'Out of Range',
       cause: `${varName} must be between ${min} - ${max}`,
     });

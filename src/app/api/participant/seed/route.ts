@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     // If the start date is after the end date, throw an error
     if (currentDate > new Date(endDate))
       throw new VerificationError({
-        name: 'INVALID_PARAMS',
+        name: 'INVALID_QUERY_PARAMS',
         message: 'endDate must be after startDate',
         cause: `End Date: ${endDate} must be after Start Date: ${startDate}`,
       });
