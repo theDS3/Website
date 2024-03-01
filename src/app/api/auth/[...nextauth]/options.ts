@@ -3,7 +3,7 @@ import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { connectDB } from '@/db/config';
-import Admin from '@/db/models/admin';
+import Volunteer from '@/db/models/volunteer';
 import { env } from '@/env/server.mjs';
 
 export const authOptions: NextAuthOptions = {
@@ -26,18 +26,18 @@ export const authOptions: NextAuthOptions = {
 
         try {
           connectDB();
-          const admin = await Admin.findOne({
+          const volunteer = await Volunteer.findOne({
             email: credentials.email,
           });
 
-          if (!admin) return null;
+          if (!volunteer) return null;
 
           const passwordsMatch = await compare(
             credentials.password,
-            admin.hashedPassword,
+            volunteer.hashedPassword,
           );
 
-          return !passwordsMatch ? null : admin;
+          return !passwordsMatch ? null : volunteer;
         } catch (error) {
           return null;
         }

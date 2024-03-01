@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
-export interface IAdmin {
+export interface IVolunteer extends mongoose.Document {
   email: string;
   hashedPassword: string;
 }
 
-const adminSchema = new mongoose.Schema<IAdmin>(
+const volunteerSchema = new mongoose.Schema<IVolunteer>(
   {
     email: {
       type: String,
@@ -30,7 +30,8 @@ const adminSchema = new mongoose.Schema<IAdmin>(
   },
 );
 
-const Admin =
-  mongoose.models.Admin || mongoose.model<IAdmin>('Admin', adminSchema);
+const Volunteer =
+  mongoose.models.Volunteer ||
+  mongoose.model<IVolunteer>('Volunteer', volunteerSchema);
 
-export default Admin;
+export default Volunteer;
