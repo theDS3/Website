@@ -26,5 +26,8 @@ type VerificationErrorType =
   | 'MISSING_BODY_PARAMS';
 export class VerificationError extends ErrorBase<VerificationErrorType> {}
 
-type QueryErrorType = 'PARTICIPANT_DNE' | 'PARTICIPANT_EXISTS';
+type QueryErrorType =
+  | 'PARTICIPANT_DNE'
+  | 'PARTICIPANT_EXISTS'
+  | 'VOLUNTEER_EXISTS';
 export class QueryError extends ErrorBase<QueryErrorType> {}
