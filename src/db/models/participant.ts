@@ -84,6 +84,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     phoneNum: {
       type: String,
       unique: true,
+      sparse: true,
       trim: true,
     },
     school: {
