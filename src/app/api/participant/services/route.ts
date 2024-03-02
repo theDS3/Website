@@ -2,10 +2,7 @@ import { formatISO } from 'date-fns';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
-import Participant, {
-  IParticipant,
-  ServiceStatus,
-} from '@/db/models/participant';
+import Participant, { type IParticipant } from '@/db/models/participant';
 
 import { QueryError, VerificationError } from '@/error';
 import { getAvailableServicesByLabel } from '@/utils';
@@ -16,16 +13,23 @@ export async function PATCH(request: NextRequest) {
     verifyRequest(request.headers);
 
     // Collects the code, date, service from the request
-    const code = isUUID4(request.nextUrl.searchParams.get('code') || '');
-    const date = isDate(request.nextUrl.searchParams.get('date') || '');
-    const service = request.nextUrl.searchParams.get('service') || '';
+    const code = isUUID4(request.nextUrl.searchParams.get('code'));
+    const date = isDate(request.nextUrl.searchParams.get('date'));
+    const serviceLabel = request.nextUrl.searchParams.get('serviceLabel') || '';
+
+    if (!serviceLabel || serviceLabel.length === 0)
+      throw new VerificationError({
+        name: 'INVALID_QUERY_PARAMS',
+        message: 'Service Label is required',
+        cause: 'Service Label is required',
+      });
 
     connectDB();
 
     // Retrieves a participant with a specific code and has the service for a specific date
     const participant: IParticipant | null = await Participant.findOne({
       code,
-      [`services.${date}.${service}`]: { $exists: true },
+      [`services.${date}.${serviceLabel}`]: { $exists: true },
     });
 
     // If the participant does not exist or does not have services for the date, throw a QueryError
@@ -36,12 +40,12 @@ export async function PATCH(request: NextRequest) {
         cause: `Participant with code ${code} does not exist and/or have services for ${date}`,
       });
 
-    const serviceObj = participant.services.get(date);
+    const service = participant.services.get(date);
 
     // If the participant does exist and has services for the date, update the service usage to USED
-    if (serviceObj) {
-      serviceObj[service] = {
-        status: ServiceStatus.USED,
+    if (service && !service[serviceLabel].status) {
+      service[serviceLabel] = {
+        status: true,
         timestamp: formatISO(new Date(), {
           representation: 'complete',
           format: 'extended',
@@ -49,6 +53,12 @@ export async function PATCH(request: NextRequest) {
       };
 
       await participant.save();
+    } else {
+      throw new QueryError({
+        name: 'SERVICE_NOT_AVAILABLE',
+        message: 'Service does not exist or has been used',
+        cause: `Participant with code ${code} does not have service ${serviceLabel} for ${date}`,
+      });
     }
 
     // If the participant does exist and has services for the date, return with all available services for the date

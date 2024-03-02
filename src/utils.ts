@@ -1,18 +1,17 @@
 import { type Options } from '@loskir/styled-qr-code-node';
 
 import {
-  ServiceStatus,
   type Service,
-  type ServiceGroupsToServiceNames,
+  type ServiceGroupsToLabels,
   type Services,
 } from '@/db/models/participant';
 
 /**
  * Generates configuration for QR Code Generator.
  *
- * @param {string} code - A unique UUID-4 representing a participant
+ * @param {string} code A unique UUID-4 representing a participant
  *
- * @returns {Partial<Options>} - Configuration for QR Code Generator
+ * @returns {Partial<Options>} Configuration for QR Code Generator
  */
 export const generateQRCodeOptions = (code: string): Partial<Options> => {
   return {
@@ -53,34 +52,32 @@ export const generateQRCodeOptions = (code: string): Partial<Options> => {
 /**
  * Generates a mapping of services to common label groups.
  *
- * @param {ServiceGroupsToServiceNames} serviceGroupsToServiceNames - Contains groups of related services by label
+ * @param {ServiceGroupsToLabels} serviceGroupsToLabels Contains groups of related services by labels
  *
- * @returns {Map} - Mapping of Services
+ * @returns {Services} Mapping of Services
  *
  * @throws If service names are not unique
  */
 export const generateServices = (
-  serviceGroupsToServiceNames: ServiceGroupsToServiceNames,
-) => {
+  serviceGroupsToLabels: ServiceGroupsToLabels,
+): Services => {
   const services = new Map<string, Service>();
 
-  Object.entries(serviceGroupsToServiceNames).forEach(
-    ([serviceGroup, serviceNames]) => {
-      if (new Set(serviceNames).size !== serviceNames.length)
-        throw new Error('Service Names must be unique');
+  Object.entries(serviceGroupsToLabels).forEach(([serviceGroup, labels]) => {
+    if (new Set(labels).size !== labels.length)
+      throw new Error('Service Names must be unique');
 
-      const serviceNameToServiceData: Service = {};
+    const serviceNameToServiceData: Service = {};
 
-      serviceNames.forEach((serviceName) => {
-        serviceNameToServiceData[serviceName] = {
-          status: ServiceStatus.UNUSED,
-          timestamp: undefined,
-        };
-      });
+    labels.forEach((label) => {
+      serviceNameToServiceData[label] = {
+        status: false,
+        timestamp: undefined,
+      };
+    });
 
-      services.set(serviceGroup, serviceNameToServiceData);
-    },
-  );
+    services.set(serviceGroup, serviceNameToServiceData);
+  });
 
   return services;
 };
@@ -88,19 +85,19 @@ export const generateServices = (
 /**
  * Returns all services that have not been used by a participant.
  *
- * @param {Map<string, Service>} services - Map of services
- * @param {string} label - Label of the service group
+ * @param {Services} services Map of services
+ * @param {string} service Label of the service group
  *
- * @returns {string[]} - Array of unused services
+ * @returns {string[]} Array of unused services
  */
 export const getAvailableServicesByLabel = (
   services: Services,
-  label: string,
+  service: string,
 ) => {
-  const serviceByLabel = services.get(label);
-  return !serviceByLabel
+  const serviceByUsage = services.get(service);
+  return !serviceByUsage
     ? []
-    : Object.keys(serviceByLabel).filter(
-        (service) => serviceByLabel[service].status === ServiceStatus.UNUSED,
+    : Object.keys(serviceByUsage).filter(
+        (service) => !serviceByUsage[service].status,
       );
 };

@@ -5,8 +5,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
 import Participant, {
-  type ServiceGroupsToServiceNames,
+  type ServiceGroupsToLabels,
 } from '@/db/models/participant';
+
 import { VerificationError } from '@/error';
 import { generateQRCodeOptions, generateServices } from '@/utils';
 import { isDate, isNumeric, verifyRequest } from '@/verify';
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
       'dayStep',
     );
 
-    const mockServicesByDate: ServiceGroupsToServiceNames = {};
+    const mockServicesByDate: ServiceGroupsToLabels = {};
     let currentDate = new Date(startDate);
 
     // If the start date is after the end date, throw an error
@@ -60,11 +61,7 @@ export async function POST(request: NextRequest) {
 
     const services = generateServices(mockServicesByDate);
 
-    connectDB();
-
-    await Participant.deleteMany({});
-
-    // Updates the collection with a list of mock participants
+    // Generates a list of mock participants
     const participants = [];
     for (let i = 0; i < numOfParticipants; i++) {
       const firstName = faker.person.firstName();
@@ -104,6 +101,12 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    connectDB();
+
+    // Deletes previous participants
+    await Participant.deleteMany({});
+
+    // Inserts the mock participants
     await Participant.insertMany(participants);
     return NextResponse.json({ ...participants }, { status: 201 });
   } catch (error: any) {

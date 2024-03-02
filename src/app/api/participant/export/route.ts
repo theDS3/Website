@@ -3,10 +3,10 @@ import { NextResponse, type NextRequest } from 'next/server';
 
 import { connectDB } from '@/db/config';
 import Participant, {
-  IParticipant,
-  Service,
-  ServiceStatus,
+  type IParticipant,
+  type Service,
 } from '@/db/models/participant';
+
 import { QueryError, VerificationError } from '@/error';
 import { isDate, verifyRequest } from '@/verify';
 
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
 
     const date = isDate(request.nextUrl.searchParams.get('date'));
 
-    // Checks if there exists atleast one participant with services for the date
+    // Checks if there exists at least one participant with services for the date
     const participant: IParticipant | null = await Participant.findOne({
       [`services.${date}`]: { $exists: true },
     });
@@ -40,10 +40,10 @@ export async function GET(request: NextRequest) {
       let services: Record<string, 1 | 0> = {};
 
       if (participant.services?.has(date))
-        for (const [service, serviceObj] of Object.entries(
+        for (const [service, usage] of Object.entries(
           participant.services?.get(date) as Service,
         ))
-          services[service] = serviceObj.status === ServiceStatus.USED ? 1 : 0;
+          services[service] = usage.status ? 1 : 0;
 
       return {
         'First Name': participant.firstName,

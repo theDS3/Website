@@ -29,5 +29,6 @@ export class VerificationError extends ErrorBase<VerificationErrorType> {}
 type QueryErrorType =
   | 'PARTICIPANT_DNE'
   | 'PARTICIPANT_EXISTS'
-  | 'VOLUNTEER_EXISTS';
+  | 'VOLUNTEER_EXISTS'
+  | 'SERVICE_NOT_AVAILABLE';
 export class QueryError extends ErrorBase<QueryErrorType> {}

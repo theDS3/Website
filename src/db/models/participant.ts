@@ -21,29 +21,12 @@ export enum ParticipantStatus {
   EMAILED_PACKAGE = 'EMAILED_PACKAGE',
 }
 
-/**
- * Enum for service usage.
- * @readonly
- * @enum {string}
- */
-export enum ServiceStatus {
-  /** Applied when the service is not used. */
-  UNUSED = 'UNUSED',
+export type Usage = { status: boolean; timestamp?: string };
 
-  /** Applied when service has been successfully used. */
-  USED = 'USED',
-
-  /** Applied when the service encounters an error. */
-  ERROR = 'ERROR',
-}
-
-export type ServiceData = { status: ServiceStatus; timestamp?: string };
-export type Service = Record<string, ServiceData>;
+export type Service = Record<string, Usage>;
 export type Services = Map<string, Service>;
-export type ServiceGroupsToServiceNames = Record<string, string[]>;
-
-const datathonServices: ServiceGroupsToServiceNames = {
-  Emails: ['Participant Acceptance', 'Hacker Package'],
+export type ServiceGroupsToLabels = Record<string, string[]>;
+const datathonServices: ServiceGroupsToLabels = {
   '2024-01-13': ['Check-In', 'Snacks'],
   '2024-01-20': ['Check-In', 'Breakfast', 'Lunch', 'Evening Snacks'],
 };

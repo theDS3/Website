@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
-import Participant, { IParticipant } from '@/db/models/participant';
+import Participant, { type IParticipant } from '@/db/models/participant';
 
 import { QueryError, VerificationError } from '@/error';
 import { getAvailableServicesByLabel } from '@/utils';
@@ -12,8 +12,8 @@ export async function GET(request: NextRequest) {
     verifyRequest(request.headers);
 
     // Collects the code and date from the request
-    const code = isUUID4(request.nextUrl.searchParams.get('code') || '');
-    const date = isDate(request.nextUrl.searchParams.get('date') || '');
+    const code = isUUID4(request.nextUrl.searchParams.get('code'));
+    const date = isDate(request.nextUrl.searchParams.get('date'));
 
     connectDB();
 
