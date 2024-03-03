@@ -6,61 +6,23 @@ import { connectDB } from '@/db/config';
 import Volunteer from '@/db/models/volunteer';
 
 import { QueryError, VerificationError } from '@/error';
-import { verifyRequest } from '@/verify';
+import { verifyRequest, verifyEmails } from '@/verify';
 
 export async function POST(request: NextRequest) {
   try {
     verifyRequest(request.headers);
 
-    connectDB();
-
     // Collect the volunteer emails
     const { emails }: { emails: string[] } = await request.json();
 
-    // Checks if emails exist
-    if (!emails)
-      throw new VerificationError({
-        name: 'INVALID_BODY',
-        message: 'Request Body is missing key: emails',
-        cause: 'Include emails with a list of unique emails',
-      });
+    verifyEmails(emails);
 
-    // Checks if they are an array of emails
-    if (typeof emails !== 'object' || emails.length === 0)
-      throw new VerificationError({
-        name: 'INVALID_BODY',
-        message: 'Request Body contains no emails',
-        cause: 'Must contain a list of unique emails',
-      });
-
-    // Check if the emails are all unique
-    if (emails.length !== new Set(emails).size)
-      throw new VerificationError({
-        name: 'INVALID_BODY',
-        message: 'Request Body contains duplicate emails',
-        cause: 'Remove duplicate emails from the request body',
-      });
+    connectDB();
 
     // Creates and Saves the Mock Volunteer accounts
     const results: Record<string, string> = {};
 
     for (const email of emails) {
-      // Checks for empty string email
-      if (email.length === 0)
-        throw new VerificationError({
-          name: 'INVALID_BODY',
-          message: 'Request Body contains empty email',
-          cause: 'Remove empty emails from the request body',
-        });
-
-      // Checks if email is from UOFT
-      if (!email.includes('@mail.utoronto.ca'))
-        throw new VerificationError({
-          name: 'INVALID_BODY',
-          message: 'All emails must be @mail.utoronto.ca',
-          cause: `${email} is not a valid email`,
-        });
-
       // Checks if email already exists
       if (await Volunteer.exists({ email }))
         throw new QueryError({

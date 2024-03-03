@@ -132,3 +132,57 @@ export const isNumeric = (
 
   return number;
 };
+
+export const verifyEmails = (
+  emails: string[],
+  domains: string[] = [
+    'gmail.com',
+    'outlook.com',
+    'utoronto.ca',
+    'mail.utoronto.ca',
+  ],
+) => {
+  const emailDomainRegex = new RegExp(`@(${domains.join('|')})$`);
+
+  // Checks if emails exist
+  if (!emails)
+    throw new VerificationError({
+      name: 'INVALID_BODY',
+      message: 'Request Body is missing key: emails',
+      cause: 'Include emails with a list of unique emails',
+    });
+
+  // Checks if they are an array of emails
+  if (typeof emails !== 'object' || emails.length === 0)
+    throw new VerificationError({
+      name: 'INVALID_BODY',
+      message: 'Request Body contains no emails',
+      cause: 'Must contain a list of unique emails',
+    });
+
+  // Check if the emails are all unique
+  if (emails.length !== new Set(emails).size)
+    throw new VerificationError({
+      name: 'INVALID_BODY',
+      message: 'Request Body contains duplicate emails',
+      cause: 'Remove duplicate emails from the request body',
+    });
+
+  emails.forEach((email) => {
+    // Checks for empty string email
+    if (email.length === 0)
+      throw new VerificationError({
+        name: 'INVALID_BODY',
+        message: 'Request Body contains empty email',
+        cause: 'Remove empty emails from the request body',
+      });
+
+    // Checks if email is from UOFT
+    if (!emailDomainRegex.test(email))
+      throw new VerificationError({
+        name: 'INVALID_BODY',
+        message: 'Each email must be from a valid domain',
+        cause: `Acceptable domains: ${domains.join(', ')}`,
+      });
+  });
+};
