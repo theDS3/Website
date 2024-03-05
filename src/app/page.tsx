@@ -31,7 +31,7 @@ export default function Login() {
         router.push('/admin/scan');
       }
     } catch (error) {
-      console.log(error);
+      return error
     }
   };
 
