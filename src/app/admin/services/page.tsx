@@ -1,4 +1,5 @@
 'use client';
+import { format } from 'date-fns/format';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -7,6 +8,7 @@ import {
   FaArrowRightLong,
   FaBowlFood,
   FaCircleUser,
+  FaPhone,
   FaQrcode,
 } from 'react-icons/fa6';
 import { IoSchool } from 'react-icons/io5';
@@ -21,6 +23,7 @@ interface Participant {
   firstName: string;
   lastName: string;
   email: string;
+  phoneNum?: string;
   school: string;
   dietaryRestrictions: string;
   code: string;
@@ -43,17 +46,18 @@ export default function ParticipantServices() {
   const searchParams = useSearchParams();
 
   const code = searchParams.get('code');
-  const date = searchParams.get('date') || '';
+  const date = format(new Date(), 'yyyy-MM-dd');
 
   const [participant, setParticipant] = useState<Participant | null>();
-  const [selectedService, setSelectedService] = useState<string>('DEFAULT');
+  const [selectedServiceLabel, setSelectedServiceLabel] =
+    useState<string>('DEFAULT');
 
   const updateService = async () => {
     if (!participant) return;
 
     try {
       const response = await fetch(
-        `/api/participant/services/?code=${code}&service=${selectedService}&date=${date}`,
+        `/api/participant/services/?code=${code}&date=${date}&serviceLabel=${selectedServiceLabel}`,
         {
           method: 'PATCH',
           ...fetchOptions,
@@ -62,9 +66,9 @@ export default function ParticipantServices() {
       if (response.ok) {
         const data: string[] = await response.json();
         setParticipant({ ...participant, ...data });
-        setSelectedService('DEFAULT');
+        setSelectedServiceLabel('DEFAULT');
         toast.success(
-          `Updated ${selectedService} for ${participant.firstName} ${participant.lastName}`,
+          `Updated ${selectedServiceLabel} for ${participant.firstName} ${participant.lastName}`,
           {
             position: toast.POSITION.TOP_RIGHT,
           },
@@ -73,7 +77,7 @@ export default function ParticipantServices() {
         const data: ErrorResponse = await response.json();
         console.error(data);
         toast.error(
-          `Unable to update ${selectedService} for ${participant.firstName} ${participant.lastName}`,
+          `Unable to update ${selectedServiceLabel} for ${participant.firstName} ${participant.lastName}`,
           {
             position: toast.POSITION.TOP_RIGHT,
           },
@@ -94,7 +98,7 @@ export default function ParticipantServices() {
         if (response.ok) {
           const data: Participant = await response.json();
           setParticipant(data);
-          setSelectedService(
+          setSelectedServiceLabel(
             data.availableServices.includes('Check-In')
               ? 'Check-In'
               : 'DEFAULT',
@@ -184,6 +188,20 @@ export default function ParticipantServices() {
             />
           </Link>
         </div>
+        {participant?.phoneNum && (
+          <div className="w-screen bg-white px-2 py-4 flex items-center">
+            <FaPhone size={24} />
+            <p className="px-2 text-black">{participant.phoneNum}</p>
+            <Link
+              className="ml-auto"
+              href={`tel:${participant.phoneNum}`}>
+              <FaArrowRightLong
+                size={24}
+                color="black"
+              />
+            </Link>
+          </div>
+        )}
         <div className="w-screen bg-white px-2 py-4 flex items-center">
           <IoSchool size={24} />
           <p className="px-2 text-black">{participant.school}</p>
@@ -211,10 +229,7 @@ export default function ParticipantServices() {
             <>
               <Button
                 className="mb-8"
-                onClick={() => {
-                  console.log(selectedService);
-                  updateService();
-                }}>
+                onClick={() => updateService()}>
                 Check In
               </Button>
             </>
@@ -227,8 +242,10 @@ export default function ParticipantServices() {
                 <select
                   id="countries"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-10/12 p-2.5"
-                  onChange={(event) => setSelectedService(event.target.value)}
-                  value={selectedService}>
+                  onChange={(event) =>
+                    setSelectedServiceLabel(event.target.value)
+                  }
+                  value={selectedServiceLabel}>
                   <option
                     value="DEFAULT"
                     disabled>
