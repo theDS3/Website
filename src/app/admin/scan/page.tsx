@@ -1,12 +1,12 @@
 'use client';
 
-import { format } from 'date-fns/format';
 import { Html5Qrcode } from 'html5-qrcode';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { FaCamera, FaTimes } from 'react-icons/fa';
 
 import { Button } from '@/components/Button';
+import { isUUID4 } from '@/verify';
 
 export default function Scan() {
   const qrcodeRegionId = 'reader';
@@ -23,12 +23,7 @@ export default function Scan() {
     const config = { fps: 10, qrbox: 250 };
 
     const qrCodeSuccessCallback = (decodedText: string) => {
-      router.push(
-        `/admin/services?code=${decodedText}&date=${format(
-          new Date(),
-          'yyyy-MM-dd',
-        )}`,
-      );
+      router.push(`/admin/services?code=${isUUID4(decodedText)}`);
       setShowScanner(false);
       if (html5QrCode.getState() === 2) html5QrCode.clear();
     };
