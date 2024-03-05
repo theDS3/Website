@@ -41,6 +41,11 @@ const nextConfig = {
         test: /src\/app\/api\/participant\/seed/,
         loader: 'ignore-loader',
       });
+
+      config.module.rules?.push({
+        test: /src\/app\/api\/participant\/emails/,
+        loader: 'ignore-loader',
+      });
     }
 
     return config;
