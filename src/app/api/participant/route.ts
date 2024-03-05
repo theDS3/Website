@@ -38,6 +38,7 @@ export async function GET(request: NextRequest) {
         lastName: participant.lastName,
         school: participant.school,
         email: participant.email,
+        phoneNum: participant?.phoneNum,
         dietaryRestrictions: participant.dietaryRestrictions,
         code: participant.code,
         availableServices: getAvailableServicesByLabel(
