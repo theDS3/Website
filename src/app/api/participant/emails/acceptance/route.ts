@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
 
       // Checks if Acceptance Email has already been send and received
       if (
-        participant.status === ParticipantStatus.EMAILED_ACCEPTANCE &&
+        participant.status === ParticipantStatus.RECEIVED_ACCEPTANCE &&
         participant.contact?.get('acceptance')?.status
       ) {
         results['ALREADY_RECEIVED'].push(email);
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         html: emailHTML,
       });
 
-      participant.status = ParticipantStatus.EMAILED_ACCEPTANCE;
+      participant.status = ParticipantStatus.RECEIVED_ACCEPTANCE;
 
       // Verifies if the email has been received or not
       if (emailRequest.response.includes('250 2.0.0 OK')) {

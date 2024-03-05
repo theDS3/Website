@@ -8,17 +8,20 @@ import { generateServices } from '@/utils';
  * @enum {string}
  */
 export enum ParticipantStatus {
-  /** Applied when participant has submitted application. */
-  REVIEW = 'REVIEW',
+  // Applied to a participant when they have submitted an application.
+  IN_REVIEW = 'IN REVIEW',
 
-  /** Applied when participant has been sent Acceptance email */
-  EMAILED_ACCEPTANCE = 'EMAILED_ACCEPTANCE', //
+  /// Applied to a participant when they have been sent Acceptance Email.
+  RECEIVED_ACCEPTANCE = 'RECEIVED ACCEPTANCE',
 
-  /** Applied when participant has rsvped to event. */
+  // Applied to participant, when they have agreed to join the Datathon
+  ACCEPTED = 'ACCEPTED',
+
+  // Applied to a participant when they have agreed to In-Person Events.
   RSVPED = 'RSVPED',
 
-  /** Applied when participant has been sent Hacker Package email. */
-  EMAILED_PACKAGE = 'EMAILED_PACKAGE',
+  // Applied to a participant when they have been sent a Hacker Package Email.
+  RECEIVED_HACKER_PACKAGE = 'RECEIVED HACKER PACKAGE',
 }
 
 export type Usage = { status: boolean; timestamp?: string };
@@ -102,7 +105,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     status: {
       type: String,
       enum: ParticipantStatus,
-      default: ParticipantStatus.REVIEW,
+      default: ParticipantStatus.IN_REVIEW,
     },
     services: {
       type: Map,
