@@ -23,7 +23,8 @@ type VerificationErrorType =
   | 'UNAUTHORIZED_ERROR'
   | 'INVALID_QUERY_PARAMS'
   | 'INVALID_BODY'
-  | 'MISSING_BODY_PARAMS';
+  | 'MISSING_BODY_PARAMS'
+  | 'MISSING_CONFIGURATIONS';
 export class VerificationError extends ErrorBase<VerificationErrorType> {}
 
 type QueryErrorType =

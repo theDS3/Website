@@ -1,10 +1,12 @@
 import { type Options } from '@loskir/styled-qr-code-node';
+import { createTransport } from 'nodemailer';
 
 import {
   type Service,
   type ServiceGroupsToLabels,
   type Services,
 } from '@/db/models/participant';
+import { VerificationError } from './error';
 
 /**
  * Generates configuration for QR Code Generator.
@@ -100,4 +102,30 @@ export const getAvailableServicesByLabel = (
     : Object.keys(serviceByUsage).filter(
         (service) => !serviceByUsage[service].status,
       );
+};
+
+/**
+ * Creates a Nodemailer SMTP Transporter
+ *
+ * @param {string | undefined} user Email Account Address
+ * @param {string | undefined} pass Email Account App-Specific Password
+ *
+ * @returns {Transporter} Nodemailler SMTP Transporter
+ */
+export const generateMailer = (
+  user: string | undefined,
+  pass: string | undefined,
+) => {
+  if (!user || !pass)
+    throw new VerificationError({
+      name: 'MISSING_CONFIGURATIONS',
+      message: 'Missing Email Credentials',
+      cause: 'Configure the required environment variables',
+    });
+
+  return createTransport({
+    service: 'gmail',
+    auth: { user, pass },
+    tls: { rejectUnauthorized: false },
+  });
 };
