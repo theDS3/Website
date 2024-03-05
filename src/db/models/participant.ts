@@ -31,6 +31,9 @@ const datathonServices: ServiceGroupsToLabels = {
   '2024-01-20': ['Check-In', 'Breakfast', 'Lunch', 'Evening Snacks'],
 };
 
+const datathonEmails = ['hacker-package', 'acceptance'];
+export type Contact = Map<string, Usage>;
+
 export interface IParticipant extends mongoose.Document {
   firstName: string;
   lastName: string;
@@ -43,6 +46,7 @@ export interface IParticipant extends mongoose.Document {
   qrcode?: string;
   status?: ParticipantStatus;
   services?: Services;
+  contact?: Contact;
 }
 
 const participantSchema = new mongoose.Schema<IParticipant>(
@@ -104,6 +108,20 @@ const participantSchema = new mongoose.Schema<IParticipant>(
       type: Map,
       of: mongoose.Schema.Types.Mixed,
       default: generateServices(datathonServices),
+    },
+    contact: {
+      type: Map,
+      of: mongoose.Schema.Types.Mixed,
+      default: () => {
+        if (new Set(datathonEmails).size !== datathonEmails.length)
+          throw new Error('Emails must be unique');
+
+        const contact: Contact = new Map();
+        datathonEmails.forEach((email) =>
+          contact.set(email, { status: false, timestamp: undefined }),
+        );
+        return contact;
+      },
     },
   },
   {
