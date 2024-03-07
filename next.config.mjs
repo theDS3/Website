@@ -10,20 +10,6 @@ const nextConfig = {
   images: {
     formats: ['image/webp'],
   },
-
-  webpack: (config) => {
-    // Removes files from production build
-    if (process.env.NODE_ENV === 'production') {
-
-      // Removes the Leaderboard Seed Endpoint
-      config.module.rules?.push({
-        test: /src\/app\/api\/leaderboard\/seed/,
-        loader: 'ignore-loader',
-      });
-    }
-
-    return config;
-  },
 };
 
 export default nextConfig;
