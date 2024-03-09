@@ -10,5 +10,6 @@
   "editor.inlineSuggest.enabled": true,
   "eslint.validate": ["typescript"],
   "prettier.configPath": ".prettierrc",
-  "prettier.ignorePath": ".prettierignore"
+  "prettier.ignorePath": ".prettierignore",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
