@@ -2,10 +2,7 @@ import { Metadata } from 'next';
 
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
-import { type ILeaderboard } from '@/db/models/leaderboard';
 import { getLeaderboardData } from '@/db/utils';
-
-import { datathonDate } from '@/app/datathon/data';
 
 const links: Link[] = [
   { title: 'Home', href: '/' },
@@ -19,7 +16,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 export default async function PublicDatathonLeaderboard() {
-  const leaderboard: ILeaderboard = await getLeaderboardData();
+  const leaderboard = await getLeaderboardData();
 
   return (
     <>
@@ -32,7 +29,6 @@ export default async function PublicDatathonLeaderboard() {
             </h1>
             <Leaderboard
               leaderboard={leaderboard}
-              startDate={datathonDate}
               description="Scores based on the public leaderboard on Kaggle."
             />
           </div>
