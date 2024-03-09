@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 
 interface Duration {
-  months?: string;
-  days?: string;
-  hours?: string;
-  minutes?: string;
-  seconds?: string;
+  months: string;
+  days: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
 }
 
 interface CountdownTimerProps {
@@ -56,46 +56,58 @@ export default function CountdownTimer({ date }: CountdownTimerProps) {
   return (
     <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
       <div className="text-white">
-        <h1 className="text-3xl text-center mb-3">
+        <h1 className="text-3xl max-md:text-2xl text-center mb-3">
           {date.getFullYear()} Datathon is in ...
         </h1>
-        <div className="text-6xl text-center flex w-full items-center justify-center select-none">
-          <div className="w-24 mx-1 p-2 bg-white text-black rounded-lg">
-            <div className="font-mono leading-none">{remainingTime.months}</div>
-            <div className="font-mono uppercase text-sm leading-none">
-              Months
+        <div className="text-6xl text-center flex w-full items-center justify-center flex-wrap select-none">
+          {remainingTime.months !== '0' && (
+            <div className="w-24 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+              <div className="font-mono leading-none">
+                {remainingTime.months}
+              </div>
+              <div className="font-mono uppercase text-sm leading-none">
+                Months
+              </div>
             </div>
-          </div>
-          <div className="text-2xl mx-1 font-medium">:</div>
-          <div className="w-27 mx-1 p-2 bg-white text-black rounded-lg">
-            <div className="font-mono leading-none">{remainingTime.days}</div>
-            <div className="font-mono uppercase text-sm leading-none">Days</div>
-          </div>
-          <div className="text-2xl mx-1 font-medium">:</div>
-          <div className="w-24 mx-1 p-2 bg-white text-black rounded-lg">
-            <div className="font-mono leading-none">{remainingTime.hours}</div>
-            <div className="font-mono uppercase text-sm leading-none">
-              Hours
+          )}
+          {remainingTime.days !== '00' && (
+            <div className="w-27 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+              <div className="font-mono leading-none">{remainingTime.days}</div>
+              <div className="font-mono uppercase text-sm leading-none">
+                Days
+              </div>
             </div>
-          </div>
-          <div className="text-2xl mx-1 font-medium">:</div>
-          <div className="w-24 mx-1 p-2 bg-white text-black rounded-lg">
-            <div className="font-mono leading-none">
-              {remainingTime.minutes}
+          )}
+          {remainingTime.hours !== '00' && (
+            <div className="w-24 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+              <div className="font-mono leading-none">
+                {remainingTime.hours}
+              </div>
+              <div className="font-mono uppercase text-sm leading-none">
+                Hours
+              </div>
             </div>
-            <div className="font-mono uppercase text-sm leading-none">
-              Minutes
+          )}
+          {remainingTime.minutes !== '00' && (
+            <div className="w-24 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+              <div className="font-mono leading-none">
+                {remainingTime.minutes}
+              </div>
+              <div className="font-mono uppercase text-sm leading-none">
+                Minutes
+              </div>
             </div>
-          </div>
-          <div className="text-2xl mx-1 font-medium">:</div>
-          <div className="w-24 mx-1 p-2 bg-white text-black rounded-lg">
-            <div className="font-mono leading-none">
-              {remainingTime.seconds}
+          )}
+          {remainingTime.seconds !== '00' && (
+            <div className="w-24 mx-1 p-2 bg-white text-black rounded-lg">
+              <div className="font-mono leading-none">
+                {remainingTime.seconds}
+              </div>
+              <div className="font-mono uppercase text-sm leading-none">
+                Seconds
+              </div>
             </div>
-            <div className="font-mono uppercase text-sm leading-none">
-              Seconds
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
