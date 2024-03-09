@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { LinkButton } from '@/components/Button';
+import LinkButton from '@/components/Button/LinkButton';
 import upcoming from '@/public/Main/upcoming.png';
 
 export default function Events() {
@@ -24,10 +24,7 @@ export default function Events() {
           through the application of advanced tools and techniques.
         </p>
       </div>
-      <LinkButton
-        href="/datathon"
-        buttonProps={{ children: 'Register Now' }}
-      />
+      <LinkButton href="/datathon">Register Now</LinkButton>
     </section>
   );
 }
