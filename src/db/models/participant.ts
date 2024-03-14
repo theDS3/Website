@@ -17,9 +17,6 @@ export enum ParticipantStatus {
   // Applied to participant, when they have agreed to join the Datathon
   ACCEPTED = 'ACCEPTED',
 
-  // Applied to a participant when they have agreed to In-Person Events.
-  RSVPED = 'RSVPED',
-
   // Applied to a participant when they have been sent a Hacker Package Email.
   RECEIVED_HACKER_PACKAGE = 'RECEIVED HACKER PACKAGE',
 }
