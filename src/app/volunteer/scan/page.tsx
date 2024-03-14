@@ -23,7 +23,7 @@ export default function Scan() {
     const config = { fps: 10, qrbox: 250 };
 
     const qrCodeSuccessCallback = (decodedText: string) => {
-      router.push(`/admin/services?code=${isUUID4(decodedText)}`);
+      router.push(`/volunteer/services?code=${isUUID4(decodedText)}`);
       setShowScanner(false);
       if (html5QrCode.getState() === 2) html5QrCode.clear();
     };

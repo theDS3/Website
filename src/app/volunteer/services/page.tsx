@@ -148,7 +148,7 @@ export default function ParticipantServices() {
           team.
         </p>
         <LinkButton
-          href="/admin/scan"
+          href="/volunteer/scan"
           buttonProps={{ children: 'Scan Again' }}
         />
       </div>
@@ -267,7 +267,7 @@ export default function ParticipantServices() {
         </>
       )}
       <LinkButton
-        href="/admin/scan"
+        href="/volunteer/scan"
         buttonProps={{ children: 'Scan Again' }}
       />
       <ToastContainer
