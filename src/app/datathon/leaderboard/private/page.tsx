@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
-import { type ILeaderboard } from '@/db/models/leaderboard';
 import { getLeaderboardData } from '@/db/utils';
 
 const links: Link[] = [
@@ -17,9 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PrivateDatathonLeaderboard() {
-  const leaderboard: ILeaderboard = await getLeaderboardData('private');
-
-  const datathonStartDate = new Date('2024/01/14 07:00:00');
+  const leaderboard = await getLeaderboardData('private');
 
   return (
     <>
@@ -32,7 +29,6 @@ export default async function PrivateDatathonLeaderboard() {
             </h1>
             <Leaderboard
               leaderboard={leaderboard}
-              startDate={datathonStartDate}
               description="Scores based on the private leaderboard on Kaggle."
             />
           </div>

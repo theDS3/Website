@@ -1,21 +1,18 @@
 import { Metadata } from 'next';
 
-import About from '@/components/Datathon/About';
-import DatathonHero from '@/components/Datathon/Hero';
-import Sponsors from '@/components/Datathon/Sponsors';
-import Themes from '@/components/Datathon/Themes';
-import Hero from '@/components/Hero';
+import CountdownTimer from '@/components/Datathon/CountdownTimer';
 import NavBar, { type Link } from '@/components/Navabr';
 
+import { datathonStartDate, isDatathonWeek } from '@/app/datathon/data';
+
 const links: Link[] = [
-  { title: 'About Us', href: '/datathon#about-us' },
-  { title: 'Themes', href: '/datathon#themes' },
-  { title: 'Sponsors', href: '/datathon#sponsors' },
-  { title: 'Leaderboard', href: '/datathon/leaderboard' },
+  { title: '2024 Leaderboard', href: '/datathon/leaderboard/past' },
 ];
 
 export const metadata: Metadata = {
-  title: 'DS3 | Datathon',
+  title: `DS3 | ${datathonStartDate.getFullYear()} Datathon`,
+  description: `The ${datathonStartDate.getFullYear()} Datathon ${datathonStartDate > new Date() ? 'is' : 'was'} held on ${datathonStartDate.toDateString()} at
+    ${datathonStartDate.getHours()}:${datathonStartDate.getMinutes()}:${datathonStartDate.getSeconds()} EST.`,
 };
 
 export default function Datathon() {
@@ -23,12 +20,17 @@ export default function Datathon() {
     <>
       <NavBar links={links} />
       <main>
-        <Hero className="max-sm:justify-items-center min-[620px]:py-[30vh]">
-          <DatathonHero />
-        </Hero>
-        <About />
-        <Themes />
-        <Sponsors />
+        {!isDatathonWeek() ? (
+          <CountdownTimer date={datathonStartDate} />
+        ) : (
+          <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
+            <div className="text-white">
+              <h1 className="text-7xl text-center mb-3">
+                {datathonStartDate.getFullYear()} Datathon will here soon!
+              </h1>
+            </div>
+          </div>
+        )}
       </main>
     </>
   );

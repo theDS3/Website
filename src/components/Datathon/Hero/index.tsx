@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { LinkButton } from '@/components/Button';
+import LinkButton from '@/components/Button/LinkButton';
 import hero from '@/public/Datathon/hero.png';
 
 export default function DatathonHero() {
@@ -23,16 +23,13 @@ export default function DatathonHero() {
           newTab
           href="https://docs.google.com/forms/d/e/1FAIpQLSc18s677jVayRPmfCKadP5hxRV1FsapaWSrX2nDR21dIe7sXg/viewform"
           prefetch={false}
-          className="w-max"
-          buttonProps={{
-            className: 'mt-6 mr-auto',
-            border: 'border-none',
-            backgroundColor: 'bg-[#50D634]',
-            paddingY: 'py-2',
-            children: 'Register Now !',
-            fontWeight: 'font-normal',
-          }}
-        />
+          className="w-max mt-6 mr-auto"
+          border="border-none"
+          backgroundColor="bg-[#50D634]"
+          paddingY="py-2"
+          fontWeight="font-normal">
+          Register Now !
+        </LinkButton>
       </div>
     </>
   );
