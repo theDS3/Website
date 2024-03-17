@@ -15,7 +15,7 @@ export default function Badge() {
       }}
       href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2024-season&utm_content=gray"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener">
       <Image
         priority
         src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-gray.svg"

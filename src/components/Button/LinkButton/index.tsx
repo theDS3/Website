@@ -25,7 +25,7 @@ const LinkButton = ({
       className={`cursor-pointer text-center text-white rounded-[2.5rem] shadow-md ${backgroundColor} ${fontSize} ${fontWeight} ${paddingX} ${paddingY} ${border} ${className}`}
       href={href}
       target={newTab ? '_blank' : '_self'}
-      rel={newTab ? 'noopener noreferrer' : ''}
+      rel={newTab ? 'noopener' : undefined}
       prefetch={prefetch}>
       {children}
     </Link>
