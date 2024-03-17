@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import {
-  FaGithub,
-  FaLinkedin,
-  FaYoutube,
   FaDiscord,
   FaEnvelope,
-  FaMedium,
+  FaGithub,
   FaInstagram,
+  FaLinkedin,
+  FaMedium,
+  FaYoutube,
 } from 'react-icons/fa';
 
 export default function Footer() {
@@ -77,7 +77,8 @@ export default function Footer() {
                 <Link
                   key={index}
                   href={encodeURI(item.link)}
-                  target="_blank">
+                  target="_blank"
+                  rel="noopener">
                   <div className="text-gray-400 hover:text-amber-100/80 transition duration-300 cursor-pointer">
                     {item.icon}
                   </div>
