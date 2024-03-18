@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { LinkButton } from '@/components/Button';
+import LinkButton from '@/components/Button/LinkButton';
 import hero from '@/public/Main/hero.jpg';
 
 export default function MainHero() {
@@ -10,6 +10,7 @@ export default function MainHero() {
         src={hero}
         alt="Data Science & Statistics Society Team Picture"
         placeholder="blur"
+        priority={true}
         className="mb-8 rounded-3xl"
       />
       <div className="flex flex-col gap-8 xl:gap-12">
@@ -31,9 +32,9 @@ export default function MainHero() {
           newTab
           href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
           prefetch={false}
-          className="mt-6 mr-auto w-max"
-          buttonProps={{ children: 'Join Us' }}
-        />
+          className="mt-6 mr-auto w-max">
+          Join Us
+        </LinkButton>
       </div>
     </>
   );

@@ -27,7 +27,7 @@ export default function SponsorsCard({
       <Link
         href={link}
         target="_blank"
-        rel="noopener noreferrer">
+        rel="noopener">
         <Image
           src={logo}
           alt={name}

@@ -5,15 +5,9 @@ updates:
     schedule:
       interval: 'weekly'
     target-branch: 'dev'
-    reviewers:
-      - 'ShawnGeorge03'
-      - 'EkVid'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
       interval: 'weekly'
     target-branch: 'dev'
-    reviewers:
-      - 'ShawnGeorge03'
-      - 'EkVid'

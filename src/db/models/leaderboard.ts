@@ -5,19 +5,24 @@ export type LeaderboardType = 'public' | 'private' | 'final';
 export interface TeamInfo {
   name: string;
   score: number;
-  numAttempts: number;
+  attempts: number;
   delta: string;
   bonus?: number;
   finalScore?: number;
 }
 
-export interface ILeaderboard extends mongoose.Document {
+interface LeaderboardDoc extends mongoose.Document {
   timestamp: Date;
   type: LeaderboardType;
-  data: TeamInfo[];
+  standings: TeamInfo[];
 }
 
-const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
+export type LeaderboardContent = Pick<
+  LeaderboardDoc,
+  'timestamp' | 'type' | 'standings'
+>;
+
+const leaderboardSchema = new mongoose.Schema<LeaderboardDoc>(
   {
     timestamp: {
       type: Date,
@@ -28,12 +33,12 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
       type: String,
       required: true,
     },
-    data: {
+    standings: {
       type: [
         {
           name: { type: String, required: true },
           score: { type: Number, required: true },
-          numAttempts: { type: Number, required: true },
+          attempts: { type: Number, required: true },
           delta: { type: String, required: true },
           bonus: { type: Number },
           finalScore: { type: Number },
@@ -54,8 +59,8 @@ const leaderboardSchema = new mongoose.Schema<ILeaderboard>(
   },
 );
 
-const Leaderboard =
+const LeaderboardModel =
   mongoose.models.Leaderboard ||
-  mongoose.model<ILeaderboard>('Leaderboard', leaderboardSchema);
+  mongoose.model<LeaderboardDoc>('Leaderboard', leaderboardSchema);
 
-export default Leaderboard;
+export default LeaderboardModel;

@@ -1,4 +1,4 @@
-import { LinkButton } from '@/components/Button';
+import LinkButton from '@/components/Button/LinkButton';
 
 export default function NotFound() {
   return (
@@ -7,10 +7,7 @@ export default function NotFound() {
       <p className="mb-8 text-xl font-semibold">
         Ooops!!! The page you are looking for is not found
       </p>
-      <LinkButton
-        href="/"
-        buttonProps={{ children: 'Home' }}
-      />
+      <LinkButton href="/">Home</LinkButton>
     </div>
   );
 }
