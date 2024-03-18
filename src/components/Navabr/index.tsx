@@ -66,7 +66,7 @@ export default function NavBar({ links }: { links: Link[] }) {
                 );
               })}
             </ul>
-          </nav>{' '}
+          </nav>
           <div
             className={`toggle md:hidden md:pointer-events-none w-[65px] h-[65px] relative mt-[10px] caret-transparent cursor-pointer rotate-0 transition ease-in-out duration-500 motion-reduce:transition-none ${
               toggle && 'open'
