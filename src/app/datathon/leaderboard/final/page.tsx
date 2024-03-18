@@ -4,7 +4,7 @@ import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
 import { getLeaderboardData } from '@/db/utils';
 
-import { datathonStartDate } from '@/app/datathon/data';
+import { datathonStartDate } from '@/utils/datathon';
 
 const links: Link[] = [
   { title: 'Home', href: '/' },

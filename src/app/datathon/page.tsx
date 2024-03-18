@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 
+import LinkButton from '@/components/Button/LinkButton';
 import CountdownTimer from '@/components/Datathon/CountdownTimer';
 import NavBar from '@/components/Navabr';
 
-import { datathonStartDate, isDatathonWeek } from '@/app/datathon/data';
-import LinkButton from '@/components/Button/LinkButton';
+import { datathonStartDate, isDatathonWeek } from '@/utils/datathon';
 
 export const metadata: Metadata = {
   title: `DS3 | ${datathonStartDate.getFullYear()} Datathon`,

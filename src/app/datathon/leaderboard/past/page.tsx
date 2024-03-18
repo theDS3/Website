@@ -1,7 +1,7 @@
-import { pastFinalDatathonLeaderboard } from '@/app/datathon/data';
-
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
+
+import { pastFinalDatathonLeaderboard } from '@/utils/datathon';
 
 const links: Link[] = [
   { title: 'Home', href: '/' },
