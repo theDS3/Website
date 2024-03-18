@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
 
@@ -7,6 +9,11 @@ const links: Link[] = [
   { title: 'Home', href: '/' },
   { title: 'Datathon', href: '/datathon' },
 ];
+
+export const metadata: Metadata = {
+  title: 'DS3 | Past Leaderboard',
+  description: 'Past Datathon Leaderboard',
+};
 
 export default function PastFinalDatathonLeaderboard() {
   return (
