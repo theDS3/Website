@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
-import { getLeaderboardData } from '@/db/utils';
 
+import { getLeaderboardData } from '@/db/utils';
 import { datathonStartDate } from '@/utils/datathon';
 
 const links: Link[] = [

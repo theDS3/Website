@@ -1,16 +1,16 @@
-import Hero from '@/components/Hero';
-import MainHero from '@/components/Main/Hero';
-import NavBar, { type Link } from '@/components/Navabr';
+import { Metadata } from 'next';
 
+import Hero from '@/components/Hero';
 import AboutUs from '@/components/Main/AboutUs';
 import Executives from '@/components/Main/Executives';
+import MainHero from '@/components/Main/Hero';
 import Sponsor from '@/components/Main/Sponsors';
+import NavBar, { type Link } from '@/components/Navabr';
 
 const links: Link[] = [
   { title: 'About Us', href: '/#about-us' },
   { title: 'Sponsors', href: '/#sponsors' },
   { title: 'Team', href: '/#team' },
-  // { title: 'Events', href: '/#events' },
   { title: 'Datathon', href: '/datathon' },
 ];
 
@@ -25,7 +25,6 @@ export default function Home() {
         <AboutUs />
         <Sponsor />
         <Executives />
-        {/* <Upcoming /> */}
       </main>
     </>
   );
