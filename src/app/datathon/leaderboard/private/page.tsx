@@ -2,7 +2,10 @@ import { Metadata } from 'next';
 
 import Leaderboard from '@/components/Datathon/Leaderboard';
 import NavBar, { type Link } from '@/components/Navabr';
+
 import { getLeaderboardData } from '@/db/utils';
+
+import { datathonStartDate } from '@/utils/datathon';
 
 const links: Link[] = [
   { title: 'Home', href: '/' },
@@ -12,7 +15,7 @@ const links: Link[] = [
 export const revalidate = 60;
 export const metadata: Metadata = {
   title: 'DS3 | Private Leaderboard',
-  description: `${new Date().getFullYear()} Private Datathon Leaderboard`,
+  description: `${datathonStartDate.getFullYear()} Private Datathon Leaderboard`,
 };
 
 export default async function PrivateDatathonLeaderboard() {
@@ -25,7 +28,7 @@ export default async function PrivateDatathonLeaderboard() {
         <section className="flex flex-col items-center justify-center">
           <div className="container mx-auto my-8 text-white">
             <h1 className="text-4xl font-bold mb-4 text-center">
-              {new Date().getFullYear()} Datathon Private Leaderboard
+              {datathonStartDate.getFullYear()} Datathon Private Leaderboard
             </h1>
             <Leaderboard
               leaderboard={leaderboard}

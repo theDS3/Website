@@ -9,6 +9,8 @@ export const env = createEnv({
   server: {
     MONGO_URI: z.string().url(),
     MONGO_DB: z.enum(['prod', 'dev', 'local']).default('local'),
+    SITE_URL: z.string().url().default('http://localhost:3000'),
+    SITE_MODE: z.enum(['prod', 'dev', 'local']).default('local'),
   },
   /**
    * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
@@ -17,6 +19,8 @@ export const env = createEnv({
   runtimeEnv: {
     MONGO_URI: process.env.MONGO_URI,
     MONGO_DB: process.env.MONGO_DB,
+    SITE_URL: process.env.SITE_URL,
+    SITE_MODE: process.env.SITE_MODE,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

@@ -1,5 +1,5 @@
-import { datathonStartDate } from '@/app/datathon/data';
 import { type LeaderboardContent } from '@/db/models/leaderboard';
+import { datathonStartDate } from '@/utils/datathon';
 
 interface LeaderboardProps {
   leaderboard: LeaderboardContent | null;
