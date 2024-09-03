@@ -51,8 +51,6 @@ jobs:
     name: Run Prettier
     needs: lint
     runs-on: ubuntu-latest
-    permissions:
-        contents: write
     steps:
       - name: Checkout HEAD Commit
         uses: actions/checkout@v4.1.0
