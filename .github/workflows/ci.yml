@@ -15,11 +15,11 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.0.1
+        uses: actions/setup-node@v4.0.3
         with:
           node-version-file: .nvmrc
 
-      - uses: pnpm/action-setup@v3.0.0
+      - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         with:
           version: 8
@@ -51,8 +51,6 @@ jobs:
     name: Run Prettier
     needs: lint
     runs-on: ubuntu-latest
-    permissions:
-        contents: write
     steps:
       - name: Checkout HEAD Commit
         uses: actions/checkout@v4.1.0
@@ -60,11 +58,11 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.0.1
+        uses: actions/setup-node@v4.0.3
         with:
           node-version-file: .nvmrc
 
-      - uses: pnpm/action-setup@v3.0.0
+      - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         with:
           version: 8
