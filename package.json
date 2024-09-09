@@ -35,7 +35,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.7",
     "localtunnel": "^2.0.2",
-    "postcss": "^8.4.44",
+    "postcss": "^8.4.45",
     "postcss-import": "^16.1.0",
     "postcss-mixins": "^10.0.1",
     "postcss-preset-env": "^10.0.2",
