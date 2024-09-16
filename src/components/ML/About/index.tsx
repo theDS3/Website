@@ -10,9 +10,10 @@ export default function About_ML() {
         </h1>
         <div className="flex flex-col md:flex-row lg:flex-row items-center gap-8 xl:gap-4">
           <p className="p-5 lg:p-10 text-white text-xl md:text-2xl lg:text-3xl lg:w-1/2 text-justify">
-            New to machine learning? No problem. DS3's ML bootcamp brings forth
-            all the tools and help needed in building your foundation in the
-            world of ML. Come join us to dive into the "next big thing"!
+            New to machine learning? No problem. DS3&apos;s ML bootcamp brings
+            forth all the tools and help needed in building your foundation in
+            the world of ML. Come join us to dive into the &quot;next big
+            thing&quot;!
           </p>
           <Image
             priority={false}
