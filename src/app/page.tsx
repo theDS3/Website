@@ -12,7 +12,7 @@ const links: Link[] = [
   { title: 'Sponsors', href: '/#sponsors' },
   { title: 'Team', href: '/#team' },
   { title: 'Datathon', href: '/datathon' },
-  { title: 'ML Page', href: '/ml' },
+  { title: 'ML Program', href: '/ml' },
 ];
 
 export default function Home() {

@@ -1,42 +1,43 @@
+'use client';
 import Image from 'next/image';
 
-export interface lessons {
+export interface Lessons {
   date: string;
-  recording: string;
-  slides: string;
+  recording?: string; // Changed to optional
+  slides?: string; // Changed to optional
 }
 
 export default function Content() {
-  const content: lessons[] = [
+  const content: Lessons[] = [
     {
       date: 'Sept 20',
-      recording: 'https://example.com/recording1',
-      slides: 'https://example.com/slides1',
+      recording: '',
+      slides: '',
     },
     {
       date: 'Oct 4',
-      recording: 'https://example.com/recording2',
-      slides: 'https://example.com/slides2',
+      recording: '',
+      slides: '',
     },
     {
       date: 'Oct 18',
-      recording: 'https://example.com/recording3',
-      slides: 'https://example.com/slides3',
+      recording: '',
+      slides: '',
     },
     {
       date: 'Nov 1',
-      recording: 'https://example.com/recording3',
-      slides: 'https://example.com/slides3',
+      recording: '',
+      slides: '',
     },
     {
       date: 'Nov 15',
-      recording: 'https://example.com/recording3',
-      slides: 'https://example.com/slides3',
+      recording: '',
+      slides: '',
     },
     {
       date: 'Nov 29',
-      recording: 'https://example.com/recording3',
-      slides: 'https://example.com/slides3',
+      recording: '',
+      slides: '',
     },
   ];
 
@@ -44,30 +45,42 @@ export default function Content() {
     <section
       id="content"
       className="flex flex-col items-center justify-center space-y-10 text-white">
-      <div className="flex justify-center flex-col gap-8 xl:gap-12 ">
+      <div className="flex justify-center flex-col gap-8 xl:gap-12">
         <h1 className="lg:justify-start col-span-2 text-white text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl text-center sm:flex sm:justify-center">
           Content
         </h1>
       </div>
-      <div className="mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
         {content.map((lesson, index) => (
           <div
             key={index}
-            className="mb-6">
-            <h3 className="text-2xl font-bold">{`Lesson ${index + 1} on ${lesson.date}`}</h3>
-            <p>
-              <a
-                href={lesson.recording}
-                className="text-blue-500 underline">
-                Watch Recording
-              </a>
+            className=" p-8 rounded-lg bg-[#13161b] shadow-xl">
+            <h3 className="text-2xl font-bold mb-4">{`Lesson ${index + 1} on ${lesson.date}`}</h3>
+            <p className="mb-2">
+              {lesson.recording ? (
+                <a
+                  href={lesson.recording}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-600 hover:underline">
+                  Watch Recording
+                </a>
+              ) : (
+                <span className="text-gray-400">No Recording Available</span>
+              )}
             </p>
             <p>
-              <a
-                href={lesson.slides}
-                className="text-blue-500 underline">
-                View Slides
-              </a>
+              {lesson.slides ? (
+                <a
+                  href={lesson.slides}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-600 hover:underline">
+                  View Slides
+                </a>
+              ) : (
+                <span className="text-gray-400">No Slides Available</span>
+              )}
             </p>
           </div>
         ))}
