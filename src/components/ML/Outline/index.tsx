@@ -15,9 +15,9 @@ export default function Outline() {
   return (
     <section
       id="outline"
-      className="relative flex flex-col items-center justify-center space-y-10 text-white">
+      className="relative flex flex-col items-center justify-center space-y-10">
       <div className="flex justify-center flex-col gap-8 xl:gap-12">
-        <h1 className="justify-center col-span-2 text-white text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl text-center sm:flex sm:justify-center">
+        <h1 className="justify-center col-span-2 text-[#d9d9d9] text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl text-center sm:flex sm:justify-center">
           Outline
         </h1>
 
@@ -26,7 +26,7 @@ export default function Outline() {
         </p>
 
         <div className="w-full max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
             {fall_timeline.map((date, index) => (
               <div
                 key={index}

@@ -5,7 +5,7 @@ export default function About_ML() {
   return (
     <section className="flex flex-col items-center justify-center space-y-10 text-white">
       <div className="flex flex-col gap-6 xl:gap-12">
-        <h1 className="text-center text-white text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl">
+        <h1 className="text-center text-[#d9d9d9]  text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl">
           ABOUT ML BOOTCAMP
         </h1>
         <div className="flex flex-col md:flex-row lg:flex-row items-center gap-8 xl:gap-4">

@@ -4,9 +4,9 @@ import Outline from '@/components/ML/Outline';
 import Content from '@/components/ML/Content';
 
 const links: Link[] = [
-  { title: 'Outline', href: '/ml#outline' },
-  { title: 'Content', href: '/ml#content' },
   { title: 'Home', href: '/#intro' },
+  { title: 'Outline', href: '/ml-program#outline' },
+  { title: 'Content', href: '/ml-program#content' },
 ];
 
 export default function MLPage() {
