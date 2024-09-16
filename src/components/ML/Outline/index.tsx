@@ -26,7 +26,7 @@ export default function Outline() {
         </p>
 
         <div className="w-full max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 text-white">
             {fall_timeline.map((date, index) => (
               <div
                 key={index}
