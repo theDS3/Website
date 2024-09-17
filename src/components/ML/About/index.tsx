@@ -40,4 +40,3 @@ export default function About_ML() {
     </section>
   );
 }
-
