@@ -41,15 +41,6 @@ export default function FAQ() {
     }
   };
 
-  const toggleAllFAQs = () => {
-    if (allOpen) {
-      setActiveIndexes([]);
-    } else {
-      setActiveIndexes(faqs.map((_, i) => i));
-    }
-    setAllOpen(!allOpen);
-  };
-
   return (
     <section
       id="faq"
