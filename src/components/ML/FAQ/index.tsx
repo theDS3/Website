@@ -10,7 +10,7 @@ export default function FAQ() {
         'A bi-weekly workshop series to build a foundation in Machine Learning technologies and methodologies.',
     },
     {
-      question: "What's in it for me",
+      question: "What's in it for me?",
       answer:
         'Engage in interactive labs and practical exercises designed to enhance your understanding and application of Machine Learning concepts. It also provides an opportunity for participants to focus on building real-world projects.',
     },
