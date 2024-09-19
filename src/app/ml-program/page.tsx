@@ -1,12 +1,12 @@
 import NavBar, { type Link } from '@/components/Navabr';
 import About_ML from '@/components/ML/About';
-import Outline from '@/components/ML/Outline';
 import Content from '@/components/ML/Content';
+import FAQ from '@/components/ML/FAQ';
 
 const links: Link[] = [
   { title: 'Home', href: '/#intro' },
-  { title: 'Outline', href: '/ml-program#outline' },
   { title: 'Content', href: '/ml-program#content' },
+  { title: 'FAQ', href: '/ml-program#faq' },
 ];
 
 export default function MLPage() {
@@ -15,8 +15,8 @@ export default function MLPage() {
       <NavBar links={links} />
       <main>
         <About_ML />
-        <Outline />
         <Content />
+        <FAQ />
       </main>
     </>
   );

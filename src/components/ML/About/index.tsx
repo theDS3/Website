@@ -32,9 +32,9 @@ export default function About_ML() {
           Machine Learning Bootcamp
         </h1>
         <p className="p-5 lg:p-10 text-white text-xl md:text-2xl lg:text-3xl max-w-3xl text-center">
-          New to machine learning? No problem. DS3's ML bootcamp brings forth all the tools and help
-          needed in building your foundation in the world of ML. Come join us to dive into the
-          &quot;next big thing&quot;!
+          New to machine learning? No problem. DS3&apos;s ML bootcamp brings
+          forth all the tools and help needed in building your foundation in the
+          world of ML. Come join us to dive into the &quot;next big thing&quot;!
         </p>
       </div>
     </section>
