@@ -5,28 +5,28 @@ import { useState } from 'react';
 export default function FAQ() {
   const faqs = [
     {
-      question: 'What is the focus of the event?',
-      answer:
-        'Engage in interactive labs and practical exercises designed to enhance your understanding and application of Machine Learning concepts.',
-    },
-    {
-      question: 'How many students can register?',
-      answer: 'Capacity: 50 students.',
-    },
-    {
-      question: 'What opportunities does the workshop provide?',
-      answer:
-        'Provide an opportunity for participants to focus on building real-world projects.',
-    },
-    {
-      question: 'What will participants receive from this experience?',
-      answer:
-        'Yes, participants will receive a Certificate of Completion, signed by CMS faculty.',
-    },
-    {
-      question: 'What is the format of the event?',
+      question: 'What is the Machine Learning Bootcamp?',
       answer:
         'A bi-weekly workshop series to build a foundation in Machine Learning technologies and methodologies.',
+    },
+    {
+      question: 'What\'s in it for me',
+      answer: 'Engage in interactive labs and practical exercises designed to enhance your understanding and application of Machine Learning concepts. It also provides an opportunity for participants to focus on building real-world projects.',
+    },
+    {
+      question: 'Will sessions be recorded?',
+      answer:
+        'Yes, the workshop recordings and the slides will be posted on our website.',
+    },
+    {
+      question: 'How many students can participate?',
+      answer:
+        'Although we make our resources available to everyone, only 50 students will be accepted into the program.',
+    },
+    {
+      question: 'Why should I apply?',
+      answer:
+        'Registered students will be given exclusive access to the project-building workshops and a certificate of completion signed by CMS faculty.',
     },
   ];
 
@@ -66,7 +66,7 @@ export default function FAQ() {
                 </span>
               </h2>
               {activeIndexes.includes(index) && (
-                <p className="p-4 text-sm md:text-base text-white">
+                <p className="p-4 text-sm md:text-base text-white -mt-3">
                   {faq.answer}
                 </p>
               )}
