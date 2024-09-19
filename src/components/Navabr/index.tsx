@@ -17,7 +17,7 @@ export default function NavBar({ links }: { links: Link[] }) {
 
   return (
     <header
-      className={`fixed w-full flex justify-between z-10 backdrop-blur-sm px-4 pt-2 bg-transparent shadow-2xl ${
+      className={`fixed w-full flex justify-between items-center z-10 backdrop-blur-sm px-4 py-2 bg-transparent shadow-2xl ${
         toggle &&
         'h-full pb-[calc(100vh-5em)] transition duration-1000 ease-in-out md:h-auto md:pb-0 md:transition-none portrait:h-auto'
       }`}>
@@ -28,6 +28,8 @@ export default function NavBar({ links }: { links: Link[] }) {
           priority
           src={logo}
           alt="DS3 Logo"
+          width={50}
+          height={50}
         />
       </a>
       {links.length > 0 && (
@@ -76,7 +78,7 @@ export default function NavBar({ links }: { links: Link[] }) {
               return (
                 <span
                   key={id}
-                  className="block absolute h-[9px] w-1/2 bg-white  opacity-100 rotate-0"></span>
+                  className="block absolute h-[9px] w-1/2 bg-white opacity-100 rotate-0"></span>
               );
             })}
           </div>
