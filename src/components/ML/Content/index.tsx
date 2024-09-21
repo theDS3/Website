@@ -4,7 +4,8 @@ import Link from 'next/link';
 export interface Lessons {
   name: string;
   date: string;
-  recording?: string; // Changed to optional
+  recording_1?: string; // Changed to optional
+  recording_2?: string; // Changed to optional
   slides?: string; // Changed to optional
 }
 
@@ -13,37 +14,44 @@ export default function Content() {
     {
       name: 'Introduction to ML',
       date: 'Sept 20',
-      recording: '',
-      slides: '',
+      recording_1: 'https://youtu.be/S1ELzaj4m-Y?si=tw15VWqSMUJjtFPC',
+      recording_2: 'https://youtu.be/57_4_0ebrJ8?si=F-OHeFv0K28Zpqk7',
+      slides:
+        'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view?usp=sharing',
     },
     {
       name: 'Data Visualization',
       date: 'Oct 4',
-      recording: '',
+      recording_1: '',
+      recording_2: '',
       slides: '',
     },
     {
       name: 'Regression Techniques',
       date: 'Oct 18',
-      recording: '',
+      recording_1: '',
+      recording_2: '',
       slides: '',
     },
     {
       name: 'Classification Methods',
       date: 'Nov 1',
-      recording: '',
+      recording_1: '',
+      recording_2: '',
       slides: '',
     },
     {
       name: 'Deep Learning I',
       date: 'Nov 15',
-      recording: '',
+      recording_1: '',
+      recording_2: '',
       slides: '',
     },
     {
       name: 'Deep Learning II',
       date: 'Nov 29',
-      recording: '',
+      recording_1: '',
+      recording_2: '',
       slides: '',
     },
   ];
@@ -61,25 +69,36 @@ export default function Content() {
         {content.map((lesson, index) => (
           <div
             key={index}
-            className="p-8 rounded-lg bg-[#13161b] shadow-xl flex flex-col justify-between">
+            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${lesson.recording_1 && lesson.recording_2 ? 'bg-[#2f0d3f]' : 'bg-[#13161b]'}`}>
             <div>
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
               </h3>
-              <p className="mb-2">
-                {lesson.recording ? (
-                  <Link
-                    href={lesson.recording} // Fixed this to use lesson.recording
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-600 hover:underline">
-                    View Recording
-                  </Link>
-                ) : (
-                  <span className="text-gray-400">Recording Coming Soon!</span>
-                )}
-              </p>
-              <p>
+              {lesson.recording_1 && lesson.recording_2 ? (
+                <div className="space-y-1">
+                  <p>
+                    <Link
+                      href={lesson.recording_1}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                      View Recording Part 1
+                    </Link>
+                  </p>
+                  <p>
+                    <Link
+                      href={lesson.recording_2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                      View Recording Part 2
+                    </Link>
+                  </p>
+                </div>
+              ) : (
+                <span className="text-gray-400">Recordings Coming Soon!</span>
+              )}
+              <p className="mt-1">
                 {lesson.slides ? (
                   <Link
                     href={lesson.slides}
