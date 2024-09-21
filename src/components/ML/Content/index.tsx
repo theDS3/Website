@@ -74,26 +74,26 @@ export default function Content() {
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
               </h3>
-                {lesson.recording_1 && lesson.recording_2 ? (
-                <div className='space-y-1'>
-                    <p>
-                        <Link
-                            href={lesson.recording_1}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-600 hover:underline">
-                            View Recording Part 1
-                        </Link>
-                    </p>
-                    <p>
-                        <Link
-                            href={lesson.recording_2}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-600 hover:underline">
-                            View Recording Part 2
-                        </Link>
-                    </p>
+              {lesson.recording_1 && lesson.recording_2 ? (
+                <div className="space-y-1">
+                  <p>
+                    <Link
+                      href={lesson.recording_1}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                      View Recording Part 1
+                    </Link>
+                  </p>
+                  <p>
+                    <Link
+                      href={lesson.recording_2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                      View Recording Part 2
+                    </Link>
+                  </p>
                 </div>
               ) : (
                 <span className="text-gray-400">Recordings Coming Soon!</span>
