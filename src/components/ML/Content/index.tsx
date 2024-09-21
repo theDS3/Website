@@ -16,7 +16,8 @@ export default function Content() {
       date: 'Sept 20',
       recording_1: 'https://youtu.be/S1ELzaj4m-Y?si=tw15VWqSMUJjtFPC',
       recording_2: 'https://youtu.be/57_4_0ebrJ8?si=F-OHeFv0K28Zpqk7',
-      slides: 'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view?usp=sharing',
+      slides:
+        'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view?usp=sharing',
     },
     {
       name: 'Data Visualization',
@@ -94,10 +95,10 @@ export default function Content() {
                         </Link>
                     </p>
                 </div>
-                ) : (
-                  <span className="text-gray-400">Recordings Coming Soon!</span>
-                )}
-              <p className='mt-1'>
+              ) : (
+                <span className="text-gray-400">Recordings Coming Soon!</span>
+              )}
+              <p className="mt-1">
                 {lesson.slides ? (
                   <Link
                     href={lesson.slides}
