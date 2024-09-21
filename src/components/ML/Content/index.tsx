@@ -16,7 +16,8 @@ export default function Content() {
       date: 'Sept 20',
       recording_1: 'https://youtu.be/S1ELzaj4m-Y?si=tw15VWqSMUJjtFPC',
       recording_2: 'https://youtu.be/57_4_0ebrJ8?si=F-OHeFv0K28Zpqk7',
-      slides: 'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view?usp=sharing',
+      slides:
+        'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view?usp=sharing',
     },
     {
       name: 'Data Visualization',
@@ -73,31 +74,31 @@ export default function Content() {
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
               </h3>
-                {lesson.recording_1 && lesson.recording_2 ? (
-                <div className='space-y-1'>
-                    <p>
-                        <Link
-                            href={lesson.recording_1} // Fixed this to use lesson.recording
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-600 hover:underline">
-                            View Recording Part 1
-                        </Link>
-                    </p>
-                    <p>
-                        <Link
-                            href={lesson.recording_2} // Fixed this to use lesson.recording
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-600 hover:underline">
-                            View Recording Part 2
-                        </Link>
-                    </p>
+              {lesson.recording_1 && lesson.recording_2 ? (
+                <div className="space-y-1">
+                  <p>
+                    <Link
+                      href={lesson.recording_1} // Fixed this to use lesson.recording
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                      View Recording Part 1
+                    </Link>
+                  </p>
+                  <p>
+                    <Link
+                      href={lesson.recording_2} // Fixed this to use lesson.recording
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                      View Recording Part 2
+                    </Link>
+                  </p>
                 </div>
-                ) : (
-                  <span className="text-gray-400">Recordings Coming Soon!</span>
-                )}
-              <p className='mt-1'>
+              ) : (
+                <span className="text-gray-400">Recordings Coming Soon!</span>
+              )}
+              <p className="mt-1">
                 {lesson.slides ? (
                   <Link
                     href={lesson.slides}
