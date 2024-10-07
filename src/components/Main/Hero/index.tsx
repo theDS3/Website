@@ -21,7 +21,7 @@ export default function MainHero() {
         alt="Data Science & Statistics Society Team Picture"
         placeholder="blur"
         priority={true}
-        className="mb-8 rounded-3xl"
+        className="mb-2 max-w-2xl rounded-3xl"
       />
 
       <div className="absolute inset-0 -z-10">
