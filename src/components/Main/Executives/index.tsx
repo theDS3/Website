@@ -71,7 +71,7 @@ const executives: TeamMember[] = [
     position: 'Vice President of Marketing',
     src: FahmidKhan,
     alt: 'Fahmid Khan',
-  }
+  },
 ];
 
 export default function Executives() {
@@ -91,4 +91,3 @@ export default function Executives() {
     </section>
   );
 }
-
