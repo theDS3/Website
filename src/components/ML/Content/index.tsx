@@ -4,9 +4,8 @@ import Link from 'next/link';
 export interface Lessons {
   name: string;
   date: string;
-  recording_1?: string; // Changed to optional
-  recording_2?: string; // Changed to optional
-  slides?: string; // Changed to optional
+  recordings?: string[];
+  slides?: string;
 }
 
 export default function Content() {
@@ -14,44 +13,41 @@ export default function Content() {
     {
       name: 'Introduction to ML',
       date: 'Sept 20',
-      recording_1: 'https://youtu.be/S1ELzaj4m-Y?si=tw15VWqSMUJjtFPC',
-      recording_2: 'https://youtu.be/57_4_0ebrJ8?si=F-OHeFv0K28Zpqk7',
+      recordings: [
+        'https://youtu.be/S1ELzaj4m-Y?si=tw15VWqSMUJjtFPC',
+        'https://youtu.be/57_4_0ebrJ8?si=F-OHeFv0K28Zpqk7',
+      ],
       slides:
         'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view?usp=sharing',
     },
     {
       name: 'Data Visualization',
       date: 'Oct 4',
-      recording_1: 'https://bit.ly/DataVizRec',
-      recording_2: '',
+      recordings: ['https://bit.ly/DataVizRec'],
       slides: 'https://bit.ly/DS3DataVizSlides',
     },
     {
       name: 'Regression Techniques',
       date: 'Oct 18',
-      recording_1: '',
-      recording_2: '',
+      recordings: [],
       slides: '',
     },
     {
       name: 'Classification Methods',
       date: 'Nov 1',
-      recording_1: '',
-      recording_2: '',
+      recordings: [],
       slides: '',
     },
     {
       name: 'Deep Learning I',
       date: 'Nov 15',
-      recording_1: '',
-      recording_2: '',
+      recordings: [],
       slides: '',
     },
     {
       name: 'Deep Learning II',
       date: 'Nov 29',
-      recording_1: '',
-      recording_2: '',
+      recordings: [],
       slides: '',
     },
   ];
@@ -69,33 +65,29 @@ export default function Content() {
         {content.map((lesson, index) => (
           <div
             key={index}
-            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${lesson.recording_1 || lesson.recording_2 ? 'bg-[#2f0d3f]' : 'bg-[#13161b]'}`}>
+            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${lesson.recordings && lesson.recordings.length > 0
+              ? 'bg-[#2f0d3f]'
+              : 'bg-[#13161b]'
+              }`}>
             <div>
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
               </h3>
               <div className="space-y-1">
-                {lesson.recording_1 && (
-                  <p>
-                    <Link
-                      href={lesson.recording_1}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-600 hover:underline">
-                      View Recording Part 1
-                    </Link>
-                  </p>
-                )}
-                {lesson.recording_2 && (
-                  <p>
-                    <Link
-                      href={lesson.recording_2}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-600 hover:underline">
-                      View Recording Part 2
-                    </Link>
-                  </p>
+                {lesson.recordings && lesson.recordings.length > 0 ? (
+                  lesson.recordings.map((recording, idx) => (
+                    <p key={idx}>
+                      <Link
+                        href={recording}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-600 hover:underline">
+                        View Recording {idx + 1}
+                      </Link>
+                    </p>
+                  ))
+                ) : (
+                  <span className="text-gray-400">Recordings Coming Soon!</span>
                 )}
               </div>
               <p className="mt-1">
