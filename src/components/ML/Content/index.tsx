@@ -69,13 +69,13 @@ export default function Content() {
         {content.map((lesson, index) => (
           <div
             key={index}
-            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${lesson.recording_1 && lesson.recording_2 ? 'bg-[#2f0d3f]' : 'bg-[#13161b]'}`}>
+            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${lesson.recording_1 || lesson.recording_2 ? 'bg-[#2f0d3f]' : 'bg-[#13161b]'}`}>
             <div>
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
               </h3>
-              {lesson.recording_1 && lesson.recording_2 ? (
-                <div className="space-y-1">
+              <div className="space-y-1">
+                {lesson.recording_1 && (
                   <p>
                     <Link
                       href={lesson.recording_1}
@@ -85,6 +85,8 @@ export default function Content() {
                       View Recording Part 1
                     </Link>
                   </p>
+                )}
+                {lesson.recording_2 && (
                   <p>
                     <Link
                       href={lesson.recording_2}
@@ -94,10 +96,8 @@ export default function Content() {
                       View Recording Part 2
                     </Link>
                   </p>
-                </div>
-              ) : (
-                <span className="text-gray-400">Recordings Coming Soon!</span>
-              )}
+                )}
+              </div>
               <p className="mt-1">
                 {lesson.slides ? (
                   <Link
@@ -119,3 +119,4 @@ export default function Content() {
     </section>
   );
 }
+
