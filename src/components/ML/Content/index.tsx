@@ -22,9 +22,9 @@ export default function Content() {
     {
       name: 'Data Visualization',
       date: 'Oct 4',
-      recording_1: '',
+      recording_1: 'https://bit.ly/DataVizRec',
       recording_2: '',
-      slides: '',
+      slides: 'https://bit.ly/DS3DataVizSlides',
     },
     {
       name: 'Regression Techniques',
