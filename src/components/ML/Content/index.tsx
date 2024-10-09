@@ -17,8 +17,7 @@ export default function Content() {
         'https://bit.ly/IntroToMLRec1',
         'https://bit.ly/IntroToMLRec2',
       ],
-      slides:
-        'https://bit.ly/IntroToMLSlides',
+      slides: 'https://bit.ly/IntroToMLSlides',
     },
     {
       name: 'Data Visualization',
