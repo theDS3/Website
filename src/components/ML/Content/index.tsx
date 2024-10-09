@@ -14,11 +14,11 @@ export default function Content() {
       name: 'Introduction to ML',
       date: 'Sept 20',
       recordings: [
-        'https://youtu.be/S1ELzaj4m-Y?si=tw15VWqSMUJjtFPC',
-        'https://youtu.be/57_4_0ebrJ8?si=F-OHeFv0K28Zpqk7',
+        'https://bit.ly/IntroToMLRec1',
+        'https://bit.ly/IntroToMLRec2',
       ],
       slides:
-        'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view?usp=sharing',
+        'https://bit.ly/IntroToMLSlides',
     },
     {
       name: 'Data Visualization',
