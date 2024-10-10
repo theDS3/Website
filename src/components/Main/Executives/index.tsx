@@ -50,7 +50,7 @@ const executives: TeamMember[] = [
   },
   {
     name: 'Thanaree Srirawewongsa (Jean)',
-    position: 'Vice President of Outreach',
+    position: 'Vice President of Consulting',
     src: ThanareeSrirawewongsa,
     alt: 'Thanaree Srirawewongsa (Jean)',
   },
