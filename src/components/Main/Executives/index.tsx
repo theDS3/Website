@@ -1,62 +1,76 @@
-import Aditya_Kulkarni from '@/public/Main/Executives/Aditya Kulkarni.jpg';
-import AnaqiAmir from '@/public/Main/Executives/Anaqi Amir.jpg';
-import ChristineVan from '@/public/Main/Executives/Christine Van.png';
-import IvyChen from '@/public/Main/Executives/Ivy Chen.jpg';
-import KhadeemSankar from '@/public/Main/Executives/Khadeem Sankar.jpg';
-import MalharPandya from '@/public/Main/Executives/Malhar Pandya.jpg';
-import ThanareeSrirawewongsa from '@/public/Main/Executives/Thanaree Srirawewongsa (Jean).jpg';
-import TiannePane from '@/public/Main/Executives/Tianne Pane.jpg';
+import KritGrover from '@/public/Main/Executives/Krit Grover.jpeg';
+import ShreyasRao from '@/public/Main/Executives/Shreyas Rao.jpg';
+import NevinAdaCakmak from '@/public/Main/Executives/Nevin Ada Cakmak.jpg';
+import AshwinMalik from '@/public/Main/Executives/Ashwin Mallik.png';
+import ChrisYan from '@/public/Main/Executives/Chris Yan.jpg';
+import HarmanGill from '@/public/Main/Executives/Harman Gill.jpg';
+import ThanareeSrirawewongsa from '@/public/Main/Executives/Thanaree Srirawewongsa.jpeg';
+import ArnenchaPradavkaew from '@/public/Main/Executives/Arnencha Pradabkaew.jpg';
+import AlbertHo from '@/public/Main/Executives/Albert Ho.jpg';
+import FahmidKhan from '@/public/Main/Executives/Fahmid Khan.jpg';
 
 import TeamCard, { type TeamMember } from '@/components/TeamCard';
 
 const executives: TeamMember[] = [
   {
-    name: 'Aditya Kulkarni',
+    name: 'Krit Grover',
     position: 'President',
-    src: Aditya_Kulkarni,
-    alt: 'Aditya Kulkarni',
+    src: KritGrover,
+    alt: 'Krit Grover',
   },
   {
-    name: 'Tianne Pane',
+    name: 'Shreyas Rao',
+    position: 'Vice President of Technology',
+    src: ShreyasRao,
+    alt: 'Shreyas Rao',
+  },
+  {
+    name: 'Nevin Ada Çakmak',
     position: 'Vice President of Operations',
-    src: TiannePane,
-    alt: 'Tianne Pane',
+    src: NevinAdaCakmak,
+    alt: 'Nevin Ada Çakmak',
   },
   {
-    name: 'Christine Van',
-    position: 'Vice President of Operations',
-    src: ChristineVan,
-    alt: 'Christine Van',
-  },
-  {
-    name: 'Anaqi Amir',
+    name: 'Ashwin Malik',
     position: 'Vice President of Academics',
-    src: AnaqiAmir,
-    alt: 'Anaqi Amir',
+    src: AshwinMalik,
+    alt: 'Ashwin Malik',
   },
   {
-    name: 'Malhar Pandya',
+    name: 'Chris Yan',
     position: 'Vice President of Academics',
-    src: MalharPandya,
-    alt: 'Malhar Pandya',
+    src: ChrisYan,
+    alt: 'Chris Yan',
   },
   {
-    name: 'Ivy Chen',
-    position: 'Vice President of Communications',
-    src: IvyChen,
-    alt: 'Ivy Chen',
+    name: 'Harman Gill',
+    position: 'Vice President of Finance',
+    src: HarmanGill,
+    alt: 'Harman Gill',
   },
   {
     name: 'Thanaree Srirawewongsa (Jean)',
-    position: 'Vice President of Campus Life',
+    position: 'Vice President of Consulting',
     src: ThanareeSrirawewongsa,
     alt: 'Thanaree Srirawewongsa (Jean)',
   },
   {
-    name: 'Khadeem Sankar',
+    name: 'Arnencha Pradavkaew',
     position: 'Vice President of Outreach',
-    src: KhadeemSankar,
-    alt: 'Khadeem Sankar',
+    src: ArnenchaPradavkaew,
+    alt: 'Arnencha Pradavkaew',
+  },
+  {
+    name: 'Albert Ho',
+    position: 'Vice President of Campus Life',
+    src: AlbertHo,
+    alt: 'Albert Ho',
+  },
+  {
+    name: 'Fahmid Khan',
+    position: 'Vice President of Marketing',
+    src: FahmidKhan,
+    alt: 'Fahmid Khan',
   },
 ];
 
