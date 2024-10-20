@@ -1,4 +1,5 @@
 import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 export const env = createEnv({
   /**
@@ -8,13 +9,18 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_SHEETS_KEY: z.string(),
+    NEXT_PUBLIC_ML_SHEET_ID: z.string(),
   },
 
   /**
    * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
    * middlewares) or client-side so we need to destruct manually.
    */
-  runtimeEnv: {},
+  runtimeEnv: {
+    NEXT_PUBLIC_SHEETS_KEY: process.env.NEXT_PUBLIC_SHEETS_KEY,
+    NEXT_PUBLIC_ML_SHEET_ID: process.env.NEXT_PUBLIC_ML_SHEET_ID,
+  },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
    * useful for Docker builds.
