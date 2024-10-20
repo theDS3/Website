@@ -1,4 +1,6 @@
 'use client';
+import { env } from '@/env/client.mjs';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export interface Lessons {
@@ -8,48 +10,30 @@ export interface Lessons {
   slides?: string;
 }
 
+async function fetchGoogleSheetData(sheetId: string, apiKey: string) {
+  const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1?key=${apiKey}`;
+  const response = await fetch(sheetUrl);
+  const data = await response.json();
+  return data.values;
+}
+
 export default function Content() {
-  const content: Lessons[] = [
-    {
-      name: 'Introduction to ML',
-      date: 'Sept 20',
-      recordings: [
-        'https://bit.ly/IntroToMLRec1',
-        'https://bit.ly/IntroToMLRec2',
-      ],
-      slides: 'https://bit.ly/IntroToMLSlides',
-    },
-    {
-      name: 'Data Visualization',
-      date: 'Oct 4',
-      recordings: ['https://bit.ly/DataVizRec'],
-      slides: 'https://bit.ly/DS3DataVizSlides',
-    },
-    {
-      name: 'Regression Techniques',
-      date: 'Oct 18',
-      recordings: [],
-      slides: '',
-    },
-    {
-      name: 'Classification Methods',
-      date: 'Nov 1',
-      recordings: [],
-      slides: '',
-    },
-    {
-      name: 'Deep Learning I',
-      date: 'Nov 15',
-      recordings: [],
-      slides: '',
-    },
-    {
-      name: 'Deep Learning II',
-      date: 'Nov 29',
-      recordings: [],
-      slides: '',
-    },
-  ];
+  const [content, setContent] = useState<Lessons[]>([]);
+
+  useEffect(() => {
+    const sheetId = env.NEXT_PUBLIC_ML_SHEET_ID;
+    const apiKey = env.NEXT_PUBLIC_SHEETS_KEY;
+
+    fetchGoogleSheetData(sheetId, apiKey).then((sheetData) => {
+      const lessons = sheetData.slice(1).map((row: any) => ({
+        name: row[0],
+        date: row[1],
+        recordings: row.slice(2, 4).filter((link: string) => link),
+        slides: row[4] || '',
+      }));
+      setContent(lessons);
+    });
+  }, []);
 
   return (
     <section
@@ -64,11 +48,10 @@ export default function Content() {
         {content.map((lesson, index) => (
           <div
             key={index}
-            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${
-              lesson.recordings && lesson.recordings.length > 0
-                ? 'bg-[#2f0d3f]'
-                : 'bg-[#13161b]'
-            }`}>
+            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${lesson.recordings && lesson.recordings.length > 0
+              ? 'bg-[#2f0d3f]'
+              : 'bg-[#13161b]'
+              }`}>
             <div>
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
@@ -111,3 +94,4 @@ export default function Content() {
     </section>
   );
 }
+
