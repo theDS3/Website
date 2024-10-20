@@ -48,10 +48,11 @@ export default function Content() {
         {content.map((lesson, index) => (
           <div
             key={index}
-            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${lesson.recordings && lesson.recordings.length > 0
-              ? 'bg-[#2f0d3f]'
-              : 'bg-[#13161b]'
-              }`}>
+            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${
+              lesson.recordings && lesson.recordings.length > 0
+                ? 'bg-[#2f0d3f]'
+                : 'bg-[#13161b]'
+            }`}>
             <div>
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
@@ -94,4 +95,3 @@ export default function Content() {
     </section>
   );
 }
-
