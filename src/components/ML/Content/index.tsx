@@ -34,7 +34,6 @@ export default function Content() {
       setContent(lessons);
     });
   }, []);
-}
 
   return (
     <section
