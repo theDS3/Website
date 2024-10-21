@@ -28,8 +28,8 @@ export default function MainHero() {
         <div className="absolute bottom-0 left-0 right-0 h-60 bg-gradient-to-b from-transparent to-[#151019]"></div>
       </div>
 
-      <div className="flex flex-col gap-8 xl:gap-12">
-        <h1 className="col-span-2 text-[#d9d9d9] text-6xl lg:text-7xl min-[1800px]:text-8xl min-[1800px]:pb-[5rem] font-medium tracking-widest">
+      <div className="flex flex-col gap-2 xl:gap-2">
+        <h1 className="col-span-2 text-[#d9d9d9] text-6xl lg:text-7xl min-[1800px]:text-8xl min-[1800px]:pb-[1rem] font-medium tracking-widest">
           Data Science
           <span className="font-light"> &amp; </span>
           Statistics
@@ -43,13 +43,15 @@ export default function MainHero() {
             data science, statistics, and machine learning.
           </span>
         </p>
-        <LinkButton
-          newTab
-          href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
-          prefetch={false}
-          className="mt-6 mr-auto w-max">
-          Join Us
-        </LinkButton>
+        <div className="flex justify-center items-center col-span-full pt-6">
+          <LinkButton
+            newTab
+            href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
+            prefetch={false}
+            className="mt-6 md:mr-auto w-max">
+            Join Us
+          </LinkButton>
+        </div>
       </div>
     </>
   );
