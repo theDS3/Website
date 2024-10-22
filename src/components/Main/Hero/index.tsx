@@ -28,7 +28,7 @@ export default function MainHero() {
         <div className="absolute bottom-0 left-0 right-0 h-60 bg-gradient-to-b from-transparent to-[#151019]"></div>
       </div>
 
-      <div className="flex flex-col gap-2 xl:gap-2">
+      <div className="flex flex-col gap-6">
         <h1 className="col-span-2 text-[#d9d9d9] text-6xl lg:text-7xl min-[1800px]:text-8xl min-[1800px]:pb-[1rem] font-medium tracking-widest">
           Data Science
           <span className="font-light"> &amp; </span>
