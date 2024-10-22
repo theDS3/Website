@@ -88,7 +88,12 @@ export default function Content() {
                 )}
               </p>
             </div>
-            <p className="text-gray-400 mt-auto text-right">{new Date(lesson.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
+            <p className="text-gray-400 mt-auto text-right">
+              {new Date(lesson.date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+              })}
+            </p>
           </div>
         ))}
       </div>
