@@ -38,7 +38,7 @@
     "localtunnel": "^2.0.2",
     "postcss": "^8.4.47",
     "postcss-import": "^16.1.0",
-    "postcss-mixins": "^10.0.1",
+    "postcss-mixins": "^11.0.3",
     "postcss-preset-env": "^10.0.3",
     "prettier": "^3.3.3",
     "sharp": "^0.33.5",
