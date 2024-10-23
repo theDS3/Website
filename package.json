@@ -34,7 +34,7 @@
     "cssnano": "^7.0.6",
     "cssnano-preset-advanced": "^7.0.6",
     "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.7",
+    "eslint-config-next": "14.2.16",
     "localtunnel": "^2.0.2",
     "postcss": "^8.4.47",
     "postcss-import": "^16.1.0",
