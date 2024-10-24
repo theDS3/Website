@@ -49,7 +49,7 @@ export default function Content() {
           <div
             key={index}
             className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${
-              lesson.recordings && lesson.recordings.length > 0
+              new Date() > new Date(lesson.date)
                 ? 'bg-[#2f0d3f]'
                 : 'bg-[#13161b]'
             }`}>
@@ -88,7 +88,12 @@ export default function Content() {
                 )}
               </p>
             </div>
-            <p className="text-gray-400 mt-auto text-right">{lesson.date}</p>
+            <p className="text-gray-400 mt-auto text-right">
+              {new Date(lesson.date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+              })}
+            </p>
           </div>
         ))}
       </div>

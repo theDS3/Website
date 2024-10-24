@@ -14,7 +14,7 @@ export default function Sponsors() {
     <section
       id="sponsors"
       className="text-center">
-      <h2 className="text-gray-300 text-5xl font-bold tracking-wider pb-8">
+      <h2 className="text-gray-300 text-5xl font-bold tracking-wider pt-24 pb-8">
         Support Our Mission!
       </h2>
       <p className="description text-2xl px-4 md:px-20 lg:px-28">
