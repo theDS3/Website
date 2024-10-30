@@ -21,7 +21,7 @@ export default function NavBar({ links }: { links: Link[] }) {
         toggle &&
         'h-full pb-[calc(100vh-5em)] transition duration-1000 ease-in-out md:h-auto md:pb-0 md:transition-none portrait:h-auto'
       }`}>
-      <a
+      <Link
         href="/#intro"
         tabIndex={0}>
         <Image
@@ -31,7 +31,7 @@ export default function NavBar({ links }: { links: Link[] }) {
           width={50}
           height={50}
         />
-      </a>
+      </Link>
       {links.length > 0 && (
         <>
           <nav
@@ -41,7 +41,7 @@ export default function NavBar({ links }: { links: Link[] }) {
                 : 'invisible'
             } `}>
             <ul
-              className={`mb-0 md:pl-0 flex flex-wrap justify-between items-center ${
+              className={`mb-0 md:pl-0 flex flex-wrap justify-between gap-3 items-center ${
                 toggle && 'active'
               }`}>
               {links.map(({ href, title }: Link, id) => {
