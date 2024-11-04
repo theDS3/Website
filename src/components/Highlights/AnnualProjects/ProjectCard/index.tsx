@@ -31,7 +31,7 @@ export default function ProjectCard({
         className="rounded-t-xl h-52 object-cover w-full"
       />
       <div className='flex flex-col p-6 flex-grow items-center'>
-        <h2 className="text-xl font-bold mb-4">{name}</h2>
+        <h2 className="text-2xl font-bold mb-4">{name}</h2>
         <p className="text-base mb-2">{content}</p>
       </div>
       <div className='flex justify-center pb-6'>

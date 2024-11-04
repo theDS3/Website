@@ -1,6 +1,5 @@
 import NavBar, { type Link } from '@/components/Navabr';
-import HighlightsHero from '@/components/Highlights/Hero';
-import AnnualProjects from '@/components/Highlights/AnnualProjects';
+import { HighlightsHero, AnnualProjects, PastSponsors } from '@/components/Highlights';
 
 const links: Link[] = [
   { title: 'Home', href: '/#intro' },
@@ -16,6 +15,7 @@ export default function MLPage() {
       <main>
         <HighlightsHero />
         <AnnualProjects />
+        <PastSponsors />
       </main>
     </>
   );
