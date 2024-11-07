@@ -21,10 +21,13 @@ const Header = () => {
 
   return (
     <header className="w-full flex justify-between px-4 py-4 bg-transparent shadow-2xl">
-      <Image
-        src={logo}
-        alt="DS3 Logo"
-      />
+      <div className="text-white text-3xl text-center flex flex-row items-center ">
+        <Image
+          src={logo}
+          alt="DS3 Logo"
+        />
+        <p className="pl-8"> Volunteer Scanning Page</p>
+      </div>
       {session && session.user && (
         <Button
           paddingX="px-8"

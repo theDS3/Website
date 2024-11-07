@@ -170,13 +170,13 @@ export default function ParticipantServices() {
         Participant
       </h1>
       <div className="w-screen flex flex-col items-center justify-center gap-4 ">
-        <div className="w-screen bg-white px-2 py-4 flex items-center">
+        <div className="w-3/4 md:text-xl rounded-lg lg:w-1/2 bg-white px-2 py-4 flex items-center">
           <FaCircleUser size={24} />
           <p className="px-2 text-black">
             {participant.firstName} {participant.lastName}
           </p>
         </div>
-        <div className="w-screen bg-white px-2 py-4 flex items-center">
+        <div className="w-3/4 md:text-xl rounded-lg lg:w-1/2 bg-white px-2 py-4 flex items-center">
           <MdOutlineMail size={24} />
           <p className="px-2 text-black">{participant.email}</p>
           <Link
@@ -189,7 +189,7 @@ export default function ParticipantServices() {
           </Link>
         </div>
         {participant?.phoneNum && (
-          <div className="w-screen bg-white px-2 py-4 flex items-center">
+          <div className="w-3/4 md:text-xl rounded-lg lg:w-1/2 bg-white px-2 py-4 flex items-center">
             <FaPhone size={24} />
             <p className="px-2 text-black">{participant.phoneNum}</p>
             <Link
@@ -202,15 +202,15 @@ export default function ParticipantServices() {
             </Link>
           </div>
         )}
-        <div className="w-screen bg-white px-2 py-4 flex items-center">
+        <div className="w-3/4 md:text-xl rounded-lg lg:w-1/2 bg-white px-2 rounded-lg py-4 flex items-center">
           <IoSchool size={24} />
           <p className="px-2 text-black">{participant.school}</p>
         </div>
-        <div className="w-screen bg-white px-2 py-4 flex items-center">
+        <div className="w-3/4 md:text-xl rounded-lg lg:w-1/2 bg-white px-2 py-4 flex items-center">
           <FaBowlFood size={24} />
           <p className="px-2 text-black">{participant.dietaryRestrictions}</p>
         </div>
-        <div className="w-screen bg-white px-2 py-4 flex items-center">
+        <div className="w-3/4 md:text-xl rounded-lg lg:w-1/2 bg-white px-2 py-4 flex items-center">
           <FaQrcode size={24} />
           <p className="px-2 text-black">{participant.code}</p>
         </div>
@@ -235,13 +235,13 @@ export default function ParticipantServices() {
             </>
           ) : (
             <>
-              <div className="w-screen flex flex-col items-center justify-center gap-4 pb-10 ">
+              <div className="w-screen md:text-xl rounded-lg lg:w-2/4 flex flex-col items-center justify-center gap-4 pb-10 ">
                 <label
                   htmlFor="countries"
                   className="block mb-2 text-sm font-medium text-white"></label>
                 <select
                   id="countries"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-10/12 p-2.5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 lg:w-3/4 p-2.5"
                   onChange={(event) =>
                     setSelectedServiceLabel(event.target.value)
                   }
@@ -249,7 +249,7 @@ export default function ParticipantServices() {
                   <option
                     value="DEFAULT"
                     disabled>
-                    Choose a service ...
+                    Choose a event ...
                   </option>
 
                   {participant.availableServices.map((service, key) => (
@@ -260,7 +260,9 @@ export default function ParticipantServices() {
                     </option>
                   ))}
                 </select>
-                <Button onClick={updateService}>Update</Button>
+                <div className="pt-8">
+                  <Button onClick={updateService}>Update</Button>
+                </div>
               </div>
             </>
           )}

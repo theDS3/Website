@@ -15,6 +15,10 @@ html {
   background-color: #151019;
 }
 
+body {
+  overflow: hidden;
+}
+
 h2 {
   color: #d9d9d9;
 }

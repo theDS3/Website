@@ -20,7 +20,7 @@ export default function Scan() {
 
     const html5QrCode = new Html5Qrcode(qrcodeRegionId);
     const camera = { facingMode: 'environment' };
-    const config = { fps: 10, qrbox: 250 };
+    const config = { fps: 10, qrbox: 350 };
 
     const qrCodeSuccessCallback = (decodedText: string) => {
       router.push(`/volunteer/services?code=${isUUID4(decodedText)}`);
@@ -40,7 +40,7 @@ export default function Scan() {
     timeoutScanner.current = setTimeout(() => {
       setShowScanner(false);
       if (html5QrCode.getState() === 2) html5QrCode.clear();
-    }, 10000);
+    }, 100000);
 
     return () => {
       html5QrCode.stop().catch((error) => {
@@ -51,11 +51,9 @@ export default function Scan() {
 
   return (
     <main
-      className={
-        showScanner
-          ? 'flex flex-col justify-center min-h-screen'
-          : 'flex flex-col items-center justify-center min-h-screen'
-      }>
+      className={`flex flex-col items-center justify-center min-h-screen ${
+        showScanner ? 'w-full lg:w-1/2 mx-auto' : 'w-full'
+      }`}>
       {!showScanner && (
         <Button
           className="flex flex-col items-center"
@@ -79,9 +77,8 @@ export default function Scan() {
       )}
       <div
         id={qrcodeRegionId}
-        style={{
-          fontSize: '2rem',
-        }}
+        className="w-full"
+        style={{ fontSize: '2rem' }}
       />
     </main>
   );
