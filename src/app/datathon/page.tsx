@@ -5,6 +5,8 @@ import CountdownTimer from '@/components/Datathon/CountdownTimer';
 import NavBar from '@/components/Navabr';
 
 import { datathonStartDate, isDatathonWeek } from '@/utils/datathon';
+import DatathonHero from '@/components/Datathon/Hero';
+import AboutDatathon from '@/components/Datathon/About';
 
 export const metadata: Metadata = {
   title: `DS3 | ${datathonStartDate.getFullYear()} Datathon`,
@@ -14,16 +16,18 @@ export const metadata: Metadata = {
 
 export default function Datathon() {
   const layoutStyle =
-    'min-w-screen min-h-screen flex items-center justify-center px-5 py-5';
+    'min-w-screen min-h-screen flex items-center justify-center px-5';
   return (
     <>
       <NavBar links={[]} />
       <main>
         {!isDatathonWeek() ? (
-          <div className={`${layoutStyle} flex-col gap-8`}>
+            <div className={`${layoutStyle} flex-col gap-8`}>
+            <DatathonHero/>
+            <AboutDatathon />
             <CountdownTimer date={datathonStartDate} />
             <p className="text-white text-2xl text-center">
-              Take a look at the 2024 Leaderboard!
+              Take a look at the 2025 Leaderboard!
             </p>
             <LinkButton href="/datathon/leaderboard/past">→</LinkButton>
           </div>
