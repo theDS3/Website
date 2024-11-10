@@ -2,9 +2,16 @@ import { Metadata } from 'next';
 
 import LinkButton from '@/components/Button/LinkButton';
 import CountdownTimer from '@/components/Datathon/CountdownTimer';
-import NavBar from '@/components/Navabr';
+import NavBar, { Link } from '@/components/Navabr';
+import image1 from '@/public/Datathon/About/image1.png';
+import image2 from '@/public/Datathon/About/image2.png';
+import image3 from '@/public/Datathon/About/image3.png';
 
 import { datathonStartDate, isDatathonWeek } from '@/utils/datathon';
+import About_Datathon from '@/components/Datathon/About';
+import ImageCarousel from '@/components/Datathon/ImageCarousel';
+import { EmblaOptionsType } from 'embla-carousel'
+import '@/components/Datathon/ImageCarousel/embla.css'
 
 export const metadata: Metadata = {
   title: `DS3 | ${datathonStartDate.getFullYear()} Datathon`,
@@ -13,29 +20,27 @@ export const metadata: Metadata = {
 };
 
 export default function Datathon() {
-  const layoutStyle =
-    'min-w-screen min-h-screen flex items-center justify-center px-5 py-5';
+  const OPTIONS: EmblaOptionsType = { loop: true }
+  const images: string[] = [
+    image1.src,
+    image2.src,
+    image3.src
+  ]
+  const links: Link[] = [
+    { title: 'About Us', href: '/#about-us' },
+    { title: 'Sponsors', href: '/#sponsors' },
+    { title: 'Team', href: '/#team' },
+    { title: 'Datathon', href: '/datathon' },
+    { title: 'ML Program', href: '/ml-program' },
+  ];
+
+
   return (
     <>
-      <NavBar links={[]} />
+      <NavBar links={links} />
       <main>
-        {!isDatathonWeek() ? (
-          <div className={`${layoutStyle} flex-col gap-8`}>
-            <CountdownTimer date={datathonStartDate} />
-            <p className="text-white text-2xl text-center">
-              Take a look at the 2024 Leaderboard!
-            </p>
-            <LinkButton href="/datathon/leaderboard/past">→</LinkButton>
-          </div>
-        ) : (
-          <div className={layoutStyle}>
-            <div className="text-white">
-              <h1 className="text-7xl text-center mb-3">
-                {datathonStartDate.getFullYear()} Datathon will here soon!
-              </h1>
-            </div>
-          </div>
-        )}
+        <About_Datathon />
+        <ImageCarousel images={images} options={OPTIONS} />
       </main>
     </>
   );
