@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 export interface IVolunteer extends mongoose.Document {
   email: string;
   hashedPassword: string;
+  isAdmin: boolean;
 }
 
 const volunteerSchema = new mongoose.Schema<IVolunteer>(
@@ -18,6 +19,11 @@ const volunteerSchema = new mongoose.Schema<IVolunteer>(
       required: true,
       trim: true,
     },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+        trim: true,
+    }
   },
   {
     toJSON: {

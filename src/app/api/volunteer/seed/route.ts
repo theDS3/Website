@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
       await new Volunteer({
         email,
         hashedPassword: await hash(password, 10),
+        isAdmin: false,
       }).save();
     }
 
