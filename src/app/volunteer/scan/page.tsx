@@ -20,7 +20,10 @@ export default function Scan() {
 
     const html5QrCode = new Html5Qrcode(qrcodeRegionId);
     const camera = { facingMode: 'environment' };
-    const config = { fps: 10, qrbox: 350 };
+    const config_sm = { fps: 10, qrbox: 200 };
+    const config_default = { fps: 10, qrbox: 350 };
+    const config = () => (window.innerWidth < 640 ? config_sm : config_default);
+    console.log(config());
 
     const qrCodeSuccessCallback = (decodedText: string) => {
       router.push(`/volunteer/services?code=${isUUID4(decodedText)}`);
@@ -32,7 +35,7 @@ export default function Scan() {
     // Starts the QR Scanner with preference for the back-facing camera
     html5QrCode.start(
       camera,
-      config,
+      config(),
       qrCodeSuccessCallback,
       qrcodeErrorCallback,
     );
@@ -51,12 +54,12 @@ export default function Scan() {
 
   return (
     <main
-      className={`flex flex-col items-center justify-center min-h-screen ${
-        showScanner ? 'w-full lg:w-1/2 mx-auto' : 'w-full'
+      className={`flex flex-col items-center justify-center  ${
+        showScanner ? 'w-full lg:w-1/2 mx-auto' : 'pt-48 w-full'
       }`}>
       {!showScanner && (
         <Button
-          className="flex flex-col items-center"
+          className="flex flex-row gap-4"
           onClick={() => setShowScanner(!showScanner)}>
           <FaCamera size="25" />
           Show Scanner
