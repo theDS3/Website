@@ -12,11 +12,11 @@ import Participant, { IParticipant } from '@/db/models/participant';
 
 // This endpoint is used to fetch all the participants from the db
 export async function GET(request: NextRequest) {
-  // // Check if this session check works???
-  // const session = await getServerSession(authOptions);
-  // if (!session?.user.isAdmin) {
-  //     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  // }
+  // Check if this session check works???
+  const session = await getServerSession(authOptions);
+  if (!session?.user.isAdmin) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
   try {
     verifyRequest(request.headers);

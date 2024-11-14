@@ -22,7 +22,6 @@ const volunteerSchema = new mongoose.Schema<IVolunteer>(
     isAdmin: {
         type: Boolean,
         default: false,
-        trim: true,
     }
   },
   {
@@ -36,7 +35,7 @@ const volunteerSchema = new mongoose.Schema<IVolunteer>(
   },
 );
 
-const Volunteer =
+const Volunteer = 
   mongoose.models.Volunteer ||
   mongoose.model<IVolunteer>('Volunteer', volunteerSchema);
 

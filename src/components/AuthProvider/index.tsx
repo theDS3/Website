@@ -90,7 +90,7 @@ const Header = () => {
                 <Button
                 paddingX="px-8"
                 fontSize="text-xl"
-                onClick={() => signOut()}>
+                onClick={() => signOut({callbackUrl: '/'})}>
                 Logout
                 </Button>
               )}
