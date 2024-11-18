@@ -1,9 +1,5 @@
-import { hash } from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
-
 import { connectDB } from '@/db/config';
-import Volunteer from '@/db/models/volunteer';
-
 import { VerificationError } from '@/error';
 import { isNumeric, verifyRequest } from '@/verify';
 import { authOptions } from '../../auth/[...nextauth]/options';
@@ -22,9 +18,9 @@ export async function GET(request: NextRequest) {
     verifyRequest(request.headers);
     connectDB();
 
-    const list: IParticipant[] = await Participant.find({}).select(['_id', 'firstName', 'lastName', 'email', 'code', 'status']);
+    const apps: IParticipant[] = await Participant.find({}).select(['_id', 'firstName', 'lastName', 'school', 'status', 'createdAt', 'updatedAt', 'email']);
 
-    return NextResponse.json(list, { statusText: 'SUCCESS', status: 200 });
+    return NextResponse.json({ apps, count: apps.length }, { statusText: 'SUCCESS', status: 200 });
   } catch (error: any) {
     // Catches a VerificationError and returns a 400 error
     if (error instanceof VerificationError)

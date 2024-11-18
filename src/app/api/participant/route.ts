@@ -58,6 +58,11 @@ export async function GET(request: NextRequest) {
   }
 }
 
+/**
+ * Endpoint to create a new participant and store in DB
+ * @param request 
+ * @returns 
+ */
 export async function POST(request: NextRequest) {
   let submission: Pick<
     IParticipant,

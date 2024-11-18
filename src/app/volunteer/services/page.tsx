@@ -165,7 +165,7 @@ export default function ParticipantServices() {
   }
 
   return (
-    <main className="flex flex-col items-center min-h-screen pb-7">
+    <main className="flex flex-col items-center min-h-screen pb-7 mt-20">
       <h1 className="text-white text-5xl font-medium tracking-wide py-10 text-center">
         Participant
       </h1>

@@ -19,10 +19,12 @@
   },
   "dependencies": {
     "@loskir/styled-qr-code-node": "^1.5.1",
+    "@nextui-org/react": "^2.4.8",
     "@t3-oss/env-nextjs": "^0.7.3",
     "aws4": "^1.13.2",
     "bcryptjs": "^2.4.3",
     "date-fns": "^3.3.1",
+    "framer-motion": "^11.11.17",
     "mongoose": "^8.2.0",
     "next": "14.0.4",
     "next-auth": "^4.24.6",
