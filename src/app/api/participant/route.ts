@@ -99,11 +99,14 @@ export async function POST(request: NextRequest) {
 
     // Sanity check to ensure the participant is unique in the DB
     if (await Participant.exists({ email: submission.email, phoneNum: submission.phoneNum, firstName: submission.firstName, lastName: submission.lastName })) {
-      throw new QueryError({
-        name: 'PARTICIPANT_EXISTS',
-        message: 'Participant already exists',
-        cause: `Duplicate Entry: ${submission.email}, ${submission.phoneNum}, ${submission.firstName}, ${submission.lastName}`,
-      });
+      return NextResponse.json(
+        {
+          name: 'PARTICIPANT_EXISTS',
+          message: 'Participant already exists',
+          cause: `Duplicate Entry: ${submission.email}, ${submission.phoneNum}, ${submission.firstName}, ${submission.lastName}`,
+        },
+        { status: 400 },
+      );
     }
 
     return NextResponse.json(

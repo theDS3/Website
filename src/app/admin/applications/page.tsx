@@ -90,8 +90,8 @@ export default function Applications() {
         const response = await fetch(`/api/admin/apps`, fetchOptions);
         if (response.ok) {
           const applications = await response.json();
-          console.log(applications);
           setDocuments(applications);
+          setIsLoading(false);
         } else {
           throw new Error('Failed to fetch applications');
         }
