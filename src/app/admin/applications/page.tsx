@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import {
   Table,
   TableHeader,
@@ -22,6 +22,9 @@ import {
 } from "@nextui-org/react";
 import { env } from '@/env/client.mjs';
 import { VerticalDotsIcon } from '@/public/VerticalDotsIcons';
+import { SearchIcon } from '@/public/SearchIcon';
+import { ChevronDownIcon } from '@/public/ChevronDownIcon';
+import { PlusIcon } from '@/public/PlusIcon';
 
 
 const fetchOptions = {
@@ -48,6 +51,29 @@ const statusColorMap: { [key: string]: any } = {
   "RECEIVED HACKER PACKAGE": "success",
   "REJECTED": "danger",
 };
+
+const statusOptions = [
+  {
+    uid: "in review",
+    name: "IN REVIEW",
+  },
+  {
+    uid: "received acceptance",
+    name: "RECEIVED ACCEPTANCE",
+  },
+  {
+    uid: "accepted",
+    name: "ACCEPTED",
+  },
+  {
+    uid: "received hacker package",
+    name: "RECEIVED HACKER PACKAGE",
+  },
+  {
+    uid: "rejected",
+    name: "REJECTED",
+  },
+];
 
 const appColumns = [
   {
@@ -79,10 +105,10 @@ export default function Applications() {
   });
   const [filterValue, setFilterValue] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(1);
-  const hasSearchFilter = Boolean(filterValue);
   const [isLoading, setIsLoading] = useState(true);
+  const hasSearchFilter = Boolean(filterValue);
 
   useEffect(() => {
     const getAllApplications = async () => {
@@ -101,6 +127,150 @@ export default function Applications() {
     };
     getAllApplications();
   }, []);
+
+  const filteredItems = useMemo(() => {
+    let filteredApps = [...documents.apps];
+
+    if (hasSearchFilter) {
+      filteredApps = filteredApps.filter((app) => 
+        app.email.toLowerCase().includes(filterValue.toLowerCase()),
+      );
+    }
+
+    if (statusFilter !== "all" && Array.from(statusFilter).length !== statusOptions.length) {
+      filteredApps = filteredApps.filter((app) => 
+        Array.from(statusFilter).includes(app.status.toLowerCase()),
+      );
+    }
+    
+    return filteredApps;
+  }, [documents.apps, filterValue, statusFilter]);
+
+  const pages = Math.ceil(filteredItems.length / rowsPerPage);
+
+  const items = useMemo(() => {
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+
+    return filteredItems.slice(start, end);
+  }, [page, filteredItems, rowsPerPage]);
+
+  const onNextPage = useCallback(() => {
+    if (page < pages) { setPage(page + 1) }
+  }, [page, pages]);
+
+  const onPreviousPage = useCallback(() => {
+    if (page > 1) { setPage(page - 1) }
+  }, [page]);
+
+  const onRowsPerPageChange = useCallback((e: any) => {
+    setRowsPerPage(Number(e.target.value));
+    setPage(1);
+  }, []);
+
+  const onSearchChange = useCallback((value: string) => {
+    if (value) {
+      setFilterValue(value);
+      setPage(1);
+    } else {
+      setFilterValue("");
+    }
+  }, []);
+
+  const onClear = useCallback(() => {
+    setFilterValue("");
+    setPage(1);
+  }, []);
+
+  const tableOperationsContent = useMemo(() => {
+    return (
+      <div className="flex flex-col gap-4">
+        <div className="flex justify-between gap-3 items-end">
+          <Input
+            isClearable
+            className="w-full sm:max-w-[44%]"
+            placeholder="Search by email..."
+            startContent={<SearchIcon />}
+            value={filterValue}
+            onClear={onClear}
+            onValueChange={onSearchChange}
+          />
+          <div className="flex gap-3">
+            <Dropdown>
+              <DropdownTrigger className="hidden sm:flex">
+                <Button endContent={<ChevronDownIcon className="text-small" />} variant="flat">
+                  Status
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu
+                disallowEmptySelection
+                aria-label="Status Filter"
+                closeOnSelect={false}
+                selectedKeys={statusFilter}
+                selectionMode="multiple"
+                onSelectionChange={setStatusFilter}
+              >
+                {statusOptions.map((status) => (
+                  <DropdownItem key={status.uid} className="capitalize">
+                    {status.name}
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+            <Button color="primary" endContent={<PlusIcon />}>
+              Add New
+            </Button>
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-default-400 text-small">Total {documents.apps.length} users</span>
+          <label className="flex items-center text-default-400 text-small">
+            Rows per page:
+            <select
+              className="bg-transparent justify-end outline-none px-1 text-default-400 text-small"
+              onChange={onRowsPerPageChange}
+              defaultValue={rowsPerPage}
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    );
+  }, [
+    filterValue,
+    statusFilter,
+    onRowsPerPageChange,
+    documents.apps.length,
+    onSearchChange,
+    hasSearchFilter,
+  ]);
+
+  const tablePaginationContent = useMemo(() => {
+    return (
+      <div className="py-2 px-2 flex justify-between items-center">
+        <Pagination
+          isCompact
+          showControls
+          showShadow
+          color="primary"
+          page={page}
+          total={pages}
+          onChange={setPage}
+        />
+        <div className="hidden sm:flex w-[30%] justify-end gap-2">
+          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onPreviousPage}>
+            Previous
+          </Button>
+          <Button isDisabled={pages === 1} size="sm" variant="flat" onPress={onNextPage}>
+            Next
+          </Button>
+        </div>
+      </div>
+    );
+  }, [items.length, page, pages, hasSearchFilter]);
 
   const renderCell = useCallback((app: App, columnKey: string) => {
       const value = app[columnKey as keyof App];
@@ -170,14 +340,17 @@ export default function Applications() {
   }, []);
 
   return (
-    <main className='relative mt-28 px-7'>
+    <main className='relative mt-28 px-7 py-3'>
       <h1 className='text-white text-4xl font-bold mb-10'>Datathon Applications</h1>
       <Table 
         aria-label="Application table for datathon participants"
         isHeaderSticky
-        classNames={{}}
+        bottomContent={tablePaginationContent}
+        bottomContentPlacement='outside'
+        topContent={tableOperationsContent}
+        topContentPlacement='outside'
       >
-        <TableHeader>
+        <TableHeader columns={appColumns}>
           {appColumns.map((column) => (
             <TableColumn
               key={column.uid}
@@ -190,13 +363,13 @@ export default function Applications() {
         </TableHeader>
         <TableBody 
           emptyContent={'No applications found'} 
-          items={documents.apps}
+          items={items}
           isLoading={isLoading}
           loadingContent={<Spinner color="secondary" label="Loading Applications..."/>}
         >
-        {(app) => (
-          <TableRow key={app._id}>
-            {(columnKey) => <TableCell>{renderCell(app, columnKey as string)}</TableCell>}
+        {(item) => (
+          <TableRow key={item._id}>
+            {(columnKey) => <TableCell>{renderCell(item, columnKey as string)}</TableCell>}
           </TableRow>
         )}
         </TableBody>
