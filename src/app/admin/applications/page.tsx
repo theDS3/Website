@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
+import { Key } from '@react-types/shared';
 import {
   Table,
   TableHeader,
@@ -104,7 +105,7 @@ export default function Applications() {
     total: 0,
   });
   const [filterValue, setFilterValue] = useState("");
-  const [statusFilter, setStatusFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState<"all" | Iterable<Key> | undefined>("all");
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -137,7 +138,7 @@ export default function Applications() {
       );
     }
 
-    if (statusFilter !== "all" && Array.from(statusFilter).length !== statusOptions.length) {
+    if (statusFilter !== "all" && statusFilter && Array.from(statusFilter).length !== statusOptions.length) {
       filteredApps = filteredApps.filter((app) => 
         Array.from(statusFilter).includes(app.status.toLowerCase()),
       );
