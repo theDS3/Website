@@ -27,8 +27,8 @@ export type Service = Record<string, Usage>;
 export type Services = Map<string, Service>;
 export type ServiceGroupsToLabels = Record<string, string[]>;
 const datathonServices: ServiceGroupsToLabels = {
-  '2024-01-13': ['Check-In', 'Snacks'],
-  '2024-01-20': ['Check-In', 'Breakfast', 'Lunch', 'Evening Snacks'],
+  '2025-02-01': ['Check-In', 'Afternoon Snacks', 'Open Ceremony', 'Dinner', 'Evening Snacks', 'Trivia'],
+  '2025-02-02': ['Check-In', 'Karaoke', 'Midnight Snacks', 'Breakfast', 'Hacking Finishes', 'Sponsor Workshop', 'Lunch', 'Closing Ceremony'],
 };
 
 export type Contact = Map<'acceptance' | 'hacker-package', Usage>;

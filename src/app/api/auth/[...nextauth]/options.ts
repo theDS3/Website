@@ -1,10 +1,18 @@
 import { compare } from 'bcryptjs';
-import type { NextAuthOptions } from 'next-auth';
+import type { DefaultSession, NextAuthOptions, Session } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { connectDB } from '@/db/config';
 import Volunteer from '@/db/models/volunteer';
 import { env } from '@/env/server.mjs';
+
+declare module 'next-auth' {
+  interface Session {
+    user: {
+      isAdmin: boolean;
+    } & DefaultSession['user'];
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -44,8 +52,24 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.isAdmin = (user as any).isAdmin;
+      }
+
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.isAdmin = token.isAdmin as boolean;
+      }
+      return session;
+    },
+  },
   session: {
     maxAge: 24 * 60 * 60, // Validated for a single day
+    strategy: 'jwt',
   },
   secret: env.NEXTAUTH_SECRET,
   pages: {

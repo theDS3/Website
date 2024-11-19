@@ -23,7 +23,6 @@ export default function Scan() {
     const config_sm = { fps: 10, qrbox: 200 };
     const config_default = { fps: 10, qrbox: 350 };
     const config = () => (window.innerWidth < 640 ? config_sm : config_default);
-    console.log(config());
 
     const qrCodeSuccessCallback = (decodedText: string) => {
       router.push(`/volunteer/services?code=${isUUID4(decodedText)}`);
@@ -54,15 +53,18 @@ export default function Scan() {
 
   return (
     <main
-      className={`flex flex-col items-center justify-center  ${
-        showScanner ? 'w-full lg:w-1/2 mx-auto' : 'pt-48 w-full'
+      className={`flex flex-col items-center justify-center mt-32 ${
+        showScanner ? 'w-full lg:w-1/2 mx-auto' : 'w-full'
       }`}>
+      <h1 className='text-white text-5xl text-center mb-10'>
+        Scanning Page
+      </h1>
       {!showScanner && (
         <Button
-          className="flex flex-row gap-4"
+          className="flex flex-row gap-4 justify-center items-center"
           onClick={() => setShowScanner(!showScanner)}>
           <FaCamera size="25" />
-          Show Scanner
+          <p className='text-center mt-2'>Show Scanner</p>
         </Button>
       )}
       {showScanner && (

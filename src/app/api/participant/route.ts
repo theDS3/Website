@@ -58,6 +58,11 @@ export async function GET(request: NextRequest) {
   }
 }
 
+/**
+ * Endpoint to create a new participant and store in DB
+ * @param request 
+ * @returns 
+ */
 export async function POST(request: NextRequest) {
   let submission: Pick<
     IParticipant,
@@ -89,8 +94,8 @@ export async function POST(request: NextRequest) {
 
     connectDB();
 
-    // Creates and Saves the User
-    await new Participant({ ...submission, code }).save();
+    // Creates the participant
+    const newParticipant = await new Participant({ ...submission, code });
 
     return NextResponse.json(
       {

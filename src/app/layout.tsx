@@ -1,7 +1,7 @@
-import AuthProvider from '@/components/AuthProvider';
 import type { Metadata } from 'next';
 import { Josefin_Sans } from 'next/font/google';
 import './globals.css';
+import Providers from './provider';
 
 const josefinSans = Josefin_Sans({
   subsets: ['latin'],
@@ -19,9 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className='ds3theme bg-background'>
       <body className={josefinSans.className}>
-        <AuthProvider>{children}</AuthProvider>
+        <Providers>
+            {children}
+        </Providers>
       </body>
     </html>
   );

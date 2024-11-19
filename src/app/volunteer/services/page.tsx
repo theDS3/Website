@@ -165,7 +165,7 @@ export default function ParticipantServices() {
   }
 
   return (
-    <main className="flex flex-col items-center min-h-screen">
+    <main className="flex flex-col items-center min-h-screen pb-7 mt-20">
       <h1 className="text-white text-5xl font-medium tracking-wide py-10 text-center">
         Participant
       </h1>
@@ -202,7 +202,7 @@ export default function ParticipantServices() {
             </Link>
           </div>
         )}
-        <div className="w-3/4 md:text-xl rounded-lg lg:w-1/2 bg-white px-2 rounded-lg py-4 flex items-center">
+        <div className="w-3/4 md:text-xl lg:w-1/2 bg-white px-2 rounded-lg py-4 flex items-center">
           <IoSchool size={24} />
           <p className="px-2 text-black">{participant.school}</p>
         </div>
