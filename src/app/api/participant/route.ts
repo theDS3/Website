@@ -94,8 +94,8 @@ export async function POST(request: NextRequest) {
 
     connectDB();
 
-    // Creates the participant
-    const newParticipant = await new Participant({ ...submission, code });
+    // Creates the participant and stores in the DB
+    await new Participant({ ...submission, code }).save();
 
     return NextResponse.json(
       {
