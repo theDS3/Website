@@ -9,7 +9,6 @@ import img from '@/public/Datathon/Title/img.png';
 export default function DatathonHero() {
   return (
     <section className="relative w-screen h-screen flex flex-col items-center justify-center text-white overflow-hidden">
-
       <div className="absolute inset-0 -z-30">
         <Image
           src={HeroBackgroundImg}
@@ -32,7 +31,6 @@ export default function DatathonHero() {
       </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-between w-full z-10 px-6 lg:px-12 gap-8 lg:gap-14 max-w-7xl mx-auto">
-
         <div className="text-left max-w-2xl">
           <h1 className="text-[#d9d9d9] text-4xl md:text-6xl lg:text-8xl font-medium tracking-wide">
             DS3 Datathon
@@ -59,4 +57,3 @@ export default function DatathonHero() {
     </section>
   );
 }
-
