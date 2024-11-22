@@ -1,6 +1,3 @@
-import Datathon_About from '@/public/Datathon/about-us.jpg';
-import Image from 'next/image';
-
 export default function AboutDatathon() {
   return (
     <section
@@ -11,11 +8,10 @@ export default function AboutDatathon() {
           About DS3 Datathon
         </h1>
         <p className="text-white text-xl md:text-2xl lg:text-3xl -mt-5 text-center sm:text-left">
-          Dive into the future of data science at DS3 Datathon! Unleash your
-          skills over 2 intense days, solving real-world challenges in industry,
-          academia, and government. Join us for a grand finale with powerhouse
-          speakers from Microsoft, VectorAI, FGF Brands, The Score, and Klick
-          Health! Elevate your data game - are you up for the challenge?
+          The third annual Datathon hosted by the Data Science and Statistics
+          Society offers a unique hackathon experience in performing data
+          prediction based on a variety of data sets. Join us in a 36 hour
+          thrilling experience!
         </p>
       </div>
     </section>
