@@ -39,7 +39,11 @@ export default function DatathonHero() {
             1st–2nd February 2025 ❅ In-person Event
           </p>
           <p className="text-slate-300 text-md max-sm:text-center md:text-xl lg:text-2xl mt-6 lg:mt-10 lg:px-2">
-            Unleash your data science skills at our <span className='hidden md:inline'><br></br></span> in-person datathon event!
+            Unleash your data science skills at our{' '}
+            <span className="hidden md:inline">
+              <br></br>
+            </span>{' '}
+            in-person datathon event!
           </p>
         </div>
 
