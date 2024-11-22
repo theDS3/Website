@@ -32,14 +32,14 @@ export default function DatathonHero() {
 
       <div className="flex flex-col lg:flex-row items-center justify-between w-full z-10 px-6 lg:px-12 gap-8 lg:gap-14 max-w-7xl mx-auto">
         <div className="text-left max-w-2xl">
-          <h1 className="text-[#d9d9d9] text-4xl md:text-6xl lg:text-8xl font-medium tracking-wide">
+          <h1 className="text-[#d9d9d9] text-6xl max-sm:text-center md:text-6xl lg:text-8xl font-medium tracking-wide">
             DS3 Datathon
           </h1>
-          <p className="text-white text-xl md:text-2xl lg:text-4xl mt-4">
+          <p className="text-white text-xl max-sm:text-center md:text-2xl lg:text-3xl mt-4 lg:px-2">
             1st–2nd February 2025 ❅ In-person Event
           </p>
-          <p className="text-white text-lg md:text-xl lg:text-2xl mt-6 lg:mt-12">
-            Unleash your data science skills at our in-person datathon event!
+          <p className="text-slate-300 text-md max-sm:text-center md:text-xl lg:text-2xl mt-6 lg:mt-10 lg:px-2">
+            Unleash your data science skills at our <span className='hidden md:inline'><br></br></span> in-person datathon event!
           </p>
         </div>
 
