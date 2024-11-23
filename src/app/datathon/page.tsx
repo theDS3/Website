@@ -11,14 +11,14 @@ import { FAQ } from '@/components/Datathon/FAQ';
 import { ImageCarousel, } from '@/components/Datathon/HighlightCarousel';
 import Sponsors from "@/components/Datathon/Sponsors";
 
-import img1 from '@/public/Datathon/carousel/IMG_1818.png'
-import img2 from '@/public/Datathon/carousel/IMG_1883.png'
-import img3 from '@/public/Datathon/carousel/IMG_1898.png'
-import img4 from '@/public/Datathon/carousel/IMG_7688.png'
-import img5 from '@/public/Datathon/carousel/IMG_7700.png'
-import img6 from '@/public/Datathon/carousel/IMG_7703.png'
-import img7 from '@/public/Datathon/carousel/IMG_7704.png'
-import img8 from '@/public/Datathon/carousel/IMG_7735.png'
+import img1 from '@/public/Datathon/carousel/IMG_1818.png';
+import img2 from '@/public/Datathon/carousel/IMG_1883.png';
+import img3 from '@/public/Datathon/carousel/IMG_1898.png';
+import img4 from '@/public/Datathon/carousel/IMG_7688.png';
+import img5 from '@/public/Datathon/carousel/IMG_7700.png';
+import img6 from '@/public/Datathon/carousel/IMG_7703.png';
+import img7 from '@/public/Datathon/carousel/IMG_7704.png';
+import img8 from '@/public/Datathon/carousel/IMG_7735.png';
 
 export const metadata: Metadata = {
   title: `DS3 | ${datathonStartDate.getFullYear()} Datathon`,
@@ -52,10 +52,11 @@ export default function Datathon() {
       answer: "Both are fine! However, groups may have a maximum of 4 members"
     },
     {
-      question: "Will there be prizes?",
-      answer: "Yes! We have exciting prizes for the top teams, including cash awards, internship opportunities, and tech gadgets. Specific prize details will be announced closer to the event."
-    }
-  ]
+      question: 'Will there be prizes?',
+      answer:
+        'Yes! We have exciting prizes for the top teams, including cash awards, internship opportunities, and tech gadgets. Specific prize details will be announced closer to the event.',
+    },
+  ];
 
   const images: string[] = [
     img1.src,
@@ -66,13 +67,13 @@ export default function Datathon() {
     img6.src,
     img7.src,
     img8.src,
-  ]
+  ];
 
   const links: Link[] = [
     { title: 'Home', href: '/' },
     { title: 'About', href: '#about-us' },
     { title: 'FAQ', href: '#faq' },
-  ]
+  ];
 
   return (
     <>
@@ -100,7 +101,7 @@ export default function Datathon() {
           <div className={layoutStyle}>
             <div className="text-white">
               <h1 className="text-7xl text-center mb-3">
-                {datathonStartDate.getFullYear()} Datathon will here soon!
+                {datathonStartDate.getFullYear()} Datathon will be here soon!
               </h1>
             </div>
           </div>

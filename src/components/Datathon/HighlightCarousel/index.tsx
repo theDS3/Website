@@ -73,4 +73,3 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
     </div>
   );
 }
-
