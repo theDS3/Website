@@ -18,7 +18,7 @@ export default function SponsorsCard({
 }: Sponsors) {
   return (
     <div
-      className={`relative group rounded-xl bg-gradient-to-br from-[#1e1e2f] to-[#292943] p-1 shadow-lg transition-transform transform hover:scale-105 ${className}`}
+      className={`relative group rounded-xl border bg-white p-1 shadow-lg transition-transform transform hover:scale-105 ${className}`}
     >
       <Link
         href={link}
