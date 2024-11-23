@@ -45,17 +45,18 @@ export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="flex flex-col items-center justify-center min-[620px]:py-[35vh]"
-    >
+      className="flex flex-col items-center justify-center min-[620px]:py-[35vh]">
       <h2 className="text-white text-5xl font-bold tracking-wide pb-8 text-center">
         Our Sponsors From Last Year
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-20 pt-20 w-full max-w-7xl mx-auto">
         {sponsors.map((sponsor: Sponsors, id) => (
-          <SponsorsCard key={id} {...sponsor} />
+          <SponsorsCard
+            key={id}
+            {...sponsor}
+          />
         ))}
       </div>
     </section>
   );
 }
-

@@ -46,8 +46,7 @@ export default function DatathonHero() {
           <div className="py-2 pt-8 mt-4 sm:mt-6 lg:mt-8">
             <LinkButton
               href="http://bit.ly/3Z0WQQg"
-              className="px-12 py-7 text-lg md:text-xl lg:text-2xl font-medium shadow-lg transition-all"
-            >
+              className="px-12 py-7 text-lg md:text-xl lg:text-2xl font-medium shadow-lg transition-all">
               Sign Up!
             </LinkButton>
           </div>

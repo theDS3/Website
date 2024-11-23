@@ -18,14 +18,12 @@ export default function SponsorsCard({
 }: Sponsors) {
   return (
     <div
-      className={`relative group rounded-xl border bg-white p-1 shadow-lg transition-transform transform hover:scale-105 ${className}`}
-    >
+      className={`relative group rounded-xl border bg-white p-1 shadow-lg transition-transform transform hover:scale-105 ${className}`}>
       <Link
         href={link}
         target="_blank"
         rel="noopener"
-        className="block rounded-lg bg-white flex justify-center items-center h-36 w-64 p-6"
-      >
+        className="block rounded-lg bg-white flex justify-center items-center h-36 w-64 p-6">
         <Image
           src={logo}
           alt={name}
@@ -36,4 +34,3 @@ export default function SponsorsCard({
     </div>
   );
 }
-

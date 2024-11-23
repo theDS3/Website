@@ -8,8 +8,8 @@ import { datathonStartDate, isDatathonWeek } from '@/utils/datathon';
 import DatathonHero from '@/components/Datathon/Hero';
 import AboutDatathon from '@/components/Datathon/About';
 import { FAQ } from '@/components/Datathon/FAQ';
-import { ImageCarousel, } from '@/components/Datathon/HighlightCarousel';
-import Sponsors from "@/components/Datathon/Sponsors";
+import { ImageCarousel } from '@/components/Datathon/HighlightCarousel';
+import Sponsors from '@/components/Datathon/Sponsors';
 
 import img1 from '@/public/Datathon/carousel/IMG_1818.png';
 import img2 from '@/public/Datathon/carousel/IMG_1883.png';
@@ -32,24 +32,25 @@ export default function Datathon() {
 
   const faqs: FAQ[] = [
     {
-      question: "What is the DS3 Datathon?",
-      answer: "A 18hr long data science hackathon where students will be tested on the accuracy of their models"
+      question: 'What is the DS3 Datathon?',
+      answer:
+        'A 18hr long data science hackathon where students will be tested on the accuracy of their models',
     },
     {
-      question: "When and where will the Datathon take place?",
-      answer: "February 1st-2nd, 2025 @ UTSC"
+      question: 'When and where will the Datathon take place?',
+      answer: 'February 1st-2nd, 2025 @ UTSC',
     },
     {
-      question: "Who can participate?",
-      answer: "Students from all universities/high schools are welcome!"
+      question: 'Who can participate?',
+      answer: 'Students from all universities/high schools are welcome!',
     },
     {
-      question: "Is there a registration fee?",
-      answer: "No! It is a free event!"
+      question: 'Is there a registration fee?',
+      answer: 'No! It is a free event!',
     },
     {
-      question: "Is it individual or in groups?",
-      answer: "Both are fine! However, groups may have a maximum of 4 members"
+      question: 'Is it individual or in groups?',
+      answer: 'Both are fine! However, groups may have a maximum of 4 members',
     },
     {
       question: 'Will there be prizes?',
@@ -89,8 +90,7 @@ export default function Datathon() {
             </p>
             <LinkButton
               href="/datathon/leaderboard/past"
-              className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg"
-            >
+              className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg">
               →
             </LinkButton>
             <Sponsors />
