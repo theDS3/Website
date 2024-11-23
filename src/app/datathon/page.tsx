@@ -7,8 +7,9 @@ import NavBar, { Link } from '@/components/Navabr';
 import { datathonStartDate, isDatathonWeek } from '@/utils/datathon';
 import DatathonHero from '@/components/Datathon/Hero';
 import AboutDatathon from '@/components/Datathon/About';
-import { FAQ, FAQs } from '@/components/Datathon/FAQ';
+import { FAQ } from '@/components/Datathon/FAQ';
 import { ImageCarousel, } from '@/components/Datathon/HighlightCarousel';
+import Sponsors from "@/components/Datathon/Sponsors";
 
 import img1 from '@/public/Datathon/carousel/IMG_1818.png'
 import img2 from '@/public/Datathon/carousel/IMG_1883.png'
@@ -31,24 +32,24 @@ export default function Datathon() {
 
   const faqs: FAQ[] = [
     {
-      question: "What is a Datathon?",
-      answer: "A Datathon is a data-focused hackathon where participants use data science skills to solve real-world challenges over a short period, typically 24-48 hours."
+      question: "What is the DS3 Datathon?",
+      answer: "A 18hr long data science hackathon where students will be tested on the accuracy of their models"
+    },
+    {
+      question: "When and where will the Datathon take place?",
+      answer: "February 1st-2nd, 2025 @ UTSC"
     },
     {
       question: "Who can participate?",
-      answer: "Our Datathon is open to all university students, regardless of their major or level of study. We welcome beginners to advanced data enthusiasts!"
+      answer: "Students from all universities/high schools are welcome!"
     },
     {
-      question: "Do I need to know programming?",
-      answer: "Basic programming knowledge is helpful, but not required. We offer workshops and mentoring to help you get started and learn throughout the event."
+      question: "Is there a registration fee?",
+      answer: "No! It is a free event!"
     },
     {
-      question: "What should I bring?",
-      answer: "Bring your laptop, charger, and any other devices you might need. We'll provide food, drinks, and a comfortable workspace for the duration of the event."
-    },
-    {
-      question: "Is there a participation fee?",
-      answer: "No, participation in our Datathon is completely free of charge, thanks to our generous sponsors and university support."
+      question: "Is it individual or in groups?",
+      answer: "Both are fine! However, groups may have a maximum of 4 members"
     },
     {
       question: "Will there be prizes?",
@@ -78,14 +79,20 @@ export default function Datathon() {
       <NavBar links={links} />
       <main>
         {!isDatathonWeek() ? (
-          <div className={`${layoutStyle} flex-col gap-8`}>
+          <div className={`${layoutStyle} flex-col gap-8 `}>
             <DatathonHero />
             <AboutDatathon />
             <CountdownTimer date={datathonStartDate} />
-            <p className="text-white text-2xl text-center">
+            <p className="text-white text-3xl md:text-4xl lg:text-5xl text-center font-medium mt-8">
               Take a look at the 2024 Leaderboard!
             </p>
-            <LinkButton href="/datathon/leaderboard/past" className="mb-24">→</LinkButton>
+            <LinkButton
+              href="/datathon/leaderboard/past"
+              className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg"
+            >
+              →
+            </LinkButton>
+            <Sponsors />
             <ImageCarousel images={images} />
             <FAQ faqs={faqs} />
           </div>

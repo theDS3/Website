@@ -18,23 +18,22 @@ export default function SponsorsCard({
 }: Sponsors) {
   return (
     <div
-      style={{
-        boxShadow: '8px 8px 0px 0px #c190f0',
-        width: '185px',
-        height: '110px',
-      }}
-      className="rounded-lg bg-white flex justify-center items-center">
+      className={`relative group rounded-xl bg-gradient-to-br from-[#1e1e2f] to-[#292943] p-1 shadow-lg transition-transform transform hover:scale-105 ${className}`}
+    >
       <Link
         href={link}
         target="_blank"
-        rel="noopener">
+        rel="noopener"
+        className="block rounded-lg bg-white flex justify-center items-center h-36 w-64 p-6"
+      >
         <Image
           src={logo}
           alt={name}
           quality={100}
-          style={{ borderRadius: '10px' }}
+          className="object-contain h-20 max-w-full"
         />
       </Link>
     </div>
   );
 }
+

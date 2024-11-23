@@ -30,8 +30,8 @@ export default function CountdownTimer({ date }: CountdownTimerProps) {
   useEffect(() => {
     if (date.getTime() < new Date().getTime()) return;
     const updateRemainingTime = setInterval(() => {
-      let now = new Date().getTime();
-      let difference = date.getTime() - now;
+      const now = new Date().getTime();
+      const difference = date.getTime() - now;
 
       setRemainingTime({
         months: Math.floor(difference / (1000 * 60 * 60 * 24 * 30)).toString(),
@@ -55,48 +55,48 @@ export default function CountdownTimer({ date }: CountdownTimerProps) {
 
   return (
     <div className="text-white">
-      <h1 className="text-3xl max-md:text-2xl text-center mb-3">
+      <h1 className="text-5xl max-md:text-4xl text-center mb-6 font-bold">
         {date.getFullYear()} Datathon is in ...
       </h1>
-      <div className="text-6xl text-center flex w-full items-center justify-center flex-wrap select-none">
+      <div className="text-7xl md:text-8xl text-center flex w-full items-center justify-center flex-wrap select-none">
         {remainingTime.months !== '0' && (
-          <div className="w-24 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+          <div className="w-32 mx-2 max-lg:my-4 p-4 bg-white text-black rounded-lg">
             <div className="font-mono leading-none">{remainingTime.months}</div>
-            <div className="font-mono uppercase text-sm leading-none">
+            <div className="font-mono uppercase text-lg leading-none">
               Months
             </div>
           </div>
         )}
         {remainingTime.days !== '00' && (
-          <div className="w-27 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+          <div className="w-32 mx-2 max-lg:my-4 p-4 bg-white text-black rounded-lg">
             <div className="font-mono leading-none">{remainingTime.days}</div>
-            <div className="font-mono uppercase text-sm leading-none">Days</div>
+            <div className="font-mono uppercase text-lg leading-none">Days</div>
           </div>
         )}
         {remainingTime.hours !== '00' && (
-          <div className="w-24 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+          <div className="w-32 mx-2 max-lg:my-4 p-4 bg-white text-black rounded-lg">
             <div className="font-mono leading-none">{remainingTime.hours}</div>
-            <div className="font-mono uppercase text-sm leading-none">
+            <div className="font-mono uppercase text-lg leading-none">
               Hours
             </div>
           </div>
         )}
         {remainingTime.minutes !== '00' && (
-          <div className="w-24 mx-1 max-lg:my-4 p-2 bg-white text-black rounded-lg">
+          <div className="w-32 mx-2 max-lg:my-4 p-4 bg-white text-black rounded-lg">
             <div className="font-mono leading-none">
               {remainingTime.minutes}
             </div>
-            <div className="font-mono uppercase text-sm leading-none">
+            <div className="font-mono uppercase text-lg leading-none">
               Minutes
             </div>
           </div>
         )}
         {remainingTime.seconds !== '00' && (
-          <div className="w-24 mx-1 p-2 bg-white text-black rounded-lg">
+          <div className="w-32 mx-2 p-4 bg-white text-black rounded-lg">
             <div className="font-mono leading-none">
               {remainingTime.seconds}
             </div>
-            <div className="font-mono uppercase text-sm leading-none">
+            <div className="font-mono uppercase text-lg leading-none">
               Seconds
             </div>
           </div>
@@ -105,3 +105,4 @@ export default function CountdownTimer({ date }: CountdownTimerProps) {
     </div>
   );
 }
+

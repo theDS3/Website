@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
+import Autoplay from 'embla-carousel-autoplay'
 
 interface ImageCarouselProps {
   images: string[];
@@ -12,7 +13,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'center',
-  });
+  }, [Autoplay({ playOnInit: true, stopOnInteraction: false, delay: 3000 })]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   //@ts-ignore
@@ -26,23 +27,23 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
   }, [emblaApi]);
 
   return (
-    <div className="relative w-full max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full max-w-[95vw] mx-auto px-6 sm:px-8 lg:px-12 mt-8">
       <div ref={emblaRef} className="overflow-hidden">
-        <div className="flex gap-4 sm:gap-6 lg:gap-8">
+        <div className="flex px-6 sm:px-8 lg:px-12 gap-6 sm:gap-8 lg:gap-10">
           {images.map((image, index) => (
             <div
               key={index}
-              className="relative flex-[0_0_80%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] transition-transform duration-300"
+              className="relative flex-[0_0_90%] sm:flex-[0_0_60%] lg:flex-[0_0_40%] transition-transform duration-300"
             >
               <div
                 className={`transition-transform duration-300 ${selectedIndex === index
-                  ? 'scale-105 opacity-100'
-                  : 'scale-90 opacity-75'
+                  ? 'scale-110 opacity-100'
+                  : 'scale-95 opacity-80'
                   }`}
               >
                 <div
                   className="relative w-full h-0"
-                  style={{ paddingBottom: '56.25%' }}
+                  style={{ paddingBottom: '66.25%' }}
                 >
                   <Image
                     src={image}
@@ -59,13 +60,12 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
         </div>
       </div>
 
-
-      <div className="flex justify-center mt-6 space-x-2 sm:space-x-3">
+      <div className="flex justify-center mt-8 space-x-3 sm:space-x-4">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => emblaApi?.scrollTo(index)}
-            className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-colors ${selectedIndex === index ? 'bg-white' : 'bg-gray-500'
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full transition-colors ${selectedIndex === index ? 'bg-white' : 'bg-gray-500'
               }`}
           />
         ))}
