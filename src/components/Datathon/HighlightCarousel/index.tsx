@@ -30,9 +30,9 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
   }, [emblaApi]);
 
   return (
-    <div className="relative w-full max-w-[95vw] mx-auto px-6 sm:px-8 lg:px-12 mt-8">
+    <div id="highlights" className="relative w-full max-w-[95vw] mx-auto px-6 sm:px-8 lg:px-12 mt-8">
       <h2 className="text-white text-5xl font-bold tracking-wide pb-14 text-center">
-        Last Year's Highlights
+        Last Year&apos;s Highlights
       </h2>
       <div
         ref={emblaRef}

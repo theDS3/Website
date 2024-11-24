@@ -73,6 +73,8 @@ export default function Datathon() {
   const links: Link[] = [
     { title: 'Home', href: '/' },
     { title: 'About', href: '#about-us' },
+    { title: 'Sponsors', href: '#sponsors' },
+    { title: 'Highlights', href: '#highlights' },
     { title: 'FAQ', href: '#faq' },
   ];
 
