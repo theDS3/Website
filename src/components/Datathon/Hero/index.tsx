@@ -50,8 +50,7 @@ export default function DatathonHero() {
             <LinkButton
               href="http://bit.ly/3Z0WQQg"
               newTab={true}
-              className="text-lg md:text-xl lg:text-2xl font-medium shadow-lg transition-all"
-            >
+              className="text-lg md:text-xl lg:text-2xl font-medium shadow-lg transition-all">
               Sign Up!
             </LinkButton>
           </div>
