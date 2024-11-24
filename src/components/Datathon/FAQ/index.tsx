@@ -14,7 +14,7 @@ export function FAQ({ faqs }: FAQsProps) {
   return (
     <section
       id="faq"
-      className="space-y-12 min-[620px]:py-[30vh]">
+      className="space-y-12 min-[620px]:pt-[24vh] mb-10">
       <h1 className="lg:justify-center col-span-2 text-white text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl text-center sm:flex sm:justify-center">
         FAQ
       </h1>

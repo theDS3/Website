@@ -2,7 +2,7 @@ export default function AboutDatathon() {
   return (
     <section
       id="about-us"
-      className="min-[620px]:py-[30vh]">
+      className="min-[620px]:py-28 mb-[9rem]">
       <div className="flex justify-center flex-col gap-8 xl:gap-12 ">
         <h1 className="lg:justify-start col-span-2 text-white text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl text-center sm:flex sm:justify-center">
           About DS3 Datathon

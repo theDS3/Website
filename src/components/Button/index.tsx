@@ -14,7 +14,7 @@ export const defaultButtonStyles = {
   fontSize: 'text-2xl',
   fontWeight: 'font-bold',
   paddingX: 'px-10',
-  paddingY: 'py-[5px]',
+  paddingY: 'py-3',
   border: 'border-2 border-solid border-[white]',
 };
 
