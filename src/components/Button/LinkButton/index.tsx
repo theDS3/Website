@@ -22,7 +22,9 @@ const LinkButton = ({
   return (
     <Link
       role="button"
-      className={`cursor-pointer text-center text-white rounded-[2.5rem] shadow-md ${backgroundColor} ${fontSize} ${fontWeight} ${paddingX} ${paddingY} ${border} ${className}`}
+      className={`cursor-pointer text-center text-white rounded-[2.5rem] shadow-md transition-all duration-300
+        ${backgroundColor} ${fontSize} ${fontWeight} ${paddingX} ${paddingY} ${border}
+        hover:bg-white hover:text-black ${className}`}
       href={href}
       target={newTab ? '_blank' : '_self'}
       rel={newTab ? 'noopener' : undefined}
