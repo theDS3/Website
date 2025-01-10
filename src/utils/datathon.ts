@@ -1,7 +1,7 @@
 import { LeaderboardContent } from '@/db/models/leaderboard';
 
-export const datathonStartDate = new Date('Jan 14, 2025 9:00:00');
-export const datathonEndDate = new Date('Jan 20, 2025 21:00:00');
+export const datathonStartDate = new Date('Feb 17, 2025 10:00:00');
+export const datathonEndDate = new Date('Feb 22, 2025 10:00:00');
 
 export const isDatathonWeek = (): boolean => {
   return new Date() >= datathonStartDate && new Date() <= datathonEndDate;
