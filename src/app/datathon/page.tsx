@@ -34,11 +34,11 @@ export default function Datathon() {
     {
       question: 'What is the DS3 Datathon?',
       answer:
-        'A 18hr long data science hackathon where students will be tested on the accuracy of their models',
+        'A week long data science hackathon where students will be tested on the accuracy of their models',
     },
     {
       question: 'When and where will the Datathon take place?',
-      answer: 'February 1st-2nd, 2025 @ UTSC',
+      answer: 'February 17th-22nd, 2025 @ UTSC',
     },
     {
       question: 'Who can participate?',

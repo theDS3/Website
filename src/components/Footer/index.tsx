@@ -120,7 +120,7 @@ export default function Footer() {
         </div>
         <div className="text-gray-400 text-center pt-4">
           <p className="text-sm">
-            Copyright © DS<sup>3</sup> 2024. All Rights Reserved
+            Copyright © DS<sup>3</sup> 2025. All Rights Reserved
           </p>
         </div>
       </div>

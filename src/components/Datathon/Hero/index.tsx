@@ -37,7 +37,7 @@ export default function DatathonHero() {
             DS3 Datathon
           </h1>
           <p className="text-white text-xl max-sm:text-center md:text-2xl lg:text-3xl mt-4 lg:px-2">
-            1st–2nd February 2025
+            17th–22nd February 2025
           </p>
           <p className="text-slate-300 text-md max-sm:text-center md:text-xl lg:text-2xl mt-6 lg:mt-10 lg:px-2">
             Unleash your data science skills at our
