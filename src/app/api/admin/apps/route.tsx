@@ -6,7 +6,7 @@ import { authOptions } from '../../auth/[...nextauth]/options';
 import { getServerSession } from 'next-auth';
 import Participant, { IParticipant } from '@/db/models/participant';
 
-// GET: Fetch all participants
+// This endpoint is used to fetch all the participants from the db
 export async function GET(request: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user.isAdmin) {
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       'email',
     ]);
 
-    return NextResponse.json({ apps, count: apps.length }, { status: 200 });
+    return NextResponse.json({ apps, count: apps.length }, { statusText: 'SUCCESS', status: 200 });
   } catch (error: any) {
     if (error instanceof VerificationError) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -45,10 +45,9 @@ export async function PATCH(request: NextRequest) {
   }
 
   try {
-    // Connect to the database
+
     connectDB();
 
-    // Parse the request body
     let body;
     try {
       body = await request.json();
@@ -62,7 +61,6 @@ export async function PATCH(request: NextRequest) {
 
     const { participantId, newStatus } = body;
 
-    // Validate participantId and newStatus
     if (!participantId || !newStatus) {
       return NextResponse.json(
         { error: 'Participant ID and new status are required.' },
@@ -70,7 +68,6 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    // Validate status
     const validStatuses = ['ACCEPTED', 'IN REVIEW'];
     if (!validStatuses.includes(newStatus)) {
       return NextResponse.json(
@@ -106,7 +103,7 @@ export async function PATCH(request: NextRequest) {
           updatedAt: participant.updatedAt,
         },
       },
-      { status: 200 },
+      { statusText: 'SUCCESS', status: 200 });
     );
   } catch (error: any) {
     if (error instanceof VerificationError) {
