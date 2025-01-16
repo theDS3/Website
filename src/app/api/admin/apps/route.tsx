@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       'email',
     ]);
 
-    return NextResponse.json({ apps, count: apps.length }, { statusText: 'SUCCESS', status: 200 });
+    return NextResponse.json({ apps, count: apps.length }, { status: 200 });
   } catch (error: any) {
     if (error instanceof VerificationError) {
       return NextResponse.json({ error: error.message }, { status: 400 });
@@ -45,7 +45,6 @@ export async function PATCH(request: NextRequest) {
   }
 
   try {
-
     connectDB();
 
     let body;
@@ -103,7 +102,7 @@ export async function PATCH(request: NextRequest) {
           updatedAt: participant.updatedAt,
         },
       },
-      { statusText: 'SUCCESS', status: 200 });
+      { status: 200 },
     );
   } catch (error: any) {
     if (error instanceof VerificationError) {
