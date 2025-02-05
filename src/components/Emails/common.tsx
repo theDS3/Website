@@ -65,7 +65,7 @@ export const Content = ({ sections }: { sections: ContentSections }) => {
           <Heading
             key={key}
             as="h2"
-            className="text-gray-500 text-2xl font-normal text-center p-0 my-[30px] mx-0">
+            className="text-gray-500 text-2xl font-normal text-center p-0 my-[20px] mx-0">
             {heading}
           </Heading>
           {content}
