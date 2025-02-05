@@ -112,23 +112,24 @@ export default function Applications() {
   const [isLoading, setIsLoading] = useState(true);
   const hasSearchFilter = Boolean(filterValue);
 
-  useEffect(() => {
-    const getAllApplications = async () => {
-      try {
-        const response = await fetch(`/api/admin/apps`, fetchOptions);
-        if (response.ok) {
-          const applications = await response.json();
-          setDocuments(applications);
-          setIsLoading(false);
-        } else {
-          throw new Error('Failed to fetch applications');
-        }
-      } catch (error) {
-        console.error(error);
+  const getAllApplications = async () => {
+    try {
+      const response = await fetch(`/api/admin/apps`, fetchOptions);
+      if (response.ok) {
+        const applications = await response.json();
+        setDocuments(applications);
+        setIsLoading(false);
+      } else {
+        throw new Error('Failed to fetch applications');
       }
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
     getAllApplications();
-  }, [documents]);
+  }, []);
 
   const changeStatus = async (id: string, newStatus: string) => {
     try {
@@ -151,6 +152,7 @@ export default function Applications() {
           app._id === id ? { ...app, status: newStatus } : app,
         ),
       }));
+      getAllApplications();
       console.log(`Status updated to ${newStatus}`);
     } catch (error) {
       console.error('Error updating status:', error);
@@ -472,7 +474,7 @@ export default function Applications() {
                 <DropdownItem onPress={() => changeStatus(app.id, 'ACCEPTED')}>
                   Accept
                 </DropdownItem>
-                <DropdownItem onPress={() => changeStatus(app.id, 'IN REVIEW')}>
+                <DropdownItem onPress={() => changeStatus(app.id, 'REJECTED')}>
                   Reject
                 </DropdownItem>
                 <DropdownItem>View</DropdownItem>

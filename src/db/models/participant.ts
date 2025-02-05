@@ -19,6 +19,9 @@ export enum ParticipantStatus {
 
   // Applied to a participant when they have been sent a Hacker Package Email.
   RECEIVED_HACKER_PACKAGE = 'RECEIVED HACKER PACKAGE',
+
+  // Applied to a participant when they are rejected from the hacker acceptance page.
+  REJECTED = 'REJECTED',
 }
 
 export type Usage = { status: boolean; timestamp?: string };

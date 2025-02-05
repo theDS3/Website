@@ -66,8 +66,7 @@ export async function PATCH(request: NextRequest) {
         { status: 400 },
       );
     }
-
-    const validStatuses = ['ACCEPTED', 'IN REVIEW'];
+    const validStatuses = ['ACCEPTED', 'IN REVIEW', 'REJECTED'];
     if (!validStatuses.includes(newStatus)) {
       return NextResponse.json(
         {
