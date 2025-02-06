@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
@@ -232,6 +233,25 @@ export default function Applications() {
     }
   };
 
+  // Handle package emails
+  const HandleRejectionEmail = async () => {
+    const rejectionEmails = documents.apps
+      .filter((app) => app.status === 'REJECTED')
+      .map((app) => app.email);
+
+    if (rejectionEmails.length === 0) {
+      console.log('No rejection emails to send.');
+      return;
+    }
+
+    try {
+      const result = await sendEmail('rejection', rejectionEmails);
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const filteredItems = useMemo(() => {
     let filteredApps = [...documents.apps];
 
@@ -252,7 +272,7 @@ export default function Applications() {
     }
 
     return filteredApps;
-  }, [documents.apps, filterValue, statusFilter]);
+  }, [documents.apps, filterValue, hasSearchFilter, statusFilter]);
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -309,6 +329,11 @@ export default function Applications() {
           />
 
           <div className="flex gap-3">
+            <Button
+              color="danger"
+              onPress={() => HandleRejectionEmail()}>
+              Send Rejections
+            </Button>
             <Button
               color="secondary"
               onPress={() => HandleAcceptedEmails()}>
@@ -370,11 +395,14 @@ export default function Applications() {
     );
   }, [
     filterValue,
-    statusFilter,
-    onRowsPerPageChange,
-    documents.apps.length,
+    onClear,
     onSearchChange,
-    hasSearchFilter,
+    statusFilter,
+    documents.apps.length,
+    onRowsPerPageChange,
+    rowsPerPage,
+    HandleAcceptedEmails,
+    HandlePackageEmails,
   ]);
 
   const tablePaginationContent = useMemo(() => {
@@ -407,87 +435,95 @@ export default function Applications() {
         </div>
       </div>
     );
-  }, [items.length, page, pages, hasSearchFilter]);
+  }, [page, pages, onPreviousPage, onNextPage]);
 
-  const renderCell = useCallback((app: App, columnKey: string) => {
-    const value = app[columnKey as keyof App];
-    const cellValue = value instanceof Date ? value.toISOString() : value;
+  const renderCell = useCallback(
+    (app: App, columnKey: string) => {
+      const value = app[columnKey as keyof App];
+      const cellValue = value instanceof Date ? value.toISOString() : value;
 
-    switch (columnKey) {
-      case 'name':
-        return (
-          <User
-            description={app.email}
-            name={`${app.firstName} ${app.lastName}`}>
-            {app.email}
-          </User>
-        );
-      case 'timestamp':
-        return (
-          <div className="space-y-1">
-            <div className="flex items-center space-x-2">
-              <span className="font-semibold">Created At:</span>
-              <span className="border px-2 mx-1 py-1 rounded-2xl border-gray-300 bg-stone-900 inline-block max-w-max">
-                {new Date(app.createdAt).toLocaleDateString('en-GB')}
-                {`  ${new Date(app.createdAt).toLocaleTimeString('en-GB', { hour12: false })}`}
-              </span>
+      switch (columnKey) {
+        case 'name':
+          return (
+            <User
+              description={app.email}
+              name={`${app.firstName} ${app.lastName}`}>
+              {app.email}
+            </User>
+          );
+        case 'timestamp':
+          return (
+            <div className="space-y-1">
+              <div className="flex items-center space-x-2">
+                <span className="font-semibold">Created At:</span>
+                <span className="border px-2 mx-1 py-1 rounded-2xl border-gray-300 bg-stone-900 inline-block max-w-max">
+                  {new Date(app.createdAt).toLocaleDateString('en-GB')}
+                  {`  ${new Date(app.createdAt).toLocaleTimeString('en-GB', { hour12: false })}`}
+                </span>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <span className="font-semibold">Updated At:</span>
+                <span className="border px-2 mx-1 py-1 rounded-2xl border-gray-300 bg-stone-900 inline-block max-w-max">
+                  {new Date(app.updatedAt).toLocaleDateString('en-GB')}
+                  {`  ${new Date(app.updatedAt).toLocaleTimeString('en-GB', { hour12: false })}`}
+                </span>
+              </div>
             </div>
-
-            <div className="flex items-center space-x-2">
-              <span className="font-semibold">Updated At:</span>
-              <span className="border px-2 mx-1 py-1 rounded-2xl border-gray-300 bg-stone-900 inline-block max-w-max">
-                {new Date(app.updatedAt).toLocaleDateString('en-GB')}
-                {`  ${new Date(app.updatedAt).toLocaleTimeString('en-GB', { hour12: false })}`}
-              </span>
+          );
+        case 'status':
+          return (
+            <Chip
+              className="capitalize"
+              color={statusColorMap[app.status]}
+              size="md"
+              variant={
+                app.status === 'RECEIVED HACKER PACKAGE'
+                  ? 'bordered'
+                  : app.status === 'RECEIVED ACCEPTANCE'
+                    ? 'dot'
+                    : 'flat'
+              }>
+              {cellValue}
+            </Chip>
+          );
+        case 'actions':
+          return (
+            <div className="relative flex justify-end items-center gap-2">
+              <Dropdown>
+                <DropdownTrigger>
+                  <Button
+                    isIconOnly
+                    size="sm"
+                    variant="light">
+                    <VerticalDotsIcon className="text-default-300" />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu>
+                  <DropdownItem
+                    onPress={() => changeStatus(app.id, 'ACCEPTED')}>
+                    Accept
+                  </DropdownItem>
+                  <DropdownItem
+                    onPress={() => changeStatus(app.id, 'REJECTED')}>
+                    Reject
+                  </DropdownItem>
+                  <DropdownItem
+                    onPress={() => changeStatus(app.id, 'IN REVIEW')}>
+                    In Review
+                  </DropdownItem>
+                  <DropdownItem>Edit</DropdownItem>
+                  <DropdownItem>Delete</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </div>
-          </div>
-        );
-      case 'status':
-        return (
-          <Chip
-            className="capitalize"
-            color={statusColorMap[app.status]}
-            size="md"
-            variant={
-              app.status === 'RECEIVED HACKER PACKAGE'
-                ? 'bordered'
-                : app.status === 'RECEIVED ACCEPTANCE'
-                  ? 'dot'
-                  : 'flat'
-            }>
-            {cellValue}
-          </Chip>
-        );
-      case 'actions':
-        return (
-          <div className="relative flex justify-end items-center gap-2">
-            <Dropdown>
-              <DropdownTrigger>
-                <Button
-                  isIconOnly
-                  size="sm"
-                  variant="light">
-                  <VerticalDotsIcon className="text-default-300" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem onPress={() => changeStatus(app.id, 'ACCEPTED')}>
-                  Accept
-                </DropdownItem>
-                <DropdownItem onPress={() => changeStatus(app.id, 'REJECTED')}>
-                  Reject
-                </DropdownItem>
-                <DropdownItem>View</DropdownItem>
-                <DropdownItem>Edit</DropdownItem>
-                <DropdownItem>Delete</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
+          );
+        default:
+          return cellValue;
+      }
+    },
+    [changeStatus],
+  );
 
   return (
     <main className="relative mt-28 px-7 py-3">

@@ -30,11 +30,27 @@ export type Service = Record<string, Usage>;
 export type Services = Map<string, Service>;
 export type ServiceGroupsToLabels = Record<string, string[]>;
 const datathonServices: ServiceGroupsToLabels = {
-  '2025-02-01': ['Check-In', 'Afternoon Snacks', 'Open Ceremony', 'Dinner', 'Evening Snacks', 'Trivia'],
-  '2025-02-02': ['Check-In', 'Karaoke', 'Midnight Snacks', 'Breakfast', 'Hacking Finishes', 'Sponsor Workshop', 'Lunch', 'Closing Ceremony'],
+  '2025-02-01': [
+    'Check-In',
+    'Afternoon Snacks',
+    'Open Ceremony',
+    'Dinner',
+    'Evening Snacks',
+    'Trivia',
+  ],
+  '2025-02-02': [
+    'Check-In',
+    'Karaoke',
+    'Midnight Snacks',
+    'Breakfast',
+    'Hacking Finishes',
+    'Sponsor Workshop',
+    'Lunch',
+    'Closing Ceremony',
+  ],
 };
 
-export type Contact = Map<'acceptance' | 'hacker-package', Usage>;
+export type Contact = Map<'acceptance' | 'hacker-package' | 'rejection', Usage>;
 
 export interface IParticipant extends mongoose.Document {
   firstName: string;

@@ -82,7 +82,7 @@ const sections: ContentSections = {
     <>
       <Text className="text-[#666666] text-md leading-[24px]">
         Looking for team members? Connect with other participant virtually by
-        hopping onto our discord server! Once you've found your member(s),{' '}
+        hopping onto our discord server! Once you&apos;ve found your member(s),{' '}
         <strong>
           fill out the{' '}
           <TextLink
@@ -167,7 +167,7 @@ export default function Acceptance({
                 Hey there {fullName}!
               </Text>
               <Text className="text-[#666666] text-3xl text-bold text-center leading-[24px]">
-                You've been accepted!
+                You&apos;ve been accepted!
               </Text>
               <Text className="text-[#666666] text-md leading-[24px]">
                 <strong>Congratulations!</strong> We are pleased to inform you
@@ -176,8 +176,8 @@ export default function Acceptance({
                 <strong> University of Toronto Scarborough</strong>. Get ready
                 for a one-of-a-kind hackathon experience, where you will have
                 the opportunity to complete an exciting project using data
-                science and machine learning! We can't wait to see what you come
-                up with during this thrilling week-long experience!
+                science and machine learning! We can&apos;t wait to see what you
+                come up with during this thrilling week-long experience!
               </Text>
               <div className="flex flex-col items-center">
                 <Link
@@ -205,11 +205,11 @@ export default function Acceptance({
             <Text className="text-[#666666] text-md leading-[24px]">
               The third annual Datathon hosted by the Data Science and
               Statistics Society offers a unique hackathon experience in
-              performing data prediction based on a variety of data sets. It's
-              an opportunity to collaborate, innovate, and showcase your data
-              science skills, all made possible by the extraordinary efforts of
-              our team, together with the support of our sponsors and the
-              University of Toronto Scarborough.
+              performing data prediction based on a variety of data sets.
+              It&apos;s an opportunity to collaborate, innovate, and showcase
+              your data science skills, all made possible by the extraordinary
+              efforts of our team, together with the support of our sponsors and
+              the University of Toronto Scarborough.
             </Text>
             <Text className="text-[#666666] text-md">
               For any questions or concerns, please visit our{' '}
