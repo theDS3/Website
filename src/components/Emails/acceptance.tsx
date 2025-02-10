@@ -20,8 +20,6 @@ import {
   type MailProps,
 } from './common';
 
-const imageSrc = '/static/datathon.png';
-
 const timelineSection: ContentSections = {
   Timeline: (
     <>

@@ -3,7 +3,6 @@ import {
   Container,
   Html,
   Img,
-  Link,
   Hr,
   Preview,
   Section,
@@ -19,8 +18,6 @@ import {
   type ContentSections,
   type MailProps,
 } from './common';
-
-const imageSrc = '/static/datathon.png';
 
 const sections: ContentSections = {
   'About the Datathon': (

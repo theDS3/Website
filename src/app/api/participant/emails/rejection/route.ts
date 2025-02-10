@@ -65,10 +65,11 @@ export async function POST(request: NextRequest) {
         continue;
       }
 
-      // Rendering the rejection email for the participant
+      // Rendering the email for the participant
       const emailHTML = render(
         RejectionEmail({
           fullName: `${participant.firstName} ${participant.lastName}`,
+          imageSrc: env.EMAIL_BANNER_IMAGE_URL,
         }),
       );
 
