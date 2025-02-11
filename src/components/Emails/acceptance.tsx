@@ -35,9 +35,6 @@ const timelineSection: ContentSections = {
           </time>
         </>
         <div className="text-md pt-1 text-gray-500">Kick-off Day</div>
-        <Text className="mb-4 text-md font-normal text-[#666666]">
-          insert description here
-        </Text>
       </div>
       <div className="mb-4">
         <div className="">
@@ -51,15 +48,9 @@ const timelineSection: ContentSections = {
           </time>
         </div>
         <div className="text-md pt-1 text-gray-500">Datathon Week</div>
-        <Text className="text-md font-normal text-[#666666]">
-          insert description here
-        </Text>
       </div>
       <div>
         <>
-          {/* <span className="bg-green-900 text-green-300 text-xs font-medium mr-2 mb-4 px-2.5 py-1 rounded-full">
-            In-Person
-          </span> */}
           <time
             className="mb-4 text-md font-normal leading-none text-gray-400 underline"
             dateTime="2024-02-22">
@@ -67,9 +58,6 @@ const timelineSection: ContentSections = {
           </time>
         </>
         <div className="text-md pt-1 text-gray-500">Final Day</div>
-        <Text className="mb-4 text-md font-normal text-[#666666]">
-          insert description here
-        </Text>
       </div>
     </>
   ),
@@ -87,7 +75,7 @@ const sections: ContentSections = {
             content=" Team Declaration Form "
             href="https://forms.gle/yrwj8cSrDi7jVbVm9"
           />{' '}
-          before February 17th, at 11:59PM.{' '}
+          before February 16th, at 11:59PM.{' '}
         </strong>
         Note that{' '}
         <strong>
