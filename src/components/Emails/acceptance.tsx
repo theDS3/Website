@@ -25,9 +25,6 @@ const timelineSection: ContentSections = {
     <>
       <div className="mb-4">
         <>
-          {/* <span className="bg-green-900 text-green-300 text-xs font-medium mr-2 mb-4 px-2.5 py-1 rounded-full">
-            In-Person
-          </span> */}
           <time
             className="mb-4 text-md font-normal leading-none text-gray-400 underline"
             dateTime="2024-02-17">
@@ -38,9 +35,6 @@ const timelineSection: ContentSections = {
       </div>
       <div className="mb-4">
         <div className="">
-          {/* <span className="bg-purple-900 text-purple-300 text-xs font-medium mr-2 mb-4 px-2.5 py-1 rounded-full">
-            Virtual
-          </span> */}
           <time
             className="mb-4 text-md font-normal leading-none text-gray-400 underline underline-offset-1"
             dateTime="2024-02-18">
@@ -73,7 +67,7 @@ const sections: ContentSections = {
           fill out the{' '}
           <TextLink
             content=" Team Declaration Form "
-            href="https://forms.gle/yrwj8cSrDi7jVbVm9"
+            href="https://forms.gle/DnKZtaC7ZzkQh3cS6"
           />{' '}
           before February 16th, at 11:59PM.{' '}
         </strong>
@@ -167,15 +161,11 @@ export default function Acceptance({
               </Text>
               <div className="flex flex-col items-center">
                 <Link
-                  href="https://forms.gle/kas3sn9UeJ8EfXHk7"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSc-g0guvXfikfDWyKZsMaW5UkcD8BpqFXbpw5Hoi_o_4Ovlig/viewform"
                   className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
                   RSVP
                 </Link>
               </div>
-              {/* <Text className="text-[#666666] text-md leading-[24px]">
-                Here are some important details to guide you through the
-                upcoming Datathon:
-              </Text> */}
               <Hr className="border border-solid border-black my-[26px] mx-0 w-full" />
             </Section>
             <Content sections={timelineSection} />

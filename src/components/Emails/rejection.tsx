@@ -69,10 +69,6 @@ export default function Rejection({
                 Once again, we appreciate your interest in the amazing world of
                 Data Science and Machine Learning!
               </Text>
-              {/* <Text className="text-[#666666] text-md leading-[24px]">
-                Here are some important details to guide you through the
-                upcoming Datathon:
-              </Text> */}
               <Hr className="border border-solid border-black my-[26px] mx-0 w-full" />
             </Section>
 
