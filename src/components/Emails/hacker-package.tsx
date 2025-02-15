@@ -104,7 +104,14 @@ const sections: ContentSections = {
     <>
       <Text className="text-[#666666] text-md leading-[24px]">
         Feeling a bit overwhelmed? No worries, use our handy checklist to make
-        sure you&apos;re all set to hack like a pro!
+        sure you&apos;re all set to hack like a pro! We have a{' '}
+        <strong>
+          <TextLink
+            content=" Datathon Starter Pack "
+            href="https://ds3utsc.notion.site/DS3-Datathon-Starter-Pack-e86148d29b884de8b626f107cdf0873c"
+          />
+        </strong>
+        to help you get started.
       </Text>
       <Text className="text-[#666666] text-md leading-[24px]">
         Make sure you can confidently answer the following questions:
