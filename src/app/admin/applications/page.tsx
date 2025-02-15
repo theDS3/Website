@@ -501,15 +501,15 @@ export default function Applications() {
                 </DropdownTrigger>
                 <DropdownMenu>
                   <DropdownItem
-                    onPress={() => changeStatus(app.id, 'ACCEPTED')}>
+                    onPress={() => changeStatus(app._id, 'ACCEPTED')}>
                     Accept
                   </DropdownItem>
                   <DropdownItem
-                    onPress={() => changeStatus(app.id, 'REJECTED')}>
+                    onPress={() => changeStatus(app._id, 'REJECTED')}>
                     Reject
                   </DropdownItem>
                   <DropdownItem
-                    onPress={() => changeStatus(app.id, 'IN REVIEW')}>
+                    onPress={() => changeStatus(app._id, 'IN REVIEW')}>
                     In Review
                   </DropdownItem>
                   <DropdownItem>Edit</DropdownItem>
