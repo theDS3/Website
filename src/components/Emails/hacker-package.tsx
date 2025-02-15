@@ -79,17 +79,17 @@ const sections: ContentSections = {
         <div className="flex border-t border-gray-300">
           <div className="w-1/3 p-3 border-r border-gray-300">1:00 PM</div>
           <div className="w-1/3 p-3 border-r border-gray-300">IC 130</div>
-          <div className="w-1/3 p-3">Workshop I</div>
+          <div className="w-1/3 p-3">Workshop</div>
         </div>
         <div className="flex border-t border-gray-300">
           <div className="w-1/3 p-3 border-r border-gray-300">1:30 PM</div>
           <div className="w-1/3 p-3 border-r border-gray-300">IC Atrium</div>
-          <div className="w-1/3 p-3">Lunch + Networking</div>
+          <div className="w-1/3 p-3">Lunch</div>
         </div>
         <div className="flex border-t border-gray-300">
           <div className="w-1/3 p-3 border-r border-gray-300">2:30 PM</div>
           <div className="w-1/3 p-3 border-r border-gray-300">IC 130</div>
-          <div className="w-1/3 p-3">Workshop II</div>
+          <div className="w-1/3 p-3">Networking</div>
         </div>
         <div className="flex border-t border-gray-300">
           <div className="w-1/3 p-3 border-r border-gray-300">4:30 PM</div>
