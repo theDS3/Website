@@ -19,6 +19,9 @@ export enum ParticipantStatus {
 
   // Applied to a participant when they have been sent a Hacker Package Email.
   RECEIVED_HACKER_PACKAGE = 'RECEIVED HACKER PACKAGE',
+
+  // Applied to a participant when they are rejected from the hacker acceptance page.
+  REJECTED = 'REJECTED',
 }
 
 export type Usage = { status: boolean; timestamp?: string };
@@ -27,23 +30,30 @@ export type Service = Record<string, Usage>;
 export type Services = Map<string, Service>;
 export type ServiceGroupsToLabels = Record<string, string[]>;
 const datathonServices: ServiceGroupsToLabels = {
-//   '2025-02-01': ['Check-In', 'Afternoon Snacks', 'Open Ceremony', 'Dinner', 'Evening Snacks', 'Trivia'],
-//   '2025-02-02': ['Check-In', 'Karaoke', 'Midnight Snacks', 'Breakfast', 'Hacking Finishes', 'Sponsor Workshop', 'Lunch', 'Closing Ceremony'],
-  '2025-02-11': ['TESTING', "TEST 2"],
-  '2025-02-12': ['TESTING', "TEST 2"],
-  '2025-02-13': ['TESTING', "TEST 2"],
-  '2025-02-14': ['TESTING', "TEST 2"],
-  '2025-02-15': ['TESTING', "TEST 2"],
-  '2025-02-16': ['TESTING', "TEST 2"],
-  '2025-02-17': ['TESTING', "TEST 2"],
-  '2025-02-18': ['TESTING', "TEST 2"],
-  '2025-02-19': ['TESTING', "TEST 2"],
-  '2025-02-20': ['TESTING', "TEST 2"],
-  '2025-02-21': ['TESTING', "TEST 2"],
-  '2025-02-22': ['Registration', 'Opening Ceremony', 'Workshop 1', 'Lunch + Networking', 'Workshop 2', 'Closing Ceremony'],
+  //   '2025-02-01': ['Check-In', 'Afternoon Snacks', 'Open Ceremony', 'Dinner', 'Evening Snacks', 'Trivia'],
+  //   '2025-02-02': ['Check-In', 'Karaoke', 'Midnight Snacks', 'Breakfast', 'Hacking Finishes', 'Sponsor Workshop', 'Lunch', 'Closing Ceremony'],
+  '2025-02-11': ['TESTING', 'TEST 2'],
+  '2025-02-12': ['TESTING', 'TEST 2'],
+  '2025-02-13': ['TESTING', 'TEST 2'],
+  '2025-02-14': ['TESTING', 'TEST 2'],
+  '2025-02-15': ['TESTING', 'TEST 2'],
+  '2025-02-16': ['TESTING', 'TEST 2'],
+  '2025-02-17': ['TESTING', 'TEST 2'],
+  '2025-02-18': ['TESTING', 'TEST 2'],
+  '2025-02-19': ['TESTING', 'TEST 2'],
+  '2025-02-20': ['TESTING', 'TEST 2'],
+  '2025-02-21': ['TESTING', 'TEST 2'],
+  '2025-02-22': [
+    'Registration',
+    'Opening Ceremony',
+    'Workshop 1',
+    'Lunch + Networking',
+    'Workshop 2',
+    'Closing Ceremony',
+  ],
 };
 
-export type Contact = Map<'acceptance' | 'hacker-package', Usage>;
+export type Contact = Map<'acceptance' | 'hacker-package' | 'rejection', Usage>;
 
 export interface IParticipant extends mongoose.Document {
   firstName: string;
