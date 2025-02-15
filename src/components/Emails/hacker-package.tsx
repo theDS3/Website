@@ -141,18 +141,11 @@ const sections: ContentSections = {
         </li>
         <li key="hacker-checklist-5">
           <Text className="text-[#666666] text-md leading-[24px]">
-            Have I joined the DS3 Discord and received the hacker role?
-            (Instructions in the Acceptance email)
-          </Text>
-        </li>
-        <li key="hacker-checklist-6">
-          <Text className="text-[#666666] text-md leading-[24px]">
-            Do I know how to get help if I have questions? (Use
+            Have I joined the DS3 Discord for the
             <TextLink
-              content=" DS3 Discord"
-              href="https://discord.gg/dubRHdvCpP"
+              content=" datathon discord "
+              href="https://discord.com/invite/4nwVbwVW"
             />
-            )
           </Text>
         </li>
       </ul>

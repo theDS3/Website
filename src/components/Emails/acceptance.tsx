@@ -102,22 +102,20 @@ const sections: ContentSections = {
       </li>
       <li key="next-step-3">
         <Text className="text-[#666666] text-md leading-[24px]">
-          Haven&apos;t joined our Discord yet? Click
+          Haven&apos;t joined our Discord for the datathon yet? Click
           <TextLink
             content=" here "
-            href="https://discord.gg/dubRHdvCpP"
+            href="https://discord.com/invite/4nwVbwVW"
           />
-          to join and automatically obtain the Hacker role!
         </Text>
       </li>
       <li key="next-step-4">
         <Text className="text-[#666666] text-md leading-[24px]">
-          Already a member of our Discord? Click
+          Already a member of our main Discord? Click
           <TextLink
             content=" here "
             href="https://discord.gg/dubRHdvCpP"
           />
-          to self-assign yourself with the Hacker role!.
         </Text>
       </li>
     </ul>

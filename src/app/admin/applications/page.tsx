@@ -36,7 +36,7 @@ const fetchOptions = {
 };
 
 interface App {
-  _id: string;
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -150,7 +150,7 @@ export default function Applications() {
       setDocuments((prev) => ({
         ...prev,
         apps: prev.apps.map((app) =>
-          app._id === id ? { ...app, status: newStatus } : app,
+          app.id === id ? { ...app, status: newStatus } : app,
         ),
       }));
       getAllApplications();
@@ -501,15 +501,15 @@ export default function Applications() {
                 </DropdownTrigger>
                 <DropdownMenu>
                   <DropdownItem
-                    onPress={() => changeStatus(app._id, 'ACCEPTED')}>
+                    onPress={() => changeStatus(app.id, 'ACCEPTED')}>
                     Accept
                   </DropdownItem>
                   <DropdownItem
-                    onPress={() => changeStatus(app._id, 'REJECTED')}>
+                    onPress={() => changeStatus(app.id, 'REJECTED')}>
                     Reject
                   </DropdownItem>
                   <DropdownItem
-                    onPress={() => changeStatus(app._id, 'IN REVIEW')}>
+                    onPress={() => changeStatus(app.id, 'IN REVIEW')}>
                     In Review
                   </DropdownItem>
                   <DropdownItem>Edit</DropdownItem>
@@ -558,7 +558,7 @@ export default function Applications() {
             />
           }>
           {(item) => (
-            <TableRow key={item._id}>
+            <TableRow key={item.id}>
               {(columnKey) => (
                 <TableCell>{renderCell(item, columnKey as string)}</TableCell>
               )}
