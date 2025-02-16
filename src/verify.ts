@@ -140,6 +140,14 @@ export const verifyEmails = (
     'outlook.com',
     'utoronto.ca',
     'mail.utoronto.ca',
+    'my.yorku.ca',
+    'torontomu.ca',
+    'ontariotechu.net',
+    'uwo.ca',
+    'uwaterloo.ca',
+    'mylambton.ca',
+    'mcmaster.ca',
+    'humbermail.ca',
   ],
 ) => {
   const emailDomainRegex = new RegExp(`@(${domains.join('|')})$`);
