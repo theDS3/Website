@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${env.SITE_URL}/datathon/leaderboard/past`,
-      lastModified: pastFinalDatathonLeaderboard['2024'].timestamp,
+      lastModified: pastFinalDatathonLeaderboard['2025'].timestamp,
       changeFrequency: 'yearly',
       priority: 0.7,
     },
