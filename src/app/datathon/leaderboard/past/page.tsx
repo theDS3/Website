@@ -26,7 +26,7 @@ export default function PastFinalDatathonLeaderboard() {
               Past Final Datathon Leaderboard
             </h1>
             <Leaderboard
-              leaderboard={pastFinalDatathonLeaderboard['2024']}
+              leaderboard={pastFinalDatathonLeaderboard['2025']}
               description="Final scores are based on the private leaderboard on Kaggle and bonus points from in-person events."
             />
           </div>
