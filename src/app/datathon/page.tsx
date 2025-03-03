@@ -86,9 +86,11 @@ export default function Datathon() {
           <div className={`${layoutStyle} flex-col gap-8 `}>
             <DatathonHero />
             <AboutDatathon />
-            <CountdownTimer date={datathonStartDate} />
+            {datathonStartDate > new Date() &&
+              <CountdownTimer date={datathonStartDate} />
+            }
             <p className="text-white text-3xl md:text-4xl lg:text-5xl text-center font-medium mt-8">
-              Take a look at the 2024 Leaderboard!
+              Take a look at the past Final Leaderboards!
             </p>
             <LinkButton
               href="/datathon/leaderboard/past"
