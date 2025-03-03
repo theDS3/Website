@@ -246,7 +246,7 @@ export const pastFinalDatathonLeaderboard: Record<string, LeaderboardContent> =
         {
           "name": 'gstu',
           "score": 282.455,
-          "attempt": 48,
+          "attempts": 48,
           "bonus": 1.26248,
           "finalScore": 356.59293,
           "delta": '-',
