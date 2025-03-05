@@ -37,7 +37,7 @@ export default function About_ML() {
           forth all the tools and help needed in building your foundation in the
           world of ML. Come join us to dive into the &quot;next big thing&quot;!
         </p>
-        <div className="py-2 pt-8 mt-4 sm:mt-6 lg:mt-8 max-sm:text-center">
+        <div className="py-2 pt-8 mt-4 sm:mt-6 lg:-mt-5 max-sm:text-center">
           <LinkButton
             href="https://docs.google.com/forms/d/e/1FAIpQLSfJZAt3pJjqug9BRrbjaGxWegBq5liuU-6yP-1TQ4G1zXM9NA/viewform?usp=dialog"   // Update new form link for next year event
             newTab={true}
