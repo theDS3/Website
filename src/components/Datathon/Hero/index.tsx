@@ -8,8 +8,8 @@ import img from '@/public/Datathon/Title/img.png';
 import LinkButton from '@/components/Button/LinkButton';
 
 export default function DatathonHero() {
-  const eventOpen:boolean = false;  // Update this when event is open
-  
+  const eventOpen: boolean = false; // Update this when event is open
+
   return (
     <section className="relative w-screen h-screen flex flex-col items-center justify-center text-white overflow-hidden space-y-12 min-[620px]:py-[30vh]">
       <div className="absolute inset-0 -z-30">
@@ -49,14 +49,14 @@ export default function DatathonHero() {
             in-person datathon event!
           </p>
           <div className="py-2 pt-8 mt-4 sm:mt-6 lg:mt-8 max-sm:text-center">
-            {eventOpen &&
+            {eventOpen && (
               <LinkButton
-                href=""   // Update new form link for next year event
+                href="" // Update new form link for next year event
                 newTab={true}
                 className="text-lg md:text-xl lg:text-2xl font-medium shadow-lg transition-all">
                 Sign Up!
               </LinkButton>
-            }
+            )}
           </div>
         </div>
 
