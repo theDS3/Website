@@ -39,7 +39,7 @@ export default function About_ML() {
         </p>
         <div className="py-2 pt-8 mt-4 sm:mt-6 lg:-mt-5 max-sm:text-center">
           <LinkButton
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfJZAt3pJjqug9BRrbjaGxWegBq5liuU-6yP-1TQ4G1zXM9NA/viewform?usp=dialog"   // Update new form link for next year event
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfJZAt3pJjqug9BRrbjaGxWegBq5liuU-6yP-1TQ4G1zXM9NA/viewform?usp=dialog" // Update new form link for next year event
             newTab={true}
             className="text-lg md:text-xl lg:text-2xl font-medium shadow-lg transition-all">
             Project Showcase Sign Up!
