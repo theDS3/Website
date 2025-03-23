@@ -7,7 +7,7 @@ import HarmanGill from '@/public/Main/Executives/Harman Gill.jpg';
 import ThanareeSrirawewongsa from '@/public/Main/Executives/Thanaree Srirawewongsa.jpeg';
 import ArnenchaPradavkaew from '@/public/Main/Executives/Arnencha Pradabkaew.jpg';
 import AlbertHo from '@/public/Main/Executives/Albert Ho.jpg';
-import FahmidKhan from '@/public/Main/Executives/Fahmid Khan.jpg';
+import ShawnJiang from '@/public/Main/Executives/Shawn Jiang.jpg';
 
 import TeamCard, { type TeamMember } from '@/components/TeamCard';
 
@@ -67,10 +67,10 @@ const executives: TeamMember[] = [
     alt: 'Albert Ho',
   },
   {
-    name: 'Fahmid Khan',
+    name: 'Shawn Jiang',
     position: 'Vice President of Marketing',
-    src: FahmidKhan,
-    alt: 'Fahmid Khan',
+    src: ShawnJiang,
+    alt: 'Shawn Jiang',
   },
 ];
 
