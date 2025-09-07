@@ -36,9 +36,9 @@ export default function FAQ() {
 
   const toggleFAQ = (index: number) => {
     if (activeIndexes.includes(index)) {
-      setActiveIndexes(activeIndexes.filter((i) => i !== index)); // Remove from active
+      setActiveIndexes(activeIndexes.filter((i) => i !== index));
     } else {
-      setActiveIndexes([...activeIndexes, index]); // Add to active
+      setActiveIndexes([...activeIndexes, index]);
     }
   };
 
