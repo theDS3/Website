@@ -57,7 +57,8 @@ export default function About_ML() {
                 Bi-weekly on Fridays, 4–6 PM
               </span>
             </div>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-3" //Location
+            >
               <Image
                 src={Location}
                 alt="Location"
