@@ -8,7 +8,7 @@ import { time } from 'console';
 
 export default function About_ML() {
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center space-y-10 text-white overflow-hidden">
+    <section className="relative w-full h-screen flex flex-col items-center justify-center space-y-32 text-white overflow-hidden">
       <div className="absolute inset-0 -z-30">
         <Image
           src={HeroBackgroundImg}
