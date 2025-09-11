@@ -6,9 +6,6 @@ import Time from '@/public/ML/time.svg';
 import Location from '@/public/ML/location.svg';
 import { time } from 'console';
 
-
-
-
 export default function About_ML() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center space-y-10 text-white overflow-hidden">
@@ -57,7 +54,8 @@ export default function About_ML() {
                 Bi-weekly on Fridays, 4–6 PM
               </span>
             </div>
-            <div className="flex items-center justify-center gap-3" //Location
+            <div
+              className="flex items-center justify-center gap-3" //Location
             >
               <Image
                 src={Location}
