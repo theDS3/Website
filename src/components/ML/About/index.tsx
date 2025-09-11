@@ -44,25 +44,34 @@ export default function About_ML() {
           into Agentic AI. <br></br>Come join us and start your journey today!
         </p>
         <div className="flex flex-col items-center gap-10 text-center">
-          <div className="flex items-center gap-4">
-            <Image
-              src={Time}
-              alt="Time"
-              width={48}
-              height={48}
-            />
-            <span className="text-3xl">Bi-weekly on Fridays, 4–6 PM</span>
+          <div className="flex flex-col md:flex-row md:gap-12 items-center gap-6 mt-3 md:mt-10 mb-4">
+            <div className="flex items-center justify-center gap-4">
+              <Image
+                src={Time}
+                alt="Time"
+                width={36}
+                height={36}
+                className="sm:w-12 sm:h-12 md:w-14 md:h-14"
+              />
+              <span className="text-lg sm:text-2xl md:text-3xl font-semibold">
+                Bi-weekly on Fridays, 4–6 PM
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              <Image
+                src={Location}
+                alt="Location"
+                width={36}
+                height={36}
+                className="sm:w-12 sm:h-12 md:w-14 md:h-14"
+              />
+              <span className="text-lg sm:text-2xl md:text-3xl font-semibold">
+                IA 2040 (The Cloud)
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Image
-              src={Location}
-              alt="Location"
-              width={48}
-              height={48}
-            />
-            <span className="text-3xl">IA 2040 (The Cloud)</span>
-          </div>
-          <div className="w-4/5 h-1 bg-purple-500/30 rounded-full shadow-[0_0_15px_rgba(128,0,255,0.4)] my-8"></div>
+
+          <div className="w-11/12 md:w-4/5 h-1 bg-purple-500/30 rounded-full shadow-[0_0_15px_rgba(128,0,255,0.4)] md:mt-4 mb-6"></div>
 
           <LinkButton
             href="https://docs.google.com/forms/d/e/1FAIpQLSfJZAt3pJjqug9BRrbjaGxWegBq5liuU-6yP-1TQ4G1zXM9NA/viewform?usp=dialog" // Update new form link for next year event
