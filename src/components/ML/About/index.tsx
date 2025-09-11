@@ -4,7 +4,6 @@ import HeroBackgroundImg from '@/public/ML/ml-hero-bg.svg';
 import HeroBackgroundImgMobile from '@/public/ML/ml-hero-bg-2.jpg';
 import Time from '@/public/ML/time.svg';
 import Location from '@/public/ML/location.svg';
-import { time } from 'console';
 
 export default function About_ML() {
   return (
