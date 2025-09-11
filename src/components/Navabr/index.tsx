@@ -78,7 +78,7 @@ export default function NavBar({ links }: { links: Link[] }) {
               return (
                 <span
                   key={id}
-                  className="block absolute h-[9px] w-1/2 bg-white opacity-100 rotate-0"></span>
+                  className="block absolute h-1 mt-1 w-1/2 bg-white opacity-100 rotate-0"></span>
               );
             })}
           </div>
