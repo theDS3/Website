@@ -45,7 +45,7 @@ export default function About_ML() {
         </p>
         <div className="flex flex-col items-center gap-10 text-center">
           <div className="flex flex-col md:flex-row md:gap-12 items-center gap-6 mt-3 md:mt-10 mb-4">
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-3">
               <Image
                 src={Time}
                 alt="Time"
@@ -57,7 +57,7 @@ export default function About_ML() {
                 Bi-weekly on Fridays, 4–6 PM
               </span>
             </div>
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-3">
               <Image
                 src={Location}
                 alt="Location"
