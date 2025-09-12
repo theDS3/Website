@@ -11,7 +11,7 @@ export interface Lessons {
 }
 
 export interface ContentProps {
-  sheetName: string;
+  year: string;
   hasRecordings?: boolean;
   hasSlides?: boolean;
 }
@@ -21,19 +21,24 @@ const defaultPlaceholderText = {
   noSlides: 'Slides Coming Soon!',
 };
 
+const yearToSheetName: { [key: string]: string } = {
+  '2024': 'sheet1',
+  '2025': '2025'
+}
+
 async function fetchGoogleSheetData(
   sheetId: string,
   apiKey: string,
-  sheetName: string,
+  year: string,
 ) {
-  const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
+  const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${yearToSheetName[year]}?key=${apiKey}`;
   const response = await fetch(sheetUrl);
   const data = await response.json();
   return data.values;
 }
 
 export default function Content({
-  sheetName,
+  year,
   hasRecordings = false,
   hasSlides = false,
 }: ContentProps) {
@@ -43,7 +48,7 @@ export default function Content({
     const sheetId = env.NEXT_PUBLIC_ML_SHEET_ID;
     const apiKey = env.NEXT_PUBLIC_SHEETS_KEY;
 
-    fetchGoogleSheetData(sheetId, apiKey, sheetName).then((sheetData) => {
+    fetchGoogleSheetData(sheetId, apiKey, year).then((sheetData) => {
       const lessons = sheetData.slice(1).map((row: string[]) => {
         // otherColumns refers to video1, video2, slides link columns in sheets
         const [name, date, ...otherColumns] = row;
@@ -76,7 +81,7 @@ export default function Content({
 
       setContent(lessons);
     });
-  }, [hasRecordings, hasSlides, sheetName]);
+  }, [hasRecordings, hasSlides, year]);
 
   return (
     <section
