@@ -2,7 +2,6 @@ import NavBar, { type Link } from '@/components/Navabr';
 import About_ML from '@/components/ML/About';
 import Content from '@/components/ML/Content';
 import FAQ from '@/components/ML/FAQ';
-import ContentWrapper from '@/components/ML/ContentWrapper';
 const links: Link[] = [
   { title: 'Home', href: '/#intro' },
   { title: 'Content', href: '/ml-program#content' },
