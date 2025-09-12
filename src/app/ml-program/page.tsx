@@ -14,9 +14,11 @@ export default function MLPage() {
       <NavBar links={links} />
       <main>
         <About_ML />
-        <Content year={'2025'}
-                 hasSlides={true}
-                 hasRecordings={false}/>
+        <Content
+          year={'2025'}
+          hasSlides={true}
+          hasRecordings={false}
+        />
         <FAQ />
       </main>
     </>

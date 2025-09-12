@@ -23,8 +23,8 @@ const defaultPlaceholderText = {
 
 const yearToSheetName: { [key: string]: string } = {
   '2024': 'sheet1',
-  '2025': '2025'
-}
+  '2025': '2025',
+};
 
 async function fetchGoogleSheetData(
   sheetId: string,
