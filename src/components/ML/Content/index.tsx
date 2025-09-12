@@ -10,30 +10,73 @@ export interface Lessons {
   slides?: string;
 }
 
-async function fetchGoogleSheetData(sheetId: string, apiKey: string) {
-  const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1?key=${apiKey}`;
+export interface ContentProps {
+  sheetName: string;
+  hasRecordings?: boolean;
+  hasSlides?: boolean;
+}
+
+const defaultPlaceholderText = {
+  noRecording: 'Recordings Coming Soon!',
+  noSlides: 'Slides Coming Soon!',
+};
+
+async function fetchGoogleSheetData(
+  sheetId: string,
+  apiKey: string,
+  sheetName: string,
+) {
+  const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
   const response = await fetch(sheetUrl);
   const data = await response.json();
   return data.values;
 }
 
-export default function Content() {
+export default function Content({
+  sheetName,
+  hasRecordings = false,
+  hasSlides = false,
+}: ContentProps) {
   const [content, setContent] = useState<Lessons[]>([]);
 
   useEffect(() => {
     const sheetId = env.NEXT_PUBLIC_ML_SHEET_ID;
     const apiKey = env.NEXT_PUBLIC_SHEETS_KEY;
 
-    fetchGoogleSheetData(sheetId, apiKey).then((sheetData) => {
-      const lessons = sheetData.slice(1).map((row: any) => ({
-        name: row[0],
-        date: row[1],
-        recordings: row.slice(2, 4).filter((link: string) => link),
-        slides: row[4] || '',
-      }));
+    fetchGoogleSheetData(sheetId, apiKey, sheetName).then((sheetData) => {
+      const lessons = sheetData.slice(1).map((row: string[]) => {
+        // otherColumns refers to video1, video2, slides link columns in sheets
+        const [name, date, ...otherColumns] = row;
+
+        let recordings: string[] = [];
+        let slides = '';
+
+        let col = 0;
+
+        // if we allow recordings, take video1 and video2 column
+        if (hasRecordings) {
+          recordings = otherColumns
+            .slice(col, col + 2)
+            .filter((link: string) => link);
+          col += 2;
+        }
+
+        // if we allow slides, take slides link column
+        if (hasSlides) {
+          slides = otherColumns[col] || '';
+        }
+
+        return {
+          name,
+          date,
+          recordings,
+          slides,
+        };
+      });
+
       setContent(lessons);
     });
-  }, []);
+  }, [hasRecordings, hasSlides, sheetName]);
 
   return (
     <section
@@ -48,7 +91,7 @@ export default function Content() {
         {content.map((lesson, index) => (
           <div
             key={index}
-            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-md w-full ${
+            className={`px-8 py-6 rounded-lg shadow-xl flex flex-col justify-between max-w-80 w-full ${
               new Date() > new Date(lesson.date)
                 ? 'bg-[#2f0d3f]'
                 : 'bg-[#13161b]'
@@ -71,7 +114,9 @@ export default function Content() {
                     </p>
                   ))
                 ) : (
-                  <span className="text-gray-400">Recordings Coming Soon!</span>
+                  <span className="text-gray-400">
+                    {hasRecordings ? defaultPlaceholderText.noRecording : ''}
+                  </span>
                 )}
               </div>
               <p className="mt-1">
@@ -84,7 +129,9 @@ export default function Content() {
                     View Slides
                   </Link>
                 ) : (
-                  <span className="text-gray-400">Slides Coming Soon!</span>
+                  <span className="text-gray-400">
+                    {hasSlides ? defaultPlaceholderText.noSlides : ''}
+                  </span>
                 )}
               </p>
             </div>
