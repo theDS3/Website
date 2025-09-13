@@ -5,24 +5,24 @@ import { useState } from 'react';
 export default function FAQ() {
   const faqs = [
     {
-      question: 'What is the Machine Learning Bootcamp?',
+      question: 'What is the Agentic AI Bootcamp?',
       answer:
-        'A bi-weekly workshop series to build a foundation in Machine Learning technologies and methodologies.',
+        'A bi-weekly workshop series to build a foundation in Agentic AI technologies and methodologies.',
     },
     {
       question: "What's in it for me?",
       answer:
-        'Engage in interactive labs and practical exercises designed to enhance your understanding and application of Machine Learning concepts. It also provides an opportunity for participants to focus on building real-world projects.',
+        'Engage in interactive labs and practical exercises designed to enhance your understanding and application of Agentic AI concepts. It also provides an opportunity for participants to focus on building real-world projects.',
     },
     {
       question: 'Will sessions be recorded?',
       answer:
-        'Yes, the workshop recordings and the slides will be posted on our website.',
+        'The workshop is more exciting to attend in-person and to meet new people! The workshop material will be posted on our website.',
     },
     {
       question: 'How many students can participate?',
       answer:
-        'Although we make our resources available to everyone, only 50 students will be accepted into the program.',
+        'Although we make our resources available to everyone, only 100 students will be accepted into the program.',
     },
     {
       question: 'Why should I apply?',

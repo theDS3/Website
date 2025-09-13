@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
-import HeroBackgroundImg from '@/public/ML/ml-hero-bg.svg';
-import HeroBackgroundImgMobile from '@/public/ML/ml-hero-bg-2.jpg';
+import HeroBackgroundImg from '@/public/Bootcamp/ml-hero-bg.svg';
+import HeroBackgroundImgMobile from '@/public/Bootcamp/ml-hero-bg-2.jpg';
 import img from '@/public/Datathon/Title/img.png';
 import LinkButton from '@/components/Button/LinkButton';
 
