@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import LinkButton from '@/components/Button/LinkButton';
-import HeroBackgroundImg from '@/public/ML/ml-hero-bg.svg';
-import HeroBackgroundImgMobile from '@/public/ML/ml-hero-bg-2.jpg';
-import Time from '@/public/ML/time.svg';
-import Location from '@/public/ML/location.svg';
+import HeroBackgroundImg from '@/public/Bootcamp/ml-hero-bg.svg';
+import HeroBackgroundImgMobile from '@/public/Bootcamp/ml-hero-bg-2.jpg';
+import Time from '@/public/Bootcamp/time.svg';
+import Location from '@/public/Bootcamp/location.svg';
 
-export default function About_ML() {
+export default function About_Bootcamp() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center space-y-32 text-white overflow-hidden">
       <div className="absolute inset-0 -z-30">

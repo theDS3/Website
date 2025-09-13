@@ -8,17 +8,20 @@ export interface Lessons {
   date: string;
   recordings?: string[];
   slides?: string;
+  notebook?: string;
 }
 
 export interface ContentProps {
   year: string;
   hasRecordings?: boolean;
   hasSlides?: boolean;
+  hasNotebook?: boolean;
 }
 
 const defaultPlaceholderText = {
   noRecording: 'Recordings Coming Soon!',
   noSlides: 'Slides Coming Soon!',
+  noNotebook: 'Notebook Coming Soon!',
 };
 
 const yearToSheetName: { [key: string]: string } = {
@@ -41,6 +44,7 @@ export default function Content({
   year,
   hasRecordings = false,
   hasSlides = false,
+  hasNotebook = false,
 }: ContentProps) {
   const [content, setContent] = useState<Lessons[]>([]);
 
@@ -55,6 +59,7 @@ export default function Content({
 
         let recordings: string[] = [];
         let slides = '';
+        let notebook = '';
 
         let col = 0;
 
@@ -69,6 +74,11 @@ export default function Content({
         // if we allow slides, take slides link column
         if (hasSlides) {
           slides = otherColumns[col] || '';
+          col += 1;
+        }
+
+        if (hasNotebook) {
+          notebook = otherColumns[col] || '';
         }
 
         return {
@@ -76,12 +86,13 @@ export default function Content({
           date,
           recordings,
           slides,
+          notebook,
         };
       });
 
       setContent(lessons);
     });
-  }, [hasRecordings, hasSlides, year]);
+  }, [hasRecordings, hasSlides, hasNotebook, year]);
 
   return (
     <section
@@ -136,6 +147,21 @@ export default function Content({
                 ) : (
                   <span className="text-gray-400">
                     {hasSlides ? defaultPlaceholderText.noSlides : ''}
+                  </span>
+                )}
+              </p>
+              <p className="mt-1">
+                {lesson.notebook ? (
+                  <Link
+                    href={lesson.notebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-600 hover:underline">
+                    View Notebook
+                  </Link>
+                ) : (
+                  <span className="text-gray-400">
+                    {hasSlides ? defaultPlaceholderText.noNotebook : ''}
                   </span>
                 )}
               </p>
