@@ -15,6 +15,7 @@ interface LeaderboardDoc extends mongoose.Document {
   timestamp: Date;
   type: LeaderboardType;
   standings: TeamInfo[];
+  __v?: number;
 }
 
 export type LeaderboardContent = Pick<
@@ -52,7 +53,7 @@ const leaderboardSchema = new mongoose.Schema<LeaderboardDoc>(
     toJSON: {
       transform: (doc, ret) => {
         delete ret._id;
-        delete ret.__v;
+        if ('__v' in ret) delete ret.__v;
         return ret;
       },
     },
