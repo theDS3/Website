@@ -19,6 +19,7 @@ export default function MLPage() {
           hasSlides={true}
           hasRecordings={false}
           hasNotebook={true}
+          hasContent={true}
         />
         <FAQ />
       </main>

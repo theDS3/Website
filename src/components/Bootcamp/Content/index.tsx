@@ -9,6 +9,7 @@ export interface Lessons {
   recordings?: string[];
   slides?: string;
   notebook?: string;
+  content?: boolean;
 }
 
 export interface ContentProps {
@@ -16,6 +17,7 @@ export interface ContentProps {
   hasRecordings?: boolean;
   hasSlides?: boolean;
   hasNotebook?: boolean;
+  hasContent?: boolean;
 }
 
 const defaultPlaceholderText = {
@@ -45,6 +47,7 @@ export default function Content({
   hasRecordings = false,
   hasSlides = false,
   hasNotebook = false,
+  hasContent = false,
 }: ContentProps) {
   const [content, setContent] = useState<Lessons[]>([]);
 
@@ -60,6 +63,7 @@ export default function Content({
         let recordings: string[] = [];
         let slides = '';
         let notebook = '';
+        let content = false;
 
         let col = 0;
 
@@ -79,6 +83,11 @@ export default function Content({
 
         if (hasNotebook) {
           notebook = otherColumns[col] || '';
+          col += 1;
+        }
+
+        if (hasContent) {
+          content = otherColumns[col].toLowerCase() === 'true';
         }
 
         return {
@@ -87,12 +96,13 @@ export default function Content({
           recordings,
           slides,
           notebook,
+          content,
         };
       });
 
       setContent(lessons);
     });
-  }, [hasRecordings, hasSlides, hasNotebook, year]);
+  }, [hasRecordings, hasSlides, hasNotebook, hasContent, year]);
 
   return (
     <section
@@ -116,55 +126,57 @@ export default function Content({
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
               </h3>
-              <div className="space-y-1">
-                {lesson.recordings && lesson.recordings.length > 0 ? (
-                  lesson.recordings.map((recording, idx) => (
-                    <p key={idx}>
+              {lesson.content && 
+                <div className="space-y-1">
+                  {lesson.recordings && lesson.recordings.length > 0 ? (
+                    lesson.recordings.map((recording, idx) => (
+                      <p key={idx}>
+                        <Link
+                          href={recording}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 hover:text-blue-600 hover:underline">
+                          View Recording {idx + 1}
+                        </Link>
+                      </p>
+                    ))
+                  ) : (
+                    <span className="text-gray-400">
+                      {hasRecordings ? defaultPlaceholderText.noRecording : ''}
+                    </span>
+                  )}
+                  <p className="mt-1">
+                    {lesson.slides ? (
                       <Link
-                        href={recording}
+                        href={lesson.slides}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-400 hover:text-blue-600 hover:underline">
-                        View Recording {idx + 1}
+                        View Slides
                       </Link>
-                    </p>
-                  ))
-                ) : (
-                  <span className="text-gray-400">
-                    {hasRecordings ? defaultPlaceholderText.noRecording : ''}
-                  </span>
-                )}
-              </div>
-              <p className="mt-1">
-                {lesson.slides ? (
-                  <Link
-                    href={lesson.slides}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-600 hover:underline">
-                    View Slides
-                  </Link>
-                ) : (
-                  <span className="text-gray-400">
-                    {hasSlides ? defaultPlaceholderText.noSlides : ''}
-                  </span>
-                )}
-              </p>
-              <p className="mt-1">
-                {lesson.notebook ? (
-                  <Link
-                    href={lesson.notebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-600 hover:underline">
-                    View Notebook
-                  </Link>
-                ) : (
-                  <span className="text-gray-400">
-                    {hasSlides ? defaultPlaceholderText.noNotebook : ''}
-                  </span>
-                )}
-              </p>
+                    ) : (
+                      <span className="text-gray-400">
+                        {hasSlides ? defaultPlaceholderText.noSlides : ''}
+                      </span>
+                    )}
+                  </p>
+                  <p className="mt-1">
+                    {lesson.notebook ? (
+                      <Link
+                      href={lesson.notebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                        View Notebook
+                      </Link>
+                    ) : (
+                      <span className="text-gray-400">
+                        {hasSlides ? defaultPlaceholderText.noNotebook : ''}
+                      </span>
+                    )}
+                  </p>
+                </div>
+              }
             </div>
             <p className="text-gray-400 mt-auto text-right">
               {new Date(lesson.date).toLocaleDateString('en-US', {
