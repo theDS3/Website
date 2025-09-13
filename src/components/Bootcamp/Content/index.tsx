@@ -126,7 +126,7 @@ export default function Content({
               <h3 className="text-2xl font-bold mb-4 text-white">
                 {lesson.name}
               </h3>
-              {lesson.content && 
+              {lesson.content && (
                 <div className="space-y-1">
                   {lesson.recordings && lesson.recordings.length > 0 ? (
                     lesson.recordings.map((recording, idx) => (
@@ -163,10 +163,10 @@ export default function Content({
                   <p className="mt-1">
                     {lesson.notebook ? (
                       <Link
-                      href={lesson.notebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-600 hover:underline">
+                        href={lesson.notebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-600 hover:underline">
                         View Notebook
                       </Link>
                     ) : (
@@ -176,7 +176,7 @@ export default function Content({
                     )}
                   </p>
                 </div>
-              }
+              )}
             </div>
             <p className="text-gray-400 mt-auto text-right">
               {new Date(lesson.date).toLocaleDateString('en-US', {
