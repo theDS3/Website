@@ -501,19 +501,22 @@ export default function Applications() {
                 </DropdownTrigger>
                 <DropdownMenu>
                   <DropdownItem
+                    key="accept"
                     onPress={() => changeStatus(app.id, 'ACCEPTED')}>
                     Accept
                   </DropdownItem>
                   <DropdownItem
+                    key="reject"
                     onPress={() => changeStatus(app.id, 'REJECTED')}>
                     Reject
                   </DropdownItem>
                   <DropdownItem
+                    key="in-review"
                     onPress={() => changeStatus(app.id, 'IN REVIEW')}>
                     In Review
                   </DropdownItem>
-                  <DropdownItem>Edit</DropdownItem>
-                  <DropdownItem>Delete</DropdownItem>
+                  <DropdownItem key="edit">Edit</DropdownItem>
+                  <DropdownItem key="delete">Delete</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </div>
