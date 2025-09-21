@@ -189,7 +189,7 @@ export default function Acceptance({
               For any questions or concerns, please visit our{' '}
               <TextLink
                 content="website"
-                href="https://ds3utsc.com/"
+                href="https://ds3utsc.com/https://ds3utsc.com/"
               />
               , contact us via our social media accounts, or email at us at
               <TextLink
