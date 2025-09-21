@@ -149,7 +149,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
         ret.id = ret._id;
         delete ret.qrcode;
         delete ret._id;
-        delete ret.__v;
+        if ('__v' in ret) delete ret.__v;
         return ret;
       },
     },
