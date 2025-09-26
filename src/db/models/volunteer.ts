@@ -20,22 +20,22 @@ const volunteerSchema = new mongoose.Schema<IVolunteer>(
       trim: true,
     },
     isAdmin: {
-        type: Boolean,
-        default: false,
-    }
+      type: Boolean,
+      default: false,
+    },
   },
   {
     toJSON: {
       transform: (_, ret) => {
-        delete ret.password;
-        delete ret.__v;
+        delete (ret as any).hashedPassword;
+        delete (ret as any).__v;
         return ret;
       },
     },
   },
 );
 
-const Volunteer = 
+const Volunteer =
   mongoose.models.Volunteer ||
   mongoose.model<IVolunteer>('Volunteer', volunteerSchema);
 
