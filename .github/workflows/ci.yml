@@ -19,7 +19,7 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - uses: pnpm/action-setup@v4.0.0
+      - uses: pnpm/action-setup@v4.1.0
         name: Install pnpm
         with:
           version: 8
@@ -62,7 +62,7 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - uses: pnpm/action-setup@v4.0.0
+      - uses: pnpm/action-setup@v4.1.0
         name: Install pnpm
         with:
           version: 8
