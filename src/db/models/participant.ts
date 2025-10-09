@@ -29,17 +29,8 @@ export type Usage = { status: boolean; timestamp?: string };
 export type Service = Record<string, Usage>;
 export type Services = Map<string, Service>;
 export type ServiceGroupsToLabels = Record<string, string[]>;
+// datathon Services - Activities in the datathon
 const datathonServices: ServiceGroupsToLabels = {
-  '2025-02-11': ['TESTING', 'TEST 2'],
-  '2025-02-12': ['TESTING', 'TEST 2'],
-  '2025-02-13': ['TESTING', 'TEST 2'],
-  '2025-02-14': ['TESTING', 'TEST 2'],
-  '2025-02-15': ['TESTING', 'TEST 2'],
-  '2025-02-16': ['TESTING', 'TEST 2'],
-  '2025-02-17': ['TESTING', 'TEST 2'],
-  '2025-02-18': ['TESTING', 'TEST 2'],
-  '2025-02-19': ['TESTING', 'TEST 2'],
-  '2025-02-20': ['TESTING', 'TEST 2'],
   '2025-02-21': ['TESTING', 'TEST 2'],
   '2025-02-22': [
     'Registration',
