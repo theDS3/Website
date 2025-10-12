@@ -20,8 +20,7 @@ import {
   User,
   Spinner,
   Pagination,
-  Divider,
-} from '@nextui-org/react';
+} from "@heroui/react";
 import { env } from '@/env/client.mjs';
 import { VerticalDotsIcon } from '@/public/VerticalDotsIcons';
 import { SearchIcon } from '@/public/SearchIcon';
@@ -539,7 +538,10 @@ export default function Applications() {
         bottomContent={tablePaginationContent}
         bottomContentPlacement="outside"
         topContent={tableOperationsContent}
-        topContentPlacement="outside">
+        topContentPlacement="outside"
+        color={"warning"}
+        selectionMode='multiple'
+      >
         <TableHeader columns={appColumns}>
           {appColumns.map((column) => (
             <TableColumn
