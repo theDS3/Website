@@ -28,8 +28,6 @@ export default function MLPage() {
         />
         <ProjectShowcase />
 
-
-
         <FAQ />
       </main>
     </>

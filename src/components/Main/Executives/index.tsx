@@ -1,12 +1,12 @@
-import KritGrover from '@/public/Main/Executives/Krit Grover.jpeg';
+import KritGrover from '@/public/Main/Executives/Krit Grover.jpg';
 import ShreyasRao from '@/public/Main/Executives/Shreyas Rao.jpg';
-import NevinAdaCakmak from '@/public/Main/Executives/Nevin Ada Cakmak.jpg';
+import JaydenYip from '@/public/Main/Executives/Jayden Yip.jpg';
 import AshwinMalik from '@/public/Main/Executives/Ashwin Mallik.png';
 import ChrisYan from '@/public/Main/Executives/Chris Yan.jpg';
-import HarmanGill from '@/public/Main/Executives/Harman Gill.jpg';
-import ThanareeSrirawewongsa from '@/public/Main/Executives/Thanaree Srirawewongsa.jpeg';
-import ArnenchaPradavkaew from '@/public/Main/Executives/Arnencha Pradabkaew.jpg';
-import AlbertHo from '@/public/Main/Executives/Albert Ho.jpg';
+import DivyWadhwani from '@/public/Main/Executives/Divy Wadhwani.jpg';
+import NirmayThakkar from '@/public/Main/Executives/Nirmay Thakkar.jpg';
+import HelenaZhao from '@/public/Main/Executives/Helena Zhao.jpg';
+import PaulNguyen from '@/public/Main/Executives/Paul Nguyen.jpg';
 import ShawnJiang from '@/public/Main/Executives/Shawn Jiang.jpg';
 
 import TeamCard, { type TeamMember } from '@/components/TeamCard';
@@ -14,9 +14,15 @@ import TeamCard, { type TeamMember } from '@/components/TeamCard';
 const executives: TeamMember[] = [
   {
     name: 'Krit Grover',
-    position: 'President',
+    position: 'Co-President',
     src: KritGrover,
     alt: 'Krit Grover',
+  },
+  {
+    name: 'Chris Yan',
+    position: 'Co-President',
+    src: ChrisYan,
+    alt: 'Chris Yan',
   },
   {
     name: 'Shreyas Rao',
@@ -25,10 +31,10 @@ const executives: TeamMember[] = [
     alt: 'Shreyas Rao',
   },
   {
-    name: 'Nevin Ada Çakmak',
+    name: 'Jayden Yip',
     position: 'Vice President of Operations',
-    src: NevinAdaCakmak,
-    alt: 'Nevin Ada Çakmak',
+    src: JaydenYip,
+    alt: 'Jayden Yip',
   },
   {
     name: 'Ashwin Malik',
@@ -37,40 +43,34 @@ const executives: TeamMember[] = [
     alt: 'Ashwin Malik',
   },
   {
-    name: 'Chris Yan',
+    name: 'Divy Wadhwani',
     position: 'Vice President of Academics',
-    src: ChrisYan,
-    alt: 'Chris Yan',
+    src: DivyWadhwani,
+    alt: 'Divy Wadhwani',
   },
   {
-    name: 'Harman Gill',
+    name: 'Nirmay Thakkar',
     position: 'Vice President of Finance',
-    src: HarmanGill,
-    alt: 'Harman Gill',
+    src: NirmayThakkar,
+    alt: 'Nirmay Thakkar',
   },
   {
-    name: 'Thanaree Srirawewongsa (Jean)',
-    position: 'Vice President of Consulting',
-    src: ThanareeSrirawewongsa,
-    alt: 'Thanaree Srirawewongsa (Jean)',
-  },
-  {
-    name: 'Arnencha Pradavkaew',
+    name: 'Helena Zhao',
     position: 'Vice President of Outreach',
-    src: ArnenchaPradavkaew,
-    alt: 'Arnencha Pradavkaew',
-  },
-  {
-    name: 'Albert Ho',
-    position: 'Vice President of Campus Life',
-    src: AlbertHo,
-    alt: 'Albert Ho',
+    src: HelenaZhao,
+    alt: 'Helena Zhao',
   },
   {
     name: 'Shawn Jiang',
     position: 'Vice President of Marketing',
     src: ShawnJiang,
     alt: 'Shawn Jiang',
+  },
+  {
+    name: 'Paul Nguyen',
+    position: 'Vice President of Marketing',
+    src: PaulNguyen,
+    alt: 'Paul Nguyen',
   },
 ];
 
