@@ -17,7 +17,7 @@ import img1 from '@/public/Bootcamp/Carousel/IMG_7174.jpg';
 
 const images = [img1, img2, img3, img4, img5, img6];
 
-export default function SmoothCarousel() {
+export default function BootcampCarousel() {
   return (
     <section className="w-full flex flex-col items-center mt-20">
       <h1 className="text-[#d9d9d9] text-4xl md:text-6xl font-semibold tracking-widest text-center pb-12">
