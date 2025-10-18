@@ -17,6 +17,8 @@ export default function MLPage() {
       <NavBar links={links} />
       <main>
         <About_Bootcamp />
+        <BootcampCarousel />
+
         <Content
           year={'2025'}
           hasSlides={true}
@@ -27,7 +29,6 @@ export default function MLPage() {
         <ProjectShowcase />
 
 
-        <BootcampCarousel />
 
         <FAQ />
       </main>
