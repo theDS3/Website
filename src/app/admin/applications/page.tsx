@@ -111,6 +111,11 @@ export default function Applications() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const hasSearchFilter = Boolean(filterValue);
+  const [selectedRows, setSelectedRows] = useState<Set<Key>>(new Set());
+
+  // useEffect(() => {
+  //   console.log(selectedRows);
+  // })
 
   const getAllApplications = async () => {
     try {
@@ -334,7 +339,8 @@ export default function Applications() {
               Send Rejections
             </Button>
             <Button
-              color="secondary"
+              color="custom"
+              className='bg-[#114833]'
               onPress={() => HandleAcceptedEmails()}>
               Send Acceptance Emails
             </Button>
@@ -539,7 +545,9 @@ export default function Applications() {
         bottomContentPlacement="outside"
         topContent={tableOperationsContent}
         topContentPlacement="outside"
-        color={"warning"}
+        color={"secondary"}
+        selectedKeys={selectedRows}
+        onSelectionChange={setSelectedRows}
         selectionMode='multiple'
       >
         <TableHeader columns={appColumns}>
