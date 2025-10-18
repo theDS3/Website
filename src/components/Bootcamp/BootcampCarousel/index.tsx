@@ -28,12 +28,12 @@ export default function BootcampCarousel() {
         <div className="mb-8 px-4 md:px-8 pt-14 pb-12">
           <Swiper
             modules={[Autoplay, Pagination, EffectCoverflow]}
-            spaceBetween={20} 
-            slidesPerView={2.5} 
+            spaceBetween={20}
+            slidesPerView={2.5}
             centeredSlides
             loop
             grabCursor
-            slideToClickedSlide={true} 
+            slideToClickedSlide={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -42,7 +42,7 @@ export default function BootcampCarousel() {
             effect="coverflow"
             coverflowEffect={{
               rotate: 0,
-              stretch: -80, 
+              stretch: -80,
               depth: 150,
               modifier: 2,
               slideShadows: false,
@@ -60,9 +60,9 @@ export default function BootcampCarousel() {
                     style={{
                       aspectRatio: '16/9',
                       width: '100%',
-                      maxWidth: '900px', 
+                      maxWidth: '900px',
                       margin: '0 auto',
-                      pointerEvents: 'auto', 
+                      pointerEvents: 'auto',
                     }}>
                     <Image
                       src={img}
@@ -83,17 +83,14 @@ export default function BootcampCarousel() {
         <style
           jsx
           global>{`
-
           html,
           body {
             overflow-x: hidden !important;
           }
 
-
           .swiper {
             overflow: visible !important;
           }
-
 
           .swiper-wrapper {
             overflow: visible !important;
@@ -106,7 +103,6 @@ export default function BootcampCarousel() {
             justify-content: center !important;
             padding: 30px 0 !important;
           }
-
 
           .swiper-pagination {
             position: relative !important;
