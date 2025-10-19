@@ -33,6 +33,7 @@ export default function BootcampCarousel() {
             loop
             grabCursor
             slideToClickedSlide={true}
+            slideToClickedSlide={true}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -41,6 +42,7 @@ export default function BootcampCarousel() {
             effect="coverflow"
             coverflowEffect={{
               rotate: 0,
+              stretch: -80,
               stretch: -80,
               depth: 150,
               modifier: 2,
@@ -66,7 +68,9 @@ export default function BootcampCarousel() {
                       aspectRatio: '16/9',
                       width: '100%',
                       maxWidth: '900px',
+                      maxWidth: '900px',
                       margin: '0 auto',
+                      pointerEvents: 'auto',
                       pointerEvents: 'auto',
                     }}>
                     <Image
