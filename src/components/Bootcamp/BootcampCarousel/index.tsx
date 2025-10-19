@@ -33,7 +33,6 @@ export default function BootcampCarousel() {
             loop
             grabCursor
             slideToClickedSlide={true}
-
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -49,10 +48,10 @@ export default function BootcampCarousel() {
             }}
             pagination={{ clickable: true }}
             breakpoints={{
-              0: { slidesPerView: 1.1, spaceBetween: 10 }, 
-              640: { slidesPerView: 1.5, spaceBetween: 15 }, 
-              1024: { slidesPerView: 2.2, spaceBetween: 20 }, 
-              1440: { slidesPerView: 2.5, spaceBetween: 25 }, 
+              0: { slidesPerView: 1.1, spaceBetween: 10 },
+              640: { slidesPerView: 1.5, spaceBetween: 15 },
+              1024: { slidesPerView: 2.2, spaceBetween: 20 },
+              1440: { slidesPerView: 2.5, spaceBetween: 25 },
             }}>
             {images.map((img, idx) => (
               <SwiperSlide key={idx}>
