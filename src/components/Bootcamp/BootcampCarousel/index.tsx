@@ -20,12 +20,12 @@ const images = [img1, img2, img3, img4, img5, img6];
 export default function BootcampCarousel() {
   return (
     <section className="w-full flex flex-col items-center mt-20">
-      <h1 className="text-[#d9d9d9] text-4xl md:text-6xl font-semibold tracking-widest text-center pb-12">
+      <h1 className="text-[#d9d9d9] text-4xl md:text-6xl font-semibold tracking-widest text-center pb-4 md:pb-6">
         Bootcamp Highlights
       </h1>
 
       <div className="w-full max-w-[2200px] relative">
-        <div className="mb-8 px-4 md:px-8 pt-14 pb-12">
+        <div className="mb-8 px-4 md:px-8 pt-6 md:pt-8  pb-12">
           <Swiper
             modules={[Autoplay, Pagination, EffectCoverflow]}
             spaceBetween={20}
@@ -33,7 +33,6 @@ export default function BootcampCarousel() {
             loop
             grabCursor
             slideToClickedSlide={true}
-
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -49,10 +48,10 @@ export default function BootcampCarousel() {
             }}
             pagination={{ clickable: true }}
             breakpoints={{
-              0: { slidesPerView: 1.1, spaceBetween: 10 }, 
-              640: { slidesPerView: 1.5, spaceBetween: 15 }, 
-              1024: { slidesPerView: 2.2, spaceBetween: 20 }, 
-              1440: { slidesPerView: 2.5, spaceBetween: 25 }, 
+              0: { slidesPerView: 1.1, spaceBetween: 10 },
+              640: { slidesPerView: 1.5, spaceBetween: 15 },
+              1024: { slidesPerView: 2.2, spaceBetween: 20 },
+              1440: { slidesPerView: 2.5, spaceBetween: 25 },
             }}>
             {images.map((img, idx) => (
               <SwiperSlide key={idx}>
