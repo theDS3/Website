@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import TARS from '@/public/Bootcamp/Projects/TARS.jpg';
-import Newt from '@/public/Bootcamp/Projects/NEWT.jpg';
+import Newt from '@/public/Bootcamp/Projects/Newt.jpg';
 import Glioblastoma from '@/public/Bootcamp/Projects/Glioblastoma.jpg';
 
 export default function ProjectShowcase() {
