@@ -27,8 +27,8 @@ dependencies:
     specifier: ^2.2.0
     version: 2.2.0
   lucide-react:
-    specifier: ^0.460.0
-    version: 0.460.0(react@18.3.1)
+    specifier: ^0.546.0
+    version: 0.546.0(react@18.3.1)
   mongoose:
     specifier: ^8.18.0
     version: 8.19.1
@@ -3340,10 +3340,10 @@ packages:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
     dev: true
 
-  /lucide-react@0.460.0(react@18.3.1):
-    resolution: {integrity: sha512-BVtq/DykVeIvRTJvRAgCsOwaGL8Un3Bxh8MbDxMhEWlZay3T4IpEKDEpwt5KZ0KJMHzgm6jrltxlT5eXOWXDHg==}
+  /lucide-react@0.546.0(react@18.3.1):
+    resolution: {integrity: sha512-Z94u6fKT43lKeYHiVyvyR8fT7pwCzDu7RyMPpTvh054+xahSgj4HFQ+NmflvzdXsoAjYGdCguGaFKYuvq0ThCQ==}
     peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
     dependencies:
       react: 18.3.1
     dev: false
