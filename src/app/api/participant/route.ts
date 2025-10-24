@@ -11,27 +11,25 @@ export async function GET(request: NextRequest) {
   try {
     verifyRequest(request.headers);
 
-    // Collects the code and date from the request
+    // Collects the code from the request
     const code = isUUID4(request.nextUrl.searchParams.get('code'));
-    const date = isDate(request.nextUrl.searchParams.get('date'));
 
     connectDB();
 
-    // Retrieves a participant with a specific code and has services for a specific date
+    // Retrieves a participant with a specific code
     const participant: IParticipant | null = await Participant.findOne({
       code,
-      [`services.${date}`]: { $exists: true },
     });
 
-    // If the participant does not exist or does not have services for the date, throw a QueryError
+    // If the participant does not exist or does not have services, throw a QueryError
     if (!participant || !participant.services)
       throw new QueryError({
         name: 'PARTICIPANT_DNE',
         message: 'Participant does not exist',
-        cause: `Participant with code ${code} does not exist and/or have services for ${date}`,
+        cause: `Participant with code ${code} does not exist or has no services`,
       });
 
-    // If the participant does exist and has services for the date, return with all available services for the date
+    // Return all available services (unused activities)
     return NextResponse.json(
       {
         firstName: participant.firstName,
@@ -41,10 +39,7 @@ export async function GET(request: NextRequest) {
         phoneNum: participant?.phoneNum,
         dietaryRestrictions: participant.dietaryRestrictions,
         code: participant.code,
-        availableServices: getAvailableServicesByLabel(
-          participant.services,
-          date,
-        ),
+        availableServices: getAvailableServicesByLabel(participant.services),
       },
       { status: 200 },
     );
@@ -60,8 +55,8 @@ export async function GET(request: NextRequest) {
 
 /**
  * Endpoint to create a new participant and store in DB
- * @param request 
- * @returns 
+ * @param request
+ * @returns
  */
 export async function POST(request: NextRequest) {
   let submission: Pick<

@@ -26,21 +26,21 @@ export enum ParticipantStatus {
 
 export type Usage = { status: boolean; timestamp?: string };
 
-export type Service = Record<string, Usage>;
-export type Services = Map<string, Service>;
-export type ServiceGroupsToLabels = Record<string, string[]>;
-// datathon Services - Activities in the datathon
-const datathonServices: ServiceGroupsToLabels = {
-  '2025-02-21': ['TESTING', 'TEST 2'],
-  '2025-02-22': [
-    'Registration',
-    'Opening Ceremony',
-    'Workshop 1',
-    'Lunch + Networking',
-    'Workshop 2',
-    'Closing Ceremony',
-  ],
-};
+
+// Each activity is mapped to its Usage
+export type Services = Map<string, Usage>;
+export type Activities = string[];
+// List of all activities in the datathon
+const datathonActivities: Activities = [
+  'TESTING',
+  'TEST 2',
+  'Registration',
+  'Opening Ceremony',
+  'Workshop 1',
+  'Lunch + Networking',
+  'Workshop 2',
+  'Closing Ceremony',
+];
 
 export type Contact = Map<'acceptance' | 'hacker-package' | 'rejection', Usage>;
 
@@ -117,7 +117,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
     services: {
       type: Map,
       of: mongoose.Schema.Types.Mixed,
-      default: generateServices(datathonServices),
+      default: generateServices(datathonActivities),
     },
     contact: {
       type: Map,

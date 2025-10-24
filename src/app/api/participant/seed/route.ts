@@ -4,9 +4,7 @@ import { format } from 'date-fns/format';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { connectDB } from '@/db/config';
-import Participant, {
-  type ServiceGroupsToLabels,
-} from '@/db/models/participant';
+import Participant from '@/db/models/participant';
 
 import { VerificationError } from '@/error';
 import { generateQRCodeOptions, generateServices } from '@/utils';
@@ -38,28 +36,13 @@ export async function POST(request: NextRequest) {
       'dayStep',
     );
 
-    const mockServicesByDate: ServiceGroupsToLabels = {};
-    let currentDate = new Date(startDate);
-
-    // If the start date is after the end date, throw an error
-    if (currentDate > new Date(endDate))
-      throw new VerificationError({
-        name: 'INVALID_QUERY_PARAMS',
-        message: 'endDate must be after startDate',
-        cause: `End Date: ${endDate} must be after Start Date: ${startDate}`,
-      });
-
-    // Generates a mock service schedule based on the start and end dates
-    while (currentDate <= new Date(endDate)) {
-      let mockServices: string[] = ['Check-In'];
-      const maxNumServices = Math.floor(Math.random() * 10);
-      for (let numServices = 0; numServices != maxNumServices; numServices++)
-        mockServices.push(faker.commerce.productName());
-      mockServicesByDate[format(currentDate, 'yyyy-MM-dd')] = mockServices;
-      currentDate.setUTCDate(currentDate.getUTCDate() + dayStep);
+    // Generates a random list of activities for all mock participants
+    const numActivities = Math.floor(Math.random() * 8) + 3; // 3-10 activities
+    const mockActivities: string[] = [];
+    for (let i = 0; i < numActivities; i++) {
+      mockActivities.push(faker.commerce.productName());
     }
-
-    const services = generateServices(mockServicesByDate);
+    const services = generateServices(mockActivities);
 
     // Generates a list of mock participants
     const participants = [];
