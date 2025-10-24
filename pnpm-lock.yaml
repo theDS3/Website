@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^16.1.1
     version: 16.1.1(postcss@8.5.6)
   postcss-mixins:
-    specifier: ^10.0.1
-    version: 10.0.1(postcss@8.5.6)
+    specifier: ^12.1.2
+    version: 12.1.2(postcss@8.5.6)
   postcss-preset-env:
     specifier: ^10.3.1
     version: 10.4.0(postcss@8.5.6)
@@ -4170,17 +4170,17 @@ packages:
       postcss-selector-parser: 7.1.0
     dev: true
 
-  /postcss-mixins@10.0.1(postcss@8.5.6):
-    resolution: {integrity: sha512-5+cI9r8L5ChegVsLM9pXa53Ft03Mt9xAq+kvzqfrUHGPCArVGOfUvmQK2CLP3XWWP2dqxDLQI+lIcXG+GTqOBQ==}
-    engines: {node: ^18.0 || >= 20.0}
+  /postcss-mixins@12.1.2(postcss@8.5.6):
+    resolution: {integrity: sha512-90pSxmZVfbX9e5xCv7tI5RV1mnjdf16y89CJKbf/hD7GyOz1FCxcYMl8ZYA8Hc56dbApTKKmU9HfvgfWdCxlwg==}
+    engines: {node: ^20.0 || ^22.0 || >=24.0}
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
-      fast-glob: 3.3.3
       postcss: 8.5.6
       postcss-js: 4.1.0(postcss@8.5.6)
       postcss-simple-vars: 7.0.1(postcss@8.5.6)
-      sugarss: 4.0.1(postcss@8.5.6)
+      sugarss: 5.0.1(postcss@8.5.6)
+      tinyglobby: 0.2.15
     dev: true
 
   /postcss-nested@6.2.0(postcss@8.5.6):
@@ -5072,9 +5072,9 @@ packages:
       ts-interface-checker: 0.1.13
     dev: true
 
-  /sugarss@4.0.1(postcss@8.5.6):
-    resolution: {integrity: sha512-WCjS5NfuVJjkQzK10s8WOBY+hhDxxNt/N6ZaGwxFZ+wN3/lKKFSaaKUNecULcTTvE4urLcKaZFQD8vO0mOZujw==}
-    engines: {node: '>=12.0'}
+  /sugarss@5.0.1(postcss@8.5.6):
+    resolution: {integrity: sha512-ctS5RYCBVvPoZAnzIaX5QSShK8ZiZxD5HUqSxlusvEMC+QZQIPCPOIJg6aceFX+K2rf4+SH89eu++h1Zmsr2nw==}
+    engines: {node: '>=18.0'}
     peerDependencies:
       postcss: ^8.3.3
     dependencies:
