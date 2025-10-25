@@ -49,13 +49,14 @@ export default function ContentCarousel() {
           </div>
         </div>
         
-        <div className="flex justify-center mt-4 order-2 md:order-1">
+        <div className="flex justify-center mt-5 pb-2 order-2 md:order-1 overflow-visible">
           {[0, 1].map((index) => (
             <button
               key={index}
               onClick={() => emblaApi?.scrollTo(index)}
-              className={`w-3 h-3 rounded-full mx-2 transition-colors ${
-                selectedIndex === index ? 'bg-white' : 'bg-gray-500'
+              className={`w-[14px] h-[14px] mx-[6px] rounded-full transition-transform transition-opacity duration-200 ease-linear cursor-pointer
+ ${
+                selectedIndex === index ? 'opacity-100 scale-[1.15] bg-[#a855f7]' : 'bg-[#a855f7] opacity-40'
               }`}
             />
           ))}

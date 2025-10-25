@@ -3,13 +3,9 @@ import About_Bootcamp from '@/components/Bootcamp/About';
 import Content from '@/components/Bootcamp/Content';
 import FAQ from '@/components/Bootcamp/FAQ';
 import ContentCarousel from '@/components/Bootcamp/ContentCarousel';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/Shared/Carousel';
+
+import ProjectShowcase from '@/components/Bootcamp/ProjectShowcase';
+import BootcampCarousel from '@/components/Bootcamp/BootcampCarousel';
 
 const links: Link[] = [
   { title: 'Home', href: '/#intro' },
@@ -23,9 +19,11 @@ export default function MLPage() {
       <NavBar links={links} />
       <main>
         <About_Bootcamp />
-        <ContentCarousel></ContentCarousel>
+        <BootcampCarousel />
+        <ContentCarousel />
+        <ProjectShowcase />
         <FAQ />
       </main>
     </>
-);
+  );
 }
