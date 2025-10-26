@@ -49,7 +49,7 @@ export default function Content({
   hasSlides = false,
   hasNotebook = false,
   hasContent = false,
-  title = ""
+  title = '',
 }: ContentProps) {
   const [content, setContent] = useState<Lessons[]>([]);
 
@@ -91,8 +91,7 @@ export default function Content({
         if (hasContent) {
           if (year == '2025') {
             content = otherColumns[col].toLowerCase() === 'true';
-          }
-          else {
+          } else {
             content = true;
           }
         }
@@ -117,7 +116,7 @@ export default function Content({
       className="flex flex-col items-center justify-center space-y-10 space-x-0 pb-5">
       <div className="flex justify-center flex-col gap-8 xl:gap-12">
         <h1 className="lg:justify-start col-span-2 text-[#d9d9d9] text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl text-center sm:flex sm:justify-center">
-          {title ? title : "Content"}
+          {title ? title : 'Content'}
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
