@@ -46,7 +46,7 @@ export default function Sponsors() {
       </a>
 
       <h3 className="text-white text-3xl font-semibold tracking-wide mt-16 mb-8">
-        Our Sponsors From Last Year
+        Our Sponsors
       </h3>
 
       <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-10 w-full max-w-7xl mx-auto mt-6">
