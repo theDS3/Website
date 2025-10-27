@@ -18,6 +18,7 @@ export interface ContentProps {
   hasSlides?: boolean;
   hasNotebook?: boolean;
   hasContent?: boolean;
+  title?: string;
 }
 
 const defaultPlaceholderText = {
@@ -27,7 +28,7 @@ const defaultPlaceholderText = {
 };
 
 const yearToSheetName: { [key: string]: string } = {
-  '2024': 'sheet1',
+  '2024': 'Archive',
   '2025': '2025',
 };
 
@@ -48,6 +49,7 @@ export default function Content({
   hasSlides = false,
   hasNotebook = false,
   hasContent = false,
+  title = '',
 }: ContentProps) {
   const [content, setContent] = useState<Lessons[]>([]);
 
@@ -87,7 +89,11 @@ export default function Content({
         }
 
         if (hasContent) {
-          content = otherColumns[col].toLowerCase() === 'true';
+          if (year == '2025') {
+            content = otherColumns[col].toLowerCase() === 'true';
+          } else {
+            content = true;
+          }
         }
 
         return {
@@ -107,10 +113,10 @@ export default function Content({
   return (
     <section
       id="content"
-      className="flex flex-col items-center justify-center space-y-10">
+      className="flex flex-col items-center justify-center space-y-10 space-x-0 pb-5">
       <div className="flex justify-center flex-col gap-8 xl:gap-12">
         <h1 className="lg:justify-start col-span-2 text-[#d9d9d9] text-4xl font-medium tracking-widest md:text-5xl lg:text-7xl text-center sm:flex sm:justify-center">
-          Content
+          {title ? title : 'Content'}
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
@@ -171,7 +177,7 @@ export default function Content({
                       </Link>
                     ) : (
                       <span className="text-gray-400">
-                        {hasSlides ? defaultPlaceholderText.noNotebook : ''}
+                        {hasNotebook ? defaultPlaceholderText.noNotebook : ''}
                       </span>
                     )}
                   </p>
