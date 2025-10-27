@@ -1,84 +1,152 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import Image from 'next/image';
-import Autoplay from 'embla-carousel-autoplay';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
 
 interface ImageCarouselProps {
   images: string[];
 }
 
 export function ImageCarousel({ images }: ImageCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: 'center',
-    },
-    [Autoplay({ playOnInit: true, stopOnInteraction: false, delay: 3000 })],
-  );
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  //@ts-ignore
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on('select', onSelect);
-
-    return () => emblaApi.off('select', onSelect);
-  }, [emblaApi]);
-
   return (
-    <div
-      id="highlights"
-      className="relative w-full max-w-[95vw] mx-auto px-6 sm:px-8 lg:px-12 mt-8">
-      <h2 className="text-white text-5xl font-bold tracking-wide pb-14 text-center">
-        Last Year&apos;s Highlights
-      </h2>
-      <div
-        ref={emblaRef}
-        className="overflow-hidden">
-        <div className="flex px-6 sm:px-8 lg:px-12 gap-6 sm:gap-8 lg:gap-10">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative flex-[0_0_90%] sm:flex-[0_0_60%] lg:flex-[0_0_40%] transition-transform duration-300">
-              <div
-                className={`transition-transform duration-300 ${
-                  selectedIndex === index
-                    ? 'scale-110 opacity-100'
-                    : 'scale-95 opacity-80'
-                }`}>
-                <div
-                  className="relative w-full h-0"
-                  style={{ paddingBottom: '66.25%' }}>
-                  <Image
-                    src={image}
-                    alt={`Image ${index + 1}`}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg shadow-lg"
-                    priority={index === 0}
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <section className="w-full flex flex-col items-center mt-20">
+      <h1 className="text-[#d9d9d9] text-4xl md:text-6xl font-semibold tracking-widest text-center pb-4 md:pb-6">
+        Bootcamp Highlights
+      </h1>
 
-      <div className="flex justify-center mt-8 space-x-3 sm:space-x-4">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => emblaApi?.scrollTo(index)}
-            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full transition-colors ${
-              selectedIndex === index ? 'bg-white' : 'bg-gray-500'
-            }`}
-          />
-        ))}
+      <div className="w-full max-w-[2200px] relative">
+        <div className="mb-8 px-4 md:px-8 pt-6 md:pt-8  pb-12">
+          <Swiper
+            modules={[Autoplay, Pagination, EffectCoverflow]}
+            spaceBetween={20}
+            centeredSlides
+            loop
+            grabCursor
+            slideToClickedSlide={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 0,
+              stretch: -80,
+              depth: 150,
+              modifier: 2,
+              slideShadows: false,
+            }}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              0: { slidesPerView: 1.1, spaceBetween: 10 },
+              640: { slidesPerView: 1.5, spaceBetween: 15 },
+              1024: { slidesPerView: 2.2, spaceBetween: 20 },
+              1440: { slidesPerView: 2.5, spaceBetween: 25 },
+            }}>
+            {images.map((img, idx) => (
+              <SwiperSlide key={idx}>
+                {({ isActive }) => (
+                  <div
+                    className={`relative rounded-3xl overflow-hidden transition-all duration-500 ease-out will-change-transform cursor-pointer ${
+                      isActive
+                        ? 'scale-[1.15] brightness-100 z-10'
+                        : 'scale-95 brightness-[0.65] opacity-80'
+                    }`}
+                    style={{
+                      aspectRatio: '16/9',
+                      width: '100%',
+                      maxWidth: '900px',
+                      margin: '0 auto',
+                      pointerEvents: 'auto',
+                    }}>
+                    <Image
+                      src={img}
+                      alt={`Bootcamp Project ${idx + 1}`}
+                      fill
+                      quality={100}
+                      className="object-cover transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 50vw"
+                      priority={idx === 0}
+                    />
+                  </div>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <style
+          jsx
+          global>{`
+          html,
+          body {
+            overflow-x: hidden !important;
+          }
+
+          .swiper {
+            overflow: visible !important;
+          }
+
+          .swiper-wrapper {
+            overflow: visible !important;
+          }
+
+          .swiper-slide {
+            height: auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 30px 0 !important;
+          }
+
+          .swiper-pagination {
+            position: relative !important;
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 12px !important;
+            padding: 40px 0 20px 0 !important;
+          }
+
+          .swiper-pagination-bullet {
+            width: 14px !important;
+            height: 14px !important;
+            background: #a855f7 !important;
+            opacity: 0.4 !important;
+            margin: 0 6px !important;
+            border-radius: 50% !important;
+            transition:
+              transform 0.2s ease,
+              opacity 0.2s ease !important;
+            cursor: pointer !important;
+          }
+
+          .swiper-pagination-bullet-active {
+            opacity: 1 !important;
+            transform: scale(1.15) !important;
+            background: #a855f7 !important;
+          }
+
+          .swiper-button-next,
+          .swiper-button-prev {
+            display: none !important;
+          }
+
+          .swiper {
+            padding-bottom: 0 !important;
+          }
+
+          .swiper-slide > div {
+            overflow: hidden !important;
+          }
+        `}</style>
       </div>
-    </div>
+    </section>
   );
 }
