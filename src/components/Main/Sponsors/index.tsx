@@ -1,38 +1,58 @@
 import { Button } from '@/components/Button';
-import SponsorCard, { type Sponsor } from './SponsorCard';
+import SponsorsCard, { type Sponsors } from './SponsorCard';
 
-const sponsors: Sponsor[] = [
+import FGF from '@/public/Main/Sponsors/FGF.svg';
+import KlickHealth from '@/public/Main/Sponsors/Klick Health.svg';
+import theScore from '@/public/Main/Sponsors/theScore.svg';
+import VectorInstitute from '@/public/Main/Sponsors/Vector Institute.svg';
+import MSReactor from '@/public/Main/Sponsors/MSReactor.svg';
+import MLH from '@/public/Main/Sponsors/MLH.svg';
+import Databricks from '@/public/Main/Sponsors/Databricks.svg';
+
+const sponsors: Sponsors[] = [
   {
-    text: '"... they are trendsetters trailblazers who strive to create an inclusive environment for students on campus and for students to engage with data sciences and statistics and more."',
-    author: 'Gwendolyn Wang',
-    position: 'Department Manager UTSC CMS',
+    name: 'Vector Institute',
+    logo: VectorInstitute,
+    link: 'https://vectorinstitute.ai/',
   },
+  { name: 'FGF Brands', logo: FGF, link: 'https://www.fgfbrands.com/' },
+  {
+    name: 'Microsoft Reactor',
+    logo: MSReactor,
+    link: 'https://developer.microsoft.com/en-us/reactor/',
+    className: 'p-2',
+  },
+  { name: 'TheScore', logo: theScore, link: 'https://www.thescore.com/' },
+  { name: 'MLH', logo: MLH, link: 'https://mlh.io/' },
+  { name: 'Klick Health', logo: KlickHealth, link: 'https://www.klick.com/' },
+  { name: 'Databricks', logo: Databricks, link: 'https://www.databricks.com/' },
 ];
 
 export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="text-center">
-      <h2 className="text-gray-300 text-5xl font-bold tracking-wider pt-24 pb-8">
+      className="flex flex-col items-center justify-center py-24 md:py-[15vh] text-center">
+      <h2 className="text-white text-5xl font-bold tracking-wide pb-8">
         Support Our Mission!
       </h2>
-      <p className="description text-2xl px-4 md:px-20 lg:px-28">
+      <p className="description text-2xl px-4 md:px-20 lg:px-28 mb-6">
         Support our mission and make your organization visible to numerous
         capable University of Toronto students. From merchandise to customized
-        events, we support our industry partners by curating sponsorship
-        packages that fit your needs.
+        events, we curate sponsorship packages that fit your needs.
       </p>
-      {/** Do not replace the <a> tag below with <Link>
-       *   <Link> does not work after a single click
-       */}
       <a href="mailto:thedatasciencecube@gmail.com">
         <Button className="mt-6">Contact Us</Button>
       </a>
-      <div className="sponsors flex flex-col md:flex-row justify-center items-center md:justify-between md:items-start md:flex-wrap gap-8 md:gap-16 lg:gap-20 pt-8 md:pt-12">
-        {sponsors.map((sponsor: Sponsor, id) => (
-          <SponsorCard
-            key={id}
+
+      <h3 className="text-white text-3xl font-semibold tracking-wide mt-16 mb-8">
+        Our Sponsors From Last Year
+      </h3>
+
+      <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-10 w-full max-w-7xl mx-auto mt-6">
+        {sponsors.map((sponsor, idx) => (
+          <SponsorsCard
+            key={idx}
             {...sponsor}
           />
         ))}

@@ -9,7 +9,6 @@ import DatathonHero from '@/components/Datathon/Hero';
 import AboutDatathon from '@/components/Datathon/About';
 import { FAQ } from '@/components/Datathon/FAQ';
 import { ImageCarousel } from '@/components/Datathon/HighlightCarousel';
-import Sponsors from '@/components/Datathon/Sponsors';
 
 import img1 from '@/public/Datathon/carousel/IMG_1818.png';
 import img2 from '@/public/Datathon/carousel/IMG_1883.png';
@@ -73,7 +72,7 @@ export default function Datathon() {
   const links: Link[] = [
     { title: 'Home', href: '/' },
     { title: 'About', href: '#about-us' },
-    { title: 'Sponsors', href: '#sponsors' },
+    //{ title: 'Sponsors', href: '#sponsors' },
     { title: 'Highlights', href: '#highlights' },
     { title: 'FAQ', href: '#faq' },
   ];
@@ -97,7 +96,7 @@ export default function Datathon() {
               className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg">
               →
             </LinkButton>
-            <Sponsors />
+            {/* <Sponsors/> Tag Removed */}
             <ImageCarousel images={images} />
             <FAQ faqs={faqs} />
           </div>
