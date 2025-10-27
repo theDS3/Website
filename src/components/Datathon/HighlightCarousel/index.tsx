@@ -150,4 +150,3 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
     </section>
   );
 }
-
