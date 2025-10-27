@@ -10,22 +10,22 @@ import MLH from '@/public/Main/Sponsors/MLH.svg';
 import Databricks from '@/public/Main/Sponsors/Databricks.svg';
 
 const sponsors: Sponsors[] = [
+  { name: 'Databricks', logo: Databricks, link: 'https://www.databricks.com/' },
   {
     name: 'Vector Institute',
     logo: VectorInstitute,
     link: 'https://vectorinstitute.ai/',
   },
-  { name: 'FGF Brands', logo: FGF, link: 'https://www.fgfbrands.com/' },
   {
     name: 'Microsoft Reactor',
     logo: MSReactor,
     link: 'https://developer.microsoft.com/en-us/reactor/',
     className: 'p-2',
   },
+  { name: 'FGF Brands', logo: FGF, link: 'https://www.fgfbrands.com/' },
   { name: 'TheScore', logo: theScore, link: 'https://www.thescore.com/' },
   { name: 'MLH', logo: MLH, link: 'https://mlh.io/' },
   { name: 'Klick Health', logo: KlickHealth, link: 'https://www.klick.com/' },
-  { name: 'Databricks', logo: Databricks, link: 'https://www.databricks.com/' },
 ];
 
 export default function Sponsors() {

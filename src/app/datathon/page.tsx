@@ -93,7 +93,7 @@ export default function Datathon() {
             </p>
             <LinkButton
               href="/datathon/leaderboard/past"
-              className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg">
+              className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg mb-20">
               →
             </LinkButton>
             {/* <Sponsors/> Tag Removed */}
