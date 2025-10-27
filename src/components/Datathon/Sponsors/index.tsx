@@ -1,11 +1,11 @@
 import SponsorsCard, { type Sponsors } from './SponsorsCard';
 
-import FGF from '@/public/Datathon/Sponsors/FGF.svg';
-import KlickHealth from '@/public/Datathon/Sponsors/Klick Health.svg';
-import theScore from '@/public/Datathon/Sponsors/theScore.svg';
-import VectorInstitute from '@/public/Datathon/Sponsors/Vector Institute.svg';
-import MSReactor from '@/public/Datathon/Sponsors/MSReactor.svg';
-import MLH from '@/public/Datathon/Sponsors/MLH.svg';
+import FGF from '@/public/Sponsors/FGF.svg';
+import KlickHealth from '@/public/Sponsors/Klick Health.svg';
+import theScore from '@/public/Sponsors/theScore.svg';
+import VectorInstitute from '@/public/Sponsors/Vector Institute.svg';
+import MSReactor from '@/public/Sponsors/MSReactor.svg';
+import MLH from '@/public/Sponsors/MLH.svg';
 
 const sponsors: Sponsors[] = [
   {

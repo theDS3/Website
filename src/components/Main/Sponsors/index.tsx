@@ -1,13 +1,13 @@
 import { Button } from '@/components/Button';
 import SponsorsCard, { type Sponsors } from './SponsorCard';
 
-import FGF from '@/public/Main/Sponsors/FGF.svg';
-import KlickHealth from '@/public/Main/Sponsors/Klick Health.svg';
-import theScore from '@/public/Main/Sponsors/theScore.svg';
-import VectorInstitute from '@/public/Main/Sponsors/Vector Institute.svg';
-import MSReactor from '@/public/Main/Sponsors/MSReactor.svg';
-import MLH from '@/public/Main/Sponsors/MLH.svg';
-import Databricks from '@/public/Main/Sponsors/Databricks.svg';
+import FGF from '@/public/Sponsors/FGF.svg';
+import KlickHealth from '@/public/Sponsors/Klick Health.svg';
+import theScore from '@/public/Sponsors/theScore.svg';
+import VectorInstitute from '@/public/Sponsors/Vector Institute.svg';
+import MSReactor from '@/public/Sponsors/MSReactor.svg';
+import MLH from '@/public/Sponsors/MLH.svg';
+import Databricks from '@/public/Sponsors/Databricks.svg';
 
 const sponsors: Sponsors[] = [
   { name: 'Databricks', logo: Databricks, link: 'https://www.databricks.com/' },
@@ -45,7 +45,7 @@ export default function Sponsors() {
         <Button className="mt-6">Contact Us</Button>
       </a>
 
-      <h3 className="text-white text-3xl font-semibold tracking-wide mt-16 mb-8">
+      <h3 className="text-white text-5xl font-semibold tracking-wide mt-32 mb-8">
         Our Sponsors
       </h3>
 
