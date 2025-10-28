@@ -12,9 +12,8 @@ export async function PATCH(request: NextRequest) {
   try {
     verifyRequest(request.headers);
 
-    // Collects the code, date, service from the request
+    // Collects the code and serviceLabel from the request
     const code = isUUID4(request.nextUrl.searchParams.get('code'));
-    const date = isDate(request.nextUrl.searchParams.get('date'));
     const serviceLabel = request.nextUrl.searchParams.get('serviceLabel') || '';
 
     if (!serviceLabel || serviceLabel.length === 0)
@@ -26,48 +25,43 @@ export async function PATCH(request: NextRequest) {
 
     connectDB();
 
-    // Retrieves a participant with a specific code and has the service for a specific date
+    // Retrieves a participant with a specific code and has the service
     const participant: IParticipant | null = await Participant.findOne({
       code,
-      [`services.${date}.${serviceLabel}`]: { $exists: true },
+      [`services.${serviceLabel}`]: { $exists: true },
     });
 
-    // If the participant does not exist or does not have services for the date, throw a QueryError
+    // If the participant does not exist or does not have services, throw a QueryError
     if (!participant || !participant.services)
       throw new QueryError({
         name: 'PARTICIPANT_DNE',
         message: 'Participant does not exist',
-        cause: `Participant with code ${code} does not exist and/or have services for ${date}`,
+        cause: `Participant with code ${code} does not exist or has no service ${serviceLabel}`,
       });
 
-    const service = participant.services.get(date);
+    const usage = participant.services.get(serviceLabel);
 
-    // If the participant does exist and has services for the date, update the service usage to USED
-    if (service && !service[serviceLabel].status) {
-      service[serviceLabel] = {
-        status: true,
-        timestamp: formatISO(new Date(), {
-          representation: 'complete',
-          format: 'extended',
-        }),
-      };
-
+    // If the participant does exist and has the service, update the service usage to USED
+    if (usage && !usage.status) {
+      usage.status = true;
+      usage.timestamp = formatISO(new Date(), {
+        representation: 'complete',
+        format: 'extended',
+      });
+      participant.services.set(serviceLabel, usage);
       await participant.save();
     } else {
       throw new QueryError({
         name: 'SERVICE_NOT_AVAILABLE',
         message: 'Service does not exist or has been used',
-        cause: `Participant with code ${code} does not have service ${serviceLabel} for ${date}`,
+        cause: `Participant with code ${code} does not have service ${serviceLabel} or it has been used`,
       });
     }
 
-    // If the participant does exist and has services for the date, return with all available services for the date
+    // Return all available services (unused activities)
     return NextResponse.json(
       {
-        availableServices: getAvailableServicesByLabel(
-          participant.services,
-          date,
-        ),
+        availableServices: getAvailableServicesByLabel(participant.services),
       },
       { status: 200 },
     );

@@ -1,11 +1,7 @@
 import { type Options } from '@loskir/styled-qr-code-node';
 import { createTransport } from 'nodemailer';
 
-import {
-  type Service,
-  type ServiceGroupsToLabels,
-  type Services,
-} from '@/db/models/participant';
+import { type Services } from '@/db/models/participant';
 import { VerificationError } from './error';
 
 /**
@@ -60,48 +56,26 @@ export const generateQRCodeOptions = (code: string): Partial<Options> => {
  *
  * @throws If service names are not unique
  */
-export const generateServices = (
-  serviceGroupsToLabels: ServiceGroupsToLabels,
-): Services => {
-  const services = new Map<string, Service>();
-
-  Object.entries(serviceGroupsToLabels).forEach(([serviceGroup, labels]) => {
-    if (new Set(labels).size !== labels.length)
-      throw new Error('Service Names must be unique');
-
-    const serviceNameToServiceData: Service = {};
-
-    labels.forEach((label) => {
-      serviceNameToServiceData[label] = {
-        status: false,
-        timestamp: undefined,
-      };
-    });
-
-    services.set(serviceGroup, serviceNameToServiceData);
-  });
-
+export const generateServices = (activities: string[]): Services => {
+  const services = new Map();
+  for (const activity of activities) {
+    services.set(activity, { status: false, timestamp: undefined });
+  }
   return services;
 };
 
 /**
- * Returns all services that have not been used by a participant.
+ * Returns all activities that have not been used by a participant.
  *
- * @param {Services} services Map of services
- * @param {string} service Label of the service group
- *
- * @returns {string[]} Array of unused services
+ * @param {Services} services Map of activity name to Usage
+ * @returns {string[]} Array of unused activities
  */
-export const getAvailableServicesByLabel = (
-  services: Services,
-  service: string,
-) => {
-  const serviceByUsage = services.get(service);
-  return !serviceByUsage
-    ? []
-    : Object.keys(serviceByUsage).filter(
-        (service) => !serviceByUsage[service].status,
-      );
+export const getAvailableServicesByLabel = (services: Services) => {
+  const unused: string[] = [];
+  Array.from(services.entries()).forEach(([activity, usage]) => {
+    if (!usage.status) unused.push(activity);
+  });
+  return unused;
 };
 
 /**
