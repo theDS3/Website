@@ -3,6 +3,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Key } from '@react-types/shared';
+import type { Selection } from "@heroui/react";
 import {
   Table,
   TableHeader,
@@ -20,8 +21,7 @@ import {
   User,
   Spinner,
   Pagination,
-  Divider,
-} from '@nextui-org/react';
+} from "@heroui/react";
 import { env } from '@/env/client.mjs';
 import { VerticalDotsIcon } from '@/public/VerticalDotsIcons';
 import { SearchIcon } from '@/public/SearchIcon';
@@ -112,6 +112,7 @@ export default function Applications() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const hasSearchFilter = Boolean(filterValue);
+  const [selectedRows, setSelectedRows] = useState<Selection>(new Set<Key>([]));
 
   const getAllApplications = async () => {
     try {
@@ -252,6 +253,20 @@ export default function Applications() {
     }
   };
 
+  const handleSelectedRowsStatus = async (rows: any, newStatus: string) => {
+    if (rows === "all") {
+      const allIds = documents.apps.map((app) => app.id);
+      for (const id of allIds) {
+        await changeStatus(id, newStatus);
+      }
+    } else if (rows instanceof Set) {
+      const selectedIds = Array.from(rows).map((rowId) => rowId.toString());
+      for (const id of selectedIds) {
+        await changeStatus(id, newStatus);
+      }
+    }
+  };
+
   const filteredItems = useMemo(() => {
     let filteredApps = [...documents.apps];
 
@@ -330,12 +345,26 @@ export default function Applications() {
 
           <div className="flex gap-3">
             <Button
+              isDisabled={!(selectedRows === "all") && !(selectedRows instanceof Set && selectedRows.size > 0)}
               color="danger"
-              onPress={() => HandleRejectionEmail()}>
-              Send Rejections
+              variant='ghost'
+              onPress={() => handleSelectedRowsStatus(selectedRows, "REJECTED")}>
+              REJECT
             </Button>
             <Button
-              color="secondary"
+              isDisabled={!(selectedRows === "all") && !(selectedRows instanceof Set && selectedRows.size > 0)}
+              color='success'
+              variant='ghost'
+              onPress={() => handleSelectedRowsStatus(selectedRows, "ACCEPTED")}>
+              ACCEPT
+            </Button>
+            <Button
+              color="danger"
+              onPress={() => HandleRejectionEmail()}>
+              Send Rejections Emails
+            </Button>
+            <Button
+              className='bg-[#114331]'
               onPress={() => HandleAcceptedEmails()}>
               Send Acceptance Emails
             </Button>
@@ -539,7 +568,13 @@ export default function Applications() {
         bottomContent={tablePaginationContent}
         bottomContentPlacement="outside"
         topContent={tableOperationsContent}
-        topContentPlacement="outside">
+        topContentPlacement="outside"
+        color={"secondary"}
+        selectedKeys={selectedRows}
+        onSelectionChange={setSelectedRows}
+        selectionMode='multiple'
+        onRowAction={() => {}} // Prevents row click behavior
+      >
         <TableHeader columns={appColumns}>
           {appColumns.map((column) => (
             <TableColumn
