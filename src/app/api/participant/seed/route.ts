@@ -21,20 +21,6 @@ export async function POST(request: NextRequest) {
       100,
       'numOfParticipants',
     );
-    const startDate = isDate(
-      request.nextUrl.searchParams.get('startDate') || '',
-      'startDate',
-    );
-    const endDate = isDate(
-      request.nextUrl.searchParams.get('endDate') || '',
-      'endDate',
-    );
-    const dayStep = isNumeric(
-      request.nextUrl.searchParams.get('dayStep') || '',
-      1,
-      3,
-      'dayStep',
-    );
 
     // Generates a random list of activities for all mock participants
     const numActivities = Math.floor(Math.random() * 8) + 3; // 3-10 activities
