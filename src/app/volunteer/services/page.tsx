@@ -46,7 +46,6 @@ export default function ParticipantServices() {
   const searchParams = useSearchParams();
 
   const code = searchParams.get('code');
-  const date = format(new Date(), 'yyyy-MM-dd');
 
   const [participant, setParticipant] = useState<Participant | null>();
   const [selectedServiceLabel, setSelectedServiceLabel] =
@@ -57,7 +56,7 @@ export default function ParticipantServices() {
 
     try {
       const response = await fetch(
-        `/api/participant/services/?code=${code}&date=${date}&serviceLabel=${selectedServiceLabel}`,
+        `/api/participant/services/?code=${code}&serviceLabel=${selectedServiceLabel}`,
         {
           method: 'PATCH',
           ...fetchOptions,
@@ -92,7 +91,7 @@ export default function ParticipantServices() {
     const getParticipant = async () => {
       try {
         const response = await fetch(
-          `/api/participant?code=${code}&date=${date}`,
+          `/api/participant?code=${code}`,
           fetchOptions,
         );
         if (response.ok) {
@@ -115,7 +114,7 @@ export default function ParticipantServices() {
     };
 
     getParticipant();
-  }, [code, date]);
+  }, [code]);
 
   if (participant === null) {
     return (
