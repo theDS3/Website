@@ -62,8 +62,8 @@ const links = [
     text: 'Our Team',
   },
   {
-    href: '/datathon',
-    text: 'Datathon',
+    href: '/hackathon',
+    text: 'Hackathon',
   },
 ];
 

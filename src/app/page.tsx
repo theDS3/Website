@@ -11,7 +11,7 @@ const links: Link[] = [
   { title: 'About Us', href: '/#about-us' },
   { title: 'Sponsors', href: '/#sponsors' },
   { title: 'Team', href: '/#team' },
-  { title: 'Datathon', href: '/datathon' },
+  { title: 'Hackathon', href: '/hackathon' },
   { title: 'Agentic AI Program', href: '/agentic-ai' },
 ];
 
