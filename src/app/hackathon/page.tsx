@@ -93,8 +93,8 @@ export default function Datathon() {
               Take a look at the past Final Leaderboards!
             </p>
             <LinkButton
-              href="/datathon/leaderboard/past"
-              className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg">
+              href="/hackathon/leaderboard/past"
+              className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg mb-20">
               →
             </LinkButton>
             {/* <Sponsors/> Tag Removed */}
