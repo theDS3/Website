@@ -37,8 +37,7 @@ export default function Datathon() {
     },
     {
       question: 'When and where will the Hackathon take place?',
-      answer:
-        'February 15th–16th, 2026 @ UTSC',
+      answer: 'February 15th–16th, 2026 @ UTSC',
     },
     {
       question: 'Who can participate?',
