@@ -36,17 +36,17 @@ export default function DatathonHero() {
       <div className="flex flex-col lg:flex-row items-center justify-between w-full z-10 px-6 lg:px-12 gap-8 lg:gap-14 max-w-7xl mx-auto">
         <div className="text-left max-w-2xl space-y-6">
           <h1 className="text-[#d9d9d9] text-6xl max-sm:text-center md:text-6xl lg:text-8xl font-medium tracking-wide">
-            DS3 Datathon
+            Agentic AI Hackathon
           </h1>
           <p className="text-white text-xl max-sm:text-center md:text-2xl lg:text-3xl mt-4 lg:px-2">
-            17th–22nd February 2025
+            15th–16th February 2026
           </p>
           <p className="text-slate-300 text-md max-sm:text-center md:text-xl lg:text-2xl mt-6 lg:mt-10 lg:px-2">
             Unleash your data science skills at our
             <span className="hidden md:inline">
               <br></br>
             </span>
-            in-person datathon event!
+            in-person hackathon event!
           </p>
           <div className="py-2 pt-8 mt-4 sm:mt-6 lg:mt-8 max-sm:text-center">
             {eventOpen && (

@@ -31,13 +31,13 @@ export default function Datathon() {
 
   const faqs: FAQ[] = [
     {
-      question: 'What is the DS3 Datathon?',
+      question: 'What is the Agentic AI Hackathon?',
       answer:
-        'A week long data science hackathon where students will be tested on the accuracy of their models',
+        'A weekend long AI hackathon where participants build autonomous AI agents that interact with real world data',
     },
     {
-      question: 'When and where will the Datathon take place?',
-      answer: 'February 17th-22nd, 2025 @ UTSC',
+      question: 'When and where will the Hackathon take place?',
+      answer: 'February 15th–16th, 2026 @ UTSC',
     },
     {
       question: 'Who can participate?',
@@ -92,7 +92,7 @@ export default function Datathon() {
               Take a look at the past Final Leaderboards!
             </p>
             <LinkButton
-              href="/datathon/leaderboard/past"
+              href="/hackathon/leaderboard/past"
               className="mt-6 px-12 py-2 text-lg md:text-2xl lg:text-6xl font-bold transition-all shadow-lg mb-20">
               →
             </LinkButton>

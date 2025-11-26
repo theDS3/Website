@@ -56,7 +56,7 @@ export default function CountdownTimer({ date }: CountdownTimerProps) {
   return (
     <div className="text-white">
       <h1 className="text-5xl max-md:text-4xl text-center mb-6 font-bold">
-        {date.getFullYear()} Datathon is in ...
+        {date.getFullYear()} Hackathon is in ...
       </h1>
       <div className="text-7xl md:text-8xl text-center flex w-full items-center justify-center flex-wrap select-none">
         {remainingTime.months !== '0' && (
