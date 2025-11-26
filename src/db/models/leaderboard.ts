@@ -52,7 +52,7 @@ const leaderboardSchema = new mongoose.Schema<LeaderboardDoc>(
     collection: 'leaderboard',
     toJSON: {
       transform: (doc, ret) => {
-        delete ret._id;
+        delete (ret as any)._id;
         if ('__v' in ret) delete ret.__v;
         return ret;
       },
