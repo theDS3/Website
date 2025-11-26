@@ -136,7 +136,7 @@ const participantSchema = new mongoose.Schema<IParticipant>(
       transform: (_, ret) => {
         ret.id = ret._id;
         delete ret.qrcode;
-        delete ret._id;
+        delete (ret as any)._id;
         delete (ret as any).__v;
         return ret;
       },
