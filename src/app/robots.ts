@@ -11,16 +11,16 @@ export default function robots(): MetadataRoute.Robots {
   // If it is Datathon Week, then include the Datathon Leaderboard URLs
   const datathonURLs = isDatathonWeek()
     ? [
-        '/datathon/leaderboard',
-        '/datathon/leaderboard/private',
-        '/datathon/leaderboard/final',
+        '/hackathon/leaderboard',
+        '/hackathon/leaderboard/private',
+        '/hackathon/leaderboard/final',
       ]
     : [];
 
   const urls = [
     '/',
-    '/datathon',
-    '/datathon/leaderboard/past',
+    '/hackathon',
+    '/hackathon/leaderboard/past',
     ...datathonURLs,
   ];
 

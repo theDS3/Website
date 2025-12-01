@@ -7,7 +7,7 @@ import { pastFinalDatathonLeaderboard } from '@/utils/datathon';
 
 const links: Link[] = [
   { title: 'Home', href: '/' },
-  { title: 'Datathon', href: '/datathon' },
+  { title: 'Hackathon', href: '/hackathon' },
 ];
 
 export const metadata: Metadata = {
