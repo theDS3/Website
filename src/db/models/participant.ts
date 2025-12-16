@@ -32,14 +32,19 @@ export type Services = Map<string, Usage>;
 export type Activities = string[];
 // List of all activities in the datathon
 const datathonActivities: Activities = [
-  'TESTING',
-  'TEST 2',
-  'Registration',
+  "Check-In",
+  "Afternoon Snacks",
   'Opening Ceremony',
-  'Workshop 1',
-  'Lunch + Networking',
-  'Workshop 2',
-  'Closing Ceremony',
+  "Dinner",
+  "Evening Snacks",
+  "Trivia",
+  "Karaoke",
+  "Midnight Snacks",
+  "Breakfast",
+  "Hacking Finishes",
+  "Sponsor Workshop",
+  "Lunch",
+  "Closing Ceremony",
 ];
 
 export type Contact = Map<'acceptance' | 'hacker-package' | 'rejection', Usage>;
