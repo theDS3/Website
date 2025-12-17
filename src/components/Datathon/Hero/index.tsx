@@ -39,7 +39,7 @@ export default function DatathonHero() {
             Agentic AI Hackathon
           </h1>
           <p className="text-white text-xl max-sm:text-center md:text-2xl lg:text-3xl mt-4 lg:px-2">
-            15th–16th February 2026
+            14th–15th February 2026
           </p>
           <p className="text-slate-300 text-md max-sm:text-center md:text-xl lg:text-2xl mt-6 lg:mt-10 lg:px-2">
             Unleash your data science skills at our
