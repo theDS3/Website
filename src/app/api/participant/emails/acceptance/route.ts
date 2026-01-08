@@ -14,8 +14,20 @@ import { VerificationError } from '@/error';
 import { generateMailer } from '@/utils';
 import { verifyEmails } from '@/verify';
 
+export async function OPTIONS(request: NextRequest) {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}
+
 export async function POST(request: NextRequest) {
   try {
+    console.log('GMAIL_USER:', env.GMAIL_USER);
     const { emails }: { emails: string[] } = await request.json();
 
     verifyEmails(emails);
@@ -97,7 +109,17 @@ export async function POST(request: NextRequest) {
       numEmailsProcessed++;
     }
 
-    return NextResponse.json({ ...results }, { status: 200 });
+    return NextResponse.json(
+      { ...results },
+      {
+        status: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      },
+    );
   } catch (error: any) {
     // Invalid Body
     if (error instanceof SyntaxError)
@@ -107,13 +129,40 @@ export async function POST(request: NextRequest) {
           message: 'Request Body does not match JSON format',
           cause: `${error.name}: ${error.message}`,
         },
-        { status: 400 },
+        {
+          status: 400,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        },
       );
 
     // Catches a VerificationError and returns a 400 error
     if (error instanceof VerificationError)
-      return NextResponse.json({ ...error }, { status: 400 });
+      return NextResponse.json(
+        { ...error },
+        {
+          status: 400,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        },
+      );
 
-    return NextResponse.json({ error: error.message }, { status: 400 });
+    return NextResponse.json(
+      { error: error.message },
+      {
+        status: 400,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      },
+    );
   }
 }

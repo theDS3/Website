@@ -40,7 +40,16 @@ export async function POST(request: NextRequest) {
       participants.push({
         firstName,
         lastName,
-        email: faker.internet.email({ firstName, lastName }),
+        email: faker.internet.email({
+          firstName,
+          lastName,
+          provider: faker.helpers.arrayElement([
+            'gmail.com',
+            'outlook.com',
+            'utoronto.ca',
+            'mail.utoronto.ca',
+          ]),
+        }),
         // Adds phone numbers to only some of the mock participants
         phoneNum:
           Math.random() < 0.5
