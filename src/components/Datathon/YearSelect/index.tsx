@@ -12,14 +12,16 @@ type YearSelectProps = {
 };
 
 export default function YearSelect({
-                                     value,
-                                     onChange,
-                                     options,
-                                     labelledBy,
-                                     id,
-                                   }: YearSelectProps) {
+  value,
+  onChange,
+  options,
+  labelledBy,
+  id,
+}: YearSelectProps) {
   return (
-    <Select.Root value={value} onValueChange={onChange}>
+    <Select.Root
+      value={value}
+      onValueChange={onChange}>
       <Select.Trigger
         id={id}
         aria-labelledby={labelledBy}
@@ -33,8 +35,7 @@ export default function YearSelect({
           data-[state=open]:border-white/40
           select-none
         "
-        aria-label="Select leaderboard year"
-      >
+        aria-label="Select leaderboard year">
         <Select.Value />
         <Select.Icon className="ml-2 text-white/70">
           <ChevronDownIcon />
@@ -54,8 +55,7 @@ export default function YearSelect({
             rounded-xl border border-white/15
             bg-neutral-900/95
             shadow-xl backdrop-blur
-          "
-        >
+          ">
           <Select.Viewport className="p-1">
             {options.map((year) => (
               <Select.Item
@@ -68,8 +68,7 @@ export default function YearSelect({
                   outline-none transition
                   data-[highlighted]:bg-white/10
                   cursor-pointer
-                "
-              >
+                ">
                 <Select.ItemText>{year}</Select.ItemText>
                 <Select.ItemIndicator className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70">
                   <CheckIcon />

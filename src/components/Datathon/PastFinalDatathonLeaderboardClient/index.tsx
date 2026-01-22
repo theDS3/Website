@@ -15,7 +15,9 @@ const links: Link[] = [
 export default function PastFinalDatathonLeaderboardClient() {
   const years = useMemo(() => {
     // Sort year options descending, i.e. most recent first
-    return Object.keys(pastFinalDatathonLeaderboard).sort((a, b) => Number(b) - Number(a));
+    return Object.keys(pastFinalDatathonLeaderboard).sort(
+      (a, b) => Number(b) - Number(a),
+    );
   }, []);
 
   const [selectedYear, setSelectedYear] = useState<string>(years[0] ?? '2025');
