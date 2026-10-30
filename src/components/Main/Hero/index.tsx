@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import LinkButton from '@/components/Button/LinkButton';
-import hero from '@/public/Main/hero.jpg';
+import hero from '@/public/Main/hero.png';
 import MinimalBackground from '@/public/Main/minimal-background.svg';
 
 export default function MainHero() {

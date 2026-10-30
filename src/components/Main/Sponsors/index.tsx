@@ -28,11 +28,16 @@ const sponsors: Sponsors[] = [
   { name: 'Klick Health', logo: KlickHealth, link: 'https://www.klick.com/' },
 ];
 
+// The animation slides the track left by exactly half its width, so the
+// content is repeated 4 times: the second half then matches the first and
+// the loop restarts with no visible jump (even on very wide screens).
+const track = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
+
 export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="flex flex-col items-center justify-center py-24 md:py-[15vh] text-center">
+      className="flex flex-col items-center justify-center py-24 md:py-[15vh] text-center !px-0">
       <h2 className="text-white text-5xl font-bold tracking-wide pb-8">
         Support Our Mission!
       </h2>
@@ -49,13 +54,23 @@ export default function Sponsors() {
         Our Sponsors
       </h3>
 
-      <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-10 w-full max-w-7xl mx-auto mt-6">
-        {sponsors.map((sponsor, idx) => (
-          <SponsorsCard
-            key={idx}
-            {...sponsor}
-          />
-        ))}
+      <div
+        className="marquee w-full overflow-hidden bg-white/10 py-8 mt-6"
+        style={{
+          maskImage:
+            'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
+          WebkitMaskImage:
+            'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
+        }}>
+        <div className="marquee-track">
+          {track.map((sponsor, idx) => (
+            <div
+              key={idx}
+              className="shrink-0 mx-3">
+              <SponsorsCard {...sponsor} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

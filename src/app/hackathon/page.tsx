@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 import LinkButton from '@/components/Button/LinkButton';
 import CountdownTimer from '@/components/Datathon/CountdownTimer';
-import NavBar, { Link } from '@/components/Navabr';
+import NavBar, { Link } from '@/components/Navbar';
 
 import { datathonStartDate, isDatathonWeek } from '@/utils/datathon';
 import DatathonHero from '@/components/Datathon/Hero';

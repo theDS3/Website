@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 
 import Leaderboard from '@/components/Datathon/Leaderboard';
-import NavBar, { type Link } from '@/components/Navabr';
+import NavBar, { type Link } from '@/components/Navbar';
 import { pastFinalDatathonLeaderboard } from '@/utils/datathon';
 import YearSelect from '@/components/Datathon/YearSelect';
 

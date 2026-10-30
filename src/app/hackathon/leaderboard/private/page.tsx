@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 import Leaderboard from '@/components/Datathon/Leaderboard';
-import NavBar, { type Link } from '@/components/Navabr';
+import NavBar, { type Link } from '@/components/Navbar';
 
 import { getLeaderboardData } from '@/db/utils';
 

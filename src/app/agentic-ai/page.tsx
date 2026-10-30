@@ -1,4 +1,4 @@
-import NavBar, { type Link } from '@/components/Navabr';
+import NavBar, { type Link } from '@/components/Navbar';
 import About_Bootcamp from '@/components/Bootcamp/About';
 import Content from '@/components/Bootcamp/Content';
 import FAQ from '@/components/Bootcamp/FAQ';
