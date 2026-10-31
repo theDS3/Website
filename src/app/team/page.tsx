@@ -57,7 +57,6 @@ const currentTeam: TeamMember[] = [
     shiftUp: 1,
   },
   fromList('Nirmay Thakkar'), // VP of Finance, already has a photo
-  fromList('Helena Zhao'), // VP of Outreach, already has a photo
   {
     name: 'Eva',
     position: 'Vice President of Marketing',
