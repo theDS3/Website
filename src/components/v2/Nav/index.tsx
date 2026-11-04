@@ -35,7 +35,7 @@ const socials = [
   },
 ];
 
-export default function Nav() {
+export default function Nav({ delay = 0 }: { delay?: number }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -43,7 +43,7 @@ export default function Nav() {
       className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#101010]/70 backdrop-blur-md"
       initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 1.6, duration: 0.6, ease: 'easeOut' }}>
+      transition={{ delay, duration: 0.6, ease: 'easeOut' }}>
       <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto] items-center px-6 md:grid-cols-[1fr_auto_1fr]">
         {/* Logo */}
         <Link

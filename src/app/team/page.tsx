@@ -13,6 +13,9 @@ import TahmeedRahman from '@/public/Main/Executives/TahmeedRahman.png';
 import Tharjika from '@/public/Main/Executives/Tharjika.png';
 import Wynnbee from '@/public/Main/Executives/Wynnbee.png';
 import Abdul from '@/public/Main/Executives/Abdul.png';
+import BlobTitle from '@/components/v2/BlobTitle';
+import PageShell from '@/components/v2/PageShell';
+import { brand } from '@/utils/brand';
 
 // 24-25 and 25-26 are the same people, so both reuse the list you sent
 const team2526: TeamMember[] = executives;
@@ -149,9 +152,11 @@ const currentTeam: TeamMember[] = [
 
 export default function TeamPage() {
   return (
-    <>
-      <NavBar />
-      <main className="px-8 pt-28 pb-16">
+    <PageShell>
+      <main className="px-4 pb-16 pt-32">
+        <div className="mb-8 text-center">
+          <BlobTitle color={brand.green}>Our team</BlobTitle>
+        </div>
         <TeamSection
           id="current"
           title="Current Team"
@@ -168,6 +173,6 @@ export default function TeamPage() {
           members={team2425}
         />
       </main>
-    </>
+    </PageShell>
   );
 }
