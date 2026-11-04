@@ -1,4 +1,7 @@
 import { Poppins } from 'next/font/google';
+import Footer from '@/components/Footer';
+import Sponsor from '@/components/Main/Sponsors';
+import About from '@/components/v2/About';
 import Hero from '@/components/v2/Hero';
 import Intro from '@/components/v2/Intro';
 import Nav from '@/components/v2/Nav';
@@ -21,7 +24,10 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <About />
+        <Sponsor />
       </main>
+      <Footer />
     </div>
   );
 }

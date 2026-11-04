@@ -11,6 +11,7 @@
 }
 
 html {
+  scroll-padding-top: 5rem;
   scroll-behavior: smooth;
   background-color: #08030d; /* near-black warm purple */
 }
