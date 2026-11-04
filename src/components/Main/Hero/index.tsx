@@ -1,58 +1,62 @@
 import Image from 'next/image';
 
 import LinkButton from '@/components/Button/LinkButton';
-import hero from '@/public/Main/hero.png';
-import MinimalBackground from '@/public/Main/minimal-background.svg';
+import hero from '@/public/Main/team27.png';
 
 export default function MainHero() {
   return (
-    <>
-      <div className="absolute inset-0 -z-30">
-        <Image
-          src={MinimalBackground}
-          alt="Background"
-          fill
-          priority
-          className="hidden md:block object-cover"
-        />
-      </div>
+    <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 pt-28 pb-16 text-center">
+      <h1 className="text-[#d9d9d9] text-4xl sm:text-5xl lg:text-7xl min-[1800px]:text-8xl min-[1800px]:pb-[1rem] font-medium tracking-widest">
+        Data Science
+        <span className="font-light"> &amp; </span>
+        Statistics
+        <span className="font-light"> Society </span>
+      </h1>
+
+      <p className="max-w-4xl text-white text-xl sm:text-2xl lg:text-4xl">
+        We are a group of like-minded individuals at the
+        <span className="text-green-500"> University of Toronto </span>
+        driving impact in the fields of ‎
+        <span className="text-pink-500">
+          data science, statistics, and machine learning.
+        </span>
+      </p>
+
       <Image
         src={hero}
         alt="Data Science & Statistics Society Team Picture"
         placeholder="blur"
         priority={true}
-        className="mb-8 rounded-3xl sm:max-w-sm md:max-w-md lg:max-w-xl"
+        className="w-full max-w-3xl lg:max-w-5xl min-[1800px]:max-w-6xl rounded-3xl"
       />
 
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute bottom-0 left-0 right-0 h-60 bg-gradient-to-b from-transparent to-[#151019]"></div>
-      </div>
-
-      <div className="flex flex-col gap-6">
-        <h1 className="col-span-2 text-[#d9d9d9] text-6xl lg:text-7xl min-[1800px]:text-8xl min-[1800px]:pb-[1rem] font-medium tracking-widest">
-          Data Science
-          <span className="font-light"> &amp; </span>
-          Statistics
-          <span className="font-light"> Society </span>
-        </h1>
-        <p className="text-white text-2xl lg:text-4xl">
-          We are a group of like-minded individuals at the
-          <span className="text-green-500"> University of Toronto </span>
-          driving impact in the fields of ‎
-          <span className="text-pink-500">
-            data science, statistics, and machine learning.
+      <div className="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="#about-us"
+          className="inline-flex items-center gap-3 rounded-full bg-white/20 py-2 pl-6 pr-2 text-lg font-semibold text-white backdrop-blur transition hover:bg-white/30">
+          Learn More
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#4c1d95]">
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
           </span>
-        </p>
-        <div className="flex justify-center items-center col-span-full pt-6">
-          <LinkButton
-            newTab
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
-            prefetch={false}
-            className="mt-6 md:mr-auto w-max">
-            Join Us
-          </LinkButton>
-        </div>
+        </a>
+
+        <LinkButton
+          newTab
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform"
+          prefetch={false}
+          className="w-max">
+          Join Us
+        </LinkButton>
       </div>
-    </>
+    </div>
   );
 }

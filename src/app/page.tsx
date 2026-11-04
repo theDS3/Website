@@ -1,6 +1,3 @@
-import { Metadata } from 'next';
-
-import Hero from '@/components/Hero';
 import AboutUs from '@/components/Main/AboutUs';
 import MainHero from '@/components/Main/Hero';
 import Sponsor from '@/components/Main/Sponsors';
@@ -11,9 +8,11 @@ export default function Home() {
     <>
       <NavBar />
       <main>
-        <Hero>
+        <section
+          id="intro"
+          className="!p-0">
           <MainHero />
-        </Hero>
+        </section>
         <AboutUs />
         <Sponsor />
       </main>
