@@ -21,10 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={josefinSans.className}>
-        {children}
-        <Footer />
-      </body>
+      <body className={josefinSans.className}>{children}</body>
     </html>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Libre_Baskerville } from 'next/font/google';
 import { MotionConfig, motion } from 'framer-motion';
 import {
   FaBrain,
@@ -12,70 +13,108 @@ import {
   FaRobot,
 } from 'react-icons/fa';
 import { brand } from '@/utils/brand';
+import IsoLogo, { anchor, type GlyphKey } from './IsoLogo';
+
+const baskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  style: 'italic',
+  weight: '400',
+});
 
 const START = 1.7; // seconds: waits for the purple intro to slide away
-const JOIN_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform';
+const STAGGER = 0.35;
+const LOGO_DONE = START + 2 * STAGGER + 0.9;
 
-const letters = [
-  { char: 'D', x: 265, color: brand.purple },
-  { char: 'S', x: 500, color: brand.pink },
-  { char: '3', x: 735, color: brand.green },
-];
+// Where the 400x400 logo sits inside the 1000x540 hero SVG (cube center lands at x=500)
+const OX = 180;
+const OY = -40;
+const SC = 1.6;
 
-// cx/cy = label center, w = label width, path = the line, dot = where it lands on a letter
-const tags = [
+type Tag = {
+  label: string;
+  href: string;
+  color: string;
+  glyph: GlyphKey; // which letter the line lands on
+  cell: [number, number]; // grid point on that letter (5x5, use .5 to land mid-cell)
+  cx: number; // label center x (for 'v' tags it's taken from the dot)
+  cy: number; // label center y (for 'h' tags it's taken from the dot, so the line is level)
+  w: number; // label width
+  dir: 'h' | 'v'; // h = straight horizontal line, v = straight vertical line
+};
+
+const tags: Tag[] = [
   {
     label: 'about',
     href: '/#about',
-    cx: 95,
-    cy: 150,
-    w: 82,
-    path: 'M136 150 H200 V300',
-    dot: [200, 300],
     color: brand.purple,
+    glyph: 'D',
+    cell: [0.5, 2.5],
+    cx: 170,
+    cy: 0,
+    w: 82,
+    dir: 'h',
   },
   {
     label: 'sponsors',
     href: '/#sponsors',
-    cx: 410,
-    cy: 110,
-    w: 114,
-    path: 'M467 110 H505 V233',
-    dot: [505, 233],
     color: brand.pink,
+    glyph: 'S',
+    cell: [0.5, 5.5],
+    cx: 220,
+    cy: 0,
+    w: 114,
+    dir: 'h',
   },
   {
     label: 'team',
     href: '/team',
-    cx: 736,
-    cy: 70,
-    w: 72,
-    path: 'M736 84 V233',
-    dot: [736, 233],
     color: brand.green,
+    glyph: 'S',
+    cell: [2.5, 0.5],
+    cx: 0,
+    cy: 30,
+    w: 72,
+    dir: 'v',
   },
   {
     label: 'hackathon',
     href: '/hackathon',
-    cx: 880,
-    cy: 190,
-    w: 125,
-    path: 'M817 190 H775 V300',
-    dot: [775, 300],
     color: '#ffb020',
+    glyph: 'S',
+    cell: [4.5, 1.5],
+    cx: 785,
+    cy: 0,
+    w: 125,
+    dir: 'h',
   },
   {
     label: 'agentic ai',
     href: '/agentic-ai',
-    cx: 880,
-    cy: 480,
-    w: 135,
-    path: 'M812 480 H760 V395',
-    dot: [760, 395],
     color: '#5eb0ff',
+    glyph: '3',
+    cell: [3.5, 3.5],
+    cx: 860,
+    cy: 0,
+    w: 135,
+    dir: 'h',
   },
 ];
+
+// Turn each tag into its drawn geometry (label position, line path, landing dot)
+const placed = tags.map((t) => {
+  const [lx, ly] = anchor(t.glyph, t.cell[0], t.cell[1]);
+  const dot: [number, number] = [
+    Math.round(OX + SC * lx),
+    Math.round(OY + SC * ly),
+  ];
+  const cx = t.dir === 'v' ? dot[0] : t.cx;
+  const cy = t.dir === 'v' ? t.cy : dot[1];
+  const path =
+    t.dir === 'v'
+      ? `M${cx} ${cy + 14} V${dot[1]}`
+      : `M${cx + (dot[0] > cx ? t.w / 2 : -t.w / 2)} ${cy} H${dot[0]}`;
+  return { ...t, cx, cy, path, dot };
+});
 
 const dock = [
   { label: 'Workshops', icon: <FaCode />, color: brand.purple },
@@ -97,34 +136,17 @@ export default function Hero() {
           className="w-full max-w-4xl"
           role="img"
           aria-label="DS3">
-          {/* The big letters */}
-          <g
-            fontSize="300"
-            fontWeight="800"
-            textAnchor="middle">
-            {letters.map(({ char, x, color }, i) => (
-              <motion.g
-                key={char}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: START + i * 0.12,
-                  duration: 0.7,
-                  ease: [0.22, 1, 0.36, 1],
-                }}>
-                <text
-                  x={x}
-                  y={430}
-                  fill={color}>
-                  {char}
-                </text>
-              </motion.g>
-            ))}
+          {/* The isometric logo: S rises, then D, then 3 */}
+          <g transform={`translate(${OX} ${OY}) scale(${SC})`}>
+            <IsoLogo
+              start={START}
+              stagger={STAGGER}
+            />
           </g>
 
           {/* Labels + lines (hidden on phones, where chips are shown instead) */}
           <g className="hidden sm:inline">
-            {tags.map(({ label, href, cx, cy, w, path, dot, color }, i) => {
+            {placed.map(({ label, href, cx, cy, w, path, dot, color }, i) => {
               const on = active === label;
               const go = () => router.push(href);
               return (
@@ -132,7 +154,10 @@ export default function Hero() {
                   key={label}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: START + 0.9 + i * 0.12, duration: 0.4 }}
+                  transition={{
+                    delay: LOGO_DONE + 0.3 + i * 0.12,
+                    duration: 0.4,
+                  }}
                   role="link"
                   tabIndex={0}
                   aria-label={label}
@@ -151,7 +176,7 @@ export default function Hero() {
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{
-                      delay: START + 0.7 + i * 0.12,
+                      delay: LOGO_DONE + 0.1 + i * 0.12,
                       duration: 0.8,
                       ease: 'easeInOut',
                     }}
@@ -195,6 +220,15 @@ export default function Hero() {
           </g>
         </svg>
 
+        {/* Society name */}
+        <motion.h1
+          className={`${baskerville.className} -mt-2 text-2xl italic tracking-wide text-white sm:text-4xl`}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: LOGO_DONE + 0.4, duration: 0.6 }}>
+          Data Science and Statistics Society
+        </motion.h1>
+
         {/* Phone version of the labels */}
         <div className="mt-2 flex flex-wrap justify-center gap-2 sm:hidden">
           {tags.map(({ label, href, color }) => (
@@ -213,7 +247,7 @@ export default function Hero() {
           className="mt-4 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: START + 1.4, duration: 0.6 }}>
+          transition={{ delay: LOGO_DONE + 0.8, duration: 0.6 }}>
           A student community at the University of Toronto exploring{' '}
           <span style={{ color: brand.green }}>data science</span>,{' '}
           <span style={{ color: brand.purple }}>statistics</span> and{' '}
@@ -225,7 +259,7 @@ export default function Hero() {
           className="mt-8 inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-2"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: START + 1.6, duration: 0.6 }}>
+          transition={{ delay: LOGO_DONE + 1.0, duration: 0.6 }}>
           {dock.map(({ label, icon, color }) => (
             <span
               key={label}
@@ -244,16 +278,17 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        <motion.a
-          href={JOIN_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 rounded-full border border-white/40 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#101010]"
+        <motion.div
+          className="mt-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: START + 1.8, duration: 0.6 }}>
-          Join us
-        </motion.a>
+          transition={{ delay: LOGO_DONE + 1.2, duration: 0.6 }}>
+          <Link
+            href="/join"
+            className="inline-block rounded-full border border-white/40 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#101010]">
+            Join us
+          </Link>
+        </motion.div>
       </section>
     </MotionConfig>
   );

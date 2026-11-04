@@ -1,8 +1,16 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
+import { Libre_Baskerville } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { brand } from '@/utils/brand';
+import teamPhoto from '@/public/Main/team27.png';
+
+const baskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
 
 const heading = 'We are DS3';
 const palette = [brand.purple, brand.pink, brand.green, '#ffb020', '#5eb0ff'];
@@ -66,7 +74,7 @@ export default function About() {
 
       {/* Heading: every letter in its own color, rising in one by one */}
       <h2
-        className="text-6xl font-extrabold leading-none sm:text-8xl"
+        className={`${baskerville.className} text-6xl font-bold leading-tight sm:text-8xl`}
         aria-label={heading}>
         {Array.from(heading).map((ch, i) =>
           ch === ' ' ? (
@@ -90,6 +98,22 @@ export default function About() {
           ),
         )}
       </h2>
+
+      {/* Team photo */}
+      <motion.div
+        className="mt-10 overflow-hidden rounded-2xl border border-white/10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
+        <Image
+          src={teamPhoto}
+          alt="The DS3 team"
+          sizes="(min-width: 1024px) 960px, 100vw"
+          className="h-auto w-full"
+          placeholder="blur"
+        />
+      </motion.div>
 
       <motion.p
         className="mt-8 max-w-3xl text-xl leading-relaxed text-white/80 sm:text-2xl"
