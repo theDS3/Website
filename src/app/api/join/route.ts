@@ -3,14 +3,13 @@ import { NextResponse } from 'next/server';
 const FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/formResponse';
 
-// TODO: replace with your form's real field ids (see below)
+// Still placeholders until you paste the real ids from the pre-filled link
 const EMAIL_FIELD = 'entry.0000000001';
 const NAME_FIELD = 'entry.0000000002';
 
 export async function POST(req: Request) {
   const { email, name, company } = await req.json().catch(() => ({}));
 
-  // Honeypot filled in: pretend it worked
   if (company) return NextResponse.json({ ok: true });
 
   if (
@@ -34,9 +33,17 @@ export async function POST(req: Request) {
     redirect: 'manual',
   });
 
-  // Google answers 200 or a redirect on success
+  console.log(
+    'Google Forms responded:',
+    res.status,
+    res.headers.get('location'),
+  );
+
   if (res.status === 200 || (res.status >= 300 && res.status < 400)) {
     return NextResponse.json({ ok: true });
   }
-  return NextResponse.json({ error: 'Upstream error' }, { status: 502 });
+  return NextResponse.json(
+    { error: 'Upstream error', googleStatus: res.status },
+    { status: 502 },
+  );
 }

@@ -1,5 +1,6 @@
 import { Poppins } from 'next/font/google';
 import Footer from '@/components/Footer';
+import Halftone from '@/components/v2/Halftone';
 import Nav from '@/components/v2/Nav';
 
 const poppins = Poppins({
@@ -16,12 +17,8 @@ export default function PageShell({
 }) {
   return (
     <div
-      className={`${poppins.className} relative min-h-screen bg-[#101010] text-white`}
-      style={{
-        backgroundImage:
-          'linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)',
-        backgroundSize: '48px 48px',
-      }}>
+      className={`${poppins.className} relative isolate min-h-screen bg-[#08030d] text-white`}>
+      <Halftone />
       <Nav delay={navDelay} />
       {children}
       <Footer />

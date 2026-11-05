@@ -13,7 +13,7 @@ const baskerville = Libre_Baskerville({
 });
 
 const heading = 'We are DS3';
-const palette = [brand.purple, brand.pink, brand.green, '#ffb020', '#5eb0ff'];
+const palette = [brand.purple, brand.pink, brand.green];
 
 const cards = [
   {
@@ -126,7 +126,7 @@ export default function About() {
         hands-on workshops, industry connections, and competitions like our{' '}
         <Hl
           href="/hackathon"
-          color="#ffb020">
+          color={brand.purple}>
           datathon
         </Hl>
         . Meet the{' '}
@@ -138,7 +138,7 @@ export default function About() {
         , or explore our{' '}
         <Hl
           href="/agentic-ai"
-          color="#5eb0ff">
+          color={brand.pink}>
           Agentic AI program
         </Hl>
         .

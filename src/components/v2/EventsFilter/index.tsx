@@ -1,10 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import FanCards from '@/components/v2/FanCards';
+import { motion } from 'framer-motion';
+import EventCard, {
+  StepsPreview,
+  TilesPreview,
+} from '@/components/v2/EventCard';
 import { brand } from '@/utils/brand';
 
 type Status = 'current' | 'past';
+
+type EventItem = {
+  title: string;
+  text: string;
+  tag: string;
+  href: string;
+  color: string;
+  items?: string[]; // optional: shows animated pills instead of tiles
+};
 
 const events = {
   current: [
@@ -12,14 +25,14 @@ const events = {
       title: 'Build Your Own Wrapped',
       text: 'Turn your own data into a personal year-in-review.',
       tag: 'workshop',
-      href: '/events', // placeholder until this event has a page
+      href: '/events/build-your-own-wrapped',
       color: brand.pink,
     },
     {
       title: 'Machine Learning Bootcamp',
       text: 'A hands-on introduction to building and evaluating ML models.',
       tag: 'bootcamp',
-      href: '/events', // placeholder until this event has a page
+      href: '/events/machine-learning-bootcamp',
       color: brand.purple,
     },
   ],
@@ -28,15 +41,15 @@ const events = {
       title: 'Agentic AI Bootcamp',
       text: 'Hands-on sessions on building with AI agents.',
       tag: 'bootcamp',
-      href: '/agentic-ai',
-      color: '#5eb0ff',
+      href: '/events/agentic-ai-bootcamp',
+      color: brand.green,
     },
     {
       title: 'Agentic AI Hackathon',
       text: 'Work in a team, build something in a weekend, and show it off.',
       tag: 'hackathon',
-      href: '/hackathon',
-      color: '#ffb020',
+      href: '/events/agentic-ai-hackathon',
+      color: brand.purple,
     },
   ],
 };
@@ -75,13 +88,43 @@ export default function EventsFilter({
         })}
       </div>
 
-      <div className="mt-16">
-        {/* key remounts the fan so its entrance animation replays on switch */}
-        <FanCards
-          key={filter}
-          cards={events[filter]}
-        />
-      </div>
+      {/* key remounts the grid so the fade-in replays when you switch filters */}
+      <motion.div
+        key={filter}
+        className="mx-auto mt-16 grid w-full max-w-4xl gap-3 md:grid-cols-2"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}>
+        {events[filter].map((c) => (
+          <EventCard
+            key={c.title}
+            kicker={c.title}
+            text={c.text}
+            cta="Explore"
+            href={c.href}
+            accent={c.color}
+            preview={
+              c.items ? (
+                <StepsPreview
+                  items={c.items}
+                  color={c.color}
+                />
+              ) : (
+                <TilesPreview
+                  colors={[
+                    c.color,
+                    '#a855f7',
+                    '#fe1c8d',
+                    '#00d120',
+                    '#ffb020',
+                    c.color,
+                  ]}
+                />
+              )
+            }
+          />
+        ))}
+      </motion.div>
     </>
   );
 }

@@ -21,7 +21,7 @@ const baskerville = Libre_Baskerville({
   weight: '400',
 });
 
-const START = 1.7; // seconds: waits for the purple intro to slide away
+const START = 0.1; // seconds: waits for the purple intro to slide away
 const STAGGER = 0.35;
 const LOGO_DONE = START + 2 * STAGGER + 0.9;
 
@@ -116,14 +116,6 @@ const placed = tags.map((t) => {
   return { ...t, cx, cy, path, dot };
 });
 
-const dock = [
-  { label: 'Workshops', icon: <FaCode />, color: brand.purple },
-  { label: 'Statistics', icon: <FaChartBar />, color: '#ffb020' },
-  { label: 'Datathons', icon: <FaDatabase />, color: brand.green },
-  { label: 'Machine learning', icon: <FaBrain />, color: brand.pink },
-  { label: 'AI agents', icon: <FaRobot />, color: '#5eb0ff' },
-];
-
 export default function Hero() {
   const router = useRouter();
   const [active, setActive] = useState<string | null>(null);
@@ -155,7 +147,7 @@ export default function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
-                    delay: LOGO_DONE + 0.3 + i * 0.12,
+                    delay: LOGO_DONE + 0.1 + i * 0.12,
                     duration: 0.4,
                   }}
                   role="link"
@@ -253,30 +245,6 @@ export default function Hero() {
           <span style={{ color: brand.purple }}>statistics</span> and{' '}
           <span style={{ color: brand.pink }}>machine learning</span>.
         </motion.p>
-
-        {/* Icon dock */}
-        <motion.div
-          className="mt-8 inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-2"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: LOGO_DONE + 1.0, duration: 0.6 }}>
-          {dock.map(({ label, icon, color }) => (
-            <span
-              key={label}
-              className="group relative">
-              <button
-                type="button"
-                aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-lg transition-transform duration-200 hover:scale-125"
-                style={{ color }}>
-                {icon}
-              </button>
-              <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-white/10 px-2 py-1 text-[11px] text-white opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
-                {label}
-              </span>
-            </span>
-          ))}
-        </motion.div>
 
         <motion.div
           className="mt-8"
