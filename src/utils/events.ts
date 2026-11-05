@@ -43,6 +43,12 @@ export type EventData = {
     photos?: StaticImageData[]; // project photos; the first one is shown on the card
   }[];
   faqs: { question: string; answer: string }[];
+  content?: {
+    title: string;
+    date: string;
+    slides?: string | null; // a link; leave out for "coming soon"; null hides it
+    notebook?: string | null;
+  }[];
 };
 
 const highlights = [
@@ -198,6 +204,46 @@ export const events: EventData[] = [
         text: 'A short description of what this team built and what problem it solves.',
         tags: ['Python', 'LLMs', 'Agents'],
         photos: [img17],
+      },
+    ],
+    content: [
+      {
+        title: 'Introduction to Neural Networks (Theory Focus)',
+        date: 'Sep 12',
+        slides:
+          'https://drive.google.com/file/d/15Q49rIijTOWc2sfJg4POe3HjbG0YLq8I/view',
+        notebook:
+          'https://colab.research.google.com/drive/1dYVWA2jIHElAYp-LmW_nSwTjBJneX_ok?usp=drive_link',
+      },
+      {
+        title: 'Introduction to LLMs',
+        date: 'Sep 26',
+        slides:
+          'https://drive.google.com/file/d/1hOdy1ipZMUaiWpGswThJ7p_jcIMjkqI_/view',
+        notebook:
+          'https://colab.research.google.com/drive/1gO7b3kWSDdtto8M5n9piTn_88CCdUiE2',
+      },
+      {
+        title: 'Modern LLMs & Generative AI',
+        date: 'Oct 10',
+        slides:
+          'https://drive.google.com/file/d/1xXJ3eAQvhtatR-e0p2hx56WZjxD0jPgy/view',
+      },
+      {
+        title: 'Agents with Agno',
+        date: 'Oct 24',
+        slides:
+          'https://drive.google.com/file/d/1zKmb3QGz8O2ksAO_OVcGwd5dy7VcJ0Jk/view',
+        notebook: 'https://docs.agno.com/',
+      },
+      { title: 'Building with Agno', date: 'Nov 7' },
+      { title: 'RAG, Semantic Search, and Deployment', date: 'Nov 21' },
+      { title: 'Agent Project Build Session', date: 'Jan 16' },
+      {
+        title: 'Panel & Showcase',
+        date: 'Jan 23',
+        slides: null,
+        notebook: null,
       },
     ],
     faqs: [

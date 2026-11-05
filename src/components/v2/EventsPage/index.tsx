@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instrument_Serif } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   FaCalendarAlt,
@@ -17,18 +16,17 @@ import type { LeaderboardContent } from '@/db/models/leaderboard';
 import { brand } from '@/utils/brand';
 import { pastFinalDatathonLeaderboard } from '@/utils/datathon';
 import type { EventData } from '@/utils/events';
-
-export const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-});
+import { instrumentSerif } from '@/utils/fonts';
 
 const palette = [brand.purple, brand.pink, brand.green];
 
 // A soft tint of a color over the page's dark base (works for any CSS color)
 const tint = (c: string) =>
   `linear-gradient(135deg, color-mix(in srgb, ${c} 38%, #101010), #1a0b2e)`;
+
+// Placeholder links like 'PASTE-SLIDES-URL' count as "not ready yet"
+const isLink = (u?: string | null): u is string =>
+  !!u && !u.startsWith('PASTE-');
 
 function Reveal({
   children,
@@ -59,7 +57,7 @@ function Heading({ color, children }: { color: string; children: string }) {
         style={{ background: color }}
       />
       <h2
-        className={`${instrumentSerif.className} text-4xl font-bold text-white sm:text-5xl`}>
+        className={`${instrumentSerif.className} text-4xl font-normal text-white sm:text-5xl`}>
         {children}
       </h2>
     </>
@@ -113,14 +111,17 @@ function Faq({ items }: { items: EventData['faqs'] }) {
 type Standing = LeaderboardContent['standings'][number];
 
 function Leaderboard({ color }: { color: string }) {
+  const boards = pastFinalDatathonLeaderboard as Record<
+    string,
+    LeaderboardContent
+  >;
+
   // Newest year first. Adding a new year to datathon.ts adds a tab automatically.
-  const years = Object.keys(pastFinalDatathonLeaderboard).sort(
-    (a, b) => Number(b) - Number(a),
-  );
+  const years = Object.keys(boards).sort((a, b) => Number(b) - Number(a));
   const [year, setYear] = useState(years[0]);
   const [all, setAll] = useState(false);
 
-  const rows: Standing[] = pastFinalDatathonLeaderboard[year].standings;
+  const rows: Standing[] = boards[year].standings;
   const shown = all ? rows : rows.slice(0, 10);
 
   return (
@@ -291,6 +292,59 @@ export default function EventPage({ event }: { event: EventData }) {
         </p>
       </Reveal>
 
+      {/* Session content (bootcamps): date, title, slides and notebook links */}
+      {event.content && event.content.length > 0 && (
+        <section className="mt-24">
+          <Reveal>
+            <Heading color={brand.green}>Session content</Heading>
+          </Reveal>
+          <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-3 text-left">
+            {event.content.map((s, i) => {
+              // null hides a link, anything not ready yet shows "soon"
+              const links = [
+                { label: 'Slides', url: s.slides },
+                { label: 'Notebook', url: s.notebook },
+              ].filter((l) => l.url !== null);
+
+              return (
+                <Reveal
+                  key={s.title}
+                  delay={Math.min(i, 6) * 0.05}>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4">
+                    <span className="w-16 shrink-0 text-sm tabular-nums text-white/50">
+                      {s.date}
+                    </span>
+                    <p className="min-w-0 flex-1 font-semibold text-white">
+                      {s.title}
+                    </p>
+                    <div className="flex gap-2">
+                      {links.map(({ label, url }) =>
+                        isLink(url) ? (
+                          <a
+                            key={label}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full border border-white/30 px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-white hover:text-[#101010]">
+                            {label}
+                          </a>
+                        ) : (
+                          <span
+                            key={label}
+                            className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/35">
+                            {label} soon
+                          </span>
+                        ),
+                      )}
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {/* Highlights */}
       <section className="mt-24">
         <Reveal>
@@ -331,66 +385,68 @@ export default function EventPage({ event }: { event: EventData }) {
         </div>
       </section>
 
-      {/* Project showcase */}
-      <section className="mt-24">
-        <Reveal>
-          <Heading color={brand.green}>Project showcase</Heading>
-        </Reveal>
-        <div className="mt-10 grid gap-6 text-left sm:grid-cols-3">
-          {event.showcase.map((p, i) => {
-            const c = palette[i % palette.length];
-            const photo = p.photos?.[0];
-            return (
-              <Reveal
-                key={i}
-                delay={i * 0.12}>
-                <div className="h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition-transform duration-300 hover:-translate-y-1">
-                  <div
-                    className="relative aspect-video overflow-hidden"
-                    style={photo ? undefined : { background: tint(c) }}>
-                    {photo ? (
-                      <Image
-                        src={photo}
-                        alt={`${p.title} by ${p.team}`}
-                        fill
-                        placeholder="blur"
-                        sizes="(min-width: 640px) 33vw, 100vw"
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center text-white/50">
-                        <FaImage className="text-2xl" />
+      {/* Project showcase (hidden when an event has none) */}
+      {event.showcase.length > 0 && (
+        <section className="mt-24">
+          <Reveal>
+            <Heading color={brand.green}>Project showcase</Heading>
+          </Reveal>
+          <div className="mt-10 grid gap-6 text-left sm:grid-cols-3">
+            {event.showcase.map((p, i) => {
+              const c = palette[i % palette.length];
+              const photo = p.photos?.[0];
+              return (
+                <Reveal
+                  key={i}
+                  delay={i * 0.12}>
+                  <div className="h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition-transform duration-300 hover:-translate-y-1">
+                    <div
+                      className="relative aspect-video overflow-hidden"
+                      style={photo ? undefined : { background: tint(c) }}>
+                      {photo ? (
+                        <Image
+                          src={photo}
+                          alt={`${p.title} by ${p.team}`}
+                          fill
+                          placeholder="blur"
+                          sizes="(min-width: 640px) 33vw, 100vw"
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center text-white/50">
+                          <FaImage className="text-2xl" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <h3
+                        className="text-xl font-bold"
+                        style={{ color: c }}>
+                        {p.title}
+                      </h3>
+                      <p className="mt-1 text-xs uppercase tracking-widest text-white/50">
+                        {p.team}
+                      </p>
+                      <p className="mt-3 text-base leading-relaxed text-white/70">
+                        {p.text}
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {p.tags.map((t) => (
+                          <span
+                            key={t}
+                            className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/70">
+                            {t}
+                          </span>
+                        ))}
                       </div>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3
-                      className="text-xl font-bold"
-                      style={{ color: c }}>
-                      {p.title}
-                    </h3>
-                    <p className="mt-1 text-xs uppercase tracking-widest text-white/50">
-                      {p.team}
-                    </p>
-                    <p className="mt-3 text-base leading-relaxed text-white/70">
-                      {p.text}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {p.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/70">
-                          {t}
-                        </span>
-                      ))}
                     </div>
                   </div>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
+                </Reveal>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Leaderboard (hackathon / datathon events) */}
       {/hack|datathon/i.test(event.title) && (
