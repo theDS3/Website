@@ -13,17 +13,68 @@ import TahmeedRahman from '@/public/Main/Executives/TahmeedRahman.png';
 import Tharjika from '@/public/Main/Executives/Tharjika.png';
 import Wynnbee from '@/public/Main/Executives/Wynnbee.png';
 import Abdul from '@/public/Main/Executives/Abdul.png';
+import Ada from '@/public/Main/Executives/Nevin Ada Cakmak.jpg';
+import Harman from '@/public/Main/Executives/Harman Gill.jpg';
+import Fahmid from '@/public/Main/Executives/Fahmid_Khan.jpg';
+import Thanaree from '@/public/Main/Executives/Thanaree Srirawewongsa.jpeg';
+import Albert from '@/public/Main/Executives/Albert Ho.jpg';
+import Arencha from '@/public/Main/Executives/Arencha.png';
+
 import BlobTitle from '@/components/v2/BlobTitle';
 import PageShell from '@/components/v2/PageShell';
 import { brand } from '@/utils/brand';
 
-// 24-25 and 25-26 are the same people, so both reuse the list you sent
-const team2526: TeamMember[] = executives;
-const team2425: TeamMember[] = executives;
-
 // Grab an existing person (name, role and photo) from the executives list
 const fromList = (name: string) =>
   executives.find((m) => m.name === name) as TeamMember;
+// 24-25 and 25-26 are the same people, so both reuse the list you sent
+const team2526: TeamMember[] = executives;
+// 2024-25
+const team2425: TeamMember[] = [
+  // These four are in the executives list already, so they keep their photos
+  { ...fromList('Krit Grover'), position: 'President' },
+  { ...fromList('Chris Yan'), position: 'Vice President of Academics' },
+  { ...fromList('Ashwin Malik'), position: 'Vice President of Academics' },
+  { ...fromList('Shreyas Rao'), position: 'Vice President of Technology' },
+
+  // New faces: placeholder photo until you have theirs
+  {
+    name: 'Ada Cakmak',
+    position: 'Vice President of Operations',
+    src: Ada,
+    alt: 'Ada Cakmak',
+  },
+  {
+    name: 'Harman Gill',
+    position: 'Vice President of Finance',
+    src: Harman,
+    alt: 'Harman Gill',
+  },
+  {
+    name: 'Fahmid Khan',
+    position: 'Vice President of Marketing',
+    src: Fahmid,
+    alt: 'Fahmid Khan',
+  },
+  {
+    name: 'Thanaree Srirawewongsa',
+    position: 'Vice President of Consulting',
+    src: Thanaree,
+    alt: 'Thanaree Srirawewongsa',
+  },
+  {
+    name: 'Arencha Pradabkaew',
+    position: 'Vice President of Outreach',
+    src: Arencha,
+    alt: 'Arencha Pradabkaew',
+  },
+  {
+    name: 'Albert Ho',
+    position: 'Vice President of Campus Life',
+    src: Albert,
+    alt: 'Albert Ho',
+  },
+];
 
 // Until someone's photo is added, their card uses the DS3 logo
 const currentTeam: TeamMember[] = [
@@ -109,10 +160,10 @@ const currentTeam: TeamMember[] = [
     shiftUp: 6,
   },
   {
-    name: 'Abdul',
+    name: 'Abdul Hasanyar',
     position: 'Director of Operations',
     src: Abdul,
-    alt: 'Abdul',
+    alt: 'Abdul Hasanyar',
     zoom: 1.5,
     shiftUp: 6,
   },

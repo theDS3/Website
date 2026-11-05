@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Instrument_Serif } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -296,20 +297,37 @@ export default function EventPage({ event }: { event: EventData }) {
           <Heading color={brand.pink}>Highlights</Heading>
         </Reveal>
         <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
-          {event.highlights.map((caption, i) => (
-            <Reveal
-              key={i}
-              delay={(i % 3) * 0.08}>
-              <div
-                className="relative flex aspect-[4/3] flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-white/10 text-white/60"
-                style={{ background: tint(palette[i % palette.length]) }}>
-                <FaImage className="text-2xl" />
-                <span className="text-xs uppercase tracking-widest">
-                  {caption}
-                </span>
-              </div>
-            </Reveal>
-          ))}
+          {event.photos?.length
+            ? event.photos.map((photo, i) => (
+                <Reveal
+                  key={i}
+                  delay={(i % 3) * 0.08}>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+                    <Image
+                      src={photo}
+                      alt={`${event.title} highlight ${i + 1}`}
+                      fill
+                      placeholder="blur"
+                      sizes="(min-width: 768px) 33vw, 50vw"
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </Reveal>
+              ))
+            : event.highlights.map((caption, i) => (
+                <Reveal
+                  key={i}
+                  delay={(i % 3) * 0.08}>
+                  <div
+                    className="relative flex aspect-[4/3] flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-white/10 text-white/60"
+                    style={{ background: tint(palette[i % palette.length]) }}>
+                    <FaImage className="text-2xl" />
+                    <span className="text-xs uppercase tracking-widest">
+                      {caption}
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
         </div>
       </section>
 
@@ -321,15 +339,29 @@ export default function EventPage({ event }: { event: EventData }) {
         <div className="mt-10 grid gap-6 text-left sm:grid-cols-3">
           {event.showcase.map((p, i) => {
             const c = palette[i % palette.length];
+            const photo = p.photos?.[0];
             return (
               <Reveal
                 key={i}
                 delay={i * 0.12}>
                 <div className="h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition-transform duration-300 hover:-translate-y-1">
                   <div
-                    className="flex aspect-video items-center justify-center text-white/50"
-                    style={{ background: tint(c) }}>
-                    <FaImage className="text-2xl" />
+                    className="relative aspect-video overflow-hidden"
+                    style={photo ? undefined : { background: tint(c) }}>
+                    {photo ? (
+                      <Image
+                        src={photo}
+                        alt={`${p.title} by ${p.team}`}
+                        fill
+                        placeholder="blur"
+                        sizes="(min-width: 640px) 33vw, 100vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-white/50">
+                        <FaImage className="text-2xl" />
+                      </div>
+                    )}
                   </div>
                   <div className="p-6">
                     <h3

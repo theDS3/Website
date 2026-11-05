@@ -29,6 +29,10 @@ export const teamLinks: Record<string, { linkedin?: string; github?: string }> =
       linkedin: 'https://www.linkedin.com/in/tahmeed-rahman/',
       github: 'https://github.com/TahmeedRahman',
     },
+    'Abdul Hasanyar': {
+      linkedin: 'https://www.linkedin.com/in/ar-hasanyar/',
+      github: '',
+    },
 
     // 24-25 and 25-26
     'Krit Grover': {
