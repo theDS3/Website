@@ -48,6 +48,13 @@ const events: Record<Status, EventItem[]> = {
       href: '/events/agentic-ai-hackathon',
       color: brand.purple,
     },
+    {
+      title: 'Machine Learning Bootcamp 2024',
+      text: 'Six sessions from regression to deep learning, with slides and recordings.',
+      tag: 'bootcamp',
+      href: '/events/machine-learning-bootcamp-2024',
+      color: brand.pink,
+    },
   ],
 };
 

@@ -46,6 +46,7 @@ export type EventData = {
   content?: {
     title: string;
     date: string;
+    recordings?: string[]; // [] shows "Recordings soon"; leave out to show nothing
     slides?: string | null; // a link; leave out for "coming soon"; null hides it
     notebook?: string | null;
   }[];
@@ -109,6 +110,34 @@ const TBA = {
   location: 'Location to be announced',
 };
 
+const mlFaqs = [
+  {
+    question: 'What is the Machine Learning Bootcamp?',
+    answer:
+      'A bi-weekly workshop series to build a foundation in Machine Learning technologies and methodologies.',
+  },
+  {
+    question: "What's in it for me?",
+    answer:
+      'Engage in interactive labs and practical exercises designed to enhance your understanding and application of Machine Learning concepts. It also provides an opportunity for participants to focus on building real-world projects.',
+  },
+  {
+    question: 'Will sessions be recorded?',
+    answer:
+      'The workshop is more exciting to attend in-person and to meet new people! The workshop material will be posted on our website.',
+  },
+  {
+    question: 'How many students can participate?',
+    answer:
+      'Although we make our resources available to everyone, only 100 students will be accepted into the program.',
+  },
+  {
+    question: 'Why should I apply?',
+    answer:
+      'Registered students will be given exclusive access to the project-building workshops and a certificate of completion signed by CMS faculty.',
+  },
+];
+
 export const events: EventData[] = [
   // Current
   {
@@ -166,6 +195,20 @@ export const events: EventData[] = [
         question: 'Why should I apply?',
         answer:
           'Registered students will be given exclusive access to the project-building workshops and a certificate of completion signed by CMS faculty.',
+      },
+    ],
+    content: [
+      {
+        title: 'Introduction to ML',
+        date: 'October 12th',
+        slides:
+          'https://utoronto-my.sharepoint.com/:p:/r/personal/kyaw_thiha_mail_utoronto_ca/Documents/ML%20Bootcamp-1.pptx?d=w5fac8beb45b144049411b9eb07e11be9&csf=1&web=1&e=thAlza',
+      },
+      {
+        title: 'Introduction to CNNs',
+        date: 'October 19th',
+        slides:
+          'https://docs.google.com/presentation/d/1ZzGCNo-EY7IsvfH98CZNvhUgb2Tlc5NER3KCeWe_rfA/edit?slide=id.p#slide=id.p',
       },
     ],
   },
@@ -316,6 +359,69 @@ export const events: EventData[] = [
         question: 'Will there be prizes?',
         answer:
           'Yes! We have exciting prizes for the top teams, including cash awards, internship opportunities, and tech gadgets. Specific prize details will be announced closer to the event.',
+      },
+    ],
+  },
+  {
+    slug: 'machine-learning-bootcamp-2024',
+    title: 'Machine Learning Bootcamp 2024',
+    status: 'past',
+    color: brand.pink,
+    tagline: 'A hands-on introduction to ML, from regression to deep learning.',
+    about:
+      'A fall 2024 workshop series that walked through machine learning from the ground up: an introduction to ML, data visualization, regression, classification and deep learning. Slides and recordings from each session are below.',
+    date: 'Sep 20 – Nov 29, 2024 (Fridays)',
+    time: '?:00 PM – ?:00 PM', // fill in
+    location: 'UTSC, Toronto', // confirm the room
+    highlights,
+    photos: [],
+    showcase: [],
+    faqs: mlFaqs,
+    content: [
+      {
+        title: 'Introduction to ML',
+        date: 'Sep 20',
+        recordings: [
+          'https://www.youtube.com/watch?v=S1ELzaj4m-Y',
+          'https://www.youtube.com/watch?v=57_4_0ebrJ8',
+        ],
+        slides:
+          'https://drive.google.com/file/d/1C0x-Tgy_-NmNNBQX2dVve7_hrKLqqyyK/view',
+      },
+      {
+        title: 'Data Visualization',
+        date: 'Oct 4',
+        recordings: ['https://www.youtube.com/watch?v=fiXKY5OSC34'],
+        slides:
+          'https://drive.google.com/file/d/1lqdI6nkoyIaPWYWsSAT5zF9Wmd-42gFy/view',
+      },
+      {
+        title: 'Regression Techniques',
+        date: 'Oct 18',
+        recordings: [],
+        slides:
+          'https://drive.google.com/file/d/1l4bklrSgh-wW5ShfkgX-sxGbY_Arol_V/view',
+      },
+      {
+        title: 'Classification Methods',
+        date: 'Oct 25',
+        recordings: ['https://www.youtube.com/watch?v=-gtXV9MnG1c'],
+        slides:
+          'https://drive.google.com/file/d/1vf9W0ea98853kTWWZjO4WV-6rnNVplHI/view',
+      },
+      {
+        title: 'Deep Learning I',
+        date: 'Nov 15',
+        recordings: [],
+        slides:
+          'https://drive.google.com/file/d/1a0yaA-GaO7KhW0xfdOvuwYuTYfyGR17g/view',
+      },
+      {
+        title: 'Deep Learning II',
+        date: 'Nov 29',
+        recordings: ['https://www.youtube.com/watch?v=af2jjx-diKM'],
+        slides:
+          'https://drive.google.com/file/d/1mbzkySOzSETFKDEqolR8y25fDd4xhB2F/view',
       },
     ],
   },

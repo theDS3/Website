@@ -292,7 +292,7 @@ export default function EventPage({ event }: { event: EventData }) {
         </p>
       </Reveal>
 
-      {/* Session content (bootcamps): date, title, slides and notebook links */}
+      {/* Session content: date, title, recordings, slides and notebook */}
       {event.content && event.content.length > 0 && (
         <section className="mt-24">
           <Reveal>
@@ -300,11 +300,16 @@ export default function EventPage({ event }: { event: EventData }) {
           </Reveal>
           <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-3 text-left">
             {event.content.map((s, i) => {
-              // null hides a link, anything not ready yet shows "soon"
+              // null hides a link; anything not ready yet shows "soon"
               const links = [
+                ...(s.recordings ?? []).map((url, n) => ({
+                  label: `Recording ${n + 1}`,
+                  url,
+                })),
                 { label: 'Slides', url: s.slides },
                 { label: 'Notebook', url: s.notebook },
               ].filter((l) => l.url !== null);
+              const noRecordings = s.recordings?.length === 0;
 
               return (
                 <Reveal
@@ -317,7 +322,12 @@ export default function EventPage({ event }: { event: EventData }) {
                     <p className="min-w-0 flex-1 font-semibold text-white">
                       {s.title}
                     </p>
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2">
+                      {noRecordings && (
+                        <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/35">
+                          Recordings soon
+                        </span>
+                      )}
                       {links.map(({ label, url }) =>
                         isLink(url) ? (
                           <a
