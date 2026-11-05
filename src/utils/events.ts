@@ -116,11 +116,10 @@ export const events: EventData[] = [
     color: brand.green,
     tagline: 'Hands-on sessions on building with AI agents.',
     about:
-      'Placeholder: describe the bootcamp. Cover the topics, the format and the final project showcase.',
-    ...TBA,
+      'Curious about AI but not sure where to start? DS3s Agentic AI Bootcamp gives you the tools, guidance, and skills to dive into Agentic AI. Come join us and start your journey today!',
     date: 'Fall Semester, Biweekly on Fridays, 2025',
     time: '4:00 PM – 6:00 PM',
-    location: 'UTSC, Toronto',
+    location: 'IA2040(The Cloud), UTSC',
     highlights,
     showcase,
     faqs,
@@ -133,8 +132,7 @@ export const events: EventData[] = [
     tagline:
       'A weekend to build autonomous AI agents that work with real data.',
     about:
-      'Placeholder: describe the hackathon. Cover the challenge, the teams and the prizes.',
-    ...TBA,
+      'The fourth annual Agentic AI Hackathon hosted by the Data Science & Statistics Society offers a unique challenge in building autonomous AI agents that interact with real-world data. Join us for a thrilling weekend of creativity and innovation!',
     date: 'February 14–15, 2026',
     time: '10:00 AM – 6:00 PM',
     location: 'UTSC, Toronto',
