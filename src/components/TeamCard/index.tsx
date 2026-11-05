@@ -76,7 +76,7 @@ export default function TeamCard({
         </div>
       </div>
       <div className="py-5">
-        <h3 className="text-2xl font-bold text-white capitalize relative mb-[27px]">
+        <h3 className="text-2xl font-normal text-white capitalize relative mb-[27px]">
           {name}
         </h3>
         <p

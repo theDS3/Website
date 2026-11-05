@@ -10,7 +10,7 @@ import {
 } from 'react-icons/fa';
 
 // TODO: put the real DS3 email here
-const EMAIL = 'your-ds3-email@example.com';
+const EMAIL = 'thedatasciencecube@gmail.com';
 
 const socials = [
   {

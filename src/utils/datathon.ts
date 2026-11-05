@@ -14,7 +14,7 @@ export const pastFinalDatathonLeaderboard: Record<string, LeaderboardContent> =
       type: 'final',
       standings: [
         {
-          name: 'SGD',
+          name: '🏆 SGD',
           score: 251.8009,
           attempts: 20,
           bonus: 1.1236,

@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import EventCard, {
-  StepsPreview,
-  TilesPreview,
-} from '@/components/v2/EventCard';
+import EventCard from '@/components/v2/EventCard';
+import { pickPreview } from '@/components/v2/EventPreviews';
 import { brand } from '@/utils/brand';
 
 type Status = 'current' | 'past';
@@ -16,10 +14,9 @@ type EventItem = {
   tag: string;
   href: string;
   color: string;
-  items?: string[]; // optional: shows animated pills instead of tiles
 };
 
-const events = {
+const events: Record<Status, EventItem[]> = {
   current: [
     {
       title: 'Build Your Own Wrapped',
@@ -103,25 +100,7 @@ export default function EventsFilter({
             cta="Explore"
             href={c.href}
             accent={c.color}
-            preview={
-              c.items ? (
-                <StepsPreview
-                  items={c.items}
-                  color={c.color}
-                />
-              ) : (
-                <TilesPreview
-                  colors={[
-                    c.color,
-                    '#a855f7',
-                    '#fe1c8d',
-                    '#00d120',
-                    '#ffb020',
-                    c.color,
-                  ]}
-                />
-              )
-            }
+            preview={pickPreview(c.title, c.color)}
           />
         ))}
       </motion.div>

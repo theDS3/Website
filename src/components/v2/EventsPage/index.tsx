@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Libre_Baskerville } from 'next/font/google';
+import { Instrument_Serif } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   FaCalendarAlt,
@@ -11,12 +11,16 @@ import {
   FaMapMarkerAlt,
 } from 'react-icons/fa';
 import BlobTitle from '@/components/v2/BlobTitle';
+import { pickPreview } from '@/components/v2/EventPreviews';
+import type { LeaderboardContent } from '@/db/models/leaderboard';
 import { brand } from '@/utils/brand';
+import { pastFinalDatathonLeaderboard } from '@/utils/datathon';
 import type { EventData } from '@/utils/events';
 
-const baskerville = Libre_Baskerville({
+export const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: '400',
+  style: ['normal', 'italic'],
 });
 
 const palette = [brand.purple, brand.pink, brand.green];
@@ -54,7 +58,7 @@ function Heading({ color, children }: { color: string; children: string }) {
         style={{ background: color }}
       />
       <h2
-        className={`${baskerville.className} text-4xl font-bold text-white sm:text-5xl`}>
+        className={`${instrumentSerif.className} text-4xl font-bold text-white sm:text-5xl`}>
         {children}
       </h2>
     </>
@@ -105,6 +109,102 @@ function Faq({ items }: { items: EventData['faqs'] }) {
   );
 }
 
+type Standing = LeaderboardContent['standings'][number];
+
+function Leaderboard({ color }: { color: string }) {
+  // Newest year first. Adding a new year to datathon.ts adds a tab automatically.
+  const years = Object.keys(pastFinalDatathonLeaderboard).sort(
+    (a, b) => Number(b) - Number(a),
+  );
+  const [year, setYear] = useState(years[0]);
+  const [all, setAll] = useState(false);
+
+  const rows: Standing[] = pastFinalDatathonLeaderboard[year].standings;
+  const shown = all ? rows : rows.slice(0, 10);
+
+  return (
+    <div className="mx-auto mt-10 max-w-3xl">
+      {/* Year tabs */}
+      <div className="flex flex-wrap justify-center gap-2">
+        {years.map((y) => {
+          const on = y === year;
+          return (
+            <button
+              key={y}
+              type="button"
+              aria-pressed={on}
+              onClick={() => {
+                setYear(y);
+                setAll(false);
+              }}
+              className={`rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors ${
+                on
+                  ? 'border-white bg-white text-[#101010]'
+                  : 'border-white/30 text-white/80 hover:border-white/60 hover:text-white'
+              }`}>
+              {y}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Standings */}
+      <div className="mt-8 flex flex-col gap-2 text-left">
+        {shown.map((r, i) => {
+          const up = r.delta.startsWith('+');
+          const down = /^-\d/.test(r.delta);
+          return (
+            <Reveal
+              key={`${year}-${r.name}-${i}`}
+              delay={Math.min(i, 6) * 0.05}>
+              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3.5 sm:gap-4 sm:px-5">
+                <span
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
+                  style={{
+                    background: i === 0 ? color : 'rgba(255,255,255,0.1)',
+                    color: i === 0 ? '#101010' : 'rgba(255,255,255,0.7)',
+                  }}>
+                  {i + 1}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-semibold text-white">{r.name}</p>
+                  <p className="text-xs text-white/50">{r.attempts} attempts</p>
+                </div>
+                <span
+                  className="w-10 shrink-0 text-right text-xs font-semibold tabular-nums"
+                  style={{
+                    color: up
+                      ? brand.green
+                      : down
+                        ? brand.pink
+                        : 'rgba(255,255,255,0.35)',
+                  }}>
+                  {up ? '▲' : down ? '▼' : '–'}
+                  {r.delta.replace(/^[+-]/, '')}
+                </span>
+                <span
+                  className="w-20 shrink-0 text-right text-lg font-bold tabular-nums"
+                  style={{ color }}>
+                  {(r.finalScore ?? 0).toFixed(2)}
+                </span>
+              </div>
+            </Reveal>
+          );
+        })}
+      </div>
+
+      {rows.length > 10 && (
+        <button
+          type="button"
+          onClick={() => setAll((v) => !v)}
+          className="mt-6 rounded-full border border-white/40 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#101010]">
+          {all ? 'Show top 10' : `Show all ${rows.length} teams`}
+        </button>
+      )}
+    </div>
+  );
+}
+
 export default function EventPage({ event }: { event: EventData }) {
   const info = [
     {
@@ -145,6 +245,17 @@ export default function EventPage({ event }: { event: EventData }) {
         <p className="mt-10 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
           {event.tagline}
         </p>
+
+        {/* Animated preview that matches the event */}
+        <Reveal
+          delay={0.1}
+          className="mt-12 w-full max-w-md">
+          <div
+            className="h-64 overflow-hidden rounded-3xl bg-black ring-1 ring-white/10"
+            style={{ boxShadow: `0 0 60px -20px ${event.color}` }}>
+            {pickPreview(event.title, event.color)}
+          </div>
+        </Reveal>
       </div>
 
       {/* Date, time, location */}
@@ -248,6 +359,16 @@ export default function EventPage({ event }: { event: EventData }) {
           })}
         </div>
       </section>
+
+      {/* Leaderboard (hackathon / datathon events) */}
+      {/hack|datathon/i.test(event.title) && (
+        <section className="mt-24">
+          <Reveal>
+            <Heading color={brand.pink}>Leaderboard</Heading>
+          </Reveal>
+          <Leaderboard color={event.color} />
+        </section>
+      )}
 
       {/* FAQ */}
       <section className="mt-24">

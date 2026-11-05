@@ -2,18 +2,19 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Libre_Baskerville } from 'next/font/google';
+import { Instrument_Serif } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { brand } from '@/utils/brand';
 import teamPhoto from '@/public/Main/team27.png';
 
-const baskerville = Libre_Baskerville({
+export const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: '400',
+  style: ['normal', 'italic'],
 });
 
 const heading = 'We are DS3';
-const palette = [brand.purple, brand.pink, brand.green];
+const palette = ['#ffffff'];
 
 const cards = [
   {
@@ -74,7 +75,7 @@ export default function About() {
 
       {/* Heading: every letter in its own color, rising in one by one */}
       <h2
-        className={`${baskerville.className} text-6xl font-bold leading-tight sm:text-8xl`}
+        className={`${instrumentSerif.className} text-6xl font-bold leading-tight sm:text-8xl`}
         aria-label={heading}>
         {Array.from(heading).map((ch, i) =>
           ch === ' ' ? (

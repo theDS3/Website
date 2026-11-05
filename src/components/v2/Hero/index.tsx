@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Libre_Baskerville } from 'next/font/google';
+import { Instrument_Serif } from 'next/font/google';
 import { MotionConfig, motion } from 'framer-motion';
 import {
   FaBrain,
@@ -15,10 +15,10 @@ import {
 import { brand } from '@/utils/brand';
 import IsoLogo, { anchor, type GlyphKey } from './IsoLogo';
 
-const baskerville = Libre_Baskerville({
+export const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  style: 'italic',
   weight: '400',
+  style: ['normal', 'italic'],
 });
 
 const START = 0.1; // seconds: waits for the purple intro to slide away
@@ -214,7 +214,7 @@ export default function Hero() {
 
         {/* Society name */}
         <motion.h1
-          className={`${baskerville.className} -mt-2 text-2xl italic tracking-wide text-white sm:text-4xl`}
+          className={`${instrumentSerif.className} -mt-2 text-2xl italic tracking-wide text-white sm:text-4xl`}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: LOGO_DONE + 0.4, duration: 0.6 }}>

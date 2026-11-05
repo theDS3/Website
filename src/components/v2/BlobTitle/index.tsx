@@ -1,3 +1,5 @@
+import { instrumentSerif } from '@/utils/fonts';
+
 export default function BlobTitle({
   children,
   color,
@@ -52,7 +54,7 @@ export default function BlobTitle({
         </filter>
       </svg>
       <h1
-        className="text-7xl font-extrabold tracking-wide sm:text-9xl"
+        className={`${instrumentSerif.className} text-8xl font-normal leading-none tracking-wide sm:text-[11rem]`}
         style={{
           color,
           WebkitTextStroke: `5px ${color}`,

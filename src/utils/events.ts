@@ -85,6 +85,9 @@ export const events: EventData[] = [
     about:
       'Placeholder: describe the event. What will people build, what will they learn, and what do they need to bring?',
     ...TBA,
+    date: 'November BLANKth, 2026',
+    time: '?:00 PM – ?:00 PM',
+    location: 'IAXXXX, Toronto',
     highlights,
     showcase,
     faqs,
@@ -98,6 +101,9 @@ export const events: EventData[] = [
     about:
       'Placeholder: describe the bootcamp. Cover the topics, the format and who it is for.',
     ...TBA,
+    date: 'Fall Semester, Biweekly on Mondays, 2026',
+    time: '4:00 PM – 6:00 PM',
+    location: 'UTSC, Toronto',
     highlights,
     showcase,
     faqs,
@@ -112,6 +118,9 @@ export const events: EventData[] = [
     about:
       'Placeholder: describe the bootcamp. Cover the topics, the format and the final project showcase.',
     ...TBA,
+    date: 'Fall Semester, Biweekly on Fridays, 2025',
+    time: '4:00 PM – 6:00 PM',
+    location: 'UTSC, Toronto',
     highlights,
     showcase,
     faqs,
@@ -126,7 +135,8 @@ export const events: EventData[] = [
     about:
       'Placeholder: describe the hackathon. Cover the challenge, the teams and the prizes.',
     ...TBA,
-    date: 'February 14–15, 2026', // from your old FAQ
+    date: 'February 14–15, 2026',
+    time: '10:00 AM – 6:00 PM',
     location: 'UTSC, Toronto',
     highlights,
     showcase,
