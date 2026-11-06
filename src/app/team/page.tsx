@@ -19,6 +19,8 @@ import Fahmid from '@/public/Main/Executives/Fahmid_Khan.jpg';
 import Thanaree from '@/public/Main/Executives/Thanaree Srirawewongsa.jpeg';
 import Albert from '@/public/Main/Executives/Albert Ho.jpg';
 import Arencha from '@/public/Main/Executives/Arencha.png';
+import elena from '@/public/Main/Executives/elena.png';
+import kevin from '@/public/Main/Executives/kevinThiha.jpg';
 
 import BlobTitle from '@/components/v2/BlobTitle';
 import PageShell from '@/components/v2/PageShell';
@@ -141,7 +143,7 @@ const currentTeam: TeamMember[] = [
     src: TahmeedRahman,
     alt: 'Tahmeed Rahman',
     zoom: 1,
-    shiftUp: 5,
+    shiftUp: 1,
   },
   {
     name: 'Sami Shahid',
@@ -184,13 +186,13 @@ const currentTeam: TeamMember[] = [
   {
     name: 'Kevin Thiha',
     position: 'Director of Academics',
-    src: placeholder,
+    src: kevin,
     alt: 'Kevin Thiha',
   },
   {
     name: 'Elena Osipyan',
     position: 'Director of Academics',
-    src: placeholder,
+    src: elena,
     alt: 'Elena Osipyan',
   },
   {

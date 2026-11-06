@@ -229,21 +229,21 @@ export const events: EventData[] = [
     showcase: [
       {
         title: 'TARS',
-        team: 'Team name',
-        text: 'A short description of what this team built and what problem it solves.',
+        team: 'Divy Wadhwani',
+        text: 'To help therapists handle more clients and provide timely support. The goal is to enhance (not replace) therapy by leveraging AI, making mental health care more efficient and accessible.',
         tags: ['Python', 'LLMs', 'Agents'],
         photos: [img15],
       },
       {
         title: 'Newt',
-        team: 'Team name',
-        text: 'A short description of what this team built and what problem it solves.',
+        team: 'Ojas Singh, Aryan Jain',
+        text: 'Our Solution: Newt Newt is a tool that transforms lecture content into Khan Academy or 3Blue1Brown-style educational videos.',
         tags: ['Python', 'LLMs', 'Agents'],
         photos: [img16],
       },
       {
         title: 'Glioblastoma',
-        team: 'Team name',
+        team: 'Zuhal Olomi, Elena Osipyan, Isabelle',
         text: 'A short description of what this team built and what problem it solves.',
         tags: ['Python', 'LLMs', 'Agents'],
         photos: [img17],

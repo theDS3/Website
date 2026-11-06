@@ -9,7 +9,7 @@ export interface TeamMember {
   alt: string;
   github?: string;
   linkedin?: string;
-  zoom?: number; // 1 = normal, 1.3 = 30% bigger
+  zoom?: number; // 1 = fits the frame, 1.3 = 30% closer
   shiftUp?: number; // positive moves the photo up, negative moves it down
 }
 
@@ -54,13 +54,16 @@ export default function TeamCard({
   return (
     <div className="group text-center grid justify-center items-center ">
       <div className="flex justify-center items-center">
-        <div className="relative overflow-hidden rounded-2xl">
+        {/* The frame: same size for everyone, the photo fills it */}
+        <div className="relative aspect-[10/11] w-[140px] sm:w-[220px] md:w-[180px] min-[1800px]:w-[280px] overflow-hidden rounded-2xl">
           <Image
             src={src}
             alt={alt}
             placeholder="blur"
+            fill
+            sizes="(min-width: 1800px) 280px, (min-width: 768px) 180px, (min-width: 640px) 220px, 140px"
             style={{ transform: `scale(${zoom}) translateY(${-shiftUp}%)` }}
-            className="block w-[140px] sm:w-[220px] md:w-[180px] min-[1800px]:w-[280px]"
+            className="object-cover object-top"
           />
           {(github || linkedin) && (
             <div className="pointer-events-none group-hover:pointer-events-auto absolute inset-0 flex items-center justify-center gap-5 bg-purple-600/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
