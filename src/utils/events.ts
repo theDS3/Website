@@ -152,8 +152,8 @@ export const events: EventData[] = [
     date: 'November BLANKth, 2026',
     time: '?:00 PM – ?:00 PM',
     location: 'IAXXXX, Toronto',
-    highlights,
-    showcase,
+    highlights: [],
+    showcase: [],
     faqs,
   },
   {
@@ -168,8 +168,8 @@ export const events: EventData[] = [
     date: 'Fall Semester, Biweekly on Mondays, 2026',
     time: '4:00 PM – 6:00 PM',
     location: 'UTSC, Toronto',
-    highlights,
-    showcase,
+    highlights: [],
+    showcase: [],
     faqs: [
       {
         question: 'What is the Machine Learning Bootcamp?',
@@ -373,7 +373,7 @@ export const events: EventData[] = [
     date: 'Sep 20 – Nov 29, 2024 (Fridays)',
     time: '?:00 PM – ?:00 PM', // fill in
     location: 'UTSC, Toronto', // confirm the room
-    highlights,
+    highlights: [],
     photos: [],
     showcase: [],
     faqs: mlFaqs,

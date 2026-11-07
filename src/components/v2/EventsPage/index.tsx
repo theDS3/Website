@@ -356,47 +356,49 @@ export default function EventPage({ event }: { event: EventData }) {
       )}
 
       {/* Highlights */}
-      <section className="mt-24">
-        <Reveal>
-          <Heading color={brand.pink}>Highlights</Heading>
-        </Reveal>
-        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
-          {event.photos?.length
-            ? event.photos.map((photo, i) => (
-                <Reveal
-                  key={i}
-                  delay={(i % 3) * 0.08}>
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
-                    <Image
-                      src={photo}
-                      alt={`${event.title} highlight ${i + 1}`}
-                      fill
-                      placeholder="blur"
-                      sizes="(min-width: 768px) 33vw, 50vw"
-                      className="object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                </Reveal>
-              ))
-            : event.highlights.map((caption, i) => (
-                <Reveal
-                  key={i}
-                  delay={(i % 3) * 0.08}>
-                  <div
-                    className="relative flex aspect-[4/3] flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-white/10 text-white/60"
-                    style={{ background: tint(palette[i % palette.length]) }}>
-                    <FaImage className="text-2xl" />
-                    <span className="text-xs uppercase tracking-widest">
-                      {caption}
-                    </span>
-                  </div>
-                </Reveal>
-              ))}
-        </div>
-      </section>
+      {(event.photos?.length || event.highlights.length > 0) && (
+        <section className="mt-24">
+          <Reveal>
+            <Heading color={brand.pink}>Highlights</Heading>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
+            {event.photos?.length
+              ? event.photos.map((photo, i) => (
+                  <Reveal
+                    key={i}
+                    delay={(i % 3) * 0.08}>
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+                      <Image
+                        src={photo}
+                        alt={`${event.title} highlight ${i + 1}`}
+                        fill
+                        placeholder="blur"
+                        sizes="(min-width: 768px) 33vw, 50vw"
+                        className="object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                  </Reveal>
+                ))
+              : event.highlights.map((caption, i) => (
+                  <Reveal
+                    key={i}
+                    delay={(i % 3) * 0.08}>
+                    <div
+                      className="relative flex aspect-[4/3] flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-white/10 text-white/60"
+                      style={{ background: tint(palette[i % palette.length]) }}>
+                      <FaImage className="text-2xl" />
+                      <span className="text-xs uppercase tracking-widest">
+                        {caption}
+                      </span>
+                    </div>
+                  </Reveal>
+                ))}
+          </div>
+        </section>
+      )}
 
       {/* Project showcase (hidden when an event has none) */}
-      {event.showcase.length > 0 && (
+      {(event.photos?.length || event.highlights.length > 0) && (
         <section className="mt-24">
           <Reveal>
             <Heading color={brand.green}>Project showcase</Heading>
