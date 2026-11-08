@@ -21,6 +21,8 @@ import Albert from '@/public/Main/Executives/Albert Ho.jpg';
 import Arencha from '@/public/Main/Executives/Arencha.png';
 import elena from '@/public/Main/Executives/elena.png';
 import kevin from '@/public/Main/Executives/kevinThiha.jpg';
+import stella from '@/public/Main/Executives/stella.png';
+import deborshi from '@/public/Main/Executives/deborshi.jpg';
 
 import BlobTitle from '@/components/v2/BlobTitle';
 import PageShell from '@/components/v2/PageShell';
@@ -109,7 +111,7 @@ const currentTeam: TeamMember[] = [
     position: 'Vice President of Outreach',
     src: MahaRehan,
     alt: 'Maha Rehan',
-    zoom: 1.3,
+    zoom: 1,
     shiftUp: 2,
   },
   {
@@ -180,7 +182,7 @@ const currentTeam: TeamMember[] = [
   {
     name: 'Deborshi Chakraborty',
     position: 'Director of Academics',
-    src: placeholder,
+    src: deborshi,
     alt: 'Deborshi Chakraborty',
   },
   {
@@ -198,7 +200,7 @@ const currentTeam: TeamMember[] = [
   {
     name: 'Stella Pham',
     position: 'Director of Marketing',
-    src: placeholder,
+    src: stella,
     alt: 'Stella Pham',
   },
 ];
