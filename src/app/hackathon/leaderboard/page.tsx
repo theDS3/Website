@@ -1,15 +1,10 @@
 import { Metadata } from 'next';
 
 import Leaderboard from '@/components/Datathon/Leaderboard';
-import NavBar, { type Link } from '@/components/Navabr';
+import PageShell from '@/components/v2/PageShell';
 
 import { getLeaderboardData } from '@/db/utils';
 import { datathonStartDate } from '@/utils/datathon';
-
-const links: Link[] = [
-  { title: 'Home', href: '/' },
-  { title: 'Hackathon', href: '/hackathon' },
-];
 
 export const metadata: Metadata = {
   title: 'DS3 | Public Leaderboard',
@@ -21,9 +16,8 @@ export default async function PublicDatathonLeaderboard() {
   const leaderboard = await getLeaderboardData();
 
   return (
-    <>
-      <NavBar links={links} />
-      <main className="min-h-screen">
+    <PageShell>
+      <main className="min-h-screen pt-16">
         <section className="flex flex-col items-center justify-center">
           <div className="container mx-auto my-8 text-white">
             <h1 className="text-4xl font-bold mb-4 text-center">
@@ -36,6 +30,6 @@ export default async function PublicDatathonLeaderboard() {
           </div>
         </section>
       </main>
-    </>
+    </PageShell>
   );
 }

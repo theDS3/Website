@@ -1,11 +1,11 @@
 import SponsorsCard, { type Sponsors } from './SponsorsCard';
 
-import FGF from '@/public/Sponsors/FGF.svg';
-import KlickHealth from '@/public/Sponsors/Klick Health.svg';
-import theScore from '@/public/Sponsors/theScore.svg';
-import VectorInstitute from '@/public/Sponsors/Vector Institute.svg';
-import MSReactor from '@/public/Sponsors/MSReactor.svg';
-import MLH from '@/public/Sponsors/MLH.svg';
+import FGF from '@/public/Sponsors/FGFbrands.png';
+import KlickHealth from '@/public/Sponsors/klickhealth.png';
+import theScore from '@/public/Sponsors/thescore.png';
+import VectorInstitute from '@/public/Sponsors/vectorinstitute.png';
+import MSReactor from '@/public/Sponsors/msreactor.png';
+import MLH from '@/public/Sponsors/mlh.png';
 
 const sponsors: Sponsors[] = [
   {

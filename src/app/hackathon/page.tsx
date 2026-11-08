@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 import LinkButton from '@/components/Button/LinkButton';
 import CountdownTimer from '@/components/Datathon/CountdownTimer';
-import NavBar, { Link } from '@/components/Navabr';
+import PageShell from '@/components/v2/PageShell';
 
 import { datathonStartDate, isDatathonWeek } from '@/utils/datathon';
 import DatathonHero from '@/components/Datathon/Hero';
@@ -69,18 +69,9 @@ export default function Datathon() {
     img8.src,
   ];
 
-  const links: Link[] = [
-    { title: 'Home', href: '/' },
-    { title: 'About', href: '#about-us' },
-    //{ title: 'Sponsors', href: '#sponsors' },
-    { title: 'Highlights', href: '#highlights' },
-    { title: 'FAQ', href: '#faq' },
-  ];
-
   return (
-    <>
-      <NavBar links={links} />
-      <main>
+    <PageShell>
+      <main className="pt-16">
         {!isDatathonWeek() ? (
           <div className={`${layoutStyle} flex-col gap-8 `}>
             <DatathonHero />
@@ -110,6 +101,6 @@ export default function Datathon() {
           </div>
         )}
       </main>
-    </>
+    </PageShell>
   );
 }

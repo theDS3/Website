@@ -11,7 +11,7 @@ import ShawnJiang from '@/public/Main/Executives/Shawn Jiang.jpg';
 
 import TeamCard, { type TeamMember } from '@/components/TeamCard';
 
-const executives: TeamMember[] = [
+export const executives: TeamMember[] = [
   {
     name: 'Krit Grover',
     position: 'Co-President',

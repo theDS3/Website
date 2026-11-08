@@ -1,5 +1,4 @@
 import Link from 'next/link';
-
 import {
   FaDiscord,
   FaEnvelope,
@@ -9,119 +8,130 @@ import {
   FaMedium,
   FaYoutube,
 } from 'react-icons/fa';
+import { brand } from '@/utils/brand';
+import { instrumentSerif } from '@/utils/fonts';
 
-const icons = [
-  {
-    href: 'https://discord.com/invite/xDpujjZ',
-    icon: <FaDiscord style={{ fontSize: '2rem' }} />,
-    label: 'Discord',
-  },
-  {
-    href: 'https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform',
-    icon: <FaEnvelope style={{ fontSize: '2rem' }} />,
-    label: 'DS3 Mailing List',
-  },
-  {
-    href: 'https://github.com/theDS3',
-    icon: <FaGithub style={{ fontSize: '2rem' }} />,
-    label: 'Github',
-  },
+// TODO: put the real DS3 email here
+const EMAIL = 'thedatasciencecube@gmail.com';
+
+const palette = [brand.purple, brand.pink, brand.green];
+
+const socials = [
   {
     href: 'https://www.instagram.com/ds3.utsc',
-    icon: <FaInstagram style={{ fontSize: '2rem' }} />,
+    icon: <FaInstagram />,
     label: 'Instagram',
   },
+  { href: 'https://github.com/theDS3', icon: <FaGithub />, label: 'GitHub' },
   {
-    href: 'https://www.linkedin.com/company/the-data-science-statistics-society/?fbclid=IwAR0pK1obf403GMp6qXzIQm_1F9zFZjKrTMx8FlBBD3D-j5BM4vi6gQGUF2U',
-    icon: <FaLinkedin style={{ fontSize: '2rem' }} />,
+    href: 'https://www.linkedin.com/company/the-data-science-statistics-society/',
+    icon: <FaLinkedin />,
     label: 'LinkedIn',
   },
   {
-    href: 'https://medium.com/@thedatasciencecube',
-    icon: <FaMedium style={{ fontSize: '2rem' }} />,
-    label: 'Medium',
+    href: 'https://discord.com/invite/xDpujjZ',
+    icon: <FaDiscord />,
+    label: 'Discord',
   },
   {
     href: 'https://www.youtube.com/@ds3UTSC',
-    icon: <FaYoutube style={{ fontSize: '2rem' }} />,
+    icon: <FaYoutube />,
     label: 'YouTube',
+  },
+  {
+    href: 'https://medium.com/@thedatasciencecube',
+    icon: <FaMedium />,
+    label: 'Medium',
+  },
+  {
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSe2-hoS0EmTDOii6JXt3ljkfPo8nuz1EdHfSy71FQuTMJhnCw/viewform',
+    icon: <FaEnvelope />,
+    label: 'DS3 Mailing List',
   },
 ];
 
-const links = [
-  {
-    href: '/#about-us',
-    text: 'About Us',
-  },
-  {
-    href: '/#sponsors',
-    text: 'Sponsors',
-  },
-  {
-    href: '/#team',
-    text: 'Our Team',
-  },
-  {
-    href: '/hackathon',
-    text: 'Hackathon',
-  },
+const quickLinks = [
+  { href: '/#about', text: 'About' },
+  { href: '/#sponsors', text: 'Sponsors' },
+  { href: '/team', text: 'Team' },
+  { href: '/events?show=current', text: 'Current events' },
+  { href: '/events?show=past', text: 'Past events' },
 ];
+
+const headingClass = `${instrumentSerif.className} mb-5 text-3xl font-normal text-white`;
 
 export default function Footer() {
   return (
-    <footer className="flex justify-center w-full z-5 px-4 backdrop-blur pt-2 bg-transparent shadow-2xl">
-      <div className="p-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2">
-          <div className="justify-self-start">
-            <p className="text-white font-bold text-xl text-center sm:text-left">
-              STAY CONNECTED
-            </p>
-            <p className="text-gray-400 pt-2 text-center sm:text-left">
-              Join the ML, Data Science, and Statistics Club at the University
-              of Toronto Scarborough.
-            </p>
-            <div className="flex space-x-2 pt-8 justify-center sm:justify-start pb-8">
-              {icons.map(({ href, icon, label }, index) => (
-                <Link
-                  key={`social-link-${index}`}
-                  href={encodeURI(href)}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label={label}>
-                  <div className="text-gray-400 hover:text-amber-100/80 transition duration-300 cursor-pointer">
-                    {icon}
-                  </div>
-                </Link>
-              ))}
-            </div>
+    <footer
+      id="contact"
+      className="relative w-full border-t border-white/10 px-6 pb-8 pt-16 text-white">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3 md:text-left">
+          {/* Contact */}
+          <div>
+            <h3 className={headingClass}>Contact us</h3>
+            <ul className="space-y-2 text-white/70">
+              <li>
+                Email:{' '}
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white">
+                  {EMAIL}
+                </a>
+              </li>
+              <li>University of Toronto Scarborough</li>
+              <li>1265 Military Trail, Toronto, ON</li>
+            </ul>
           </div>
-          <div className="sm:justify-self-end justify-self-center pb-8">
-            <p className="text-white font-bold text-xl">QUICK LINKS</p>
-            <div className="border-b-2 border-gray-400 w-25 mx-auto mb-4"></div>
-            <div className="flex flex-col space-y-2 items-center">
-              {links.map(({ href, text }, index) => (
-                <Link
-                  key={`quick-link-${index}`}
+
+          {/* Quick links */}
+          <div className="md:justify-self-center">
+            <h3 className={headingClass}>Quick links</h3>
+            <ul className="space-y-2">
+              {quickLinks.map(({ href, text }, i) => (
+                <li key={text}>
+                  <Link
+                    href={href}
+                    style={
+                      {
+                        '--c': palette[i % palette.length],
+                      } as React.CSSProperties
+                    }
+                    className="text-white/70 transition-colors duration-200 hover:text-[color:var(--c)]">
+                    {text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Follow */}
+          <div className="md:justify-self-end">
+            <h3 className={headingClass}>Follow us</h3>
+            <div className="flex flex-wrap justify-center gap-3 md:max-w-[220px] md:justify-start">
+              {socials.map(({ href, icon, label }, i) => (
+                <a
+                  key={label}
                   href={href}
-                  className="text-gray-400 hover:text-white transition duration-300 cursor-pointer">
-                  {text}
-                </Link>
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  style={
+                    {
+                      '--c': palette[i % palette.length],
+                    } as React.CSSProperties
+                  }
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-lg text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-[color:var(--c)] hover:bg-[color:var(--c)]">
+                  {icon}
+                </a>
               ))}
             </div>
           </div>
         </div>
-        <div className="text-gray-400 border-t border-b border-gray-500/50 p-2 flex flex-col items-center lg:flex-row lg:items-center lg:justify-center">
-          <p className="lg:mr-2 text-center">
-            University of Toronto Scarborough
-            <span className="hidden lg:inline">•</span>
-            <br className="lg:hidden" /> 1295 Military Trail, Toronto, ON M1C
-            1A4
-          </p>
-        </div>
-        <div className="text-gray-400 text-center pt-4">
-          <p className="text-sm">
-            Copyright © DS<sup>3</sup> 2025. All Rights Reserved
-          </p>
+
+        <div className="mt-14 border-t border-white/10 pt-6 text-center text-sm text-white/50">
+          Copyright © DS<sup>3</sup> {new Date().getFullYear()}. All rights
+          reserved.
         </div>
       </div>
     </footer>
