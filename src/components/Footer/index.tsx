@@ -8,9 +8,13 @@ import {
   FaMedium,
   FaYoutube,
 } from 'react-icons/fa';
+import { brand } from '@/utils/brand';
+import { instrumentSerif } from '@/utils/fonts';
 
 // TODO: put the real DS3 email here
 const EMAIL = 'thedatasciencecube@gmail.com';
+
+const palette = [brand.purple, brand.pink, brand.green];
 
 const socials = [
   {
@@ -47,33 +51,31 @@ const socials = [
 ];
 
 const quickLinks = [
-  { href: '/#about-us', text: 'About' },
+  { href: '/#about', text: 'About' },
   { href: '/#sponsors', text: 'Sponsors' },
   { href: '/team', text: 'Team' },
-  { href: '/hackathon', text: 'Hackathon' },
-  { href: '/agentic-ai', text: 'Agentic AI Program' },
+  { href: '/events?show=current', text: 'Current events' },
+  { href: '/events?show=past', text: 'Past events' },
 ];
 
-const headingClass = 'text-lg font-bold text-white mb-5';
-const linkClass =
-  'text-white/70 hover:text-white transition-colors duration-200';
+const headingClass = `${instrumentSerif.className} mb-5 text-3xl font-normal text-white`;
 
 export default function Footer() {
   return (
     <footer
       id="contact"
-      className="w-full px-6 pt-16 pb-8 text-white">
+      className="relative w-full border-t border-white/10 px-6 pb-8 pt-16 text-white">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3 md:text-left">
           {/* Contact */}
           <div>
-            <h3 className={headingClass}>Contact Us</h3>
+            <h3 className={headingClass}>Contact us</h3>
             <ul className="space-y-2 text-white/70">
               <li>
                 Email:{' '}
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="text-white hover:underline">
+                  className="text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white">
                   {EMAIL}
                 </a>
               </li>
@@ -84,13 +86,18 @@ export default function Footer() {
 
           {/* Quick links */}
           <div className="md:justify-self-center">
-            <h3 className={headingClass}>Quick Links</h3>
+            <h3 className={headingClass}>Quick links</h3>
             <ul className="space-y-2">
-              {quickLinks.map(({ href, text }) => (
-                <li key={href}>
+              {quickLinks.map(({ href, text }, i) => (
+                <li key={text}>
                   <Link
                     href={href}
-                    className={linkClass}>
+                    style={
+                      {
+                        '--c': palette[i % palette.length],
+                      } as React.CSSProperties
+                    }
+                    className="text-white/70 transition-colors duration-200 hover:text-[color:var(--c)]">
                     {text}
                   </Link>
                 </li>
@@ -100,16 +107,21 @@ export default function Footer() {
 
           {/* Follow */}
           <div className="md:justify-self-end">
-            <h3 className={headingClass}>Follow Us</h3>
-            <div className="flex flex-wrap justify-center gap-3 md:justify-start md:max-w-[220px]">
-              {socials.map(({ href, icon, label }) => (
+            <h3 className={headingClass}>Follow us</h3>
+            <div className="flex flex-wrap justify-center gap-3 md:max-w-[220px] md:justify-start">
+              {socials.map(({ href, icon, label }, i) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-lg text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-purple-500 hover:border-purple-400">
+                  style={
+                    {
+                      '--c': palette[i % palette.length],
+                    } as React.CSSProperties
+                  }
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-lg text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-[color:var(--c)] hover:bg-[color:var(--c)]">
                   {icon}
                 </a>
               ))}
@@ -117,7 +129,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-white/15 pt-6 text-center text-sm text-white/50">
+        <div className="mt-14 border-t border-white/10 pt-6 text-center text-sm text-white/50">
           Copyright © DS<sup>3</sup> {new Date().getFullYear()}. All rights
           reserved.
         </div>

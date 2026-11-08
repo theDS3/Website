@@ -2,7 +2,7 @@ import Link, { type LinkProps } from 'next/link';
 
 import { ButtonProps, defaultButtonStyles } from '..';
 
-interface LinkButtonProps extends ButtonProps, LinkProps {
+interface LinkButtonProps extends Omit<ButtonProps, 'onClick'>, LinkProps {
   newTab?: boolean;
 }
 
